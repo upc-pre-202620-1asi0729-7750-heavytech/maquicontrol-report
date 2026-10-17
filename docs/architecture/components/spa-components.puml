@@ -6,13 +6,13 @@ title MaquiControl - Single Page Application Component Diagram (Bounded Contexts
 Container(webServer, "Web Application", "Azure Static Web Apps", "Serves the compiled SPA to the browser.")
 
 Container_Boundary(spa, "Single Page Application [Angular 22]") {
-    Component(iam, "identity-access-management", "Bounded Context", "Sign in, sign up, roles, route guards and session.")
-    Component(profiles, "profiles-management", "Bounded Context", "User profile and organization.")
     Component(fleet, "fleet-management", "Bounded Context", "Machinery catalog, machinery form and categories.")
     Component(rental, "rental-management", "Bounded Context", "Rental requests and reservation list.")
     Component(maintenance, "maintenance-management", "Bounded Context", "Maintenance schedule and breakdown reports.")
     Component(operations, "operations-management", "Bounded Context", "Service operations and worked hours.")
+    Component(profiles, "profiles-management", "Bounded Context", "User profile and organization.")
     Component(subscription, "subscription-management", "Bounded Context", "Plans and Mercado Pago checkout.")
+    Component(iam, "identity-access-management", "Bounded Context", "Sign in, sign up, roles, route guards and session.")
     Component(shared, "shared", "Shared Kernel", "Layout, language switcher, base API classes and shared pages.")
 }
 

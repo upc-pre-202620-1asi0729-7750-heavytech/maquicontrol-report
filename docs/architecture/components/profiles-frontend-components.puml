@@ -5,8 +5,12 @@ title MaquiControl - Profiles Frontend Component Diagram (DDD Layers)
 
 Container_Boundary(bc, "Profiles Management Bounded Context [Angular]") {
     Boundary(presentation, "Presentation Layer") {
-        Component(profilePage, "ProfilePage", "Angular Component", "Shows and edits the user profile and calls saveProfile().")
-        Component(organizationForm, "OrganizationForm", "Angular Component", "Registers the company of the owner or contractor and calls saveOrganization().")
+        Boundary(viewsLayer, "Views") {
+            Component(profilePage, "ProfilePage", "Angular View (routed page)", "Shows and edits the user profile and calls saveProfile().")
+        }
+        Boundary(componentsLayer, "Components") {
+            Component(organizationForm, "OrganizationForm", "Angular Component", "Registers the company of the owner or contractor and calls saveOrganization().")
+        }
     }
     Boundary(application, "Application Layer") {
         Component(profilesStore, "ProfilesManagementStore", "Angular Signals Store", "loadProfiles(), loadOrganizations(), saveProfile() and saveOrganization().")
@@ -34,5 +38,6 @@ Rel(profilesStore, profilesApi, "Invokes")
 Rel(profilesApi, endpoints, "Delegates to")
 Rel(endpoints, assemblers, "Maps with")
 Rel(endpoints, api, "GET/POST/PUT /api/v1/profiles, /api/v1/organizations", "HTTPS / JSON")
+Rel(profilePage, organizationForm, "Renders")
 
 @enduml

@@ -5,8 +5,12 @@ title MaquiControl - Operations Frontend Component Diagram (DDD Layers)
 
 Container_Boundary(bc, "Operations Management Bounded Context [Angular]") {
     Boundary(presentation, "Presentation Layer") {
-        Component(operationPage, "ServiceOperationPage", "Angular Component", "Starts and completes the service operation of a confirmed rental and validates worked hours.")
-        Component(workedHoursForm, "WorkedHoursForm", "Angular Component", "Captures the worked hours of a day and emits them to the page.")
+        Boundary(viewsLayer, "Views") {
+            Component(operationPage, "ServiceOperationPage", "Angular View (routed page)", "Starts and completes the service operation of a confirmed rental and validates worked hours.")
+        }
+        Boundary(componentsLayer, "Components") {
+            Component(workedHoursForm, "WorkedHoursForm", "Angular Component", "Captures the worked hours of a day and emits them to the page.")
+        }
     }
     Boundary(application, "Application Layer") {
         Component(operationsStore, "OperationsManagementStore", "Angular Signals Store", "loadOperations(), startOperation(), recordWorkedHours(), validateWorkedHours() and completeOperation().")
@@ -35,5 +39,6 @@ Rel(operationsStore, operationsApi, "Invokes")
 Rel(operationsApi, endpoint, "Delegates to")
 Rel(endpoint, assembler, "Maps with")
 Rel(endpoint, api, "GET/POST/PUT /api/v1/service-operations", "HTTPS / JSON")
+Rel(operationPage, workedHoursForm, "Renders")
 
 @enduml

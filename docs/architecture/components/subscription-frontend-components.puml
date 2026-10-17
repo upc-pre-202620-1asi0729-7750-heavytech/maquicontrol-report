@@ -5,8 +5,13 @@ title MaquiControl - Subscription Frontend Component Diagram (DDD Layers)
 
 Container_Boundary(bc, "Subscription Management Bounded Context [Angular]") {
     Boundary(presentation, "Presentation Layer") {
-        Component(plansView, "Plans", "Angular Component", "Shows the Essential and Pro plans to fleet owners and calls subscribe().")
-        Component(checkoutResult, "CheckoutResult", "Angular Component", "Receives the Mercado Pago return and calls confirmCheckout().")
+        Boundary(viewsLayer, "Views") {
+            Component(plansView, "Plans", "Angular View (routed page)", "Shows the Essential and Pro plans to fleet owners and calls subscribe().")
+            Component(checkoutResult, "CheckoutResult", "Angular View (routed page)", "Receives the Mercado Pago return and calls confirmCheckout().")
+        }
+        Boundary(componentsLayer, "Components") {
+            Component(layout, "Layout", "Angular Component (shared)", "Application shell from the shared module that hosts the views of this bounded context.")
+        }
     }
     Boundary(application, "Application Layer") {
         Component(subscriptionStore, "SubscriptionManagementStore", "Angular Signals Store", "loadPlans(), loadSubscriptions(), subscribe() and confirmCheckout().")
@@ -34,5 +39,7 @@ Rel(subscriptionStore, subscriptionApi, "Invokes")
 Rel(subscriptionApi, endpoints, "Delegates to")
 Rel(endpoints, assemblers, "Maps with")
 Rel(endpoints, api, "GET/POST/PUT /api/v1/plans, /api/v1/subscriptions, POST /api/v1/payments/checkout-preferences", "HTTPS / JSON")
+Rel(layout, plansView, "Hosts")
+Rel(layout, checkoutResult, "Hosts")
 
 @enduml

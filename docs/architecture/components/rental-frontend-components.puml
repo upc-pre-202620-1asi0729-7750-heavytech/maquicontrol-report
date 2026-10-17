@@ -5,8 +5,13 @@ title MaquiControl - Rental Frontend Component Diagram (DDD Layers)
 
 Container_Boundary(bc, "Rental Management Bounded Context [Angular]") {
     Boundary(presentation, "Presentation Layer") {
-        Component(rentalRequestPage, "RentalRequestPage", "Angular Component", "Selects rental dates for available machinery and calls requestRental().")
-        Component(reservationList, "ReservationList", "Angular Component", "Lists the user own reservations and calls confirmReservation() or cancelReservation().")
+        Boundary(viewsLayer, "Views") {
+            Component(rentalRequestPage, "RentalRequestPage", "Angular View (routed page)", "Selects rental dates for available machinery and calls requestRental().")
+            Component(reservationList, "ReservationList", "Angular View (routed page)", "Lists the user own reservations and calls confirmReservation() or cancelReservation().")
+        }
+        Boundary(componentsLayer, "Components") {
+            Component(layout, "Layout", "Angular Component (shared)", "Application shell from the shared module that hosts the views of this bounded context.")
+        }
     }
     Boundary(application, "Application Layer") {
         Component(rentalStore, "RentalManagementStore", "Angular Signals Store", "loadRentals(), requestRental(), confirmReservation(), cancelReservation() and hasOverlappingActiveRental().")
@@ -32,5 +37,7 @@ Rel(rentalStore, rentalApi, "Invokes")
 Rel(rentalApi, endpoint, "Delegates to")
 Rel(endpoint, assembler, "Maps with")
 Rel(endpoint, api, "GET/POST/PUT /api/v1/rentals", "HTTPS / JSON")
+Rel(layout, rentalRequestPage, "Hosts")
+Rel(layout, reservationList, "Hosts")
 
 @enduml

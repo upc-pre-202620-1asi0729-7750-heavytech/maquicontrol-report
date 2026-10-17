@@ -1374,7 +1374,7 @@ En esta sección se presenta el Design-Level Event Storming de MaquiControl, des
 
 El objetivo de esta etapa es profundizar en el dominio del problema e identificar los principales Bounded Contexts, Aggregates, Commands, Domain Events, Policies, Queries y Read Models de la solución. Las políticas expresan reglas reactivas con la estructura evento ocurrido, política aplicada y comando desencadenado.
 
-A partir del análisis realizado se identificaron los siguientes Bounded Contexts principales: Fleet Management, Rental Management, Maintenance Management, Operations Management, Identity & Access Management, Profiles Management, Subscription Management y Billing Management.
+A partir del análisis realizado se identificaron los siguientes Bounded Contexts principales: Fleet Management, Rental Management, Maintenance Management y Operations Management como core; Profiles Management, Subscription Management y Billing Management como soporte; e Identity & Access Management como genérico.
 
 #### Fleet Management Bounded Context
 
@@ -1399,12 +1399,6 @@ Este Bounded Context representa la ejecución operativa de los servicios realiza
 
 ![Operations Management Design-Level Event Storming](assets/operations-management-design-level.png)
 
-#### Identity & Access Management Bounded Context
-
-Este Bounded Context se encarga de la gestión de identidad, autenticación y control de acceso de los usuarios de MaquiControl. Incluye el registro de cuentas, la autenticación, la asignación de roles y el cambio de contraseñas. Su agregado principal es User Account y permite consultar los datos de la cuenta, los roles asignados y el estado de autenticación. Su política asigna el rol de contratista por defecto a una cuenta recién registrada.
-
-![Identity and Access Management Design-Level Event Storming](assets/identity-access-management-design-level.png)
-
 #### Profiles Management Bounded Context
 
 Este Bounded Context gestiona la información asociada a los perfiles de los usuarios. Incluye la creación y actualización de perfiles, datos de contacto e información de la organización. Su agregado principal es Profile y permite consultar la información personal, de contacto y organizacional asociada a cada usuario. Su política exige información de contacto válida después de crear el perfil.
@@ -1422,6 +1416,12 @@ Este Bounded Context gestiona la contratación, activación, renovación y cance
 Este Bounded Context concentra el cálculo del monto de alquiler, la emisión de comprobantes electrónicos ante SUNAT y la aplicación de penalidades por mora. Sus agregados principales son Invoice y Late Penalty, ambos referenciando el alquiler correspondiente mediante un identificador externo perteneciente a Rental Management. Su política emite el comprobante electrónico una vez calculado el monto del alquiler, y aplica una penalidad por mora cuando la maquinaria se devuelve después de la fecha pactada.
 
 ![Billing Management Design-Level Event Storming](assets/billing-management-design-level.png)
+
+#### Identity & Access Management Bounded Context
+
+Este Bounded Context se encarga de la gestión de identidad, autenticación y control de acceso de los usuarios de MaquiControl. Incluye el registro de cuentas, la autenticación, la asignación de roles y el cambio de contraseñas. Su agregado principal es User Account y permite consultar los datos de la cuenta, los roles asignados y el estado de autenticación. Su política asigna el rol de contratista por defecto a una cuenta recién registrada.
+
+![Identity and Access Management Design-Level Event Storming](assets/identity-access-management-design-level.png)
 
 ### 4.6.2. Software Architecture Context Diagram
 
@@ -1459,54 +1459,24 @@ La solución se compone de los siguientes containers principales:
 
 En esta sección se presentan los diagramas de componentes (Nivel 3 de C4 Model) de MaquiControl, desagregando internamente tanto la **Single Page Application (Frontend)** como la **REST API (Backend)** en sus capas y artefactos de código (componentes UI, almacenes de estado reactivo, modelos de dominio, servicios HTTP, controladores REST, servicios de aplicación y repositorios).
 
+En los diagramas de componentes del frontend, la capa Presentation se divide en **Views**, que son las páginas con ruta propia, y **Components**, que son las piezas de interfaz que se muestran dentro de esas páginas. Los Bounded Contexts se presentan en este orden: primero los core (Fleet, Rental, Maintenance y Operations), luego los de soporte (Profiles, Subscription y Billing) y al final el genérico (Identity & Access Management).
+
 #### Single Page Application Component Diagram
 
 Presenta la descomposición de alto nivel de la Single Page Application en carpetas por Bounded Context, tal como está organizado el código fuente en `src/app`. Cada Bounded Context se divide en las capas `presentation`, `application`, `domain` e `infrastructure`:
 
-- **identity-access-management**: inicio de sesión, registro con rol de propietario de flota o contratista, guards de rutas por sesión y rol, e interceptor HTTP.
-- **profiles-management**: perfil del usuario y organización.
 - **fleet-management**: catálogo de maquinaria, formulario de maquinaria y gestión de categorías.
 - **rental-management**: solicitud de alquiler y listado de reservas propias.
 - **maintenance-management**: programación de mantenimientos y reporte de averías.
 - **operations-management**: operación de servicio y registro y validación de horas trabajadas.
+- **profiles-management**: perfil del usuario y organización.
 - **subscription-management**: planes de suscripción y pago con Mercado Pago Checkout Pro (sandbox).
+- **identity-access-management**: inicio de sesión, registro con rol de propietario de flota o contratista, guards de rutas por sesión y rol, e interceptor HTTP.
 - **shared**: layout, selector de idioma, páginas compartidas y clases base de infraestructura (`BaseApi`, `BaseApiEndpoint`, `BaseAssembler`).
 
 Todos los Bounded Contexts consumen la **REST API** mediante HTTPS y JSON bajo el prefijo `/api/v1`.
 
 ![MaquiControl Single Page Application Component Diagram](assets/spa-components.png)
-
-#### Identity & Access Frontend Component Diagram
-
-- **Presentation Layer**:
-  - `SignInForm`: formulario de inicio de sesión que invoca `signIn()` del store.
-  - `SignUpForm`: formulario de registro que permite elegir el rol de contratista o propietario de flota e invoca `signUp()`.
-  - `AuthenticationSection`: muestra al usuario autenticado en la barra superior e invoca `signOut()`.
-- **Application Layer**:
-  - `IdentityAccessStore`: store basado en Angular Signals que mantiene la sesión y expone `signIn()`, `signUp()`, `signOut()`, `loadRoles()`, `hasRole()` y `hasAnyRole()`.
-- **Domain Layer**:
-  - `UserAccount`, `Role` y `Credential`, junto con los comandos `SignInCommand` y `SignUpCommand`.
-- **Infrastructure Layer**:
-  - `IdentityAccessApi`: expone `signIn()`, `signUp()`, `getRoles()` y `userAccountExists()`.
-  - `SignInPort`: token de inyección que selecciona `FakeSignInApiEndpoint` o `SignInApiEndpoint` según el entorno.
-  - `SignUpApiEndpoint` y `RoleApiEndpoint`: llamadas HTTP a `/api/v1/authentication/sign-up` y `/api/v1/roles`.
-  - `identityAccessGuard`, `roleGuard` e `identityAccessInterceptor`: protegen las rutas por sesión y rol, y adjuntan la sesión a las solicitudes.
-
-![Identity and Access Frontend Component Diagram](assets/identity-access-frontend-components.png)
-
-#### Profiles Frontend Component Diagram
-
-- **Presentation Layer**:
-  - `ProfilePage`: muestra y edita el perfil del usuario mediante `saveProfile()`.
-  - `OrganizationForm`: registra la empresa del usuario mediante `saveOrganization()`.
-- **Application Layer**:
-  - `ProfilesManagementStore`: expone `loadProfiles()`, `loadOrganizations()`, `saveProfile()` y `saveOrganization()`.
-- **Domain Layer**:
-  - `Profile`, `Organization`, el Value Object `ContactInformation` y el enum `OrganizationType`.
-- **Infrastructure Layer**:
-  - `ProfilesManagementApi`, `ProfileApiEndpoint` y `OrganizationApiEndpoint`: llamadas HTTP a `/api/v1/profiles` y `/api/v1/organizations`, con sus assemblers.
-
-![Profiles Frontend Component Diagram](assets/profiles-frontend-components.png)
 
 #### Fleet Frontend Component Diagram
 
@@ -1565,6 +1535,20 @@ Todos los Bounded Contexts consumen la **REST API** mediante HTTPS y JSON bajo e
 
 ![Operations Frontend Component Diagram](assets/operations-frontend-components.png)
 
+#### Profiles Frontend Component Diagram
+
+- **Presentation Layer**:
+  - `ProfilePage`: muestra y edita el perfil del usuario mediante `saveProfile()`.
+  - `OrganizationForm`: registra la empresa del usuario mediante `saveOrganization()`.
+- **Application Layer**:
+  - `ProfilesManagementStore`: expone `loadProfiles()`, `loadOrganizations()`, `saveProfile()` y `saveOrganization()`.
+- **Domain Layer**:
+  - `Profile`, `Organization`, el Value Object `ContactInformation` y el enum `OrganizationType`.
+- **Infrastructure Layer**:
+  - `ProfilesManagementApi`, `ProfileApiEndpoint` y `OrganizationApiEndpoint`: llamadas HTTP a `/api/v1/profiles` y `/api/v1/organizations`, con sus assemblers.
+
+![Profiles Frontend Component Diagram](assets/profiles-frontend-components.png)
+
 #### Subscription Frontend Component Diagram
 
 - **Presentation Layer**:
@@ -1578,6 +1562,24 @@ Todos los Bounded Contexts consumen la **REST API** mediante HTTPS y JSON bajo e
   - `SubscriptionManagementApi`, `PlanApiEndpoint`, `SubscriptionApiEndpoint` y `PaymentApiEndpoint`: llamadas HTTP a `/api/v1/plans`, `/api/v1/subscriptions` y `/api/v1/payments`.
 
 ![Subscription Frontend Component Diagram](assets/subscription-frontend-components.png)
+
+#### Identity & Access Frontend Component Diagram
+
+- **Presentation Layer**:
+  - `SignInForm`: formulario de inicio de sesión que invoca `signIn()` del store.
+  - `SignUpForm`: formulario de registro que permite elegir el rol de contratista o propietario de flota e invoca `signUp()`.
+  - `AuthenticationSection`: muestra al usuario autenticado en la barra superior e invoca `signOut()`.
+- **Application Layer**:
+  - `IdentityAccessStore`: store basado en Angular Signals que mantiene la sesión y expone `signIn()`, `signUp()`, `signOut()`, `loadRoles()`, `hasRole()` y `hasAnyRole()`.
+- **Domain Layer**:
+  - `UserAccount`, `Role` y `Credential`, junto con los comandos `SignInCommand` y `SignUpCommand`.
+- **Infrastructure Layer**:
+  - `IdentityAccessApi`: expone `signIn()`, `signUp()`, `getRoles()` y `userAccountExists()`.
+  - `SignInPort`: token de inyección que selecciona `FakeSignInApiEndpoint` o `SignInApiEndpoint` según el entorno.
+  - `SignUpApiEndpoint` y `RoleApiEndpoint`: llamadas HTTP a `/api/v1/authentication/sign-up` y `/api/v1/roles`.
+  - `identityAccessGuard`, `roleGuard` e `identityAccessInterceptor`: protegen las rutas por sesión y rol, y adjuntan la sesión a las solicitudes.
+
+![Identity and Access Frontend Component Diagram](assets/identity-access-frontend-components.png)
 
 #### Shared Frontend Component Diagram
 
@@ -1657,17 +1659,6 @@ Detalla la arquitectura interna del Bounded Context de Operations Management:
 
 ![Operations Management Component Diagram](assets/c4-operations-management-component-diagram.png)
 
-#### Identity & Access Management Bounded Context Component Diagram
-
-Detalla la arquitectura interna del Bounded Context de Identity & Access Management:
-- `AuthController`: Controlador REST (`@RestController`) que publica los endpoints de autenticación y registro en `/api/v1/authentication/sign-in` y `/api/v1/authentication/sign-up`.
-- `IdentityAccessService`: Servicio de aplicación (`@Service`) que ejecuta `authenticateUser()`, `registerUser()`, `assignRole()` y `changePassword()`.
-- `UserAccount Aggregate`: Agregado raíz de identidad que encapsula credenciales seguras (`Credential`), asignación de roles (`Role`) y políticas de activación o suspensión de cuentas.
-- `UserAccountRepository`: Repositorio Spring Data JPA que provee métodos de acceso a datos como `save()`, `findById()`, `findByEmail()` y `existsByEmail()`.
-- `SecurityFilterChain`: Cadena de filtros de Spring Security equipada con `JwtTokenFilter` para validar firmas de tokens JWT y autorizar el acceso a rutas protegidas.
-
-![Identity and Access Management Component Diagram](assets/c4-identity-access-management-component-diagram.png)
-
 #### Profiles Management Bounded Context Component Diagram
 
 Detalla la arquitectura interna del Bounded Context de Profiles Management:
@@ -1678,6 +1669,17 @@ Detalla la arquitectura interna del Bounded Context de Profiles Management:
 - `SecurityConnector`: Garantiza que cada usuario consulte y actualice exclusivamente su propia información de perfil o la de su organización autorizada.
 
 ![Profiles Management Component Diagram](assets/c4-profiles-management-component-diagram.png)
+
+#### Identity & Access Management Bounded Context Component Diagram
+
+Detalla la arquitectura interna del Bounded Context de Identity & Access Management:
+- `AuthController`: Controlador REST (`@RestController`) que publica los endpoints de autenticación y registro en `/api/v1/authentication/sign-in` y `/api/v1/authentication/sign-up`.
+- `IdentityAccessService`: Servicio de aplicación (`@Service`) que ejecuta `authenticateUser()`, `registerUser()`, `assignRole()` y `changePassword()`.
+- `UserAccount Aggregate`: Agregado raíz de identidad que encapsula credenciales seguras (`Credential`), asignación de roles (`Role`) y políticas de activación o suspensión de cuentas.
+- `UserAccountRepository`: Repositorio Spring Data JPA que provee métodos de acceso a datos como `save()`, `findById()`, `findByEmail()` y `existsByEmail()`.
+- `SecurityFilterChain`: Cadena de filtros de Spring Security equipada con `JwtTokenFilter` para validar firmas de tokens JWT y autorizar el acceso a rutas protegidas.
+
+![Identity and Access Management Component Diagram](assets/c4-identity-access-management-component-diagram.png)
 
 ## 4.7 Software Object-Oriented Design
 
@@ -1709,12 +1711,6 @@ El diagrama de Operations Management representa el agregado `ServiceOperation` y
 
 ![Operations Management Class Diagram](assets/operations-management-class-diagram.png)
 
-#### Identity & Access Management Bounded Context Class Diagram
-
-El diagrama de Identity & Access Management representa el agregado `UserAccount`, sus credenciales y los roles asignados. El modelo concentra las operaciones de registro, autenticación, cambio de contraseña, asignación de roles y control del estado de las cuentas.
-
-![Identity and Access Management Class Diagram](assets/identity-access-management-class-diagram.png)
-
 #### Profiles Management Bounded Context Class Diagram
 
 El diagrama de Profiles Management representa el agregado `Profile`, la información de contacto y la organización asociada al usuario. Este modelo permite administrar los datos personales, de contacto y organizacionales sin acoplar el contexto de perfiles con la gestión de credenciales.
@@ -1732,6 +1728,12 @@ El diagrama de Subscription Management representa el agregado `Subscription`, la
 El diagrama de Billing Management representa los agregados `Invoice` y `Late Penalty`, ambos referenciando el alquiler correspondiente mediante un identificador externo. Permite calcular el monto de alquiler, emitir o rechazar el comprobante electrónico y aplicar penalidades por mora, utilizando el Value Object `Money` para los importes involucrados.
 
 ![Billing Management Class Diagram](assets/billing-management-class-diagram.png)
+
+#### Identity & Access Management Bounded Context Class Diagram
+
+El diagrama de Identity & Access Management representa el agregado `UserAccount`, sus credenciales y los roles asignados. El modelo concentra las operaciones de registro, autenticación, cambio de contraseña, asignación de roles y control del estado de las cuentas.
+
+![Identity and Access Management Class Diagram](assets/identity-access-management-class-diagram.png)
 
 ## 4.8 Database Design
 
@@ -1767,12 +1769,6 @@ El modelo de Operations Management conserva la ejecución de los servicios y los
 
 ![Operations Management Database Diagram](assets/operations-management-database-diagram.png)
 
-#### Identity & Access Management Bounded Context Database Diagram
-
-El modelo de Identity & Access Management almacena cuentas, credenciales y roles. Las credenciales mantienen una relación uno a uno con cada cuenta, mientras que la relación muchos a muchos entre cuentas y roles se resuelve mediante la tabla intermedia `user_account_roles`. Las restricciones garantizan correos únicos, estados válidos y una asignación no duplicada de roles.
-
-![Identity and Access Management Database Diagram](assets/identity-access-management-database-diagram.png)
-
 #### Profiles Management Bounded Context Database Diagram
 
 El modelo de Profiles Management almacena perfiles, información de contacto y organizaciones. Cada perfil posee un único registro de contacto y puede pertenecer opcionalmente a una organización. El identificador de la cuenta de usuario se conserva como una referencia externa a Identity & Access Management.
@@ -1790,6 +1786,12 @@ El modelo de Subscription Management almacena los planes de suscripción disponi
 El modelo de Billing Management almacena los comprobantes electrónicos y las penalidades por mora. La tabla `invoices` conserva el monto, estado y datos de emisión ante SUNAT, mientras que `late_penalties` registra los recargos aplicados por devoluciones tardías. Ambas tablas referencian el alquiler correspondiente mediante un identificador externo perteneciente a Rental Management.
 
 ![Billing Management Database Diagram](assets/billing-management-database-diagram.png)
+
+#### Identity & Access Management Bounded Context Database Diagram
+
+El modelo de Identity & Access Management almacena cuentas, credenciales y roles. Las credenciales mantienen una relación uno a uno con cada cuenta, mientras que la relación muchos a muchos entre cuentas y roles se resuelve mediante la tabla intermedia `user_account_roles`. Las restricciones garantizan correos únicos, estados válidos y una asignación no duplicada de roles.
+
+![Identity and Access Management Database Diagram](assets/identity-access-management-database-diagram.png)
 
 # Capítulo V: Product Implementation, Validation & Deployment
 
