@@ -11,21 +11,17 @@ hide empty members
 package "Fleet Management" {
 
   class Machinery <<Aggregate Root>> {
-    - id: Long
-    - ownerProfileId: Long
-    - categoryId: Long
-    - name: String
-    - description: String
-    - brand: String
-    - model: String
-    - year: Integer
+    - id: MachineryId
+    - ownerProfileId: ProfileId
+    - categoryId: CategoryId
+    - specification: MachinerySpecification
     - hourlyRate: Money
     - status: MachineryStatus
     - location: MachineryLocation
     - createdAt: LocalDateTime
     - updatedAt: LocalDateTime
     + register(): void
-    + updateInformation(name: String, description: String, hourlyRate: Money): void
+    + updateInformation(specification: MachinerySpecification, hourlyRate: Money): void
     + changeStatus(status: MachineryStatus): void
     + updateLocation(location: MachineryLocation): void
     + classifyAs(category: Category): void
@@ -33,11 +29,11 @@ package "Fleet Management" {
   }
 
   class Category <<Entity>> {
-    - id: Long
-    - code: String
-    - name: String
-    - active: Boolean
-    + rename(name: String): void
+    - id: CategoryId
+    - code: CategoryCode
+    - name: CategoryName
+    - status: CategoryStatus
+    + rename(name: CategoryName): void
     + deactivate(): void
   }
 
@@ -75,31 +71,66 @@ package "Fleet Management" {
 
   interface MachineryRepository {
     + save(machinery: Machinery): Machinery
-    + findById(id: Long): Optional<Machinery>
+    + findById(id: MachineryId): Optional<Machinery>
     + findAll(): List<Machinery>
     + findAvailable(): List<Machinery>
-    + findByCategoryId(categoryId: Long): List<Machinery>
-    + existsById(id: Long): Boolean
+    + findByCategoryId(categoryId: CategoryId): List<Machinery>
+    + existsById(id: MachineryId): Boolean
   }
 
   interface CategoryRepository {
     + save(category: Category): Category
-    + findById(id: Long): Optional<Category>
+    + findById(id: CategoryId): Optional<Category>
     + findAllActive(): List<Category>
-    + existsById(id: Long): Boolean
+    + existsById(id: CategoryId): Boolean
   }
 
   class FleetManagementService <<Application Service>> {
     - machineryRepository: MachineryRepository
     - categoryRepository: CategoryRepository
     + registerMachinery(machinery: Machinery): Machinery
-    + updateMachineryInformation(id: Long, name: String, description: String, hourlyRate: Money): Machinery
-    + updateMachineryStatus(id: Long, status: MachineryStatus): Machinery
+    + updateMachineryInformation(id: MachineryId, specification: MachinerySpecification, hourlyRate: Money): Machinery
+    + updateMachineryStatus(id: MachineryId, status: MachineryStatus): Machinery
     + registerCategory(category: Category): Category
-    + updateCategory(id: Long, name: String): Category
+    + updateCategory(id: CategoryId, name: CategoryName): Category
     + viewMachineryInventory(): List<Machinery>
     + viewCategories(): List<Category>
-    + checkMachineryAvailability(id: Long): Boolean
+    + checkMachineryAvailability(id: MachineryId): Boolean
+  }
+
+  class MachinerySpecification <<Value Object>> {
+    - name: String
+    - brand: String
+    - model: String
+    - manufactureYear: Integer
+    - description: String
+    + isValidYear(): Boolean
+  }
+
+  class CategoryCode <<Value Object>> {
+    - value: String
+  }
+
+  class CategoryName <<Value Object>> {
+    - value: String
+    + equalsIgnoreCase(other: CategoryName): Boolean
+  }
+
+  enum CategoryStatus {
+    ACTIVE
+    INACTIVE
+  }
+
+  package "Identifiers" {
+    class CategoryId <<Value Object>> {
+      - value: Long
+    }
+    class MachineryId <<Value Object>> {
+      - value: Long
+    }
+    class ProfileId <<Value Object>> {
+      - value: Long
+    }
   }
 }
 
@@ -112,6 +143,11 @@ FleetManagementService "1" --> "1" MachineryRepository : uses >
 FleetManagementService "1" --> "1" CategoryRepository : uses >
 MachineryRepository ..> Machinery : persists >
 CategoryRepository ..> Category : persists >
+
+Machinery "1" *-- "1" MachinerySpecification : specification >
+Category "1" *-- "1" CategoryCode : code >
+Category "1" *-- "1" CategoryName : name >
+Category --> CategoryStatus : status >
 
 legend right
   |= Symbol |= Meaning |
