@@ -2192,14 +2192,20 @@ El Sprint 1 comprendió el periodo del 8 al 19 de septiembre de 2026. Su objetiv
 
 | Campo | Detalle |
 |---|---|
-| Sprint | Sprint 1 |
-| Fecha de inicio | 08/09/2026 |
-| Fecha de finalización | 19/09/2026 |
-| Duración | 12 días |
-| Objetivo | Implementar y desplegar una Landing Page responsive y bilingüe que comunique la propuesta de valor de MaquiControl a los dos segmentos objetivo. |
-| User Stories consideradas | US-013 Mostrar propuesta de valor y US-014 Mostrar información por segmento. |
-| Productos incluidos | Landing Page e informe técnico del proyecto. |
-| Productos planificados para siguientes Sprints | RESTful API y Single Page Application. |
+| **Sprint #** | Sprint 1 |
+| **Sprint Planning Background** | |
+| Date | 2026-09-08 |
+| Time | 08:00 PM |
+| Location | Reunión virtual en Discord (servidor del equipo AndesHeavyTech) |
+| Prepared By | Cespedes Lezcano, Carlos Gabriel |
+| Attendees (to planning meeting) | Cespedes Lezcano, Carlos Gabriel / Fuentes Alvarez, Angiela Stephany / Tantalean Granda, Nicolas / Gutiérrez Lizarbe, Wilmer Sebastián / Castillo Guevara, Mathias Alejandro |
+| Sprint 0 Review Summary | No aplica, es el primer Sprint del proyecto. |
+| Sprint 0 Retrospective Summary | No aplica, es el primer Sprint del proyecto. |
+| **Sprint Goal & User Stories** | |
+| Sprint 1 Goal | *Our focus is on* publishing a responsive and bilingual Landing Page that presents the MaquiControl value proposition.<br>*We believe it delivers* a clear understanding of how MaquiControl helps them control and rent heavy machinery *to* machinery rental companies and construction contractors.<br>*This will be confirmed when* visitors from both segments open the Landing Page published on GitHub Pages, read the content for their segment in Spanish or English and reach the subscription plans section. |
+| User Stories | US-013 Mostrar propuesta de valor y US-014 Mostrar información por segmento. |
+| Sprint 1 Velocity | 2 |
+| Sum of Story Points | 2 |
 
 #### 5.2.1.2. Aspect Leaders and Collaborators
 
@@ -2307,16 +2313,20 @@ El Sprint 2 se enfocó en construir la primera versión funcional de la aplicaci
 
 | Campo | Detalle |
 |---|---|
-| Sprint | Sprint 2 |
-| Fecha de inicio | 01/10/2026 |
-| Fecha de finalización | 07/10/2026 |
-| Duración | 7 días |
+| **Sprint #** | Sprint 2 |
+| **Sprint Planning Background** | |
+| Date | 2026-10-01 |
+| Time | 08:00 PM |
+| Location | Reunión virtual en Discord (servidor del equipo AndesHeavyTech) |
+| Prepared By | Cespedes Lezcano, Carlos Gabriel |
+| Attendees (to planning meeting) | Cespedes Lezcano, Carlos Gabriel / Fuentes Alvarez, Angiela Stephany / Tantalean Granda, Nicolas / Gutiérrez Lizarbe, Wilmer Sebastián / Castillo Guevara, Mathias Alejandro |
 | Sprint 1 Review Summary | Se publicó en GitHub Pages la Landing Page responsive y bilingüe (versión `1.1.0`), con contenido por segmento y planes comerciales. |
 | Sprint 1 Retrospective Summary | Se acordó mantener GitFlow y Conventional Commits, y se identificó como mejora contar con un tablero público desde el inicio del Sprint. |
-| Objetivo | Implementar y desplegar la Frontend Web Application de MaquiControl para propietarios de flota y contratistas, consumiendo una Fake API publicada en la nube, e integrar el pago de planes de suscripción en modo sandbox. |
-| User Stories consideradas | US-001, US-003, US-004, US-006, US-007, US-009, US-010, US-011, US-016, US-017, US-019, US-026, US-027, US-029, US-030, US-031, US-034, US-041 y US-042. |
-| Productos incluidos | Frontend Web Application (Angular), Fake API (json-server en Azure App Service), Landing Page `v2.0.0` e informe técnico. |
-| Productos planificados para siguientes Sprints | RESTful API en Spring Boot y User Stories pendientes de suscripción (US-043 a US-045). |
+| **Sprint Goal & User Stories** | |
+| Sprint 2 Goal | *Our focus is on* letting fleet owners and contractors manage machinery, rentals, operations and subscriptions in the MaquiControl web application.<br>*We believe it delivers* centralized and up-to-date control of machinery availability, rental requests and worked hours *to* machinery rental companies and construction contractors.<br>*This will be confirmed when* a fleet owner registers a machine and a contractor requests its rental in the web application deployed on Azure, and a subscription payment is completed with Mercado Pago in sandbox mode. |
+| User Stories | US-001, US-003, US-004, US-006, US-007, US-009, US-010, US-011, US-016, US-017, US-019, US-026, US-027, US-029, US-030, US-031, US-034, US-041 y US-042. |
+| Sprint 2 Velocity | 40 |
+| Sum of Story Points | 40 |
 
 #### 5.2.2.2. Aspect Leaders and Collaborators
 
