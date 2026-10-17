@@ -11,15 +11,15 @@ hide empty members
 package "Maintenance Management" {
 
   class Maintenance <<Aggregate Root>> {
-    - id: Long
-    - machineryId: Long
+    - id: MaintenanceId
+    - machineryId: MachineryId
     - type: MaintenanceType
     - status: MaintenanceStatus
-    - description: String
+    - description: Description
     - scheduledDate: LocalDateTime
     - startedAt: LocalDateTime
     - completedAt: LocalDateTime
-    - technicianName: String
+    - technicianName: TechnicianName
     - cost: Money
     - breakdownReports: List<BreakdownReport>
     + schedule(): void
@@ -31,12 +31,12 @@ package "Maintenance Management" {
   }
 
   class BreakdownReport <<Entity>> {
-    - id: Long
-    - description: String
+    - id: BreakdownReportId
+    - description: Description
     - severity: BreakdownSeverity
     - reportedAt: LocalDateTime
     - resolvedAt: LocalDateTime
-    - resolved: Boolean
+    - status: BreakdownStatus
     + resolve(): void
     + isCritical(): Boolean
   }
@@ -75,21 +75,47 @@ package "Maintenance Management" {
 
   interface MaintenanceRepository {
     + save(maintenance: Maintenance): Maintenance
-    + findById(id: Long): Optional<Maintenance>
-    + findByMachineryId(machineryId: Long): List<Maintenance>
+    + findById(id: MaintenanceId): Optional<Maintenance>
+    + findByMachineryId(machineryId: MachineryId): List<Maintenance>
     + findByStatus(status: MaintenanceStatus): List<Maintenance>
-    + findCompletedByMachineryId(machineryId: Long): List<Maintenance>
+    + findCompletedByMachineryId(machineryId: MachineryId): List<Maintenance>
   }
 
   class MaintenanceManagementService <<Application Service>> {
     - maintenanceRepository: MaintenanceRepository
     + scheduleMaintenance(maintenance: Maintenance): Maintenance
-    + completeMaintenance(id: Long, cost: Money): Maintenance
-    + reportBreakdown(id: Long, report: BreakdownReport): Maintenance
-    + updateMaintenanceStatus(id: Long, status: MaintenanceStatus): Maintenance
-    + viewMaintenanceHistory(machineryId: Long): List<Maintenance>
+    + completeMaintenance(id: MaintenanceId, cost: Money): Maintenance
+    + reportBreakdown(id: MaintenanceId, report: BreakdownReport): Maintenance
+    + updateMaintenanceStatus(id: MaintenanceId, status: MaintenanceStatus): Maintenance
+    + viewMaintenanceHistory(machineryId: MachineryId): List<Maintenance>
     + viewPendingMaintenance(): List<Maintenance>
-    + checkMaintenanceDetails(id: Long): Maintenance
+    + checkMaintenanceDetails(id: MaintenanceId): Maintenance
+  }
+
+  class Description <<Value Object>> {
+    - value: String
+    + isEmpty(): Boolean
+  }
+
+  class TechnicianName <<Value Object>> {
+    - value: String
+  }
+
+  enum BreakdownStatus {
+    OPEN
+    RESOLVED
+  }
+
+  package "Identifiers" {
+    class BreakdownReportId <<Value Object>> {
+      - value: Long
+    }
+    class MachineryId <<Value Object>> {
+      - value: Long
+    }
+    class MaintenanceId <<Value Object>> {
+      - value: Long
+    }
   }
 }
 
@@ -101,6 +127,11 @@ Maintenance --> MaintenanceStatus : has >
 BreakdownReport --> BreakdownSeverity : has >
 MaintenanceManagementService "1" --> "1" MaintenanceRepository : uses >
 MaintenanceRepository ..> Maintenance : persists >
+
+Maintenance "1" *-- "1" Description : description >
+Maintenance "1" *-- "1" TechnicianName : technicianName >
+BreakdownReport "1" *-- "1" Description : description >
+BreakdownReport --> BreakdownStatus : status >
 
 legend right
   |= Symbol |= Meaning |

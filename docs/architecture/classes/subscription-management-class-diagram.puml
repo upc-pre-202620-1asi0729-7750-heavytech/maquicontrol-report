@@ -11,19 +11,19 @@ hide empty members
 package "Subscription Management" {
 
   class SubscriptionPlan <<Entity>> {
-    - id: Long
+    - id: PlanId
     - code: PlanCode
-    - name: String
-    - machineryLimit: Integer
+    - name: PlanName
+    - machineryLimit: MachineryLimit
     - price: Money
     - billingCycle: BillingCycle
-    + allowsAdditionalMachinery(currentCount: Integer): Boolean
+    + allowsAdditionalMachinery(currentCount: MachineryCount): Boolean
   }
 
   class Subscription <<Aggregate Root>> {
-    - id: Long
-    - ownerProfileId: Long
-    - planId: Long
+    - id: SubscriptionId
+    - ownerProfileId: ProfileId
+    - planId: PlanId
     - status: SubscriptionStatus
     - startedAt: LocalDateTime
     - currentPeriodEnd: LocalDateTime
@@ -34,14 +34,14 @@ package "Subscription Management" {
     + registerPayment(payment: Payment): void
     + activate(): void
     + renew(periodEnd: LocalDateTime): void
-    + cancel(reason: String): void
+    + cancel(reason: Reason): void
     + isActive(): Boolean
   }
 
   class Payment <<Entity>> {
-    - id: Long
+    - id: PaymentId
     - provider: PaymentProviderName
-    - providerPaymentId: String
+    - providerPaymentId: ProviderPaymentId
     - amount: Money
     - status: PaymentStatus
     - paidAt: LocalDateTime
@@ -92,9 +92,9 @@ package "Subscription Management" {
 
   interface SubscriptionRepository {
     + save(subscription: Subscription): Subscription
-    + findById(id: Long): Optional<Subscription>
-    + findByOwnerProfileId(ownerProfileId: Long): Optional<Subscription>
-    + existsActiveByOwnerProfileId(ownerProfileId: Long): Boolean
+    + findById(id: SubscriptionId): Optional<Subscription>
+    + findByOwnerProfileId(ownerProfileId: ProfileId): Optional<Subscription>
+    + existsActiveByOwnerProfileId(ownerProfileId: ProfileId): Boolean
   }
 
   interface SubscriptionPlanRepository {
@@ -105,13 +105,49 @@ package "Subscription Management" {
   class SubscriptionManagementService <<Application Service>> {
     - subscriptionRepository: SubscriptionRepository
     - planRepository: SubscriptionPlanRepository
-    + selectPlan(ownerProfileId: Long, planCode: PlanCode): Subscription
-    + registerPayment(subscriptionId: Long, payment: Payment): Subscription
-    + activateSubscription(subscriptionId: Long): Subscription
-    + cancelSubscription(subscriptionId: Long, reason: String): Subscription
+    + selectPlan(ownerProfileId: ProfileId, planCode: PlanCode): Subscription
+    + registerPayment(subscriptionId: SubscriptionId, payment: Payment): Subscription
+    + activateSubscription(subscriptionId: SubscriptionId): Subscription
+    + cancelSubscription(subscriptionId: SubscriptionId, reason: Reason): Subscription
     + viewSubscriptionPlans(): List<SubscriptionPlan>
-    + viewSubscriptionStatus(subscriptionId: Long): SubscriptionStatus
-    + viewPaymentHistory(subscriptionId: Long): List<Payment>
+    + viewSubscriptionStatus(subscriptionId: SubscriptionId): SubscriptionStatus
+    + viewPaymentHistory(subscriptionId: SubscriptionId): List<Payment>
+  }
+
+  class Reason <<Value Object>> {
+    - value: String
+  }
+
+  class PlanName <<Value Object>> {
+    - value: String
+  }
+
+  class MachineryLimit <<Value Object>> {
+    - value: Integer
+    + allows(currentCount: MachineryCount): Boolean
+  }
+
+  class MachineryCount <<Value Object>> {
+    - value: Integer
+  }
+
+  class ProviderPaymentId <<Value Object>> {
+    - value: String
+  }
+
+  package "Identifiers" {
+    class PaymentId <<Value Object>> {
+      - value: Long
+    }
+    class PlanId <<Value Object>> {
+      - value: Long
+    }
+    class ProfileId <<Value Object>> {
+      - value: Long
+    }
+    class SubscriptionId <<Value Object>> {
+      - value: Long
+    }
   }
 }
 
@@ -129,6 +165,10 @@ SubscriptionManagementService "1" --> "1" SubscriptionRepository : uses >
 SubscriptionManagementService "1" --> "1" SubscriptionPlanRepository : uses >
 SubscriptionRepository ..> Subscription : persists >
 SubscriptionPlanRepository ..> SubscriptionPlan : persists >
+
+SubscriptionPlan "1" *-- "1" PlanName : name >
+SubscriptionPlan "1" *-- "1" MachineryLimit : machineryLimit >
+Payment "1" *-- "1" ProviderPaymentId : providerPaymentId >
 
 legend right
   |= Symbol |= Meaning |

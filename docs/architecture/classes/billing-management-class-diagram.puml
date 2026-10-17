@@ -11,24 +11,24 @@ hide empty members
 package "Billing Management" {
 
   class Invoice <<Aggregate Root>> {
-    - id: Long
-    - rentalId: Long
-    - invoiceNumber: String
-    - sunatCdr: String
+    - id: InvoiceId
+    - rentalId: RentalId
+    - invoiceNumber: InvoiceNumber
+    - sunatCdr: SunatCdr
     - amount: Money
     - status: InvoiceStatus
     - issuedAt: LocalDateTime
     + calculate(amount: Money): void
-    + issue(invoiceNumber: String, sunatCdr: String): void
-    + reject(reason: String): void
+    + issue(invoiceNumber: InvoiceNumber, sunatCdr: SunatCdr): void
+    + reject(reason: Reason): void
     + isIssued(): Boolean
   }
 
   class LatePenalty <<Aggregate Root>> {
-    - id: Long
-    - rentalId: Long
+    - id: LatePenaltyId
+    - rentalId: RentalId
     - amount: Money
-    - reason: String
+    - reason: Reason
     - appliedAt: LocalDateTime
     + apply(): void
   }
@@ -53,24 +53,51 @@ package "Billing Management" {
 
   interface InvoiceRepository {
     + save(invoice: Invoice): Invoice
-    + findById(id: Long): Optional<Invoice>
-    + findByRentalId(rentalId: Long): Optional<Invoice>
+    + findById(id: InvoiceId): Optional<Invoice>
+    + findByRentalId(rentalId: RentalId): Optional<Invoice>
   }
 
   interface LatePenaltyRepository {
     + save(penalty: LatePenalty): LatePenalty
-    + findByRentalId(rentalId: Long): List<LatePenalty>
+    + findByRentalId(rentalId: RentalId): List<LatePenalty>
   }
 
   class BillingManagementService <<Application Service>> {
     - invoiceRepository: InvoiceRepository
     - latePenaltyRepository: LatePenaltyRepository
-    + calculateRentalAmount(rentalId: Long, amount: Money): Invoice
-    + issueInvoice(invoiceId: Long, invoiceNumber: String, sunatCdr: String): Invoice
-    + applyLatePenalty(rentalId: Long, amount: Money, reason: String): LatePenalty
-    + viewInvoice(id: Long): Invoice
-    + viewInvoiceHistory(rentalId: Long): List<Invoice>
-    + viewLatePenaltiesByRental(rentalId: Long): List<LatePenalty>
+    + calculateRentalAmount(rentalId: RentalId, amount: Money): Invoice
+    + issueInvoice(invoiceId: InvoiceId, invoiceNumber: InvoiceNumber, sunatCdr: SunatCdr): Invoice
+    + applyLatePenalty(rentalId: RentalId, amount: Money, reason: Reason): LatePenalty
+    + viewInvoice(id: InvoiceId): Invoice
+    + viewInvoiceHistory(rentalId: RentalId): List<Invoice>
+    + viewLatePenaltiesByRental(rentalId: RentalId): List<LatePenalty>
+  }
+
+  class Reason <<Value Object>> {
+    - value: String
+  }
+
+  class InvoiceNumber <<Value Object>> {
+    - series: String
+    - correlative: Integer
+    + format(): String
+  }
+
+  class SunatCdr <<Value Object>> {
+    - value: String
+    + isAccepted(): Boolean
+  }
+
+  package "Identifiers" {
+    class InvoiceId <<Value Object>> {
+      - value: Long
+    }
+    class LatePenaltyId <<Value Object>> {
+      - value: Long
+    }
+    class RentalId <<Value Object>> {
+      - value: Long
+    }
   }
 }
 
@@ -82,6 +109,10 @@ BillingManagementService "1" --> "1" InvoiceRepository : uses >
 BillingManagementService "1" --> "1" LatePenaltyRepository : uses >
 InvoiceRepository ..> Invoice : persists >
 LatePenaltyRepository ..> LatePenalty : persists >
+
+Invoice "1" *-- "1" InvoiceNumber : invoiceNumber >
+Invoice "1" *-- "1" SunatCdr : sunatCdr >
+LatePenalty "1" *-- "1" Reason : reason >
 
 legend right
   |= Symbol |= Meaning |

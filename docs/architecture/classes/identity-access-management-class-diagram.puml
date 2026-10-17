@@ -11,34 +11,34 @@ hide empty members
 package "Identity & Access Management" {
 
   class UserAccount <<Aggregate Root>> {
-    - id: Long
-    - email: String
+    - id: UserAccountId
+    - email: EmailAddress
     - credential: Credential
     - status: AccountStatus
     - roles: Set<Role>
     - createdAt: LocalDateTime
     - lastLoginAt: LocalDateTime
     + register(): void
-    + authenticate(rawPassword: String): Boolean
+    + authenticate(rawPassword: PlainPassword): Boolean
     + assignRole(role: Role): void
     + removeRole(role: Role): void
-    + changePassword(passwordHash: String): void
+    + changePassword(passwordHash: PasswordHash): void
     + activate(): void
     + suspend(): void
     + hasRole(roleName: RoleName): Boolean
   }
 
   class Credential <<Value Object>> {
-    - passwordHash: String
+    - passwordHash: PasswordHash
     - changedAt: LocalDateTime
-    + matches(rawPassword: String): Boolean
-    + update(passwordHash: String): Credential
+    + matches(rawPassword: PlainPassword): Boolean
+    + update(passwordHash: PasswordHash): Credential
   }
 
   class Role <<Entity>> {
-    - id: Long
+    - id: RoleId
     - name: RoleName
-    - description: String
+    - description: Description
     + isAdministrative(): Boolean
   }
 
@@ -59,20 +59,48 @@ package "Identity & Access Management" {
 
   interface UserAccountRepository {
     + save(account: UserAccount): UserAccount
-    + findById(id: Long): Optional<UserAccount>
-    + findByEmail(email: String): Optional<UserAccount>
-    + existsByEmail(email: String): Boolean
+    + findById(id: UserAccountId): Optional<UserAccount>
+    + findByEmail(email: EmailAddress): Optional<UserAccount>
+    + existsByEmail(email: EmailAddress): Boolean
   }
 
   class IdentityAccessService <<Application Service>> {
     - accountRepository: UserAccountRepository
     + registerUser(account: UserAccount): UserAccount
-    + authenticateUser(email: String, password: String): UserAccount
-    + assignRole(accountId: Long, role: Role): UserAccount
-    + changePassword(accountId: Long, passwordHash: String): UserAccount
-    + viewAccountDetails(accountId: Long): UserAccount
-    + viewUserRoles(accountId: Long): Set<Role>
-    + checkAuthenticationStatus(accountId: Long): AccountStatus
+    + authenticateUser(email: EmailAddress, password: PlainPassword): UserAccount
+    + assignRole(accountId: UserAccountId, role: Role): UserAccount
+    + changePassword(accountId: UserAccountId, passwordHash: PasswordHash): UserAccount
+    + viewAccountDetails(accountId: UserAccountId): UserAccount
+    + viewUserRoles(accountId: UserAccountId): Set<Role>
+    + checkAuthenticationStatus(accountId: UserAccountId): AccountStatus
+  }
+
+  class EmailAddress <<Value Object>> {
+    - value: String
+    + isValid(): Boolean
+  }
+
+  class PasswordHash <<Value Object>> {
+    - value: String
+  }
+
+  class PlainPassword <<Value Object>> {
+    - value: String
+    + meetsPolicy(): Boolean
+  }
+
+  class Description <<Value Object>> {
+    - value: String
+    + isEmpty(): Boolean
+  }
+
+  package "Identifiers" {
+    class RoleId <<Value Object>> {
+      - value: Long
+    }
+    class UserAccountId <<Value Object>> {
+      - value: Long
+    }
   }
 }
 
@@ -82,6 +110,10 @@ UserAccount --> AccountStatus : has >
 Role --> RoleName : identified by >
 IdentityAccessService "1" --> "1" UserAccountRepository : uses >
 UserAccountRepository ..> UserAccount : persists >
+
+UserAccount "1" *-- "1" EmailAddress : email >
+Credential "1" *-- "1" PasswordHash : passwordHash >
+Role "1" *-- "1" Description : description >
 
 legend right
   |= Symbol |= Meaning |

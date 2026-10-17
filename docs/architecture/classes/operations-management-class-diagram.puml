@@ -11,31 +11,29 @@ hide empty members
 package "Operations Management" {
 
   class ServiceOperation <<Aggregate Root>> {
-    - id: Long
-    - rentalId: Long
-    - machineryId: Long
-    - operatorProfileId: Long
+    - id: ServiceOperationId
+    - rentalId: RentalId
+    - machineryId: MachineryId
+    - operatorProfileId: ProfileId
     - status: OperationStatus
     - startedAt: LocalDateTime
     - completedAt: LocalDateTime
     - workedHours: List<WorkedHours>
     + start(): void
     + recordWorkedHours(record: WorkedHours): void
-    + validateWorkedHours(recordId: Long): void
+    + validateWorkedHours(recordId: WorkedHoursId): void
     + complete(): void
-    + calculateTotalHours(): BigDecimal
+    + calculateTotalHours(): HoursWorked
     + isInProgress(): Boolean
   }
 
   class WorkedHours <<Entity>> {
-    - id: Long
-    - workDate: LocalDate
-    - startTime: LocalTime
-    - endTime: LocalTime
-    - totalHours: BigDecimal
+    - id: WorkedHoursId
+    - shift: WorkShift
+    - totalHours: HoursWorked
     - status: WorkedHoursStatus
-    - observations: String
-    + calculateHours(): BigDecimal
+    - observations: Notes
+    + calculateHours(): HoursWorked
     + validate(): void
     + reject(): void
     + isValidated(): Boolean
@@ -56,21 +54,56 @@ package "Operations Management" {
 
   interface ServiceOperationRepository {
     + save(operation: ServiceOperation): ServiceOperation
-    + findById(id: Long): Optional<ServiceOperation>
-    + findByRentalId(rentalId: Long): Optional<ServiceOperation>
-    + findByMachineryId(machineryId: Long): List<ServiceOperation>
+    + findById(id: ServiceOperationId): Optional<ServiceOperation>
+    + findByRentalId(rentalId: RentalId): Optional<ServiceOperation>
+    + findByMachineryId(machineryId: MachineryId): List<ServiceOperation>
     + findByStatus(status: OperationStatus): List<ServiceOperation>
   }
 
   class OperationsManagementService <<Application Service>> {
     - operationRepository: ServiceOperationRepository
     + startService(operation: ServiceOperation): ServiceOperation
-    + recordWorkedHours(operationId: Long, record: WorkedHours): ServiceOperation
-    + validateWorkedHours(operationId: Long, recordId: Long): ServiceOperation
-    + completeService(id: Long): ServiceOperation
-    + viewServiceStatus(id: Long): OperationStatus
-    + viewWorkedHours(id: Long): List<WorkedHours>
-    + viewOperationHistory(machineryId: Long): List<ServiceOperation>
+    + recordWorkedHours(operationId: ServiceOperationId, record: WorkedHours): ServiceOperation
+    + validateWorkedHours(operationId: ServiceOperationId, recordId: WorkedHoursId): ServiceOperation
+    + completeService(id: ServiceOperationId): ServiceOperation
+    + viewServiceStatus(id: ServiceOperationId): OperationStatus
+    + viewWorkedHours(id: ServiceOperationId): List<WorkedHours>
+    + viewOperationHistory(machineryId: MachineryId): List<ServiceOperation>
+  }
+
+  class Notes <<Value Object>> {
+    - value: String
+  }
+
+  class HoursWorked <<Value Object>> {
+    - value: BigDecimal
+    + add(other: HoursWorked): HoursWorked
+    + isNonNegative(): Boolean
+  }
+
+  class WorkShift <<Value Object>> {
+    - workDate: LocalDate
+    - startTime: LocalTime
+    - endTime: LocalTime
+    + duration(): HoursWorked
+  }
+
+  package "Identifiers" {
+    class MachineryId <<Value Object>> {
+      - value: Long
+    }
+    class ProfileId <<Value Object>> {
+      - value: Long
+    }
+    class RentalId <<Value Object>> {
+      - value: Long
+    }
+    class ServiceOperationId <<Value Object>> {
+      - value: Long
+    }
+    class WorkedHoursId <<Value Object>> {
+      - value: Long
+    }
   }
 }
 
@@ -79,6 +112,10 @@ ServiceOperation --> OperationStatus : has >
 WorkedHours --> WorkedHoursStatus : has >
 OperationsManagementService "1" --> "1" ServiceOperationRepository : uses >
 ServiceOperationRepository ..> ServiceOperation : persists >
+
+WorkedHours "1" *-- "1" WorkShift : shift >
+WorkedHours "1" *-- "1" HoursWorked : totalHours >
+WorkedHours "1" *-- "1" Notes : observations >
 
 legend right
   |= Symbol |= Meaning |

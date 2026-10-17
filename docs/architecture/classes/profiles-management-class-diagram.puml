@@ -11,26 +11,25 @@ hide empty members
 package "Profiles Management" {
 
   class Profile <<Aggregate Root>> {
-    - id: Long
-    - userAccountId: Long
-    - firstName: String
-    - lastName: String
-    - documentNumber: String
+    - id: ProfileId
+    - userAccountId: UserAccountId
+    - name: PersonName
+    - documentNumber: DocumentNumber
     - contactInformation: ContactInformation
     - organization: Organization
     - createdAt: LocalDateTime
     - updatedAt: LocalDateTime
     + create(): void
-    + updatePersonalInformation(firstName: String, lastName: String, documentNumber: String): void
+    + updatePersonalInformation(name: PersonName, documentNumber: DocumentNumber): void
     + updateContactInformation(contact: ContactInformation): void
     + updateOrganizationInformation(organization: Organization): void
-    + fullName(): String
+    + fullName(): PersonName
   }
 
   class ContactInformation <<Value Object>> {
-    - phoneNumber: String
-    - secondaryEmail: String
-    - address: String
+    - phoneNumber: PhoneNumber
+    - secondaryEmail: EmailAddress
+    - address: StreetAddress
     - district: String
     - city: String
     + isValid(): Boolean
@@ -38,13 +37,12 @@ package "Profiles Management" {
   }
 
   class Organization <<Entity>> {
-    - id: Long
-    - legalName: String
-    - tradeName: String
-    - taxId: String
+    - id: OrganizationId
+    - name: CompanyName
+    - taxId: TaxId
     - type: OrganizationType
-    - address: String
-    + updateInformation(legalName: String, tradeName: String, address: String): void
+    - address: StreetAddress
+    + updateInformation(name: CompanyName, address: StreetAddress): void
     + isValidTaxId(): Boolean
   }
 
@@ -57,21 +55,75 @@ package "Profiles Management" {
 
   interface ProfileRepository {
     + save(profile: Profile): Profile
-    + findById(id: Long): Optional<Profile>
-    + findByUserAccountId(userAccountId: Long): Optional<Profile>
-    + findByDocumentNumber(documentNumber: String): Optional<Profile>
-    + existsByDocumentNumber(documentNumber: String): Boolean
+    + findById(id: ProfileId): Optional<Profile>
+    + findByUserAccountId(userAccountId: UserAccountId): Optional<Profile>
+    + findByDocumentNumber(documentNumber: DocumentNumber): Optional<Profile>
+    + existsByDocumentNumber(documentNumber: DocumentNumber): Boolean
   }
 
   class ProfilesManagementService <<Application Service>> {
     - profileRepository: ProfileRepository
     + createProfile(profile: Profile): Profile
-    + updateProfileInformation(id: Long, firstName: String, lastName: String, documentNumber: String): Profile
-    + updateContactInformation(id: Long, contact: ContactInformation): Profile
-    + updateOrganizationInformation(id: Long, organization: Organization): Profile
-    + viewProfile(id: Long): Profile
-    + viewContactInformation(id: Long): ContactInformation
-    + viewOrganizationInformation(id: Long): Organization
+    + updateProfileInformation(id: ProfileId, name: PersonName, documentNumber: DocumentNumber): Profile
+    + updateContactInformation(id: ProfileId, contact: ContactInformation): Profile
+    + updateOrganizationInformation(id: ProfileId, organization: Organization): Profile
+    + viewProfile(id: ProfileId): Profile
+    + viewContactInformation(id: ProfileId): ContactInformation
+    + viewOrganizationInformation(id: ProfileId): Organization
+  }
+
+  class EmailAddress <<Value Object>> {
+    - value: String
+    + isValid(): Boolean
+  }
+
+  class PhoneNumber <<Value Object>> {
+    - value: String
+    + isValid(): Boolean
+  }
+
+  class PersonName <<Value Object>> {
+    - firstName: String
+    - lastName: String
+    + fullName(): String
+  }
+
+  class DocumentNumber <<Value Object>> {
+    - type: DocumentType
+    - value: String
+    + isValid(): Boolean
+  }
+
+  class TaxId <<Value Object>> {
+    - value: String
+    + isValidRuc(): Boolean
+  }
+
+  class CompanyName <<Value Object>> {
+    - legalName: String
+    - tradeName: String
+  }
+
+  class StreetAddress <<Value Object>> {
+    - value: String
+  }
+
+  enum DocumentType {
+    DNI
+    CE
+    PASSPORT
+  }
+
+  package "Identifiers" {
+    class OrganizationId <<Value Object>> {
+      - value: Long
+    }
+    class ProfileId <<Value Object>> {
+      - value: Long
+    }
+    class UserAccountId <<Value Object>> {
+      - value: Long
+    }
   }
 }
 
@@ -80,6 +132,16 @@ Profile "1" o-- "0..1" Organization : belongs to >
 Organization --> OrganizationType : classified as >
 ProfilesManagementService "1" --> "1" ProfileRepository : uses >
 ProfileRepository ..> Profile : persists >
+
+Profile "1" *-- "1" PersonName : name >
+Profile "1" *-- "1" DocumentNumber : documentNumber >
+ContactInformation "1" *-- "1" PhoneNumber : phoneNumber >
+ContactInformation "1" *-- "1" EmailAddress : secondaryEmail >
+ContactInformation "1" *-- "1" StreetAddress : address >
+Organization "1" *-- "1" CompanyName : name >
+Organization "1" *-- "1" TaxId : taxId >
+Organization "1" *-- "1" StreetAddress : address >
+DocumentNumber --> DocumentType : type >
 
 legend right
   |= Symbol |= Meaning |
