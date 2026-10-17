@@ -1374,52 +1374,56 @@ En esta sección se presenta el Design-Level Event Storming de MaquiControl, des
 
 El objetivo de esta etapa es profundizar en el dominio del problema e identificar los principales Bounded Contexts, Aggregates, Commands, Domain Events, Policies, Queries y Read Models de la solución. Las políticas expresan reglas reactivas con la estructura evento ocurrido, política aplicada y comando desencadenado.
 
+La sesión se realizó en equipo tomando como punto de partida los eventos del Big Picture. Para cada Bounded Context se ubicaron los Domain Events en orden temporal, se identificó el actor y el Command que origina cada evento, se agruparon los Commands en el Aggregate que valida sus reglas de negocio y se definieron las Policies que reaccionan a eventos propios o de otros Bounded Contexts. Finalmente se definieron los Read Models que cada actor necesita consultar y se marcaron como hotspots los riesgos pendientes. Los modelos se contrastaron con la implementación de la aplicación web para que los Aggregates, estados y reglas coincidan con el código.
+
+Cada diagrama se lee de izquierda a derecha siguiendo el flujo Actor, Command, Aggregate y Domain Event. Las notas amarillas describen las reglas de negocio de cada Aggregate, las Policies conectan un evento con el siguiente Command, los eventos en color claro provienen de otro Bounded Context y las líneas punteadas indican qué eventos actualizan cada Read Model.
+
 A partir del análisis realizado se identificaron los siguientes Bounded Contexts principales: Fleet Management, Rental Management, Maintenance Management y Operations Management como core; Profiles Management, Subscription Management y Billing Management como soporte; e Identity & Access Management como genérico.
 
 #### Fleet Management Bounded Context
 
-Este Bounded Context concentra las responsabilidades relacionadas con la gestión de la maquinaria, incluyendo su registro, actualización de información, cambio de estado, consulta de inventario y disponibilidad. También administra el catálogo de categorías de maquinaria (`Category`) como una entidad propia del contexto, lo que permite incorporar nuevas categorías sin modificar el código fuente. Su política inicializa como disponible la maquinaria recién registrada.
+Este Bounded Context concentra la gestión de la maquinaria y de sus categorías. El propietario de flota registra, actualiza y da de baja maquinaria, y administra el catálogo de categorías (`Category`) como una entidad propia del contexto. Sus agregados son Machinery y Category, con reglas como datos técnicos obligatorios, tarifa por hora no negativa y categorías con nombre único que no se pueden eliminar si tienen maquinaria. Sus políticas cambian el estado de la maquinaria a partir de eventos propios y de otros contextos: la dejan disponible al registrarse, la marcan como reservada cuando Rental Management confirma una reserva, la liberan cuando se cancela y la pasan a mantenimiento mientras Maintenance Management la atiende. Los read models Machinery Catalog, Machinery Availability y Category Catalog informan al contratista y al propietario.
 
 ![Fleet Management Design-Level Event Storming](assets/fleet-management-design-level.png)
 #### Rental Management Bounded Context
 
-Este Bounded Context gestiona las solicitudes y reservas de maquinaria, incluyendo la creación de solicitudes, confirmación, cancelación y actualización de las fechas asociadas al alquiler. Su política confirma una reserva únicamente cuando la maquinaria solicitada se encuentra disponible.
+Este Bounded Context gestiona las solicitudes y reservas de maquinaria. El contratista solicita y cancela alquileres, y el propietario de flota confirma las reservas. Su agregado Rental controla el periodo de alquiler, evita reservas superpuestas sobre la misma maquinaria y solo permite las transiciones REQUESTED, CONFIRMED, IN_PROGRESS y COMPLETED, o la cancelación de una reserva aún no iniciada. Sus políticas reaccionan a Operations Management: el alquiler pasa a IN_PROGRESS cuando inicia la operación de servicio y a COMPLETED cuando esta termina. Los read models Pending Rental Requests y My Reservations informan al propietario y al contratista, y el hotspot identificado es la posibilidad de solicitudes superpuestas antes de la confirmación.
 
 ![Rental Management Design-Level Event Storming](assets/rental-management-design-level.png)
 
 #### Maintenance Management Bounded Context
 
-Este Bounded Context agrupa las responsabilidades relacionadas con el mantenimiento de la maquinaria. Incluye la programación y finalización de mantenimientos, el reporte de averías y la actualización del estado de mantenimiento. Su agregado principal es Maintenance y permite además consultar el historial, los mantenimientos pendientes y el detalle de cada intervención realizada. Su política programa un mantenimiento correctivo cuando se reporta una avería.
+Este Bounded Context agrupa la programación, ejecución y cierre de los mantenimientos, junto con el reporte de averías. El propietario de flota programa, inicia y completa mantenimientos, y el contratista reporta averías desde la obra. Su agregado Maintenance exige descripción, tipo preventivo o correctivo, costo no negativo y fecha de cierre al completarse. Sus políticas programan un mantenimiento correctivo cuando se reporta una avería y uno preventivo cuando las horas validadas en Operations Management alcanzan el umbral definido. Los read models Maintenance Schedule, Breakdown Reports y Maintenance History informan al propietario y al contratista.
 
 ![Maintenance Management Design-Level Event Storming](assets/maintenance-management-design-level.png)
 
 #### Operations Management Bounded Context
 
-Este Bounded Context representa la ejecución operativa de los servicios realizados con la maquinaria. Incluye el inicio y finalización de un servicio, el registro de horas trabajadas y la validación de dichas horas. Su agregado principal es Service Operation y permite consultar el estado del servicio, el resumen de horas trabajadas y el historial de operaciones. Sus políticas exigen validar las horas registradas antes de completar el servicio.
+Este Bounded Context representa la ejecución del servicio de una reserva confirmada. El operador inicia la operación y registra las horas trabajadas, y el propietario de flota las valida y completa la operación. Su agregado Service Operation exige una reserva confirmada para iniciar, horas no negativas y todas las horas validadas antes de completar. Sus políticas habilitan la operación cuando Rental Management confirma una reserva, solicitan la validación de cada registro de horas y permiten completar la operación cuando todas están validadas. Los read models Service Operation Status y Worked Hours Summary informan al propietario y al operador, y el hotspot es la diferencia entre las horas registradas manualmente y el horómetro.
 
 ![Operations Management Design-Level Event Storming](assets/operations-management-design-level.png)
 
 #### Profiles Management Bounded Context
 
-Este Bounded Context gestiona la información asociada a los perfiles de los usuarios. Incluye la creación y actualización de perfiles, datos de contacto e información de la organización. Su agregado principal es Profile y permite consultar la información personal, de contacto y organizacional asociada a cada usuario. Su política exige información de contacto válida después de crear el perfil.
+Este Bounded Context gestiona el perfil de cada usuario y la organización a la que pertenece. Sus agregados son Profile, que exige nombres, documento e información de contacto válida, y Organization, que exige razón social, RUC y dirección. Su política crea el perfil cuando Identity & Access Management registra una nueva cuenta y luego solicita los datos de la organización. Los read models Profile Details y Organization Details informan al usuario, y el hotspot es que el RUC todavía no se verifica contra SUNAT.
 
 ![Profiles Management Design-Level Event Storming](assets/profiles-management-design-level.png)
 
 #### Subscription Management Bounded Context
 
-Este Bounded Context gestiona la contratación, activación, renovación y cancelación de la suscripción de un propietario a MaquiControl. Incluye la selección de un plan de suscripción (Essential o Pro), el registro de pagos procesados mediante el proveedor de pagos externo y la activación o renovación resultante. Su agregado principal es Subscription, que registra los pagos asociados como entidades internas. Su política activa o renueva la suscripción cuando se aprueba un pago, y su límite de maquinarias por plan es consumido como política cruzada por Fleet Management al registrar nueva maquinaria.
+Este Bounded Context gestiona la contratación, activación y cancelación de la suscripción de un propietario de flota. El propietario selecciona un plan (Essential o Pro) y es redirigido a Mercado Pago Checkout Pro, que confirma el pago. Su agregado Subscription solo permite activar una suscripción pendiente de pago y exige registrar el pago y el periodo al activarla. Sus políticas redirigen al checkout al seleccionar un plan y activan la suscripción cuando el pago es aprobado. El límite de maquinarias del plan se aplica en Fleet Management al registrar maquinaria. Los read models Plan Catalog, Subscription Status y Payment History informan al propietario.
 
 ![Subscription Management Design-Level Event Storming](assets/subscription-management-design-level.png)
 
 #### Billing Management Bounded Context
 
-Este Bounded Context concentra el cálculo del monto de alquiler, la emisión de comprobantes electrónicos ante SUNAT y la aplicación de penalidades por mora. Sus agregados principales son Invoice y Late Penalty, ambos referenciando el alquiler correspondiente mediante un identificador externo perteneciente a Rental Management. Su política emite el comprobante electrónico una vez calculado el monto del alquiler, y aplica una penalidad por mora cuando la maquinaria se devuelve después de la fecha pactada.
+Este Bounded Context concentra el cálculo del monto de alquiler, la emisión de comprobantes electrónicos ante SUNAT y la aplicación de penalidades por mora. Sus agregados son Invoice y Late Penalty, ambos referenciando el alquiler mediante su identificador. Sus políticas calculan el monto cuando Operations Management completa la operación de servicio, emiten el comprobante una vez calculado el monto y aplican una penalidad cuando Rental Management completa un alquiler después de la fecha pactada. Los read models Invoice Details, Invoice History y Late Penalties informan al propietario y al contratista, y el hotspot es el rechazo o la demora de SUNAT.
 
 ![Billing Management Design-Level Event Storming](assets/billing-management-design-level.png)
 
 #### Identity & Access Management Bounded Context
 
-Este Bounded Context se encarga de la gestión de identidad, autenticación y control de acceso de los usuarios de MaquiControl. Incluye el registro de cuentas, la autenticación, la asignación de roles y el cambio de contraseñas. Su agregado principal es User Account y permite consultar los datos de la cuenta, los roles asignados y el estado de autenticación. Su política asigna el rol de contratista por defecto a una cuenta recién registrada.
+Este Bounded Context se encarga del registro, la autenticación y los roles de los usuarios de MaquiControl. El visitante se registra eligiendo el rol de propietario de flota o contratista, y el usuario inicia y cierra sesión. Su agregado User Account exige un correo válido y único, una credencial y un rol al registrarse, y solo permite iniciar sesión a cuentas activas. Su política asigna el rol elegido al registrarse la cuenta, y el evento User Signed Up es consumido por Profiles Management para crear el perfil. El read model Current Session alimenta los guards de rutas, y el hotspot es que el inicio de sesión todavía usa la Fake API hasta implementar la autenticación con JWT.
 
 ![Identity and Access Management Design-Level Event Storming](assets/identity-access-management-design-level.png)
 

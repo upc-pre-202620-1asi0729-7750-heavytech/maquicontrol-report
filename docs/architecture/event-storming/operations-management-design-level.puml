@@ -5,90 +5,89 @@ left to right direction
 skinparam shadowing false
 skinparam roundcorner 8
 skinparam defaultFontName Arial
+skinparam rectangleFontSize 12
+skinparam noteBackgroundColor #FFFDE7
+skinparam noteBorderColor #BDB76B
+skinparam ArrowColor #555555
 
-' =========================
-' Styles
-' =========================
+' ===== Actor -> Command -> Aggregate -> Domain Event =====
+rectangle "COMMAND\nStart Service Operation" as CMD_START_SERVICE_OPERATION #87CEFA
+rectangle "AGGREGATE\nService Operation" as AGG_SERVICE_OPERATION_0 #FFF59D
+rectangle "DOMAIN EVENT\nService Operation Started" as EVT_SERVICE_OPERATION_STARTED #FFB74D
+rectangle "ACTOR\nOperator" as ACT_OPERATOR_0 #FFF9C4
+rectangle "COMMAND\nRecord Worked Hours" as CMD_RECORD_WORKED_HOURS #87CEFA
+rectangle "AGGREGATE\nService Operation" as AGG_SERVICE_OPERATION_1 #FFF59D
+rectangle "DOMAIN EVENT\nWorked Hours Recorded" as EVT_WORKED_HOURS_RECORDED #FFB74D
+rectangle "ACTOR\nOperator" as ACT_OPERATOR_1 #FFF9C4
+rectangle "COMMAND\nValidate Worked Hours" as CMD_VALIDATE_WORKED_HOURS #87CEFA
+rectangle "AGGREGATE\nService Operation" as AGG_SERVICE_OPERATION_2 #FFF59D
+rectangle "DOMAIN EVENT\nWorked Hours Validated" as EVT_WORKED_HOURS_VALIDATED #FFB74D
+rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_2 #FFF9C4
+rectangle "COMMAND\nComplete Service Operation" as CMD_COMPLETE_SERVICE_OPERATION #87CEFA
+rectangle "AGGREGATE\nService Operation" as AGG_SERVICE_OPERATION_3 #FFF59D
+rectangle "DOMAIN EVENT\nService Operation Completed" as EVT_SERVICE_OPERATION_COMPLETED #FFB74D
+rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_3 #FFF9C4
 
-rectangle "COMMAND\nStart Service" as CMD_START #87CEFA
-rectangle "AGGREGATE\nService Operation" as AGG_START #FFF59D
-rectangle "ACTOR\nOperator" as ACT_START #FFF9C4
-rectangle "COMMAND\nRecord Worked Hours" as CMD_RECORD_HOURS #87CEFA
-rectangle "AGGREGATE\nService Operation" as AGG_RECORD_HOURS #FFF59D
-rectangle "ACTOR\nOperator" as ACT_RECORD_HOURS #FFF9C4
-rectangle "COMMAND\nValidate Worked Hours" as CMD_VALIDATE_HOURS #87CEFA
-rectangle "AGGREGATE\nService Operation" as AGG_VALIDATE_HOURS #FFF59D
-rectangle "ACTOR\nFleet Administrator" as ACT_VALIDATE_HOURS #FFF9C4
-rectangle "COMMAND\nComplete Service" as CMD_COMPLETE #87CEFA
-rectangle "AGGREGATE\nService Operation" as AGG_COMPLETE #FFF59D
-rectangle "ACTOR\nFleet Administrator" as ACT_COMPLETE #FFF9C4
+' ===== Policies =====
+rectangle "DOMAIN EVENT (Rental)\nReservation Confirmed" as XEVT_RESERVATION_CONFIRMED #FFE0B2
+rectangle "POLICY\nWhen a reservation is confirmed,\nenable its service operation" as POL_0 #B39DDB
+rectangle "POLICY\nWhen worked hours are recorded,\nrequest their validation" as POL_1 #B39DDB
+rectangle "POLICY\nWhen all worked hours are validated,\nallow completing the operation" as POL_2 #B39DDB
 
-rectangle "DOMAIN EVENT\nService Started" as EVT_STARTED #FFB74D
-rectangle "DOMAIN EVENT\nWorked Hours Recorded" as EVT_HOURS_RECORDED #FFB74D
-rectangle "DOMAIN EVENT\nWorked Hours Validated" as EVT_HOURS_VALIDATED #FFB74D
-rectangle "DOMAIN EVENT\nService Completed" as EVT_COMPLETED #FFB74D
+' ===== Read Models =====
+rectangle "READ MODEL\nService Operation Status\n<size:10><i>Query: View Service Operation</i></size>" as RM_0 #81C784
+rectangle "ACTOR\nFleet Owner" as ACT_RM_0 #FFF9C4
+rectangle "READ MODEL\nWorked Hours Summary\n<size:10><i>Query: View Worked Hours</i></size>" as RM_1 #81C784
+rectangle "ACTOR\nOperator" as ACT_RM_1 #FFF9C4
+rectangle "HOTSPOT\nManually recorded hours may differ\nfrom the machine hour meter" as HOT_0 #EF9A9A
 
-rectangle "POLICY\nWhen worked hours are recorded,\nrequire validation before completion" as POL_VALIDATE_RECORDED_HOURS #B39DDB
-rectangle "POLICY\nWhen worked hours are validated,\nallow service completion" as POL_COMPLETE_VALIDATED_SERVICE #B39DDB
-
-rectangle "READ MODEL\nService Status" as READ_STATUS #81C784
-rectangle "QUERY\nView Service Status" as QUERY_STATUS #87CEFA
-rectangle "QUERY RESULT\nService Status" as RESULT_STATUS #C8E6C9
-
-rectangle "READ MODEL\nWorked Hours Summary" as READ_HOURS #81C784
-rectangle "QUERY\nView Worked Hours" as QUERY_HOURS #87CEFA
-rectangle "QUERY RESULT\nWorked Hours Summary" as RESULT_HOURS #C8E6C9
-
-rectangle "READ MODEL\nOperation History" as READ_HISTORY #81C784
-rectangle "QUERY\nView Operation History" as QUERY_HISTORY #87CEFA
-rectangle "QUERY RESULT\nOperation History" as RESULT_HISTORY #C8E6C9
-
-' =========================
-' Commands -> Aggregate -> Events
-' =========================
-
-CMD_START --> AGG_START
-AGG_START --> EVT_STARTED
-ACT_START -[hidden]up-> CMD_START
-
-CMD_RECORD_HOURS --> AGG_RECORD_HOURS
-AGG_RECORD_HOURS --> EVT_HOURS_RECORDED
-ACT_RECORD_HOURS -[hidden]up-> CMD_RECORD_HOURS
-
-CMD_VALIDATE_HOURS --> AGG_VALIDATE_HOURS
-AGG_VALIDATE_HOURS --> EVT_HOURS_VALIDATED
-ACT_VALIDATE_HOURS -[hidden]up-> CMD_VALIDATE_HOURS
-
-CMD_COMPLETE --> AGG_COMPLETE
-AGG_COMPLETE --> EVT_COMPLETED
-ACT_COMPLETE -[hidden]up-> CMD_COMPLETE
-
-EVT_HOURS_RECORDED --> POL_VALIDATE_RECORDED_HOURS
-POL_VALIDATE_RECORDED_HOURS --> CMD_VALIDATE_HOURS
-
-EVT_HOURS_VALIDATED --> POL_COMPLETE_VALIDATED_SERVICE
-POL_COMPLETE_VALIDATED_SERVICE --> CMD_COMPLETE
-
-' =========================
-' Queries -> Read Models
-' =========================
-
-READ_STATUS --> QUERY_STATUS
-QUERY_STATUS --> RESULT_STATUS
-READ_HOURS --> QUERY_HOURS
-QUERY_HOURS --> RESULT_HOURS
-READ_HISTORY --> QUERY_HISTORY
-QUERY_HISTORY --> RESULT_HISTORY
+ACT_OPERATOR_0 --> CMD_START_SERVICE_OPERATION
+CMD_START_SERVICE_OPERATION --> AGG_SERVICE_OPERATION_0
+AGG_SERVICE_OPERATION_0 --> EVT_SERVICE_OPERATION_STARTED
+note bottom of AGG_SERVICE_OPERATION_0
+<b>Business rules (Service Operation)</b>
+- Only a CONFIRMED rental can start
+  a service operation
+- Worked hours cannot be negative
+- All worked hours must be validated
+  before completion
+- A completed operation records
+  its completion date
+end note
+ACT_OPERATOR_1 --> CMD_RECORD_WORKED_HOURS
+CMD_RECORD_WORKED_HOURS --> AGG_SERVICE_OPERATION_1
+AGG_SERVICE_OPERATION_1 --> EVT_WORKED_HOURS_RECORDED
+ACT_FLEET_OWNER_2 --> CMD_VALIDATE_WORKED_HOURS
+CMD_VALIDATE_WORKED_HOURS --> AGG_SERVICE_OPERATION_2
+AGG_SERVICE_OPERATION_2 --> EVT_WORKED_HOURS_VALIDATED
+ACT_FLEET_OWNER_3 --> CMD_COMPLETE_SERVICE_OPERATION
+CMD_COMPLETE_SERVICE_OPERATION --> AGG_SERVICE_OPERATION_3
+AGG_SERVICE_OPERATION_3 --> EVT_SERVICE_OPERATION_COMPLETED
+XEVT_RESERVATION_CONFIRMED --> POL_0
+POL_0 --> CMD_START_SERVICE_OPERATION
+EVT_WORKED_HOURS_RECORDED --> POL_1
+POL_1 --> CMD_VALIDATE_WORKED_HOURS
+EVT_WORKED_HOURS_VALIDATED --> POL_2
+POL_2 --> CMD_COMPLETE_SERVICE_OPERATION
+EVT_SERVICE_OPERATION_STARTED ..> RM_0 : updates
+EVT_SERVICE_OPERATION_COMPLETED ..> RM_0 : updates
+RM_0 ..> ACT_RM_0 : informs
+EVT_WORKED_HOURS_RECORDED ..> RM_1 : updates
+EVT_WORKED_HOURS_VALIDATED ..> RM_1 : updates
+RM_1 ..> ACT_RM_1 : informs
+HOT_0 .. EVT_WORKED_HOURS_RECORDED
 
 legend right
 |= Color |= Element |
-|<#87CEFA>| Command / Query |
+|<#FFF9C4>| Actor |
+|<#87CEFA>| Command |
 |<#FFF59D>| Aggregate |
 |<#FFB74D>| Domain Event |
-|<#FFF9C4>| Actor |
 |<#B39DDB>| Policy |
 |<#81C784>| Read Model |
-|<#C8E6C9>| Query Result |
+|<#FFE0B2>| Domain Event from another Bounded Context |
+|<#EF9A9A>| Hotspot |
+|<#FFFDE7>| Business Rules (note) |
 endlegend
 
 @enduml

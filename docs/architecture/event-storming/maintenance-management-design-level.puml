@@ -5,86 +5,90 @@ left to right direction
 skinparam shadowing false
 skinparam roundcorner 8
 skinparam defaultFontName Arial
+skinparam rectangleFontSize 12
+skinparam noteBackgroundColor #FFFDE7
+skinparam noteBorderColor #BDB76B
+skinparam ArrowColor #555555
 
-' =========================
-' Styles
-' =========================
+' ===== Actor -> Command -> Aggregate -> Domain Event =====
+rectangle "COMMAND\nSchedule Maintenance" as CMD_SCHEDULE_MAINTENANCE #87CEFA
+rectangle "AGGREGATE\nMaintenance" as AGG_MAINTENANCE_0 #FFF59D
+rectangle "DOMAIN EVENT\nMaintenance Scheduled" as EVT_MAINTENANCE_SCHEDULED #FFB74D
+rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_0 #FFF9C4
+rectangle "COMMAND\nStart Maintenance" as CMD_START_MAINTENANCE #87CEFA
+rectangle "AGGREGATE\nMaintenance" as AGG_MAINTENANCE_1 #FFF59D
+rectangle "DOMAIN EVENT\nMaintenance Started" as EVT_MAINTENANCE_STARTED #FFB74D
+rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_1 #FFF9C4
+rectangle "COMMAND\nComplete Maintenance" as CMD_COMPLETE_MAINTENANCE #87CEFA
+rectangle "AGGREGATE\nMaintenance" as AGG_MAINTENANCE_2 #FFF59D
+rectangle "DOMAIN EVENT\nMaintenance Completed" as EVT_MAINTENANCE_COMPLETED #FFB74D
+rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_2 #FFF9C4
+rectangle "COMMAND\nReport Breakdown" as CMD_REPORT_BREAKDOWN #87CEFA
+rectangle "AGGREGATE\nMaintenance" as AGG_MAINTENANCE_3 #FFF59D
+rectangle "DOMAIN EVENT\nBreakdown Reported" as EVT_BREAKDOWN_REPORTED #FFB74D
+rectangle "ACTOR\nContractor" as ACT_CONTRACTOR_3 #FFF9C4
 
-rectangle "COMMAND\nSchedule Maintenance" as CMD_SCHEDULE #87CEFA
-rectangle "AGGREGATE\nMaintenance" as AGG_SCHEDULE #FFF59D
-rectangle "ACTOR\nFleet Owner" as ACT_SCHEDULE #FFF9C4
-rectangle "COMMAND\nComplete Maintenance" as CMD_COMPLETE #87CEFA
-rectangle "AGGREGATE\nMaintenance" as AGG_COMPLETE #FFF59D
-rectangle "ACTOR\nFleet Owner" as ACT_COMPLETE #FFF9C4
-rectangle "COMMAND\nReport Breakdown" as CMD_BREAKDOWN #87CEFA
-rectangle "AGGREGATE\nMaintenance" as AGG_BREAKDOWN #FFF59D
-rectangle "ACTOR\nOperator" as ACT_BREAKDOWN #FFF9C4
-rectangle "COMMAND\nUpdate Maintenance Status" as CMD_UPDATE_STATUS #87CEFA
-rectangle "AGGREGATE\nMaintenance" as AGG_UPDATE_STATUS #FFF59D
-rectangle "ACTOR\nFleet Owner" as ACT_UPDATE_STATUS #FFF9C4
+' ===== Policies =====
+rectangle "POLICY\nWhen a breakdown is reported,\nschedule a corrective maintenance" as POL_0 #B39DDB
+rectangle "DOMAIN EVENT (Operations)\nWorked Hours Validated" as XEVT_WORKED_HOURS_VALIDATED #FFE0B2
+rectangle "POLICY\nWhen accumulated hours reach the\npreventive threshold, schedule\na preventive maintenance" as POL_1 #B39DDB
 
-rectangle "DOMAIN EVENT\nMaintenance Scheduled" as EVT_SCHEDULED #FFB74D
-rectangle "DOMAIN EVENT\nMaintenance Completed" as EVT_COMPLETED #FFB74D
-rectangle "DOMAIN EVENT\nBreakdown Reported" as EVT_BREAKDOWN #FFB74D
-rectangle "DOMAIN EVENT\nMaintenance Status Updated" as EVT_STATUS_UPDATED #FFB74D
+' ===== Read Models =====
+rectangle "READ MODEL\nMaintenance Schedule\n<size:10><i>Query: View Maintenance Schedule</i></size>" as RM_0 #81C784
+rectangle "ACTOR\nFleet Owner" as ACT_RM_0 #FFF9C4
+rectangle "READ MODEL\nBreakdown Reports\n<size:10><i>Query: View Breakdown Reports</i></size>" as RM_1 #81C784
+rectangle "ACTOR\nFleet Owner" as ACT_RM_1 #FFF9C4
+rectangle "READ MODEL\nMaintenance History\n<size:10><i>Query: View Maintenance History</i></size>" as RM_2 #81C784
+rectangle "ACTOR\nContractor" as ACT_RM_2 #FFF9C4
+rectangle "HOTSPOT\nA critical breakdown during an active\nrental may stop work at the site" as HOT_0 #EF9A9A
 
-rectangle "POLICY\nWhen a breakdown is reported,\nschedule corrective maintenance" as POL_CORRECTIVE_MAINTENANCE #B39DDB
-
-rectangle "READ MODEL\nMaintenance History" as READ_HISTORY #81C784
-rectangle "QUERY\nView Maintenance History" as QUERY_HISTORY #87CEFA
-rectangle "QUERY RESULT\nMaintenance History" as RESULT_HISTORY #C8E6C9
-
-rectangle "READ MODEL\nPending Maintenance List" as READ_PENDING #81C784
-rectangle "QUERY\nView Pending Maintenance" as QUERY_PENDING #87CEFA
-rectangle "QUERY RESULT\nPending Maintenance List" as RESULT_PENDING #C8E6C9
-
-rectangle "READ MODEL\nMaintenance Details" as READ_DETAILS #81C784
-rectangle "QUERY\nCheck Maintenance Details" as QUERY_DETAILS #87CEFA
-rectangle "QUERY RESULT\nMaintenance Details" as RESULT_DETAILS #C8E6C9
-
-' =========================
-' Commands -> Aggregate -> Events
-' =========================
-
-CMD_SCHEDULE --> AGG_SCHEDULE
-AGG_SCHEDULE --> EVT_SCHEDULED
-ACT_SCHEDULE -[hidden]up-> CMD_SCHEDULE
-
-CMD_COMPLETE --> AGG_COMPLETE
-AGG_COMPLETE --> EVT_COMPLETED
-ACT_COMPLETE -[hidden]up-> CMD_COMPLETE
-
-CMD_BREAKDOWN --> AGG_BREAKDOWN
-AGG_BREAKDOWN --> EVT_BREAKDOWN
-ACT_BREAKDOWN -[hidden]up-> CMD_BREAKDOWN
-
-CMD_UPDATE_STATUS --> AGG_UPDATE_STATUS
-AGG_UPDATE_STATUS --> EVT_STATUS_UPDATED
-ACT_UPDATE_STATUS -[hidden]up-> CMD_UPDATE_STATUS
-
-EVT_BREAKDOWN --> POL_CORRECTIVE_MAINTENANCE
-POL_CORRECTIVE_MAINTENANCE --> CMD_SCHEDULE
-
-' =========================
-' Queries -> Read Models
-' =========================
-
-READ_HISTORY --> QUERY_HISTORY
-QUERY_HISTORY --> RESULT_HISTORY
-READ_PENDING --> QUERY_PENDING
-QUERY_PENDING --> RESULT_PENDING
-READ_DETAILS --> QUERY_DETAILS
-QUERY_DETAILS --> RESULT_DETAILS
+ACT_FLEET_OWNER_0 --> CMD_SCHEDULE_MAINTENANCE
+CMD_SCHEDULE_MAINTENANCE --> AGG_MAINTENANCE_0
+AGG_MAINTENANCE_0 --> EVT_MAINTENANCE_SCHEDULED
+note bottom of AGG_MAINTENANCE_0
+<b>Business rules (Maintenance)</b>
+- Description is required
+- Type: PREVENTIVE or CORRECTIVE
+- Cost (Money) cannot be negative
+- A completed maintenance records
+  its completion date
+- Breakdown severity: LOW, MEDIUM,
+  HIGH or CRITICAL
+end note
+ACT_FLEET_OWNER_1 --> CMD_START_MAINTENANCE
+CMD_START_MAINTENANCE --> AGG_MAINTENANCE_1
+AGG_MAINTENANCE_1 --> EVT_MAINTENANCE_STARTED
+ACT_FLEET_OWNER_2 --> CMD_COMPLETE_MAINTENANCE
+CMD_COMPLETE_MAINTENANCE --> AGG_MAINTENANCE_2
+AGG_MAINTENANCE_2 --> EVT_MAINTENANCE_COMPLETED
+ACT_CONTRACTOR_3 --> CMD_REPORT_BREAKDOWN
+CMD_REPORT_BREAKDOWN --> AGG_MAINTENANCE_3
+AGG_MAINTENANCE_3 --> EVT_BREAKDOWN_REPORTED
+EVT_BREAKDOWN_REPORTED --> POL_0
+POL_0 --> CMD_SCHEDULE_MAINTENANCE
+XEVT_WORKED_HOURS_VALIDATED --> POL_1
+POL_1 --> CMD_SCHEDULE_MAINTENANCE
+EVT_MAINTENANCE_SCHEDULED ..> RM_0 : updates
+EVT_MAINTENANCE_STARTED ..> RM_0 : updates
+EVT_MAINTENANCE_COMPLETED ..> RM_0 : updates
+RM_0 ..> ACT_RM_0 : informs
+EVT_BREAKDOWN_REPORTED ..> RM_1 : updates
+RM_1 ..> ACT_RM_1 : informs
+EVT_MAINTENANCE_COMPLETED ..> RM_2 : updates
+RM_2 ..> ACT_RM_2 : informs
+HOT_0 .. EVT_BREAKDOWN_REPORTED
 
 legend right
 |= Color |= Element |
-|<#87CEFA>| Command / Query |
+|<#FFF9C4>| Actor |
+|<#87CEFA>| Command |
 |<#FFF59D>| Aggregate |
 |<#FFB74D>| Domain Event |
-|<#FFF9C4>| Actor |
 |<#B39DDB>| Policy |
 |<#81C784>| Read Model |
-|<#C8E6C9>| Query Result |
+|<#FFE0B2>| Domain Event from another Bounded Context |
+|<#EF9A9A>| Hotspot |
+|<#FFFDE7>| Business Rules (note) |
 endlegend
 
 @enduml

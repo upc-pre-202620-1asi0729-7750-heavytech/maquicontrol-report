@@ -5,86 +5,87 @@ left to right direction
 skinparam shadowing false
 skinparam roundcorner 8
 skinparam defaultFontName Arial
+skinparam rectangleFontSize 12
+skinparam noteBackgroundColor #FFFDE7
+skinparam noteBorderColor #BDB76B
+skinparam ArrowColor #555555
 
-' =========================
-' Styles
-' =========================
-
+' ===== Actor -> Command -> Aggregate -> Domain Event =====
 rectangle "COMMAND\nCreate Profile" as CMD_CREATE_PROFILE #87CEFA
-rectangle "AGGREGATE\nProfile" as AGG_CREATE_PROFILE #FFF59D
-rectangle "ACTOR\nContractor" as ACT_CREATE_PROFILE #FFF9C4
-rectangle "COMMAND\nUpdate Profile Information" as CMD_UPDATE_PROFILE #87CEFA
-rectangle "AGGREGATE\nProfile" as AGG_UPDATE_PROFILE #FFF59D
-rectangle "ACTOR\nContractor" as ACT_UPDATE_PROFILE #FFF9C4
-rectangle "COMMAND\nUpdate Contact Information" as CMD_UPDATE_CONTACT #87CEFA
-rectangle "AGGREGATE\nProfile" as AGG_UPDATE_CONTACT #FFF59D
-rectangle "ACTOR\nContractor" as ACT_UPDATE_CONTACT #FFF9C4
-rectangle "COMMAND\nUpdate Organization Information" as CMD_UPDATE_ORG #87CEFA
-rectangle "AGGREGATE\nProfile" as AGG_UPDATE_ORG #FFF59D
-rectangle "ACTOR\nFleet Owner" as ACT_UPDATE_ORG #FFF9C4
-
+rectangle "AGGREGATE\nProfile" as AGG_PROFILE_0 #FFF59D
 rectangle "DOMAIN EVENT\nProfile Created" as EVT_PROFILE_CREATED #FFB74D
-rectangle "DOMAIN EVENT\nProfile Information Updated" as EVT_PROFILE_UPDATED #FFB74D
-rectangle "DOMAIN EVENT\nContact Information Updated" as EVT_CONTACT_UPDATED #FFB74D
-rectangle "DOMAIN EVENT\nOrganization Information Updated" as EVT_ORG_UPDATED #FFB74D
+rectangle "COMMAND\nUpdate Profile" as CMD_UPDATE_PROFILE #87CEFA
+rectangle "AGGREGATE\nProfile" as AGG_PROFILE_1 #FFF59D
+rectangle "DOMAIN EVENT\nProfile Updated" as EVT_PROFILE_UPDATED #FFB74D
+rectangle "ACTOR\nUser" as ACT_USER_1 #FFF9C4
+rectangle "COMMAND\nRegister Organization" as CMD_REGISTER_ORGANIZATION #87CEFA
+rectangle "AGGREGATE\nOrganization" as AGG_ORGANIZATION_2 #FFF59D
+rectangle "DOMAIN EVENT\nOrganization Registered" as EVT_ORGANIZATION_REGISTERED #FFB74D
+rectangle "ACTOR\nUser" as ACT_USER_2 #FFF9C4
+rectangle "COMMAND\nUpdate Organization" as CMD_UPDATE_ORGANIZATION #87CEFA
+rectangle "AGGREGATE\nOrganization" as AGG_ORGANIZATION_3 #FFF59D
+rectangle "DOMAIN EVENT\nOrganization Updated" as EVT_ORGANIZATION_UPDATED #FFB74D
+rectangle "ACTOR\nUser" as ACT_USER_3 #FFF9C4
 
-rectangle "POLICY\nWhen a profile is created,\nrequire valid contact information" as POL_REQUIRE_CONTACT #B39DDB
+' ===== Policies =====
+rectangle "DOMAIN EVENT (Identity & Access)\nUser Signed Up" as XEVT_USER_SIGNED_UP #FFE0B2
+rectangle "POLICY\nWhen a user signs up,\ncreate the profile of the account" as POL_0 #B39DDB
+rectangle "POLICY\nWhen a profile is created,\nask for its organization data" as POL_1 #B39DDB
 
-rectangle "READ MODEL\nProfile Details" as READ_PROFILE #81C784
-rectangle "QUERY\nView Profile" as QUERY_PROFILE #87CEFA
-rectangle "QUERY RESULT\nProfile Details" as RESULT_PROFILE #C8E6C9
+' ===== Read Models =====
+rectangle "READ MODEL\nProfile Details\n<size:10><i>Query: View Profile</i></size>" as RM_0 #81C784
+rectangle "ACTOR\nUser" as ACT_RM_0 #FFF9C4
+rectangle "READ MODEL\nOrganization Details\n<size:10><i>Query: View Organization</i></size>" as RM_1 #81C784
+rectangle "ACTOR\nUser" as ACT_RM_1 #FFF9C4
+rectangle "HOTSPOT\nThe RUC is not yet verified\nagainst SUNAT" as HOT_0 #EF9A9A
 
-rectangle "READ MODEL\nContact Information" as READ_CONTACT #81C784
-rectangle "QUERY\nView Contact Information" as QUERY_CONTACT #87CEFA
-rectangle "QUERY RESULT\nContact Information" as RESULT_CONTACT #C8E6C9
-
-rectangle "READ MODEL\nOrganization Information" as READ_ORG #81C784
-rectangle "QUERY\nView Organization Information" as QUERY_ORG #87CEFA
-rectangle "QUERY RESULT\nOrganization Information" as RESULT_ORG #C8E6C9
-
-' =========================
-' Commands -> Aggregate -> Events
-' =========================
-
-CMD_CREATE_PROFILE --> AGG_CREATE_PROFILE
-AGG_CREATE_PROFILE --> EVT_PROFILE_CREATED
-ACT_CREATE_PROFILE -[hidden]up-> CMD_CREATE_PROFILE
-
-CMD_UPDATE_PROFILE --> AGG_UPDATE_PROFILE
-AGG_UPDATE_PROFILE --> EVT_PROFILE_UPDATED
-ACT_UPDATE_PROFILE -[hidden]up-> CMD_UPDATE_PROFILE
-
-CMD_UPDATE_CONTACT --> AGG_UPDATE_CONTACT
-AGG_UPDATE_CONTACT --> EVT_CONTACT_UPDATED
-ACT_UPDATE_CONTACT -[hidden]up-> CMD_UPDATE_CONTACT
-
-CMD_UPDATE_ORG --> AGG_UPDATE_ORG
-AGG_UPDATE_ORG --> EVT_ORG_UPDATED
-ACT_UPDATE_ORG -[hidden]up-> CMD_UPDATE_ORG
-
-EVT_PROFILE_CREATED --> POL_REQUIRE_CONTACT
-POL_REQUIRE_CONTACT --> CMD_UPDATE_CONTACT
-
-' =========================
-' Queries -> Read Models
-' =========================
-
-READ_PROFILE --> QUERY_PROFILE
-QUERY_PROFILE --> RESULT_PROFILE
-READ_CONTACT --> QUERY_CONTACT
-QUERY_CONTACT --> RESULT_CONTACT
-READ_ORG --> QUERY_ORG
-QUERY_ORG --> RESULT_ORG
+CMD_CREATE_PROFILE --> AGG_PROFILE_0
+AGG_PROFILE_0 --> EVT_PROFILE_CREATED
+note bottom of AGG_PROFILE_0
+<b>Business rules (Profile)</b>
+- First name and last name are required
+- Document number is required
+- Contact information requires valid
+  phone, email and address
+end note
+ACT_USER_1 --> CMD_UPDATE_PROFILE
+CMD_UPDATE_PROFILE --> AGG_PROFILE_1
+AGG_PROFILE_1 --> EVT_PROFILE_UPDATED
+ACT_USER_2 --> CMD_REGISTER_ORGANIZATION
+CMD_REGISTER_ORGANIZATION --> AGG_ORGANIZATION_2
+AGG_ORGANIZATION_2 --> EVT_ORGANIZATION_REGISTERED
+note bottom of AGG_ORGANIZATION_2
+<b>Business rules (Organization)</b>
+- Legal name, tax id (RUC) and
+  address are required
+- Tax id must be valid
+end note
+ACT_USER_3 --> CMD_UPDATE_ORGANIZATION
+CMD_UPDATE_ORGANIZATION --> AGG_ORGANIZATION_3
+AGG_ORGANIZATION_3 --> EVT_ORGANIZATION_UPDATED
+XEVT_USER_SIGNED_UP --> POL_0
+POL_0 --> CMD_CREATE_PROFILE
+EVT_PROFILE_CREATED --> POL_1
+POL_1 --> CMD_REGISTER_ORGANIZATION
+EVT_PROFILE_CREATED ..> RM_0 : updates
+EVT_PROFILE_UPDATED ..> RM_0 : updates
+RM_0 ..> ACT_RM_0 : informs
+EVT_ORGANIZATION_REGISTERED ..> RM_1 : updates
+EVT_ORGANIZATION_UPDATED ..> RM_1 : updates
+RM_1 ..> ACT_RM_1 : informs
+HOT_0 .. EVT_ORGANIZATION_REGISTERED
 
 legend right
 |= Color |= Element |
-|<#87CEFA>| Command / Query |
+|<#FFF9C4>| Actor |
+|<#87CEFA>| Command |
 |<#FFF59D>| Aggregate |
 |<#FFB74D>| Domain Event |
-|<#FFF9C4>| Actor |
 |<#B39DDB>| Policy |
 |<#81C784>| Read Model |
-|<#C8E6C9>| Query Result |
+|<#FFE0B2>| Domain Event from another Bounded Context |
+|<#EF9A9A>| Hotspot |
+|<#FFFDE7>| Business Rules (note) |
 endlegend
 
 @enduml
