@@ -5,86 +5,86 @@ left to right direction
 skinparam shadowing false
 skinparam roundcorner 8
 skinparam defaultFontName Arial
+skinparam rectangleFontSize 12
+skinparam noteBackgroundColor #FFFDE7
+skinparam noteBorderColor #BDB76B
+skinparam ArrowColor #555555
 
-' =========================
-' Styles
-' =========================
+' ===== Actor -> Command -> Aggregate -> Domain Event =====
+rectangle "COMMAND\nCalculate Rental Amount" as CMD_CALCULATE_RENTAL_AMOUNT #87CEFA
+rectangle "AGGREGATE\nInvoice" as AGG_INVOICE_0 #FFF59D
+rectangle "DOMAIN EVENT\nRental Amount Calculated" as EVT_RENTAL_AMOUNT_CALCULATED #FFB74D
+rectangle "COMMAND\nIssue Electronic Invoice" as CMD_ISSUE_ELECTRONIC_INVOICE #87CEFA
+rectangle "AGGREGATE\nInvoice" as AGG_INVOICE_1 #FFF59D
+rectangle "DOMAIN EVENT\nElectronic Invoice Issued" as EVT_ELECTRONIC_INVOICE_ISSUED #FFB74D
+rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_1 #FFF9C4
+rectangle "COMMAND\nApply Late Penalty" as CMD_APPLY_LATE_PENALTY #87CEFA
+rectangle "AGGREGATE\nLate Penalty" as AGG_LATE_PENALTY_2 #FFF59D
+rectangle "DOMAIN EVENT\nLate Penalty Applied" as EVT_LATE_PENALTY_APPLIED #FFB74D
 
-rectangle "COMMAND\nCalculate Rental Amount" as CMD_CALCULATE #87CEFA
-rectangle "AGGREGATE\nInvoice" as AGG_CALCULATE #FFF59D
-rectangle "COMMAND\nIssue Electronic Invoice" as CMD_ISSUE_INVOICE #87CEFA
-rectangle "AGGREGATE\nInvoice" as AGG_ISSUE_INVOICE #FFF59D
-rectangle "ACTOR\nFleet Owner" as ACT_ISSUE_INVOICE #FFF9C4
-rectangle "COMMAND\nApply Late Penalty" as CMD_APPLY_PENALTY #87CEFA
-rectangle "AGGREGATE\nLate Penalty" as AGG_PENALTY #FFF59D
+' ===== Policies =====
+rectangle "DOMAIN EVENT (Operations)\nService Operation Completed" as XEVT_SERVICE_OPERATION_COMPLETED #FFE0B2
+rectangle "POLICY\nWhen the service operation is completed,\ncalculate the rental amount" as POL_0 #B39DDB
+rectangle "POLICY\nWhen the amount is calculated,\nissue the electronic invoice" as POL_1 #B39DDB
+rectangle "DOMAIN EVENT (Rental)\nRental Completed" as XEVT_RENTAL_COMPLETED #FFE0B2
+rectangle "POLICY\nWhen a rental ends after its\nagreed date, apply a late penalty" as POL_2 #B39DDB
 
-rectangle "DOMAIN EVENT\nRental Amount Calculated" as EVT_AMOUNT_CALCULATED #FFB74D
-rectangle "DOMAIN EVENT\nElectronic Invoice Issued" as EVT_INVOICE_ISSUED #FFB74D
-rectangle "DOMAIN EVENT\nLate Penalty Applied" as EVT_PENALTY_APPLIED #FFB74D
+' ===== Read Models =====
+rectangle "READ MODEL\nInvoice Details\n<size:10><i>Query: View Invoice</i></size>" as RM_0 #81C784
+rectangle "ACTOR\nFleet Owner" as ACT_RM_0 #FFF9C4
+rectangle "READ MODEL\nInvoice History\n<size:10><i>Query: View Invoice History</i></size>" as RM_1 #81C784
+rectangle "ACTOR\nContractor" as ACT_RM_1 #FFF9C4
+rectangle "READ MODEL\nLate Penalties\n<size:10><i>Query: View Late Penalties</i></size>" as RM_2 #81C784
+rectangle "ACTOR\nContractor" as ACT_RM_2 #FFF9C4
+rectangle "EXTERNAL SYSTEM\nSUNAT" as EXT_0 #E78AD9
+rectangle "HOTSPOT\nSUNAT may reject or delay\nthe electronic invoice" as HOT_0 #EF9A9A
 
-rectangle "POLICY\nWhen the rental amount is\ncalculated, enable issuing\nthe electronic invoice" as POL_ISSUE_INVOICE #B39DDB
-rectangle "POLICY\nWhen machinery is returned\nafter the agreed end date,\napply a late penalty" as POL_LATE_RETURN #B39DDB
-
-rectangle "EXTERNAL SYSTEM\nSUNAT" as EXT_SUNAT #E78AD9
-
-rectangle "READ MODEL\nInvoice Details" as READ_INVOICE #81C784
-rectangle "QUERY\nView Invoice" as QUERY_INVOICE #87CEFA
-rectangle "QUERY RESULT\nInvoice Details" as RESULT_INVOICE #C8E6C9
-
-rectangle "READ MODEL\nInvoice History" as READ_INVOICE_HISTORY #81C784
-rectangle "QUERY\nView Invoice History" as QUERY_INVOICE_HISTORY #87CEFA
-rectangle "QUERY RESULT\nInvoice History" as RESULT_INVOICE_HISTORY #C8E6C9
-
-rectangle "READ MODEL\nLate Penalty List" as READ_PENALTIES #81C784
-rectangle "QUERY\nView Late Penalties by Rental" as QUERY_PENALTIES #87CEFA
-rectangle "QUERY RESULT\nLate Penalty List" as RESULT_PENALTIES #C8E6C9
-
-' =========================
-' Commands -> Aggregate -> Events
-' =========================
-
-CMD_CALCULATE --> AGG_CALCULATE
-AGG_CALCULATE --> EVT_AMOUNT_CALCULATED
-
-CMD_ISSUE_INVOICE --> AGG_ISSUE_INVOICE
-AGG_ISSUE_INVOICE --> EVT_INVOICE_ISSUED
-ACT_ISSUE_INVOICE -[hidden]up-> CMD_ISSUE_INVOICE
-EXT_SUNAT .. EVT_INVOICE_ISSUED
-
-CMD_APPLY_PENALTY --> AGG_PENALTY
-AGG_PENALTY --> EVT_PENALTY_APPLIED
-
-EVT_AMOUNT_CALCULATED --> POL_ISSUE_INVOICE
-POL_ISSUE_INVOICE --> CMD_ISSUE_INVOICE
-
-note right of POL_LATE_RETURN
-  Cross-context policy: triggered by
-  Rental Management when a Rental
-  is closed after its agreed end date
-  (Rental Period, external reference).
+CMD_CALCULATE_RENTAL_AMOUNT --> AGG_INVOICE_0
+AGG_INVOICE_0 --> EVT_RENTAL_AMOUNT_CALCULATED
+note bottom of AGG_INVOICE_0
+<b>Business rules (Invoice)</b>
+- Amount = validated hours x hourly rate
+- References the rental by its id
+- An invoice is issued only once
+  per rental
 end note
-
-' =========================
-' Queries -> Read Models
-' =========================
-
-READ_INVOICE --> QUERY_INVOICE
-QUERY_INVOICE --> RESULT_INVOICE
-READ_INVOICE_HISTORY --> QUERY_INVOICE_HISTORY
-QUERY_INVOICE_HISTORY --> RESULT_INVOICE_HISTORY
-READ_PENALTIES --> QUERY_PENALTIES
-QUERY_PENALTIES --> RESULT_PENALTIES
+ACT_FLEET_OWNER_1 --> CMD_ISSUE_ELECTRONIC_INVOICE
+CMD_ISSUE_ELECTRONIC_INVOICE --> AGG_INVOICE_1
+AGG_INVOICE_1 --> EVT_ELECTRONIC_INVOICE_ISSUED
+CMD_APPLY_LATE_PENALTY --> AGG_LATE_PENALTY_2
+AGG_LATE_PENALTY_2 --> EVT_LATE_PENALTY_APPLIED
+note bottom of AGG_LATE_PENALTY_2
+<b>Business rules (Late Penalty)</b>
+- Applies only when machinery is
+  returned after the agreed end date
+end note
+XEVT_SERVICE_OPERATION_COMPLETED --> POL_0
+POL_0 --> CMD_CALCULATE_RENTAL_AMOUNT
+EVT_RENTAL_AMOUNT_CALCULATED --> POL_1
+POL_1 --> CMD_ISSUE_ELECTRONIC_INVOICE
+XEVT_RENTAL_COMPLETED --> POL_2
+POL_2 --> CMD_APPLY_LATE_PENALTY
+EVT_ELECTRONIC_INVOICE_ISSUED ..> RM_0 : updates
+RM_0 ..> ACT_RM_0 : informs
+EVT_ELECTRONIC_INVOICE_ISSUED ..> RM_1 : updates
+RM_1 ..> ACT_RM_1 : informs
+EVT_LATE_PENALTY_APPLIED ..> RM_2 : updates
+RM_2 ..> ACT_RM_2 : informs
+CMD_ISSUE_ELECTRONIC_INVOICE .. EXT_0
+HOT_0 .. EVT_ELECTRONIC_INVOICE_ISSUED
 
 legend right
 |= Color |= Element |
-|<#87CEFA>| Command / Query |
+|<#FFF9C4>| Actor |
+|<#87CEFA>| Command |
 |<#FFF59D>| Aggregate |
 |<#FFB74D>| Domain Event |
-|<#FFF9C4>| Actor |
 |<#B39DDB>| Policy |
-|<#E78AD9>| External System |
 |<#81C784>| Read Model |
-|<#C8E6C9>| Query Result |
+|<#FFE0B2>| Domain Event from another Bounded Context |
+|<#E78AD9>| External System |
+|<#EF9A9A>| Hotspot |
+|<#FFFDE7>| Business Rules (note) |
 endlegend
 
 @enduml
