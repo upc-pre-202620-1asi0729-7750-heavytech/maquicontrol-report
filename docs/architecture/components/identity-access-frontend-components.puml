@@ -5,9 +5,13 @@ title MaquiControl - Identity & Access Frontend Component Diagram (DDD Layers)
 
 Container_Boundary(bc, "Identity & Access Management Bounded Context [Angular]") {
     Boundary(presentation, "Presentation Layer") {
-        Component(signInForm, "SignInForm", "Angular Component", "Captures email and password and calls signIn().")
-        Component(signUpForm, "SignUpForm", "Angular Component", "Registers an account as contractor or fleet owner and calls signUp().")
-        Component(authSection, "AuthenticationSection", "Angular Component", "Shows the signed-in user in the toolbar and calls signOut().")
+        Boundary(viewsLayer, "Views") {
+            Component(signInForm, "SignInForm", "Angular View (routed page)", "Captures email and password and calls signIn().")
+            Component(signUpForm, "SignUpForm", "Angular View (routed page)", "Registers an account as contractor or fleet owner and calls signUp().")
+        }
+        Boundary(componentsLayer, "Components") {
+            Component(authSection, "AuthenticationSection", "Angular Component", "Shows the signed-in user in the toolbar and calls signOut().")
+        }
     }
     Boundary(application, "Application Layer") {
         Component(iamStore, "IdentityAccessStore", "Angular Signals Store", "Holds the current session; signIn(), signUp(), signOut(), loadRoles(), hasRole() and hasAnyRole().")

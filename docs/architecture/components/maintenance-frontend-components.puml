@@ -5,8 +5,13 @@ title MaquiControl - Maintenance Frontend Component Diagram (DDD Layers)
 
 Container_Boundary(bc, "Maintenance Management Bounded Context [Angular]") {
     Boundary(presentation, "Presentation Layer") {
-        Component(schedulePage, "MaintenanceSchedulePage", "Angular Component", "Schedules, starts and completes maintenance and updates the machinery status.")
-        Component(breakdownForm, "BreakdownReportForm", "Angular Component", "Reports a machinery breakdown and calls reportBreakdown().")
+        Boundary(viewsLayer, "Views") {
+            Component(schedulePage, "MaintenanceSchedulePage", "Angular View (routed page)", "Schedules, starts and completes maintenance and updates the machinery status.")
+            Component(breakdownForm, "BreakdownReportForm", "Angular View (routed page)", "Reports a machinery breakdown and calls reportBreakdown().")
+        }
+        Boundary(componentsLayer, "Components") {
+            Component(layout, "Layout", "Angular Component (shared)", "Application shell from the shared module that hosts the views of this bounded context.")
+        }
     }
     Boundary(application, "Application Layer") {
         Component(maintenanceStore, "MaintenanceManagementStore", "Angular Signals Store", "loadMaintenances(), scheduleMaintenance(), startMaintenance(), completeMaintenance() and reportBreakdown().")
@@ -34,5 +39,7 @@ Rel(maintenanceStore, maintenanceApi, "Invokes")
 Rel(maintenanceApi, endpoint, "Delegates to")
 Rel(endpoint, assembler, "Maps with")
 Rel(endpoint, api, "GET/POST/PUT /api/v1/maintenances", "HTTPS / JSON")
+Rel(layout, schedulePage, "Hosts")
+Rel(layout, breakdownForm, "Hosts")
 
 @enduml

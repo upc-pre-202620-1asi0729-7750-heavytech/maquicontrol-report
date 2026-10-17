@@ -5,9 +5,14 @@ title MaquiControl - Fleet Management Frontend Component Diagram (DDD Layers)
 
 Container_Boundary(bc, "Fleet Management Bounded Context [Angular]") {
     Boundary(presentation, "Presentation Layer") {
-        Component(machineryList, "MachineryList", "Angular Component", "Lists machinery for owners and contractors; calls loadMachinery(), deleteMachinery() and opens rental requests.")
-        Component(machineryForm, "MachineryForm", "Angular Component", "Registers and edits machinery; calls createMachinery() and updateMachinery().")
-        Component(categoryManagement, "CategoryManagement", "Angular Component", "Creates, renames and deletes categories; checks isCategoryNameTaken() and machineryCountByCategory().")
+        Boundary(viewsLayer, "Views") {
+            Component(machineryList, "MachineryList", "Angular View (routed page)", "Lists machinery for owners and contractors; calls loadMachinery(), deleteMachinery() and opens rental requests.")
+            Component(machineryForm, "MachineryForm", "Angular View (routed page)", "Registers and edits machinery; calls createMachinery() and updateMachinery().")
+            Component(categoryManagement, "CategoryManagement", "Angular View (routed page)", "Creates, renames and deletes categories; checks isCategoryNameTaken() and machineryCountByCategory().")
+        }
+        Boundary(componentsLayer, "Components") {
+            Component(layout, "Layout", "Angular Component (shared)", "Application shell from the shared module that hosts the views of this bounded context.")
+        }
     }
     Boundary(application, "Application Layer") {
         Component(fleetStore, "FleetManagementStore", "Angular Signals Store", "Holds machinery() and categories() signals; loadMachinery(), createMachinery(), updateMachinery(), deleteMachinery(), changeMachineryStatus() and category operations.")
@@ -36,5 +41,8 @@ Rel(fleetStore, fleetApi, "Invokes")
 Rel(fleetApi, endpoints, "Delegates to")
 Rel(endpoints, assemblers, "Maps with")
 Rel(endpoints, api, "GET/POST/PUT/DELETE /api/v1/machinery, /api/v1/categories", "HTTPS / JSON")
+Rel(layout, machineryList, "Hosts")
+Rel(layout, machineryForm, "Hosts")
+Rel(layout, categoryManagement, "Hosts")
 
 @enduml
