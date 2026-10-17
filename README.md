@@ -751,7 +751,7 @@ El siguiente User Journey Map representa el proceso actual seguido por el User P
 
 El siguiente User Journey Map representa el proceso actual seguido por Harold Angello para buscar, reservar y supervisar maquinaria en sus obras.
 
-![User Journey Map - Harold Angello](https://drive.google.com/uc?export=view&id=1mEbEbfmUMl4W5BJVEFg18EAV93pycqXV)
+![User Journey Map - Harold Angello](assets/user-journey-harold-angello.png)
 
 El siguiente User Journey Map fue elaborado en la plataforma UXPressia para el User Persona Renzo Huamán. El recorrido documenta la experiencia completa en el escenario actual (*As-Is*) cuando Renzo necesita contratar una retroexcavadora para una obra de zanjado y habilitación urbana, enfrentando la falta de transparencia en costos, la informalidad en las reservas y las averías no previstas.
 
@@ -769,7 +769,7 @@ El siguiente Empathy Map representa a Luis Herrera, User Persona del Segmento 1.
 
 #### Segmento 2: Contratistas independientes y responsables de obras de construcción
 
-![Empathy Map - Harold Angello](https://drive.google.com/uc?export=view&id=1xUHDVfrey9nS7Pa2JBtn1eJHNfApmlNr)
+![Empathy Map - Harold Angello](assets/empathy-map-harold-angello.png)
 
 | Cuadrante | Descripción y Hallazgos Clave |
 | :--- | :--- |
