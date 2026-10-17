@@ -1,63 +1,57 @@
-<p align="center">
-  <img width="180" alt="Universidad Peruana de Ciencias Aplicadas" src="assets/upc-logo.png" />
+<div align="center">
+
+<img width="84" alt="Universidad Peruana de Ciencias Aplicadas" src="assets/upc-logo.png" />
+
+<p>Universidad Peruana de Ciencias Aplicadas</p>
+
+<p>Carrera de Ingeniería de Software</p>
+
+<br>
+
+<p style="font-size: 14pt;"><strong>1ASI0729</strong></p>
+
+<p style="font-size: 14pt;"><strong>Desarrollo de Aplicaciones Open Source</strong></p>
+
+<p>NRC</p>
+
+<p style="font-size: 14pt;"><strong>7750</strong></p>
+
+<p style="font-size: 16pt;"><strong>Informe del Trabajo Final</strong></p>
+
+<p>Docente</p>
+
+<p style="font-size: 14pt;"><strong>Bautista Ubillús, Efraín Ricardo</strong></p>
+
+<br>
+
+<p>Equipo</p>
+
+<p style="font-size: 14pt;"><strong>AndesHeavyTech</strong></p>
+
+<p>Proyecto</p>
+
+<p style="font-size: 14pt;"><strong>MaquiControl</strong></p>
+
+<br>
+
+<p><strong>Integrantes</strong></p>
+
+<p style="font-size: 11pt;">
+  <strong>Código</strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Apellidos y Nombres</strong><br>
+  u202520331&nbsp;&nbsp;&nbsp;&nbsp;Fuentes Alvarez, Angiela Stephany<br>
+  u202410728&nbsp;&nbsp;&nbsp;&nbsp;Tantalean Granda, Nicolas<br>
+  u202412044&nbsp;&nbsp;&nbsp;&nbsp;Gutiérrez Lizarbe, Wilmer Sebastián<br>
+  u202410783&nbsp;&nbsp;&nbsp;&nbsp;Castillo Guevara, Mathias Alejandro<br>
+  u202416147&nbsp;&nbsp;&nbsp;&nbsp;Cespedes Lezcano, Carlos Gabriel
 </p>
 
-<div align="center">
+<br>
 
-# Universidad Peruana de Ciencias Aplicadas
-
-## Carrera de Ingeniería de Software
+<p><strong>Período 202620</strong></p>
 
 <br>
 
-### 1ASI0729
-### Desarrollo de Aplicaciones Open Source
-
-<br>
-
-### NRC
-## 7750
-
-<br>
-
-## Informe del Trabajo Final
-
-<br>
-
-### Docente
-**Bautista Ubillús, Efraín Ricardo**
-
-<br>
-
-### Equipo
-**AndesHeavyTech**
-
-### Proyecto
-**MaquiControl**
-
-<br>
-
-### Integrantes
-
-</div>
-
-| Código | Apellidos y Nombres |
-|---|---|
-| U202520331 | Fuentes Alvarez, Angiela Stephany |
-| U202410728 | Tantalean Granda, Nicolas |
-| U202412044 | Gutiérrez Lizarbe, Wilmer Sebastián |
-| U202410783 | Castillo Guevara, Mathias Alejandro |
-| U202416147 | Cespedes Lezcano, Carlos Gabriel |
-
-<div align="center">
-
-<br>
-
-### Período 202620
-
-<br>
-
-### Octubre 2026
+<p><strong>Octubre 2026</strong></p>
 
 </div>
 
