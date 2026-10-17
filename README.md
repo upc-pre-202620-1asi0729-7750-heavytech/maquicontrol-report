@@ -272,6 +272,42 @@ con corte temporal en el commit `b9f368e`, previo a esta actualización
 
 Los commits del periodo TB1 se cuentan desde el commit `69f392a`, corte de la entrega AV1, y no incluyen merge commits. Durante TB1, la participación de Angiela Stephany Fuentes Alvarez se concentró en el repositorio de la Landing Page, donde implementó cambios integrados en la versión v2.0.0, tal como se detalla en el punto 5.2.2.8.
 
+### Gráficos de GitHub Insights
+
+Los siguientes gráficos se obtuvieron de la pestaña **Insights** de cada repositorio de la organización. La vista **Contributors** muestra los commits por integrante en la rama `main` durante los últimos tres meses, sin contar los merge commits. La vista **Commits** muestra la cantidad de commits por semana durante el último año.
+
+#### Informe (`maquicontrol-report`)
+
+El informe concentra la mayor participación del equipo. Los aportes se registran desde septiembre, durante AV1, y continúan en octubre con las correcciones y el desarrollo de TB1.
+
+![Contributors del repositorio del informe](assets/insights-report-contributors.png)
+
+![Commits por semana del repositorio del informe](assets/insights-report-commits.png)
+
+#### Aplicación web (`maquicontrol-webapp`)
+
+La aplicación web se desarrolló en el Sprint 2, entre fines de septiembre y la primera semana de octubre, hasta la publicación de la versión `v1.0.1`.
+
+![Contributors del repositorio de la aplicación web](assets/insights-webapp-contributors.png)
+
+![Commits por semana del repositorio de la aplicación web](assets/insights-webapp-commits.png)
+
+#### Landing Page (`maquicontrol-website`)
+
+La Landing Page se construyó en el Sprint 1 y se actualizó en el Sprint 2 con los enlaces hacia la aplicación web, en la versión `v2.0.0`.
+
+![Contributors del repositorio de la Landing Page](assets/insights-website-contributors.png)
+
+![Commits por semana del repositorio de la Landing Page](assets/insights-website-commits.png)
+
+#### Fake API (`maquicontrol-platform`)
+
+El repositorio de la Fake API se creó en octubre para publicar en Azure App Service los servicios simulados que consume la aplicación web.
+
+![Contributors del repositorio de la Fake API](assets/insights-platform-contributors.png)
+
+![Commits por semana del repositorio de la Fake API](assets/insights-platform-commits.png)
+
 ## Contenido
 
 ## Student Outcome
