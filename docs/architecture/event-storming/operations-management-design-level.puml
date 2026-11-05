@@ -11,9 +11,9 @@ skinparam noteBorderColor #BDB76B
 skinparam ArrowColor #555555
 
 ' ===== Actor -> Command -> Aggregate -> Domain Event =====
-rectangle "COMMAND\nStart Service Operation" as CMD_START_SERVICE_OPERATION #87CEFA
+rectangle "COMMAND\nStart Operation" as CMD_START_OPERATION #87CEFA
 rectangle "AGGREGATE\nService Operation" as AGG_SERVICE_OPERATION_0 #FFF59D
-rectangle "DOMAIN EVENT\nService Operation Started" as EVT_SERVICE_OPERATION_STARTED #FFB74D
+rectangle "DOMAIN EVENT\nOperation Started" as EVT_OPERATION_STARTED #FFB74D
 rectangle "ACTOR\nOperator" as ACT_OPERATOR_0 #FFF9C4
 rectangle "COMMAND\nRecord Worked Hours" as CMD_RECORD_WORKED_HOURS #87CEFA
 rectangle "AGGREGATE\nService Operation" as AGG_SERVICE_OPERATION_1 #FFF59D
@@ -23,15 +23,19 @@ rectangle "COMMAND\nValidate Worked Hours" as CMD_VALIDATE_WORKED_HOURS #87CEFA
 rectangle "AGGREGATE\nService Operation" as AGG_SERVICE_OPERATION_2 #FFF59D
 rectangle "DOMAIN EVENT\nWorked Hours Validated" as EVT_WORKED_HOURS_VALIDATED #FFB74D
 rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_2 #FFF9C4
-rectangle "COMMAND\nComplete Service Operation" as CMD_COMPLETE_SERVICE_OPERATION #87CEFA
+rectangle "COMMAND\nReject Worked Hours" as CMD_REJECT_WORKED_HOURS #87CEFA
+rectangle "AGGREGATE\nService Operation" as AGG_SERVICE_OPERATION_4 #FFF59D
+rectangle "DOMAIN EVENT\nWorked Hours Rejected" as EVT_WORKED_HOURS_REJECTED #FFB74D
+rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_4 #FFF9C4
+rectangle "COMMAND\nComplete Operation" as CMD_COMPLETE_OPERATION #87CEFA
 rectangle "AGGREGATE\nService Operation" as AGG_SERVICE_OPERATION_3 #FFF59D
-rectangle "DOMAIN EVENT\nService Operation Completed" as EVT_SERVICE_OPERATION_COMPLETED #FFB74D
+rectangle "DOMAIN EVENT\nOperation Completed" as EVT_OPERATION_COMPLETED #FFB74D
 rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_3 #FFF9C4
 
 ' ===== Policies =====
 rectangle "DOMAIN EVENT (Rental)\nReservation Confirmed" as XEVT_RESERVATION_CONFIRMED #FFE0B2
 rectangle "POLICY\nWhen a reservation is confirmed,\nenable its service operation" as POL_0 #B39DDB
-rectangle "POLICY\nWhen worked hours are recorded,\nrequest their validation" as POL_1 #B39DDB
+rectangle "POLICY\nWhen worked hours are recorded,\nrequest their validation or rejection" as POL_1 #B39DDB
 rectangle "POLICY\nWhen all worked hours are validated,\nallow completing the operation" as POL_2 #B39DDB
 
 ' ===== Read Models =====
@@ -41,15 +45,17 @@ rectangle "READ MODEL\nWorked Hours Summary\n<size:10><i>Query: View Worked Hour
 rectangle "ACTOR\nOperator" as ACT_RM_1 #FFF9C4
 rectangle "HOTSPOT\nManually recorded hours may differ\nfrom the machine hour meter" as HOT_0 #EF9A9A
 
-ACT_OPERATOR_0 --> CMD_START_SERVICE_OPERATION
-CMD_START_SERVICE_OPERATION --> AGG_SERVICE_OPERATION_0
-AGG_SERVICE_OPERATION_0 --> EVT_SERVICE_OPERATION_STARTED
+ACT_OPERATOR_0 --> CMD_START_OPERATION
+CMD_START_OPERATION --> AGG_SERVICE_OPERATION_0
+AGG_SERVICE_OPERATION_0 --> EVT_OPERATION_STARTED
 note bottom of AGG_SERVICE_OPERATION_0
 <b>Business rules (Service Operation)</b>
 - Only a CONFIRMED rental can start
   a service operation
 - Worked hours cannot be negative
-- All worked hours must be validated
+- Recorded hours are PENDING until the
+  fleet owner validates or rejects them
+- No worked hours may remain PENDING
   before completion
 - A completed operation records
   its completion date
@@ -60,20 +66,24 @@ AGG_SERVICE_OPERATION_1 --> EVT_WORKED_HOURS_RECORDED
 ACT_FLEET_OWNER_2 --> CMD_VALIDATE_WORKED_HOURS
 CMD_VALIDATE_WORKED_HOURS --> AGG_SERVICE_OPERATION_2
 AGG_SERVICE_OPERATION_2 --> EVT_WORKED_HOURS_VALIDATED
-ACT_FLEET_OWNER_3 --> CMD_COMPLETE_SERVICE_OPERATION
-CMD_COMPLETE_SERVICE_OPERATION --> AGG_SERVICE_OPERATION_3
-AGG_SERVICE_OPERATION_3 --> EVT_SERVICE_OPERATION_COMPLETED
+ACT_FLEET_OWNER_4 --> CMD_REJECT_WORKED_HOURS
+CMD_REJECT_WORKED_HOURS --> AGG_SERVICE_OPERATION_4
+AGG_SERVICE_OPERATION_4 --> EVT_WORKED_HOURS_REJECTED
+ACT_FLEET_OWNER_3 --> CMD_COMPLETE_OPERATION
+CMD_COMPLETE_OPERATION --> AGG_SERVICE_OPERATION_3
+AGG_SERVICE_OPERATION_3 --> EVT_OPERATION_COMPLETED
 XEVT_RESERVATION_CONFIRMED --> POL_0
-POL_0 --> CMD_START_SERVICE_OPERATION
+POL_0 --> CMD_START_OPERATION
 EVT_WORKED_HOURS_RECORDED --> POL_1
 POL_1 --> CMD_VALIDATE_WORKED_HOURS
 EVT_WORKED_HOURS_VALIDATED --> POL_2
-POL_2 --> CMD_COMPLETE_SERVICE_OPERATION
-EVT_SERVICE_OPERATION_STARTED ..> RM_0 : updates
-EVT_SERVICE_OPERATION_COMPLETED ..> RM_0 : updates
+POL_2 --> CMD_COMPLETE_OPERATION
+EVT_OPERATION_STARTED ..> RM_0 : updates
+EVT_OPERATION_COMPLETED ..> RM_0 : updates
 RM_0 ..> ACT_RM_0 : informs
 EVT_WORKED_HOURS_RECORDED ..> RM_1 : updates
 EVT_WORKED_HOURS_VALIDATED ..> RM_1 : updates
+EVT_WORKED_HOURS_REJECTED ..> RM_1 : updates
 RM_1 ..> ACT_RM_1 : informs
 HOT_0 .. EVT_WORKED_HOURS_RECORDED
 

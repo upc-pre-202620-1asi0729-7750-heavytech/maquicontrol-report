@@ -11,7 +11,7 @@ skinparam noteBorderColor #BDB76B
 skinparam ArrowColor #555555
 
 ' ===== Actor -> Command -> Aggregate -> Domain Event =====
-rectangle "COMMAND\nSign Up" as CMD_SIGN_UP #87CEFA
+rectangle "COMMAND\nSign Up\n<size:10>(email, password, role)</size>" as CMD_SIGN_UP #87CEFA
 rectangle "AGGREGATE\nUser Account" as AGG_USER_ACCOUNT_0 #FFF59D
 rectangle "DOMAIN EVENT\nUser Signed Up" as EVT_USER_SIGNED_UP #FFB74D
 rectangle "ACTOR\nVisitor" as ACT_VISITOR_0 #FFF9C4
@@ -23,19 +23,15 @@ rectangle "COMMAND\nSign Out" as CMD_SIGN_OUT #87CEFA
 rectangle "AGGREGATE\nUser Account" as AGG_USER_ACCOUNT_2 #FFF59D
 rectangle "DOMAIN EVENT\nUser Signed Out" as EVT_USER_SIGNED_OUT #FFB74D
 rectangle "ACTOR\nUser" as ACT_USER_2 #FFF9C4
-rectangle "COMMAND\nAssign Role" as CMD_ASSIGN_ROLE #87CEFA
-rectangle "AGGREGATE\nUser Account" as AGG_USER_ACCOUNT_3 #FFF59D
-rectangle "DOMAIN EVENT\nRole Assigned" as EVT_ROLE_ASSIGNED #FFB74D
 
 ' ===== Policies =====
-rectangle "POLICY\nWhen a user signs up,\nassign the selected role" as POL_0 #B39DDB
 
 ' ===== Read Models =====
 rectangle "READ MODEL\nCurrent Session\n<size:10><i>Query: Get Signed-in Account</i></size>" as RM_0 #81C784
 rectangle "ACTOR\nUser" as ACT_RM_0 #FFF9C4
 rectangle "READ MODEL\nRole Catalog\n<size:10><i>Query: View Roles</i></size>" as RM_1 #81C784
 rectangle "ACTOR\nVisitor" as ACT_RM_1 #FFF9C4
-rectangle "HOTSPOT\nSign-in uses the Fake API until\nJWT authentication is implemented" as HOT_0 #EF9A9A
+rectangle "HOTSPOT\nThe JWT token must expire and be\ndiscarded by the client on Sign Out" as HOT_0 #EF9A9A
 
 ACT_VISITOR_0 --> CMD_SIGN_UP
 CMD_SIGN_UP --> AGG_USER_ACCOUNT_0
@@ -54,13 +50,8 @@ AGG_USER_ACCOUNT_1 --> EVT_USER_SIGNED_IN
 ACT_USER_2 --> CMD_SIGN_OUT
 CMD_SIGN_OUT --> AGG_USER_ACCOUNT_2
 AGG_USER_ACCOUNT_2 --> EVT_USER_SIGNED_OUT
-CMD_ASSIGN_ROLE --> AGG_USER_ACCOUNT_3
-AGG_USER_ACCOUNT_3 --> EVT_ROLE_ASSIGNED
-EVT_USER_SIGNED_UP --> POL_0
-POL_0 --> CMD_ASSIGN_ROLE
 EVT_USER_SIGNED_IN ..> RM_0 : updates
 EVT_USER_SIGNED_OUT ..> RM_0 : updates
-EVT_ROLE_ASSIGNED ..> RM_0 : updates
 RM_0 ..> ACT_RM_0 : informs
 RM_1 ..> ACT_RM_1 : informs
 HOT_0 .. CMD_SIGN_IN

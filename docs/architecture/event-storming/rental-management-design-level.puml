@@ -19,6 +19,10 @@ rectangle "COMMAND\nConfirm Reservation" as CMD_CONFIRM_RESERVATION #87CEFA
 rectangle "AGGREGATE\nRental" as AGG_RENTAL_1 #FFF59D
 rectangle "DOMAIN EVENT\nReservation Confirmed" as EVT_RESERVATION_CONFIRMED #FFB74D
 rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_1 #FFF9C4
+rectangle "COMMAND\nReject Reservation" as CMD_REJECT_RESERVATION #87CEFA
+rectangle "AGGREGATE\nRental" as AGG_RENTAL_5 #FFF59D
+rectangle "DOMAIN EVENT\nReservation Rejected" as EVT_RESERVATION_REJECTED #FFB74D
+rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_5 #FFF9C4
 rectangle "COMMAND\nCancel Reservation" as CMD_CANCEL_RESERVATION #87CEFA
 rectangle "AGGREGATE\nRental" as AGG_RENTAL_2 #FFF59D
 rectangle "DOMAIN EVENT\nReservation Cancelled" as EVT_RESERVATION_CANCELLED #FFB74D
@@ -31,9 +35,9 @@ rectangle "AGGREGATE\nRental" as AGG_RENTAL_4 #FFF59D
 rectangle "DOMAIN EVENT\nRental Completed" as EVT_RENTAL_COMPLETED #FFB74D
 
 ' ===== Policies =====
-rectangle "DOMAIN EVENT (Operations)\nService Operation Started" as XEVT_SERVICE_OPERATION_STARTED #FFE0B2
+rectangle "DOMAIN EVENT (Operations)\nOperation Started" as XEVT_OPERATION_STARTED #FFE0B2
 rectangle "POLICY\nWhen the service operation starts,\nmark the rental as IN_PROGRESS" as POL_0 #B39DDB
-rectangle "DOMAIN EVENT (Operations)\nService Operation Completed" as XEVT_SERVICE_OPERATION_COMPLETED #FFE0B2
+rectangle "DOMAIN EVENT (Operations)\nOperation Completed" as XEVT_OPERATION_COMPLETED #FFE0B2
 rectangle "POLICY\nWhen the service operation is completed,\nmark the rental as COMPLETED" as POL_1 #B39DDB
 
 ' ===== Read Models =====
@@ -56,14 +60,19 @@ note bottom of AGG_RENTAL_0
   active rentals
 - Valid transitions: REQUESTED -> CONFIRMED
   -> IN_PROGRESS -> COMPLETED
+- Only REQUESTED rentals can be rejected
+  by the fleet owner (status REJECTED)
 - Only REQUESTED or CONFIRMED rentals
-  can be cancelled
+  can be cancelled by the contractor
 - Total amount (Money) cannot be negative
 - A cancelled rental records its cancellation date
 end note
 ACT_FLEET_OWNER_1 --> CMD_CONFIRM_RESERVATION
 CMD_CONFIRM_RESERVATION --> AGG_RENTAL_1
 AGG_RENTAL_1 --> EVT_RESERVATION_CONFIRMED
+ACT_FLEET_OWNER_5 --> CMD_REJECT_RESERVATION
+CMD_REJECT_RESERVATION --> AGG_RENTAL_5
+AGG_RENTAL_5 --> EVT_RESERVATION_REJECTED
 ACT_CONTRACTOR_2 --> CMD_CANCEL_RESERVATION
 CMD_CANCEL_RESERVATION --> AGG_RENTAL_2
 AGG_RENTAL_2 --> EVT_RESERVATION_CANCELLED
@@ -71,13 +80,15 @@ CMD_START_RENTAL --> AGG_RENTAL_3
 AGG_RENTAL_3 --> EVT_RENTAL_STARTED
 CMD_COMPLETE_RENTAL --> AGG_RENTAL_4
 AGG_RENTAL_4 --> EVT_RENTAL_COMPLETED
-XEVT_SERVICE_OPERATION_STARTED --> POL_0
+XEVT_OPERATION_STARTED --> POL_0
 POL_0 --> CMD_START_RENTAL
-XEVT_SERVICE_OPERATION_COMPLETED --> POL_1
+XEVT_OPERATION_COMPLETED --> POL_1
 POL_1 --> CMD_COMPLETE_RENTAL
 EVT_RENTAL_REQUESTED ..> RM_0 : updates
 EVT_RESERVATION_CONFIRMED ..> RM_0 : updates
 EVT_RESERVATION_CANCELLED ..> RM_0 : updates
+EVT_RESERVATION_REJECTED ..> RM_0 : updates
+EVT_RESERVATION_REJECTED ..> RM_1 : updates
 RM_0 ..> ACT_RM_0 : informs
 EVT_RENTAL_REQUESTED ..> RM_1 : updates
 EVT_RESERVATION_CONFIRMED ..> RM_1 : updates
