@@ -5,26 +5,23 @@ title MaquiControl - Operations Management Bounded Context Component Diagram
 
 Container(webapp, "Single Page Application", "Angular", "Provides the user interface through a web browser.")
 
-Container_Boundary(operations, "Operations Management Bounded Context") {
+Container_Boundary(bc, "Operations Management Bounded Context") {
 
-    Component(interfaces, "ServiceOperationController", "Spring Boot @RestController", "Exposes GET, POST, PUT, PATCH /api/v1/service-operations endpoints.")
-
-    Component(application, "OperationsApplicationService", "Spring Boot @Service", "Coordinates startService(), recordWorkedHours() and completeService() use cases.")
-
-    Component(domain, "ServiceOperation Aggregate", "Java Domain Entity", "Contains ServiceOperation aggregate root, WorkedHours value object and status logic.")
-
-    Component(infrastructure, "ServiceOperationRepository", "Spring Data JPA @Repository", "Provides persistence via save(), findById(), findByRentalId() and findByStatus().")
-
-    Component(security, "SecurityConnector", "Spring Security Component", "Validates authenticated users and operational roles.")
+    Component(controller0, "ServiceOperationsController", "Spring Boot @RestController", "Exposes /api/v1/service-operations endpoints and maps resources to commands and queries.")
+    Component(commandService, "OperationsManagementCommandService", "Spring Boot @Service", "Handles StartOperationCommand, RecordWorkedHoursCommand, ValidateWorkedHoursCommand, RejectWorkedHoursCommand, CompleteOperationCommand.")
+    Component(queryService, "OperationsManagementQueryService", "Spring Boot @Service", "Handles ViewServiceOperationQuery, ViewWorkedHoursQuery.")
+    Component(domain, "Domain Model", "Java", "ServiceOperation aggregate, WorkedHours entity, WorkShift and HoursWorked value objects.")
+    Component(repository, "ServiceOperationRepository", "Spring Data JPA @Repository", "Persists and reads the aggregates of the bounded context.")
 }
 
-ContainerDb(database, "Database", "Relational Database", "Stores service operation and worked-hour information.")
+ContainerDb(database, "Database", "Relational Database", "Stores service operations and worked hour records.")
 
-Rel(webapp, interfaces, "Calls /api/v1/service-operations/*", "HTTPS / JSON")
-Rel(interfaces, application, "Calls startService() / recordWorkedHours()")
-Rel(application, domain, "Invokes start() / recordHours() / complete()")
-Rel(application, infrastructure, "Calls save() / findById()")
-Rel(infrastructure, database, "Executes SQL queries")
-Rel(interfaces, security, "Validates security context")
+Rel(webapp, controller0, "Calls /api/v1/service-operations", "HTTPS / JSON")
+Rel(controller0, commandService, "Sends commands")
+Rel(controller0, queryService, "Sends queries")
+Rel(commandService, domain, "Executes aggregate behavior")
+Rel(commandService, repository, "Saves aggregates")
+Rel(queryService, repository, "Reads aggregates")
+Rel(repository, database, "Reads from and writes to", "JPA / SQL")
 
-@enduml
+@enduml

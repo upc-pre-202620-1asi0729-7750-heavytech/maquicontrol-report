@@ -5,26 +5,29 @@ title MaquiControl - Profiles Management Bounded Context Component Diagram
 
 Container(webapp, "Single Page Application", "Angular", "Provides the user interface through a web browser.")
 
-Container_Boundary(profiles, "Profiles Management Bounded Context") {
+Container_Boundary(bc, "Profiles Management Bounded Context") {
 
-    Component(interfaces, "ProfileController", "Spring Boot @RestController", "Exposes GET, POST, PUT /api/v1/profiles and /api/v1/organizations endpoints.")
-
-    Component(application, "ProfileApplicationService", "Spring Boot @Service", "Coordinates viewProfile(), updateProfile() and registerOrganization() use cases.")
-
-    Component(domain, "Profile Aggregate", "Java Domain Entity", "Contains Profile aggregate root, ContactInformation and Organization value objects.")
-
-    Component(infrastructure, "ProfileRepository", "Spring Data JPA @Repository", "Provides persistence via save(), findById(), findByEmail() and existsByUserId().")
-
-    Component(security, "SecurityConnector", "Spring Security Component", "Validates authenticated user identity.")
+    Component(controller0, "ProfilesController", "Spring Boot @RestController", "Exposes /api/v1/profiles endpoints and maps resources to commands and queries.")
+    Component(controller1, "OrganizationsController", "Spring Boot @RestController", "Exposes /api/v1/organizations endpoints and maps resources to commands and queries.")
+    Component(commandService, "ProfilesManagementCommandService", "Spring Boot @Service", "Handles CreateProfileCommand, UpdateProfileCommand, CreateOrganizationCommand, UpdateOrganizationCommand.")
+    Component(queryService, "ProfilesManagementQueryService", "Spring Boot @Service", "Handles ViewProfileQuery, ViewOrganizationQuery.")
+    Component(eventHandler0, "ProfilesEventHandler", "Spring @EventListener", "Reacts to User Signed Up and executes CreateProfileCommand.")
+    Component(domain, "Domain Model", "Java", "Profile aggregate, Organization entity, ContactInformation, PersonName and TaxId value objects.")
+    Component(repository, "ProfileRepository and OrganizationRepository", "Spring Data JPA @Repository", "Persists and reads the aggregates of the bounded context.")
 }
 
-ContainerDb(database, "Database", "Relational Database", "Stores profile, contact and organization information.")
+ContainerDb(database, "Database", "Relational Database", "Stores profiles, contact information and organizations.")
 
-Rel(webapp, interfaces, "Calls /api/v1/profiles/*", "HTTPS / JSON")
-Rel(interfaces, application, "Calls viewProfile() / updateProfile()")
-Rel(application, domain, "Invokes updateContact() / updateOrganization()")
-Rel(application, infrastructure, "Calls save() / findById()")
-Rel(infrastructure, database, "Executes SQL queries")
-Rel(interfaces, security, "Validates security context")
+Rel(webapp, controller0, "Calls /api/v1/profiles", "HTTPS / JSON")
+Rel(controller0, commandService, "Sends commands")
+Rel(controller0, queryService, "Sends queries")
+Rel(webapp, controller1, "Calls /api/v1/organizations", "HTTPS / JSON")
+Rel(controller1, commandService, "Sends commands")
+Rel(controller1, queryService, "Sends queries")
+Rel(eventHandler0, commandService, "Sends CreateProfileCommand")
+Rel(commandService, domain, "Executes aggregate behavior")
+Rel(commandService, repository, "Saves aggregates")
+Rel(queryService, repository, "Reads aggregates")
+Rel(repository, database, "Reads from and writes to", "JPA / SQL")
 
-@enduml
+@enduml
