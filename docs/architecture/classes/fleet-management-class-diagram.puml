@@ -20,11 +20,8 @@ package "Fleet Management" {
     - location: MachineryLocation
     - createdAt: LocalDateTime
     - updatedAt: LocalDateTime
-    + register(): void
-    + updateInformation(specification: MachinerySpecification, hourlyRate: Money): void
+    + update(specification: MachinerySpecification, hourlyRate: Money, location: MachineryLocation, category: Category): void
     + changeStatus(status: MachineryStatus): void
-    + updateLocation(location: MachineryLocation): void
-    + classifyAs(category: Category): void
     + isAvailable(): Boolean
   }
 
@@ -32,9 +29,7 @@ package "Fleet Management" {
     - id: CategoryId
     - code: CategoryCode
     - name: CategoryName
-    - status: CategoryStatus
     + rename(name: CategoryName): void
-    + deactivate(): void
   }
 
   class MachineryLocation <<Value Object>> {
@@ -81,21 +76,74 @@ package "Fleet Management" {
   interface CategoryRepository {
     + save(category: Category): Category
     + findById(id: CategoryId): Optional<Category>
-    + findAllActive(): List<Category>
+    + findAll(): List<Category>
+    + existsByName(name: CategoryName): Boolean
     + existsById(id: CategoryId): Boolean
   }
 
-  class FleetManagementService <<Application Service>> {
+  class FleetManagementCommandService <<Application Service>> {
     - machineryRepository: MachineryRepository
     - categoryRepository: CategoryRepository
-    + registerMachinery(machinery: Machinery): Machinery
-    + updateMachineryInformation(id: MachineryId, specification: MachinerySpecification, hourlyRate: Money): Machinery
-    + updateMachineryStatus(id: MachineryId, status: MachineryStatus): Machinery
-    + registerCategory(category: Category): Category
-    + updateCategory(id: CategoryId, name: CategoryName): Category
-    + viewMachineryInventory(): List<Machinery>
-    + viewCategories(): List<Category>
-    + checkMachineryAvailability(id: MachineryId): Boolean
+    + handle(command: RegisterMachineryCommand): Optional<Machinery>
+    + handle(command: UpdateMachineryCommand): Optional<Machinery>
+    + handle(command: ChangeMachineryStatusCommand): Optional<Machinery>
+    + handle(command: DeleteMachineryCommand): void
+    + handle(command: CreateCategoryCommand): Optional<Category>
+    + handle(command: RenameCategoryCommand): Optional<Category>
+    + handle(command: DeleteCategoryCommand): void
+  }
+
+  class FleetManagementQueryService <<Application Service>> {
+    - machineryRepository: MachineryRepository
+    - categoryRepository: CategoryRepository
+    + handle(query: ViewMachineryCatalogQuery): List<Machinery>
+    + handle(query: CheckMachineryAvailabilityQuery): Boolean
+    + handle(query: ViewCategoriesQuery): List<Category>
+  }
+
+  package "Commands" {
+    class RegisterMachineryCommand <<Command>> {
+      - ownerProfileId: ProfileId
+      - categoryId: CategoryId
+      - specification: MachinerySpecification
+      - hourlyRate: Money
+      - location: MachineryLocation
+    }
+    class UpdateMachineryCommand <<Command>> {
+      - machineryId: MachineryId
+      - categoryId: CategoryId
+      - specification: MachinerySpecification
+      - hourlyRate: Money
+      - location: MachineryLocation
+    }
+    class ChangeMachineryStatusCommand <<Command>> {
+      - machineryId: MachineryId
+      - status: MachineryStatus
+    }
+    class DeleteMachineryCommand <<Command>> {
+      - machineryId: MachineryId
+    }
+    class CreateCategoryCommand <<Command>> {
+      - name: CategoryName
+    }
+    class RenameCategoryCommand <<Command>> {
+      - categoryId: CategoryId
+      - name: CategoryName
+    }
+    class DeleteCategoryCommand <<Command>> {
+      - categoryId: CategoryId
+    }
+  }
+
+  package "Queries" {
+    class ViewMachineryCatalogQuery <<Query>> {
+      - categoryId: CategoryId [0..1]
+    }
+    class CheckMachineryAvailabilityQuery <<Query>> {
+      - machineryId: MachineryId
+    }
+    class ViewCategoriesQuery <<Query>> {
+    }
   }
 
   class MachinerySpecification <<Value Object>> {
@@ -116,11 +164,6 @@ package "Fleet Management" {
     + equalsIgnoreCase(other: CategoryName): Boolean
   }
 
-  enum CategoryStatus {
-    ACTIVE
-    INACTIVE
-  }
-
   package "Identifiers" {
     class CategoryId <<Value Object>> {
       - value: Long
@@ -139,15 +182,27 @@ Machinery "1" *-- "1" Money : hourly rate >
 Machinery "0..*" --> "1" Category : classified as >
 Money --> Currency : expressed in >
 Machinery --> MachineryStatus : has >
-FleetManagementService "1" --> "1" MachineryRepository : uses >
-FleetManagementService "1" --> "1" CategoryRepository : uses >
+FleetManagementCommandService "1" --> "1" MachineryRepository : uses >
+FleetManagementQueryService "1" --> "1" MachineryRepository : uses >
+FleetManagementCommandService "1" --> "1" CategoryRepository : uses >
+FleetManagementQueryService "1" --> "1" CategoryRepository : uses >
 MachineryRepository ..> Machinery : persists >
 CategoryRepository ..> Category : persists >
 
 Machinery "1" *-- "1" MachinerySpecification : specification >
 Category "1" *-- "1" CategoryCode : code >
 Category "1" *-- "1" CategoryName : name >
-Category --> CategoryStatus : status >
+
+FleetManagementCommandService "1" ..> "1" RegisterMachineryCommand : handles >
+FleetManagementCommandService "1" ..> "1" UpdateMachineryCommand : handles >
+FleetManagementCommandService "1" ..> "1" ChangeMachineryStatusCommand : handles >
+FleetManagementCommandService "1" ..> "1" DeleteMachineryCommand : handles >
+FleetManagementCommandService "1" ..> "1" CreateCategoryCommand : handles >
+FleetManagementCommandService "1" ..> "1" RenameCategoryCommand : handles >
+FleetManagementCommandService "1" ..> "1" DeleteCategoryCommand : handles >
+FleetManagementQueryService "1" ..> "1" ViewMachineryCatalogQuery : handles >
+FleetManagementQueryService "1" ..> "1" CheckMachineryAvailabilityQuery : handles >
+FleetManagementQueryService "1" ..> "1" ViewCategoriesQuery : handles >
 
 legend right
   |= Symbol |= Meaning |
@@ -157,5 +212,6 @@ legend right
   | --> | Association |
   | ..> | Dependency |
 endlegend
+
 
 @enduml

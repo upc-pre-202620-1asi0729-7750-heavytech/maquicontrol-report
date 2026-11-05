@@ -20,10 +20,12 @@ package "Rental Management" {
     - requestedAt: LocalDateTime
     - confirmedAt: LocalDateTime
     - cancelledAt: LocalDateTime
-    + request(): void
+    - cancellationReason: Reason
     + confirm(): void
+    + reject(reason: Reason): void
     + cancel(reason: Reason): void
-    + updateDates(period: RentalPeriod): void
+    + start(): void
+    + complete(): void
     + calculateTotal(hourlyRate: Money): Money
     + isActive(): Boolean
   }
@@ -54,6 +56,7 @@ package "Rental Management" {
     CONFIRMED
     IN_PROGRESS
     COMPLETED
+    REJECTED
     CANCELLED
   }
 
@@ -66,15 +69,59 @@ package "Rental Management" {
     + existsOverlappingRental(machineryId: MachineryId, period: RentalPeriod): Boolean
   }
 
-  class RentalManagementService <<Application Service>> {
+  class RentalManagementCommandService <<Application Service>> {
     - rentalRepository: RentalRepository
-    + requestRental(rental: Rental): Rental
-    + confirmReservation(id: RentalId): Rental
-    + cancelReservation(id: RentalId, reason: Reason): Rental
-    + updateRentalDates(id: RentalId, period: RentalPeriod): Rental
-    + viewRentalRequests(): List<Rental>
-    + viewMyReservations(profileId: ProfileId): List<Rental>
-    + checkReservationDetails(id: RentalId): Rental
+    + handle(command: RequestRentalCommand): Optional<Rental>
+    + handle(command: ConfirmReservationCommand): Optional<Rental>
+    + handle(command: RejectReservationCommand): Optional<Rental>
+    + handle(command: CancelReservationCommand): Optional<Rental>
+    + handle(command: StartRentalCommand): Optional<Rental>
+    + handle(command: CompleteRentalCommand): Optional<Rental>
+  }
+
+  class RentalManagementQueryService <<Application Service>> {
+    - rentalRepository: RentalRepository
+    + handle(query: ViewPendingRequestsQuery): List<Rental>
+    + handle(query: ViewMyReservationsQuery): List<Rental>
+    + handle(query: CheckMachineryAvailabilityQuery): Boolean
+  }
+
+  package "Commands" {
+    class RequestRentalCommand <<Command>> {
+      - machineryId: MachineryId
+      - contractorProfileId: ProfileId
+      - period: RentalPeriod
+    }
+    class ConfirmReservationCommand <<Command>> {
+      - rentalId: RentalId
+    }
+    class RejectReservationCommand <<Command>> {
+      - rentalId: RentalId
+      - reason: Reason
+    }
+    class CancelReservationCommand <<Command>> {
+      - rentalId: RentalId
+      - reason: Reason
+    }
+    class StartRentalCommand <<Command>> {
+      - rentalId: RentalId
+    }
+    class CompleteRentalCommand <<Command>> {
+      - rentalId: RentalId
+    }
+  }
+
+  package "Queries" {
+    class ViewPendingRequestsQuery <<Query>> {
+      - ownerProfileId: ProfileId
+    }
+    class ViewMyReservationsQuery <<Query>> {
+      - contractorProfileId: ProfileId
+    }
+    class CheckMachineryAvailabilityQuery <<Query>> {
+      - machineryId: MachineryId
+      - period: RentalPeriod
+    }
   }
 
   class Reason <<Value Object>> {
@@ -98,10 +145,21 @@ Rental "1" *-- "1" RentalPeriod : contains >
 Rental "1" *-- "1" Money : total >
 Money --> Currency : expressed in >
 Rental --> RentalStatus : has >
-RentalManagementService "1" --> "1" RentalRepository : uses >
+RentalManagementCommandService "1" --> "1" RentalRepository : uses >
+RentalManagementQueryService "1" --> "1" RentalRepository : uses >
 RentalRepository ..> Rental : persists >
 
 
+
+RentalManagementCommandService "1" ..> "1" RequestRentalCommand : handles >
+RentalManagementCommandService "1" ..> "1" ConfirmReservationCommand : handles >
+RentalManagementCommandService "1" ..> "1" RejectReservationCommand : handles >
+RentalManagementCommandService "1" ..> "1" CancelReservationCommand : handles >
+RentalManagementCommandService "1" ..> "1" StartRentalCommand : handles >
+RentalManagementCommandService "1" ..> "1" CompleteRentalCommand : handles >
+RentalManagementQueryService "1" ..> "1" ViewPendingRequestsQuery : handles >
+RentalManagementQueryService "1" ..> "1" ViewMyReservationsQuery : handles >
+RentalManagementQueryService "1" ..> "1" CheckMachineryAvailabilityQuery : handles >
 
 legend right
   |= Symbol |= Meaning |
@@ -111,5 +169,6 @@ legend right
   | --> | Association |
   | ..> | Dependency |
 endlegend
+
 
 @enduml

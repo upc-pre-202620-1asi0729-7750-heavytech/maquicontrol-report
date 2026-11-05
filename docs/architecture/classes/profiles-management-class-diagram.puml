@@ -19,10 +19,8 @@ package "Profiles Management" {
     - organization: Organization
     - createdAt: LocalDateTime
     - updatedAt: LocalDateTime
-    + create(): void
-    + updatePersonalInformation(name: PersonName, documentNumber: DocumentNumber): void
-    + updateContactInformation(contact: ContactInformation): void
-    + updateOrganizationInformation(organization: Organization): void
+    + update(name: PersonName, documentNumber: DocumentNumber, contact: ContactInformation): void
+    + assignOrganization(organization: Organization): void
     + fullName(): PersonName
   }
 
@@ -42,7 +40,7 @@ package "Profiles Management" {
     - taxId: TaxId
     - type: OrganizationType
     - address: StreetAddress
-    + updateInformation(name: CompanyName, address: StreetAddress): void
+    + update(name: CompanyName, taxId: TaxId, type: OrganizationType, address: StreetAddress): void
     + isValidTaxId(): Boolean
   }
 
@@ -61,15 +59,56 @@ package "Profiles Management" {
     + existsByDocumentNumber(documentNumber: DocumentNumber): Boolean
   }
 
-  class ProfilesManagementService <<Application Service>> {
+  class ProfilesManagementCommandService <<Application Service>> {
     - profileRepository: ProfileRepository
-    + createProfile(profile: Profile): Profile
-    + updateProfileInformation(id: ProfileId, name: PersonName, documentNumber: DocumentNumber): Profile
-    + updateContactInformation(id: ProfileId, contact: ContactInformation): Profile
-    + updateOrganizationInformation(id: ProfileId, organization: Organization): Profile
-    + viewProfile(id: ProfileId): Profile
-    + viewContactInformation(id: ProfileId): ContactInformation
-    + viewOrganizationInformation(id: ProfileId): Organization
+    + handle(command: CreateProfileCommand): Optional<Profile>
+    + handle(command: UpdateProfileCommand): Optional<Profile>
+    + handle(command: CreateOrganizationCommand): Optional<Organization>
+    + handle(command: UpdateOrganizationCommand): Optional<Organization>
+  }
+
+  class ProfilesManagementQueryService <<Application Service>> {
+    - profileRepository: ProfileRepository
+    + handle(query: ViewProfileQuery): Optional<Profile>
+    + handle(query: ViewOrganizationQuery): Optional<Organization>
+  }
+
+  package "Commands" {
+    class CreateProfileCommand <<Command>> {
+      - userAccountId: UserAccountId
+      - name: PersonName
+      - documentNumber: DocumentNumber
+      - contact: ContactInformation
+    }
+    class UpdateProfileCommand <<Command>> {
+      - profileId: ProfileId
+      - name: PersonName
+      - documentNumber: DocumentNumber
+      - contact: ContactInformation
+    }
+    class CreateOrganizationCommand <<Command>> {
+      - profileId: ProfileId
+      - name: CompanyName
+      - taxId: TaxId
+      - type: OrganizationType
+      - address: StreetAddress
+    }
+    class UpdateOrganizationCommand <<Command>> {
+      - organizationId: OrganizationId
+      - name: CompanyName
+      - taxId: TaxId
+      - type: OrganizationType
+      - address: StreetAddress
+    }
+  }
+
+  package "Queries" {
+    class ViewProfileQuery <<Query>> {
+      - userAccountId: UserAccountId
+    }
+    class ViewOrganizationQuery <<Query>> {
+      - profileId: ProfileId
+    }
   }
 
   class EmailAddress <<Value Object>> {
@@ -130,7 +169,8 @@ package "Profiles Management" {
 Profile "1" *-- "1" ContactInformation : contains >
 Profile "1" o-- "0..1" Organization : belongs to >
 Organization --> OrganizationType : classified as >
-ProfilesManagementService "1" --> "1" ProfileRepository : uses >
+ProfilesManagementCommandService "1" --> "1" ProfileRepository : uses >
+ProfilesManagementQueryService "1" --> "1" ProfileRepository : uses >
 ProfileRepository ..> Profile : persists >
 
 Profile "1" *-- "1" PersonName : name >
@@ -143,6 +183,13 @@ Organization "1" *-- "1" TaxId : taxId >
 Organization "1" *-- "1" StreetAddress : address >
 DocumentNumber --> DocumentType : type >
 
+ProfilesManagementCommandService "1" ..> "1" CreateProfileCommand : handles >
+ProfilesManagementCommandService "1" ..> "1" UpdateProfileCommand : handles >
+ProfilesManagementCommandService "1" ..> "1" CreateOrganizationCommand : handles >
+ProfilesManagementCommandService "1" ..> "1" UpdateOrganizationCommand : handles >
+ProfilesManagementQueryService "1" ..> "1" ViewProfileQuery : handles >
+ProfilesManagementQueryService "1" ..> "1" ViewOrganizationQuery : handles >
+
 legend right
   |= Symbol |= Meaning |
   | + | Public |
@@ -152,5 +199,6 @@ legend right
   | --> | Association |
   | ..> | Dependency |
 endlegend
+
 
 @enduml

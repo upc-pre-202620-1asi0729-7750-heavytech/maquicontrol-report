@@ -30,10 +30,8 @@ package "Subscription Management" {
     - payments: List<Payment>
     - createdAt: LocalDateTime
     - updatedAt: LocalDateTime
-    + selectPlan(plan: SubscriptionPlan): void
     + registerPayment(payment: Payment): void
     + activate(): void
-    + renew(periodEnd: LocalDateTime): void
     + cancel(reason: Reason): void
     + isActive(): Boolean
   }
@@ -73,11 +71,9 @@ package "Subscription Management" {
   }
 
   enum SubscriptionStatus {
-    PENDING
+    PENDING_PAYMENT
     ACTIVE
-    PAST_DUE
     CANCELLED
-    EXPIRED
   }
 
   enum PaymentProviderName {
@@ -86,8 +82,10 @@ package "Subscription Management" {
 
   enum PaymentStatus {
     PENDING
+    IN_PROCESS
     APPROVED
     REJECTED
+    CANCELLED
   }
 
   interface SubscriptionRepository {
@@ -102,16 +100,50 @@ package "Subscription Management" {
     + findByCode(code: PlanCode): Optional<SubscriptionPlan>
   }
 
-  class SubscriptionManagementService <<Application Service>> {
+  class SubscriptionManagementCommandService <<Application Service>> {
     - subscriptionRepository: SubscriptionRepository
     - planRepository: SubscriptionPlanRepository
-    + selectPlan(ownerProfileId: ProfileId, planCode: PlanCode): Subscription
-    + registerPayment(subscriptionId: SubscriptionId, payment: Payment): Subscription
-    + activateSubscription(subscriptionId: SubscriptionId): Subscription
-    + cancelSubscription(subscriptionId: SubscriptionId, reason: Reason): Subscription
-    + viewSubscriptionPlans(): List<SubscriptionPlan>
-    + viewSubscriptionStatus(subscriptionId: SubscriptionId): SubscriptionStatus
-    + viewPaymentHistory(subscriptionId: SubscriptionId): List<Payment>
+    + handle(command: SubscribeToPlanCommand): Optional<Subscription>
+    + handle(command: ConfirmCheckoutCommand): Optional<Subscription>
+    + handle(command: ActivateSubscriptionCommand): Optional<Subscription>
+    + handle(command: CancelSubscriptionCommand): Optional<Subscription>
+  }
+
+  class SubscriptionManagementQueryService <<Application Service>> {
+    - subscriptionRepository: SubscriptionRepository
+    - planRepository: SubscriptionPlanRepository
+    + handle(query: ViewPlansQuery): List<SubscriptionPlan>
+    + handle(query: ViewSubscriptionQuery): Optional<Subscription>
+    + handle(query: ViewPaymentsQuery): List<Payment>
+  }
+
+  package "Commands" {
+    class SubscribeToPlanCommand <<Command>> {
+      - ownerProfileId: ProfileId
+      - planCode: PlanCode
+    }
+    class ConfirmCheckoutCommand <<Command>> {
+      - subscriptionId: SubscriptionId
+      - providerPaymentId: ProviderPaymentId
+    }
+    class ActivateSubscriptionCommand <<Command>> {
+      - subscriptionId: SubscriptionId
+    }
+    class CancelSubscriptionCommand <<Command>> {
+      - subscriptionId: SubscriptionId
+      - reason: Reason
+    }
+  }
+
+  package "Queries" {
+    class ViewPlansQuery <<Query>> {
+    }
+    class ViewSubscriptionQuery <<Query>> {
+      - ownerProfileId: ProfileId
+    }
+    class ViewPaymentsQuery <<Query>> {
+      - subscriptionId: SubscriptionId
+    }
   }
 
   class Reason <<Value Object>> {
@@ -161,14 +193,24 @@ Payment --> PaymentStatus : has >
 Payment --> PaymentProviderName : processed by >
 SubscriptionPlan --> PlanCode : identified by >
 SubscriptionPlan --> BillingCycle : billed as >
-SubscriptionManagementService "1" --> "1" SubscriptionRepository : uses >
-SubscriptionManagementService "1" --> "1" SubscriptionPlanRepository : uses >
+SubscriptionManagementCommandService "1" --> "1" SubscriptionRepository : uses >
+SubscriptionManagementQueryService "1" --> "1" SubscriptionRepository : uses >
+SubscriptionManagementCommandService "1" --> "1" SubscriptionPlanRepository : uses >
+SubscriptionManagementQueryService "1" --> "1" SubscriptionPlanRepository : uses >
 SubscriptionRepository ..> Subscription : persists >
 SubscriptionPlanRepository ..> SubscriptionPlan : persists >
 
 SubscriptionPlan "1" *-- "1" PlanName : name >
 SubscriptionPlan "1" *-- "1" MachineryLimit : machineryLimit >
 Payment "1" *-- "1" ProviderPaymentId : providerPaymentId >
+
+SubscriptionManagementCommandService "1" ..> "1" SubscribeToPlanCommand : handles >
+SubscriptionManagementCommandService "1" ..> "1" ConfirmCheckoutCommand : handles >
+SubscriptionManagementCommandService "1" ..> "1" ActivateSubscriptionCommand : handles >
+SubscriptionManagementCommandService "1" ..> "1" CancelSubscriptionCommand : handles >
+SubscriptionManagementQueryService "1" ..> "1" ViewPlansQuery : handles >
+SubscriptionManagementQueryService "1" ..> "1" ViewSubscriptionQuery : handles >
+SubscriptionManagementQueryService "1" ..> "1" ViewPaymentsQuery : handles >
 
 legend right
   |= Symbol |= Meaning |
@@ -178,5 +220,6 @@ legend right
   | --> | Association |
   | ..> | Dependency |
 endlegend
+
 
 @enduml

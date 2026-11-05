@@ -62,15 +62,47 @@ package "Billing Management" {
     + findByRentalId(rentalId: RentalId): List<LatePenalty>
   }
 
-  class BillingManagementService <<Application Service>> {
+  class BillingManagementCommandService <<Application Service>> {
     - invoiceRepository: InvoiceRepository
     - latePenaltyRepository: LatePenaltyRepository
-    + calculateRentalAmount(rentalId: RentalId, amount: Money): Invoice
-    + issueInvoice(invoiceId: InvoiceId, invoiceNumber: InvoiceNumber, sunatCdr: SunatCdr): Invoice
-    + applyLatePenalty(rentalId: RentalId, amount: Money, reason: Reason): LatePenalty
-    + viewInvoice(id: InvoiceId): Invoice
-    + viewInvoiceHistory(rentalId: RentalId): List<Invoice>
-    + viewLatePenaltiesByRental(rentalId: RentalId): List<LatePenalty>
+    + handle(command: CalculateRentalAmountCommand): Optional<Invoice>
+    + handle(command: IssueInvoiceCommand): Optional<Invoice>
+    + handle(command: ApplyLatePenaltyCommand): Optional<LatePenalty>
+  }
+
+  class BillingManagementQueryService <<Application Service>> {
+    - invoiceRepository: InvoiceRepository
+    - latePenaltyRepository: LatePenaltyRepository
+    + handle(query: ViewInvoiceQuery): Optional<Invoice>
+    + handle(query: ViewInvoiceHistoryQuery): List<Invoice>
+    + handle(query: ViewLatePenaltiesQuery): List<LatePenalty>
+  }
+
+  package "Commands" {
+    class CalculateRentalAmountCommand <<Command>> {
+      - rentalId: RentalId
+      - amount: Money
+    }
+    class IssueInvoiceCommand <<Command>> {
+      - invoiceId: InvoiceId
+    }
+    class ApplyLatePenaltyCommand <<Command>> {
+      - rentalId: RentalId
+      - amount: Money
+      - reason: Reason
+    }
+  }
+
+  package "Queries" {
+    class ViewInvoiceQuery <<Query>> {
+      - invoiceId: InvoiceId
+    }
+    class ViewInvoiceHistoryQuery <<Query>> {
+      - rentalId: RentalId
+    }
+    class ViewLatePenaltiesQuery <<Query>> {
+      - rentalId: RentalId
+    }
   }
 
   class Reason <<Value Object>> {
@@ -105,14 +137,23 @@ Invoice "1" *-- "1" Money : amount >
 LatePenalty "1" *-- "1" Money : amount >
 Money --> Currency : expressed in >
 Invoice --> InvoiceStatus : has >
-BillingManagementService "1" --> "1" InvoiceRepository : uses >
-BillingManagementService "1" --> "1" LatePenaltyRepository : uses >
+BillingManagementCommandService "1" --> "1" InvoiceRepository : uses >
+BillingManagementQueryService "1" --> "1" InvoiceRepository : uses >
+BillingManagementCommandService "1" --> "1" LatePenaltyRepository : uses >
+BillingManagementQueryService "1" --> "1" LatePenaltyRepository : uses >
 InvoiceRepository ..> Invoice : persists >
 LatePenaltyRepository ..> LatePenalty : persists >
 
 Invoice "1" *-- "1" InvoiceNumber : invoiceNumber >
 Invoice "1" *-- "1" SunatCdr : sunatCdr >
 LatePenalty "1" *-- "1" Reason : reason >
+
+BillingManagementCommandService "1" ..> "1" CalculateRentalAmountCommand : handles >
+BillingManagementCommandService "1" ..> "1" IssueInvoiceCommand : handles >
+BillingManagementCommandService "1" ..> "1" ApplyLatePenaltyCommand : handles >
+BillingManagementQueryService "1" ..> "1" ViewInvoiceQuery : handles >
+BillingManagementQueryService "1" ..> "1" ViewInvoiceHistoryQuery : handles >
+BillingManagementQueryService "1" ..> "1" ViewLatePenaltiesQuery : handles >
 
 legend right
   |= Symbol |= Meaning |
@@ -122,5 +163,6 @@ legend right
   | --> | Association |
   | ..> | Dependency |
 endlegend
+
 
 @enduml
