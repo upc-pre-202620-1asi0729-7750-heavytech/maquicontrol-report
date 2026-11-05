@@ -1,0 +1,37 @@
+@startuml
+!include <C4/C4_Component>
+
+title MaquiControl - Billing Management Bounded Context Component Diagram
+
+Container(webapp, "Single Page Application", "Angular", "Provides the user interface through a web browser.")
+
+Container_Boundary(bc, "Billing Management Bounded Context") {
+
+    Component(controller0, "InvoicesController", "Spring Boot @RestController", "Exposes /api/v1/invoices endpoints and maps resources to commands and queries.")
+    Component(controller1, "LatePenaltiesController", "Spring Boot @RestController", "Exposes /api/v1/late-penalties endpoints and maps resources to commands and queries.")
+    Component(commandService, "BillingManagementCommandService", "Spring Boot @Service", "Handles CalculateRentalAmountCommand, IssueInvoiceCommand, ApplyLatePenaltyCommand.")
+    Component(queryService, "BillingManagementQueryService", "Spring Boot @Service", "Handles ViewInvoiceQuery, ViewInvoiceHistoryQuery, ViewLatePenaltiesQuery.")
+    Component(eventHandler0, "BillingEventHandler", "Spring @EventListener", "Reacts to Operation Completed and Rental Completed and executes CalculateRentalAmountCommand and ApplyLatePenaltyCommand.")
+    Component(domain, "Domain Model", "Java", "Invoice and LatePenalty aggregates, Money, InvoiceNumber and SunatCdr value objects.")
+    Component(repository, "InvoiceRepository and LatePenaltyRepository", "Spring Data JPA @Repository", "Persists and reads the aggregates of the bounded context.")
+    Component(sunatAcl, "SunatService", "Spring @Service (Anti-Corruption Layer)", "Translates requests and responses of SUNAT.")
+}
+
+System_Ext(sunat, "SUNAT", "Peruvian tax authority electronic invoicing service.")
+ContainerDb(database, "Database", "Relational Database", "Stores invoices and late penalties.")
+
+Rel(webapp, controller0, "Calls /api/v1/invoices", "HTTPS / JSON")
+Rel(controller0, commandService, "Sends commands")
+Rel(controller0, queryService, "Sends queries")
+Rel(webapp, controller1, "Calls /api/v1/late-penalties", "HTTPS / JSON")
+Rel(controller1, commandService, "Sends commands")
+Rel(controller1, queryService, "Sends queries")
+Rel(eventHandler0, commandService, "Sends CalculateRentalAmountCommand and ApplyLatePenaltyCommand")
+Rel(commandService, domain, "Executes aggregate behavior")
+Rel(commandService, repository, "Saves aggregates")
+Rel(queryService, repository, "Reads aggregates")
+Rel(commandService, sunatAcl, "Uses")
+Rel(sunatAcl, sunat, "Sends electronic invoices", "HTTPS / JSON")
+Rel(repository, database, "Reads from and writes to", "JPA / SQL")
+
+@enduml

@@ -37,7 +37,7 @@ package "Candidate Area: Service Execution & Maintenance" {
 
 package "Candidate Area: Billing, Closure & Subscription" {
   rectangle "DOMAIN EVENT\nRental Amount Calculated" as EVT_AMOUNT #FFB74D
-  rectangle "DOMAIN EVENT\nElectronic Invoice Issued" as EVT_INVOICE #FFB74D
+  rectangle "DOMAIN EVENT\nInvoice Issued" as EVT_INVOICE #FFB74D
   rectangle "DOMAIN EVENT\nRental Closed" as EVT_CLOSED #FFB74D
   rectangle "DOMAIN EVENT\nSubscription Plan Selected" as EVT_PLAN #FFB74D
   rectangle "DOMAIN EVENT\nSubscription Payment Approved" as EVT_PAYMENT #FFB74D

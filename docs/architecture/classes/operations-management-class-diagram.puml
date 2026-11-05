@@ -22,6 +22,7 @@ package "Operations Management" {
     + start(): void
     + recordWorkedHours(record: WorkedHours): void
     + validateWorkedHours(recordId: WorkedHoursId): void
+    + rejectWorkedHours(recordId: WorkedHoursId): void
     + complete(): void
     + calculateTotalHours(): HoursWorked
     + isInProgress(): Boolean
@@ -60,15 +61,52 @@ package "Operations Management" {
     + findByStatus(status: OperationStatus): List<ServiceOperation>
   }
 
-  class OperationsManagementService <<Application Service>> {
+  class OperationsManagementCommandService <<Application Service>> {
     - operationRepository: ServiceOperationRepository
-    + startService(operation: ServiceOperation): ServiceOperation
-    + recordWorkedHours(operationId: ServiceOperationId, record: WorkedHours): ServiceOperation
-    + validateWorkedHours(operationId: ServiceOperationId, recordId: WorkedHoursId): ServiceOperation
-    + completeService(id: ServiceOperationId): ServiceOperation
-    + viewServiceStatus(id: ServiceOperationId): OperationStatus
-    + viewWorkedHours(id: ServiceOperationId): List<WorkedHours>
-    + viewOperationHistory(machineryId: MachineryId): List<ServiceOperation>
+    + handle(command: StartOperationCommand): Optional<ServiceOperation>
+    + handle(command: RecordWorkedHoursCommand): Optional<ServiceOperation>
+    + handle(command: ValidateWorkedHoursCommand): Optional<ServiceOperation>
+    + handle(command: RejectWorkedHoursCommand): Optional<ServiceOperation>
+    + handle(command: CompleteOperationCommand): Optional<ServiceOperation>
+  }
+
+  class OperationsManagementQueryService <<Application Service>> {
+    - operationRepository: ServiceOperationRepository
+    + handle(query: ViewServiceOperationQuery): Optional<ServiceOperation>
+    + handle(query: ViewWorkedHoursQuery): List<WorkedHours>
+  }
+
+  package "Commands" {
+    class StartOperationCommand <<Command>> {
+      - rentalId: RentalId
+      - machineryId: MachineryId
+      - operatorProfileId: ProfileId
+    }
+    class RecordWorkedHoursCommand <<Command>> {
+      - operationId: ServiceOperationId
+      - shift: WorkShift
+      - notes: Notes
+    }
+    class ValidateWorkedHoursCommand <<Command>> {
+      - operationId: ServiceOperationId
+      - workedHoursId: WorkedHoursId
+    }
+    class RejectWorkedHoursCommand <<Command>> {
+      - operationId: ServiceOperationId
+      - workedHoursId: WorkedHoursId
+    }
+    class CompleteOperationCommand <<Command>> {
+      - operationId: ServiceOperationId
+    }
+  }
+
+  package "Queries" {
+    class ViewServiceOperationQuery <<Query>> {
+      - rentalId: RentalId
+    }
+    class ViewWorkedHoursQuery <<Query>> {
+      - operationId: ServiceOperationId
+    }
   }
 
   class Notes <<Value Object>> {
@@ -110,12 +148,21 @@ package "Operations Management" {
 ServiceOperation "1" *-- "0..*" WorkedHours : records >
 ServiceOperation --> OperationStatus : has >
 WorkedHours --> WorkedHoursStatus : has >
-OperationsManagementService "1" --> "1" ServiceOperationRepository : uses >
+OperationsManagementCommandService "1" --> "1" ServiceOperationRepository : uses >
+OperationsManagementQueryService "1" --> "1" ServiceOperationRepository : uses >
 ServiceOperationRepository ..> ServiceOperation : persists >
 
 WorkedHours "1" *-- "1" WorkShift : shift >
 WorkedHours "1" *-- "1" HoursWorked : totalHours >
 WorkedHours "1" *-- "1" Notes : observations >
+
+OperationsManagementCommandService "1" ..> "1" StartOperationCommand : handles >
+OperationsManagementCommandService "1" ..> "1" RecordWorkedHoursCommand : handles >
+OperationsManagementCommandService "1" ..> "1" ValidateWorkedHoursCommand : handles >
+OperationsManagementCommandService "1" ..> "1" RejectWorkedHoursCommand : handles >
+OperationsManagementCommandService "1" ..> "1" CompleteOperationCommand : handles >
+OperationsManagementQueryService "1" ..> "1" ViewServiceOperationQuery : handles >
+OperationsManagementQueryService "1" ..> "1" ViewWorkedHoursQuery : handles >
 
 legend right
   |= Symbol |= Meaning |
@@ -125,5 +172,6 @@ legend right
   | --> | Association |
   | ..> | Dependency |
 endlegend
+
 
 @enduml

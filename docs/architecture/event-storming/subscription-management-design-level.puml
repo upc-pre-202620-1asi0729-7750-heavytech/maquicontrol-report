@@ -47,8 +47,12 @@ note bottom of AGG_SUBSCRIPTION_0
 <b>Business rules (Subscription)</b>
 - Plan price must be greater than zero
 - Plan machinery limit is a positive integer
+- Status: PENDING_PAYMENT, ACTIVE
+  or CANCELLED
 - Only a subscription PENDING_PAYMENT
   can be activated
+- Only an ACTIVE subscription
+  can be cancelled
 - An active subscription records its
   payment and period
 end note

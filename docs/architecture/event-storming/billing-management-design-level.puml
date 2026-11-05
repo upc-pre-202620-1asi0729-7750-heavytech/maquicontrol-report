@@ -14,18 +14,18 @@ skinparam ArrowColor #555555
 rectangle "COMMAND\nCalculate Rental Amount" as CMD_CALCULATE_RENTAL_AMOUNT #87CEFA
 rectangle "AGGREGATE\nInvoice" as AGG_INVOICE_0 #FFF59D
 rectangle "DOMAIN EVENT\nRental Amount Calculated" as EVT_RENTAL_AMOUNT_CALCULATED #FFB74D
-rectangle "COMMAND\nIssue Electronic Invoice" as CMD_ISSUE_ELECTRONIC_INVOICE #87CEFA
+rectangle "COMMAND\nIssue Invoice" as CMD_ISSUE_INVOICE #87CEFA
 rectangle "AGGREGATE\nInvoice" as AGG_INVOICE_1 #FFF59D
-rectangle "DOMAIN EVENT\nElectronic Invoice Issued" as EVT_ELECTRONIC_INVOICE_ISSUED #FFB74D
+rectangle "DOMAIN EVENT\nInvoice Issued" as EVT_INVOICE_ISSUED #FFB74D
 rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_1 #FFF9C4
 rectangle "COMMAND\nApply Late Penalty" as CMD_APPLY_LATE_PENALTY #87CEFA
 rectangle "AGGREGATE\nLate Penalty" as AGG_LATE_PENALTY_2 #FFF59D
 rectangle "DOMAIN EVENT\nLate Penalty Applied" as EVT_LATE_PENALTY_APPLIED #FFB74D
 
 ' ===== Policies =====
-rectangle "DOMAIN EVENT (Operations)\nService Operation Completed" as XEVT_SERVICE_OPERATION_COMPLETED #FFE0B2
+rectangle "DOMAIN EVENT (Operations)\nOperation Completed" as XEVT_OPERATION_COMPLETED #FFE0B2
 rectangle "POLICY\nWhen the service operation is completed,\ncalculate the rental amount" as POL_0 #B39DDB
-rectangle "POLICY\nWhen the amount is calculated,\nissue the electronic invoice" as POL_1 #B39DDB
+rectangle "POLICY\nWhen the amount is calculated,\nnotify the fleet owner to issue the invoice" as POL_1 #B39DDB
 rectangle "DOMAIN EVENT (Rental)\nRental Completed" as XEVT_RENTAL_COMPLETED #FFE0B2
 rectangle "POLICY\nWhen a rental ends after its\nagreed date, apply a late penalty" as POL_2 #B39DDB
 
@@ -48,9 +48,9 @@ note bottom of AGG_INVOICE_0
 - An invoice is issued only once
   per rental
 end note
-ACT_FLEET_OWNER_1 --> CMD_ISSUE_ELECTRONIC_INVOICE
-CMD_ISSUE_ELECTRONIC_INVOICE --> AGG_INVOICE_1
-AGG_INVOICE_1 --> EVT_ELECTRONIC_INVOICE_ISSUED
+ACT_FLEET_OWNER_1 --> CMD_ISSUE_INVOICE
+CMD_ISSUE_INVOICE --> AGG_INVOICE_1
+AGG_INVOICE_1 --> EVT_INVOICE_ISSUED
 CMD_APPLY_LATE_PENALTY --> AGG_LATE_PENALTY_2
 AGG_LATE_PENALTY_2 --> EVT_LATE_PENALTY_APPLIED
 note bottom of AGG_LATE_PENALTY_2
@@ -58,20 +58,20 @@ note bottom of AGG_LATE_PENALTY_2
 - Applies only when machinery is
   returned after the agreed end date
 end note
-XEVT_SERVICE_OPERATION_COMPLETED --> POL_0
+XEVT_OPERATION_COMPLETED --> POL_0
 POL_0 --> CMD_CALCULATE_RENTAL_AMOUNT
 EVT_RENTAL_AMOUNT_CALCULATED --> POL_1
-POL_1 --> CMD_ISSUE_ELECTRONIC_INVOICE
+POL_1 --> CMD_ISSUE_INVOICE
 XEVT_RENTAL_COMPLETED --> POL_2
 POL_2 --> CMD_APPLY_LATE_PENALTY
-EVT_ELECTRONIC_INVOICE_ISSUED ..> RM_0 : updates
+EVT_INVOICE_ISSUED ..> RM_0 : updates
 RM_0 ..> ACT_RM_0 : informs
-EVT_ELECTRONIC_INVOICE_ISSUED ..> RM_1 : updates
+EVT_INVOICE_ISSUED ..> RM_1 : updates
 RM_1 ..> ACT_RM_1 : informs
 EVT_LATE_PENALTY_APPLIED ..> RM_2 : updates
 RM_2 ..> ACT_RM_2 : informs
-CMD_ISSUE_ELECTRONIC_INVOICE .. EXT_0
-HOT_0 .. EVT_ELECTRONIC_INVOICE_ISSUED
+CMD_ISSUE_INVOICE .. EXT_0
+HOT_0 .. EVT_INVOICE_ISSUED
 
 legend right
 |= Color |= Element |

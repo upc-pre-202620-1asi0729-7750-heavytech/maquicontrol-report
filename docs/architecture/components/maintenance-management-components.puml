@@ -5,26 +5,29 @@ title MaquiControl - Maintenance Management Bounded Context Component Diagram
 
 Container(webapp, "Single Page Application", "Angular", "Provides the user interface through a web browser.")
 
-Container_Boundary(maintenance, "Maintenance Management Bounded Context") {
+Container_Boundary(bc, "Maintenance Management Bounded Context") {
 
-    Component(interfaces, "MaintenanceController", "Spring Boot @RestController", "Exposes GET, POST, PUT /api/v1/maintenances endpoints.")
-
-    Component(application, "MaintenanceApplicationService", "Spring Boot @Service", "Coordinates scheduleMaintenance(), reportBreakdown() and completeMaintenance() use cases.")
-
-    Component(domain, "Maintenance Aggregate", "Java Domain Entity", "Contains Maintenance aggregate root, MaintenanceType and status business rules.")
-
-    Component(infrastructure, "MaintenanceRepository", "Spring Data JPA @Repository", "Provides persistence via save(), findById(), findByMachineryId() and findByStatus().")
-
-    Component(security, "SecurityConnector", "Spring Security Component", "Validates authenticated users and fleet administrator roles.")
+    Component(controller0, "MaintenancesController", "Spring Boot @RestController", "Exposes /api/v1/maintenances endpoints and maps resources to commands and queries.")
+    Component(controller1, "BreakdownReportsController", "Spring Boot @RestController", "Exposes /api/v1/breakdown-reports endpoints and maps resources to commands and queries.")
+    Component(commandService, "MaintenanceManagementCommandService", "Spring Boot @Service", "Handles ScheduleMaintenanceCommand, StartMaintenanceCommand, CompleteMaintenanceCommand, ReportBreakdownCommand.")
+    Component(queryService, "MaintenanceManagementQueryService", "Spring Boot @Service", "Handles ViewMaintenanceScheduleQuery, ViewBreakdownReportsQuery, ViewMaintenanceHistoryQuery.")
+    Component(eventHandler0, "MaintenanceEventHandler", "Spring @EventListener", "Reacts to Breakdown Reported and Worked Hours Validated and executes ScheduleMaintenanceCommand.")
+    Component(domain, "Domain Model", "Java", "Maintenance aggregate, BreakdownReport entity, Money and TechnicianName value objects.")
+    Component(repository, "MaintenanceRepository", "Spring Data JPA @Repository", "Persists and reads the aggregates of the bounded context.")
 }
 
-ContainerDb(database, "Database", "Relational Database", "Stores maintenance and breakdown information.")
+ContainerDb(database, "Database", "Relational Database", "Stores maintenances and breakdown reports.")
 
-Rel(webapp, interfaces, "Calls /api/v1/maintenances/*", "HTTPS / JSON")
-Rel(interfaces, application, "Calls scheduleMaintenance() / reportBreakdown()")
-Rel(application, domain, "Invokes complete() / reschedule() / updateNotes()")
-Rel(application, infrastructure, "Calls save() / findById()")
-Rel(infrastructure, database, "Executes SQL queries")
-Rel(interfaces, security, "Validates security context")
+Rel(webapp, controller0, "Calls /api/v1/maintenances", "HTTPS / JSON")
+Rel(controller0, commandService, "Sends commands")
+Rel(controller0, queryService, "Sends queries")
+Rel(webapp, controller1, "Calls /api/v1/breakdown-reports", "HTTPS / JSON")
+Rel(controller1, commandService, "Sends commands")
+Rel(controller1, queryService, "Sends queries")
+Rel(eventHandler0, commandService, "Sends ScheduleMaintenanceCommand")
+Rel(commandService, domain, "Executes aggregate behavior")
+Rel(commandService, repository, "Saves aggregates")
+Rel(queryService, repository, "Reads aggregates")
+Rel(repository, database, "Reads from and writes to", "JPA / SQL")
 
-@enduml
+@enduml

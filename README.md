@@ -212,6 +212,7 @@
 | 0.11 | 19/09/2026 | Carlos Gabriel Cespedes Lezcano | Desarrollo del punto 5.2.1 Sprint 1, incorporando Sprint Planning, matriz de líderes y colaboradores, Sprint Backlog, evidencias de desarrollo, ejecución y despliegue de la Landing Page, y análisis de colaboración del equipo. |
 | 0.12 | 07/10/2026 | Nicolas Tantalean Granda, Mathias Alejandro Castillo Guevara y Wilmer Sebastián Gutiérrez Lizarbe | Estructura inicial del punto 5.2.2 Sprint 2, diagramas PlantUML de Event Storming y Design-Level, y actualización de las descripciones de componentes y diagramas de arquitectura. |
 | 0.13 | 08/10/2026 | Carlos Gabriel Cespedes Lezcano | Actualización del Capítulo V para TB1: herramientas reales del entorno (Angular 22, Node.js 24, WebStorm, json-server), configuración de despliegue en GitHub Pages, Azure Static Web Apps y Azure App Service, desarrollo del punto 5.2.2 Sprint 2 con las evidencias de la aplicación web, la Fake API y la Landing Page v2.0.0, corrección de los diagramas de contenedores y componentes para reflejar el código implementado, actualización de Project Report Collaboration Insights y Student Outcome para TB1, y avance de Conclusiones, Bibliografía y Anexos. |
+| 0.14 | 05/11/2026 | Carlos Gabriel Cespedes Lezcano | Corrección del Capítulo IV según la retroalimentación del TB1: unificación de los nombres de comandos entre Design-Level Event Storming, diagramas de clases, base de datos y Frontend Web Application; nuevo Catálogo de comandos y trazabilidad; incorporación de Reject Reservation y Reject Worked Hours; división de servicios en CommandService y QueryService; alineación de estados de Rental y Subscription. |
 
 ## Project Report Collaboration Insights
 
@@ -1418,50 +1419,95 @@ A partir del análisis realizado se identificaron los siguientes Bounded Context
 
 #### Fleet Management Bounded Context
 
-Este Bounded Context concentra la gestión de la maquinaria y de sus categorías. El propietario de flota registra, actualiza y da de baja maquinaria, y administra el catálogo de categorías (`Category`) como una entidad propia del contexto. Sus agregados son Machinery y Category, con reglas como datos técnicos obligatorios, tarifa por hora no negativa y categorías con nombre único que no se pueden eliminar si tienen maquinaria. Sus políticas cambian el estado de la maquinaria a partir de eventos propios y de otros contextos: la dejan disponible al registrarse, la marcan como reservada cuando Rental Management confirma una reserva, la liberan cuando se cancela y la pasan a mantenimiento mientras Maintenance Management la atiende. Los read models Machinery Catalog, Machinery Availability y Category Catalog informan al contratista y al propietario.
+Este Bounded Context concentra la gestión de la maquinaria y de sus categorías. El propietario de flota ejecuta los comandos Register Machinery, Update Machinery, Change Machinery Status y Delete Machinery sobre el agregado Machinery, y Create Category, Rename Category y Delete Category sobre el agregado Category. Las reglas exigen datos técnicos obligatorios, tarifa por hora no negativa, categorías con nombre único que no se pueden eliminar si tienen maquinaria, y no permiten eliminar maquinaria con alquileres activos. Sus políticas ejecutan Change Machinery Status a partir de eventos propios y de otros contextos: dejan la maquinaria disponible al registrarse, la marcan como reservada cuando Rental Management confirma una reserva, la liberan cuando se cancela y la pasan a mantenimiento mientras Maintenance Management la atiende. Los read models Machinery Catalog, Machinery Availability y Category Catalog informan al contratista y al propietario.
 
 ![Fleet Management Design-Level Event Storming](assets/fleet-management-design-level.png)
 #### Rental Management Bounded Context
 
-Este Bounded Context gestiona las solicitudes y reservas de maquinaria. El contratista solicita y cancela alquileres, y el propietario de flota confirma las reservas. Su agregado Rental controla el periodo de alquiler, evita reservas superpuestas sobre la misma maquinaria y solo permite las transiciones REQUESTED, CONFIRMED, IN_PROGRESS y COMPLETED, o la cancelación de una reserva aún no iniciada. Sus políticas reaccionan a Operations Management: el alquiler pasa a IN_PROGRESS cuando inicia la operación de servicio y a COMPLETED cuando esta termina. Los read models Pending Rental Requests y My Reservations informan al propietario y al contratista, y el hotspot identificado es la posibilidad de solicitudes superpuestas antes de la confirmación.
+Este Bounded Context gestiona las solicitudes y reservas de maquinaria. El contratista ejecuta Request Rental y Cancel Reservation, y el propietario de flota ejecuta Confirm Reservation o Reject Reservation sobre una solicitud pendiente. Su agregado Rental controla el periodo de alquiler, evita reservas superpuestas sobre la misma maquinaria, solo permite las transiciones REQUESTED, CONFIRMED, IN_PROGRESS y COMPLETED, y registra el motivo cuando una reserva termina como REJECTED o CANCELLED. Los comandos Start Rental y Complete Rental no tienen actor humano: los ejecutan las políticas que reaccionan a Operations Management cuando la operación inicia (Operation Started) y cuando termina (Operation Completed). Los read models Pending Rental Requests y My Reservations informan al propietario y al contratista, y el hotspot identificado es la posibilidad de solicitudes superpuestas antes de la confirmación.
 
 ![Rental Management Design-Level Event Storming](assets/rental-management-design-level.png)
 
 #### Maintenance Management Bounded Context
 
-Este Bounded Context agrupa la programación, ejecución y cierre de los mantenimientos, junto con el reporte de averías. El propietario de flota programa, inicia y completa mantenimientos, y el contratista reporta averías desde la obra. Su agregado Maintenance exige descripción, tipo preventivo o correctivo, costo no negativo y fecha de cierre al completarse. Sus políticas programan un mantenimiento correctivo cuando se reporta una avería y uno preventivo cuando las horas validadas en Operations Management alcanzan el umbral definido. Los read models Maintenance Schedule, Breakdown Reports y Maintenance History informan al propietario y al contratista.
+Este Bounded Context agrupa la programación, ejecución y cierre de los mantenimientos, junto con el reporte de averías. El propietario de flota ejecuta Schedule Maintenance, Start Maintenance y Complete Maintenance, y el contratista ejecuta Report Breakdown desde la obra. Su agregado Maintenance exige descripción, tipo preventivo o correctivo, costo no negativo y fecha de cierre al completarse. Sus políticas ejecutan Schedule Maintenance de forma automática: un mantenimiento correctivo cuando se reporta una avería y uno preventivo cuando las horas validadas en Operations Management alcanzan el umbral definido. Los read models Maintenance Schedule, Breakdown Reports y Maintenance History informan al propietario y al contratista.
 
 ![Maintenance Management Design-Level Event Storming](assets/maintenance-management-design-level.png)
 
 #### Operations Management Bounded Context
 
-Este Bounded Context representa la ejecución del servicio de una reserva confirmada. El operador inicia la operación y registra las horas trabajadas, y el propietario de flota las valida y completa la operación. Su agregado Service Operation exige una reserva confirmada para iniciar, horas no negativas y todas las horas validadas antes de completar. Sus políticas habilitan la operación cuando Rental Management confirma una reserva, solicitan la validación de cada registro de horas y permiten completar la operación cuando todas están validadas. Los read models Service Operation Status y Worked Hours Summary informan al propietario y al operador, y el hotspot es la diferencia entre las horas registradas manualmente y el horómetro.
+Este Bounded Context representa la ejecución del servicio de una reserva confirmada. El operador ejecuta Start Operation y Record Worked Hours, y el propietario de flota ejecuta Validate Worked Hours o Reject Worked Hours sobre cada registro y, al final, Complete Operation. Su agregado Service Operation exige una reserva confirmada para iniciar, horas no negativas y que ningún registro quede pendiente antes de completar. Sus políticas habilitan la operación cuando Rental Management confirma una reserva, solicitan la validación o el rechazo de cada registro de horas y permiten completar la operación cuando no quedan registros pendientes. Los read models Service Operation Status y Worked Hours Summary informan al propietario y al operador, y el hotspot es la diferencia entre las horas registradas manualmente y el horómetro.
 
 ![Operations Management Design-Level Event Storming](assets/operations-management-design-level.png)
 
 #### Profiles Management Bounded Context
 
-Este Bounded Context gestiona el perfil de cada usuario y la organización a la que pertenece. Sus agregados son Profile, que exige nombres, documento e información de contacto válida, y Organization, que exige razón social, RUC y dirección. Su política crea el perfil cuando Identity & Access Management registra una nueva cuenta y luego solicita los datos de la organización. Los read models Profile Details y Organization Details informan al usuario, y el hotspot es que el RUC todavía no se verifica contra SUNAT.
+Este Bounded Context gestiona el perfil de cada usuario y la organización a la que pertenece. Sus comandos son Create Profile, Update Profile, Create Organization y Update Organization. El agregado Profile exige nombres, documento e información de contacto válida, y la entidad Organization exige razón social, RUC y dirección. Su política ejecuta Create Profile cuando Identity & Access Management registra una nueva cuenta y luego solicita los datos de la organización. Los read models Profile Details y Organization Details informan al usuario, y el hotspot es que el RUC todavía no se verifica contra SUNAT.
 
 ![Profiles Management Design-Level Event Storming](assets/profiles-management-design-level.png)
 
 #### Subscription Management Bounded Context
 
-Este Bounded Context gestiona la contratación, activación y cancelación de la suscripción de un propietario de flota. El propietario selecciona un plan (Essential o Pro) y es redirigido a Mercado Pago Checkout Pro, que confirma el pago. Su agregado Subscription solo permite activar una suscripción pendiente de pago y exige registrar el pago y el periodo al activarla. Sus políticas redirigen al checkout al seleccionar un plan y activan la suscripción cuando el pago es aprobado. El límite de maquinarias del plan se aplica en Fleet Management al registrar maquinaria. Los read models Plan Catalog, Subscription Status y Payment History informan al propietario.
+Este Bounded Context gestiona la contratación, activación y cancelación de la suscripción de un propietario de flota. El propietario ejecuta Subscribe to Plan (Essential o Pro) y es redirigido a Mercado Pago Checkout Pro; al volver, la aplicación ejecuta Confirm Checkout, que registra el pago. Si el pago es aprobado, una política ejecuta Activate Subscription. El propietario puede ejecutar Cancel Subscription sobre una suscripción activa. Los estados de la suscripción son PENDING_PAYMENT, ACTIVE y CANCELLED, y los del pago siguen los de Mercado Pago (PENDING, IN_PROCESS, APPROVED, REJECTED y CANCELLED). El límite de maquinarias del plan se aplica en Fleet Management al registrar maquinaria. Los read models Plan Catalog, Subscription Status y Payment History informan al propietario.
 
 ![Subscription Management Design-Level Event Storming](assets/subscription-management-design-level.png)
 
 #### Billing Management Bounded Context
 
-Este Bounded Context concentra el cálculo del monto de alquiler, la emisión de comprobantes electrónicos ante SUNAT y la aplicación de penalidades por mora. Sus agregados son Invoice y Late Penalty, ambos referenciando el alquiler mediante su identificador. Sus políticas calculan el monto cuando Operations Management completa la operación de servicio, emiten el comprobante una vez calculado el monto y aplican una penalidad cuando Rental Management completa un alquiler después de la fecha pactada. Los read models Invoice Details, Invoice History y Late Penalties informan al propietario y al contratista, y el hotspot es el rechazo o la demora de SUNAT.
+Este Bounded Context concentra el cálculo del monto de alquiler, la emisión de comprobantes electrónicos ante SUNAT y la aplicación de penalidades por mora. Sus agregados son Invoice y Late Penalty, ambos referenciando el alquiler mediante su identificador. Calculate Rental Amount y Apply Late Penalty se ejecutan por políticas: el monto se calcula cuando Operations Management completa la operación (Operation Completed) y la penalidad se aplica cuando Rental Management completa un alquiler después de la fecha pactada. Issue Invoice lo ejecuta el propietario de flota desde la aplicación una vez calculado el monto. Los read models Invoice Details, Invoice History y Late Penalties informan al propietario y al contratista, y el hotspot es el rechazo o la demora de SUNAT.
 
 ![Billing Management Design-Level Event Storming](assets/billing-management-design-level.png)
 
 #### Identity & Access Management Bounded Context
 
-Este Bounded Context se encarga del registro, la autenticación y los roles de los usuarios de MaquiControl. El visitante se registra eligiendo el rol de propietario de flota o contratista, y el usuario inicia y cierra sesión. Su agregado User Account exige un correo válido y único, una credencial y un rol al registrarse, y solo permite iniciar sesión a cuentas activas. Su política asigna el rol elegido al registrarse la cuenta, y el evento User Signed Up es consumido por Profiles Management para crear el perfil. El read model Current Session alimenta los guards de rutas, y el hotspot es que el inicio de sesión todavía usa la Fake API hasta implementar la autenticación con JWT.
+Este Bounded Context se encarga del registro, la autenticación y los roles de los usuarios de MaquiControl. El visitante ejecuta Sign Up indicando su correo, contraseña y el rol de propietario de flota o contratista, y el usuario ejecuta Sign In y Sign Out. Como el rol se elige dentro de Sign Up, no existe un comando separado de asignación de roles. Su agregado User Account exige un correo válido y único, una credencial y un rol al registrarse, y solo permite iniciar sesión a cuentas activas. El evento User Signed Up es consumido por Profiles Management para crear el perfil. El read model Current Session alimenta los guards de rutas, y el hotspot es que el token JWT debe expirar y descartarse en el cliente al cerrar sesión.
 
 ![Identity and Access Management Design-Level Event Storming](assets/identity-access-management-design-level.png)
+
+#### Catálogo de comandos y trazabilidad
+
+La siguiente tabla es la referencia única de los comandos de MaquiControl. Cada comando conserva el mismo nombre en el Design-Level Event Storming, en el diagrama de clases (clase `<Comando>Command` atendida por el `CommandService` del contexto), en el endpoint de los Web Services y en la Frontend Web Application (método del store y botón de la vista). Los comandos marcados como *Política* no tienen botón: los ejecuta el sistema al reaccionar a un evento.
+
+| Bounded Context | Command | Actor | Domain Event | Endpoint (Web Services) | Frontend Web Application |
+| --- | --- | --- | --- | --- | --- |
+| Fleet Management | Register Machinery | Fleet Owner | Machinery Registered | `POST /api/v1/machinery` | `registerMachinery()` · botón *Register machinery* |
+| Fleet Management | Update Machinery | Fleet Owner | Machinery Updated | `PUT /api/v1/machinery/{machineryId}` | `updateMachinery()` · botón *Save* |
+| Fleet Management | Change Machinery Status | Fleet Owner / Política | Machinery Status Changed | `PATCH /api/v1/machinery/{machineryId}/status` | `changeMachineryStatus()` · selector de estado |
+| Fleet Management | Delete Machinery | Fleet Owner | Machinery Deleted | `DELETE /api/v1/machinery/{machineryId}` | `deleteMachinery()` · botón *Delete* |
+| Fleet Management | Create Category | Fleet Owner | Category Created | `POST /api/v1/categories` | `createCategory()` · botón *Create category* |
+| Fleet Management | Rename Category | Fleet Owner | Category Renamed | `PUT /api/v1/categories/{categoryId}` | `renameCategory()` · botón *Rename* |
+| Fleet Management | Delete Category | Fleet Owner | Category Deleted | `DELETE /api/v1/categories/{categoryId}` | `deleteCategory()` · botón *Delete* |
+| Identity & Access Management | Sign Up | Visitor | User Signed Up | `POST /api/v1/authentication/sign-up` | `signUp()` · botón *Create account* |
+| Identity & Access Management | Sign In | User | User Signed In | `POST /api/v1/authentication/sign-in` | `signIn()` · botón *Sign in* |
+| Identity & Access Management | Sign Out | User | User Signed Out | No aplica (el cliente descarta el token JWT) | `signOut()` · botón *Sign out* |
+| Rental Management | Request Rental | Contractor | Rental Requested | `POST /api/v1/rentals` | `requestRental()` · botón *Request rental* |
+| Rental Management | Confirm Reservation | Fleet Owner | Reservation Confirmed | `PATCH /api/v1/rentals/{rentalId}/status` (`CONFIRMED`) | `confirmReservation()` · botón *Confirm* |
+| Rental Management | Reject Reservation | Fleet Owner | Reservation Rejected | `PATCH /api/v1/rentals/{rentalId}/status` (`REJECTED`, motivo) | `rejectReservation()` · botón *Reject* |
+| Rental Management | Cancel Reservation | Contractor | Reservation Cancelled | `PATCH /api/v1/rentals/{rentalId}/status` (`CANCELLED`, motivo) | `cancelReservation()` · botón *Cancel request* |
+| Rental Management | Start Rental | Política | Rental Started | No aplica (reacciona a Operation Started) | Estado *In progress* en *My reservations* |
+| Rental Management | Complete Rental | Política | Rental Completed | No aplica (reacciona a Operation Completed) | Estado *Completed* en *My reservations* |
+| Maintenance Management | Schedule Maintenance | Fleet Owner / Política | Maintenance Scheduled | `POST /api/v1/maintenances` | `scheduleMaintenance()` · botón *Schedule* |
+| Maintenance Management | Start Maintenance | Fleet Owner | Maintenance Started | `PATCH /api/v1/maintenances/{maintenanceId}/status` (`IN_PROGRESS`) | `startMaintenance()` · botón *Start* |
+| Maintenance Management | Complete Maintenance | Fleet Owner | Maintenance Completed | `PATCH /api/v1/maintenances/{maintenanceId}/status` (`COMPLETED`, costo) | `completeMaintenance()` · botón *Complete* |
+| Maintenance Management | Report Breakdown | Contractor | Breakdown Reported | `POST /api/v1/breakdown-reports` | `reportBreakdown()` · botón *Report breakdown* |
+| Operations Management | Start Operation | Operator | Operation Started | `POST /api/v1/service-operations` | `startOperation()` · botón *Start operation* |
+| Operations Management | Record Worked Hours | Operator | Worked Hours Recorded | `POST /api/v1/service-operations/{operationId}/worked-hours` | `recordWorkedHours()` · botón *Record* |
+| Operations Management | Validate Worked Hours | Fleet Owner | Worked Hours Validated | `PATCH /api/v1/service-operations/{operationId}/worked-hours/{workedHoursId}/status` (`VALIDATED`) | `validateWorkedHours()` · botón *Validate* |
+| Operations Management | Reject Worked Hours | Fleet Owner | Worked Hours Rejected | `PATCH /api/v1/service-operations/{operationId}/worked-hours/{workedHoursId}/status` (`REJECTED`) | `rejectWorkedHours()` · botón *Reject* |
+| Operations Management | Complete Operation | Fleet Owner | Operation Completed | `PATCH /api/v1/service-operations/{operationId}/status` (`COMPLETED`) | `completeOperation()` · botón *Complete operation* |
+| Profiles Management | Create Profile | Política (User Signed Up) / User | Profile Created | `POST /api/v1/profiles` | `createProfile()` · botón *Save profile* |
+| Profiles Management | Update Profile | User | Profile Updated | `PUT /api/v1/profiles/{profileId}` | `updateProfile()` · botón *Save profile* |
+| Profiles Management | Create Organization | User | Organization Created | `POST /api/v1/organizations` | `createOrganization()` · botón *Save organization* |
+| Profiles Management | Update Organization | User | Organization Updated | `PUT /api/v1/organizations/{organizationId}` | `updateOrganization()` · botón *Save organization* |
+| Subscription Management | Subscribe to Plan | Fleet Owner | Subscription Requested | `POST /api/v1/subscriptions` | `subscribeToPlan()` · botón *Subscribe* |
+| Subscription Management | Confirm Checkout | Fleet Owner (retorno de Mercado Pago) | Subscription Payment Approved | `POST /api/v1/subscriptions/{subscriptionId}/payments` | `confirmCheckout()` · vista *Checkout result* |
+| Subscription Management | Activate Subscription | Política | Subscription Activated | No aplica (reacciona a Subscription Payment Approved) | Estado *Active* en *My subscription* |
+| Subscription Management | Cancel Subscription | Fleet Owner | Subscription Cancelled | `PATCH /api/v1/subscriptions/{subscriptionId}/status` (`CANCELLED`) | `cancelSubscription()` · botón *Cancel subscription* |
+| Billing Management | Calculate Rental Amount | Política | Rental Amount Calculated | No aplica (reacciona a Operation Completed) | Monto visible en *Invoices* |
+| Billing Management | Issue Invoice | Fleet Owner | Invoice Issued | `PATCH /api/v1/invoices/{invoiceId}/status` (`ISSUED`) | `issueInvoice()` · botón *Issue invoice* |
+| Billing Management | Apply Late Penalty | Política | Late Penalty Applied | No aplica (reacciona a Rental Completed) | Penalidad visible en *Invoices* |
+
+Las queries siguen la misma regla: cada read model del Event Storming corresponde a una clase `<Query>Query` atendida por el `QueryService` del contexto y a un endpoint `GET` del recurso correspondiente.
 
 ### 4.6.2. Software Architecture Context Diagram
 
@@ -1638,92 +1684,125 @@ Todos los Bounded Contexts consumen la **REST API** mediante HTTPS y JSON bajo e
 
 #### REST API Component Diagrams
 
-Los siguientes diagramas detallan la estructura interna de la REST API desarrollada en Spring Boot y Java, siguiendo una arquitectura en capas alineada a los principios de Domain-Driven Design (Interfaces, Application, Domain e Infrastructure).
+Los siguientes diagramas detallan la estructura interna de la REST API desarrollada en Spring Boot y Java, siguiendo una arquitectura en capas alineada a los principios de Domain-Driven Design (Interfaces, Application, Domain e Infrastructure). En cada Bounded Context los controladores REST transforman los recursos en comandos y queries, el `CommandService` y el `QueryService` los atienden con los mismos nombres del Catálogo de comandos de la sección 4.6.1, y los event handlers ejecutan los comandos que corresponden a las políticas del Design-Level Event Storming.
 
 #### API Application Component Diagram
 
-Presenta la visión global de la REST API y la interconexión de sus ocho Bounded Contexts principales con la Single Page Application y la base de datos relacional:
-- **Identity & Access Management**: Autenticación, asignación de roles y control de credenciales mediante `/api/v1/authentication/*`, `/api/v1/user-accounts` y `/api/v1/roles`.
+Presenta la visión global de la REST API y la interconexión de sus ocho Bounded Contexts principales con la Single Page Application, la base de datos relacional y los sistemas externos:
+- **Identity & Access Management**: Registro con rol, inicio de sesión con JWT, cuentas y roles mediante `/api/v1/authentication/*`, `/api/v1/user-accounts` y `/api/v1/roles`.
 - **Profiles Management**: Gestión de datos de perfiles personales y empresas mediante `/api/v1/profiles/*` y `/api/v1/organizations/*`.
-- **Fleet Management**: Administración de maquinaria, disponibilidad y tarifas horarias mediante `/api/v1/machinery/*` y `/api/v1/categories/*`.
-- **Rental Management**: Gestión integral de solicitudes de alquiler y contratos mediante `/api/v1/rentals/*`.
-- **Maintenance Management**: Programación de mantenimientos y reporte de averías mediante `/api/v1/maintenances/*`.
-- **Operations Management**: Registro de horas operadas y cierre de servicios mediante `/api/v1/service-operations/*`.
-- **Subscription Management**: Planes y suscripciones de los propietarios de flota mediante `/api/v1/plans/*` y `/api/v1/subscriptions/*`.
-- **Billing Management**: Creación de preferencias de pago y confirmación de pagos con Mercado Pago mediante `/api/v1/payments/*`.
+- **Fleet Management**: Administración de maquinaria, categorías, disponibilidad y tarifas horarias mediante `/api/v1/machinery/*` y `/api/v1/categories/*`.
+- **Rental Management**: Gestión de solicitudes y reservas de alquiler mediante `/api/v1/rentals/*`.
+- **Maintenance Management**: Programación de mantenimientos y reporte de averías mediante `/api/v1/maintenances/*` y `/api/v1/breakdown-reports/*`.
+- **Operations Management**: Registro y validación de horas trabajadas y cierre de operaciones mediante `/api/v1/service-operations/*`.
+- **Subscription Management**: Planes, suscripciones y pagos con Mercado Pago mediante `/api/v1/plans/*` y `/api/v1/subscriptions/*`.
+- **Billing Management**: Cálculo del monto de alquiler, emisión de comprobantes electrónicos ante SUNAT y penalidades por mora mediante `/api/v1/invoices/*` y `/api/v1/late-penalties/*`.
 - **Shared Kernel Bounded Context**: Clases transversales, Value Objects base y utilitarios compartidos.
 
 ![MaquiControl API Application Component Diagram](assets/c4-api-component-diagram.png)
 
 #### Fleet Management Bounded Context Component Diagram
 
-Detalla la arquitectura interna del Bounded Context de Fleet Management en el backend:
-- `MachineryController`: Controlador REST (`@RestController`) que expone los endpoints GET, POST y PUT bajo la ruta `/api/v1/machinery`.
-- `FleetApplicationService`: Servicio de aplicación (`@Service`) que coordina los casos de uso `registerMachinery()`, `updateMachinery()` y `checkAvailability()`.
-- `Machinery Aggregate`: Entidad agregada del dominio que encapsula las reglas de negocio sobre el estado del equipo, ubicación (`MachineryLocation`) y tarifa (`Money`).
-- `MachineryRepository`: Repositorio Spring Data JPA (`@Repository`) que persiste y consulta datos de maquinaria mediante `save()`, `findById()`, `findByStatus()` y `findAll()`.
-- `SecurityConnector`: Componente de seguridad basado en Spring Security que restringe la modificación de inventario exclusivamente a usuarios con rol administrativo.
+Detalla la arquitectura interna del Bounded Context de Fleet Management:
+- Controladores REST (`@RestController`): `MachineryController` (`/api/v1/machinery`) y `CategoriesController` (`/api/v1/categories`).
+- `FleetManagementCommandService`: atiende los comandos Register Machinery, Update Machinery, Change Machinery Status, Delete Machinery, Create Category, Rename Category y Delete Category.
+- `FleetManagementQueryService`: atiende las queries View Machinery Catalog, Check Machinery Availability y View Categories.
+- `FleetEventHandler` reacciona a Reservation Confirmed, Reservation Cancelled, Maintenance Started y Maintenance Completed, y envía Change Machinery Status.
+- Domain Model: los agregados `Machinery` y `Category` con sus Value Objects, donde se aplican las reglas de negocio.
+- `MachineryRepository` y `CategoryRepository`: repositorios Spring Data JPA (`@Repository`) que persisten los agregados en la base de datos relacional.
 
 ![Fleet Management Component Diagram](assets/c4-fleet-management-component-diagram.png)
 
 #### Rental Management Bounded Context Component Diagram
 
 Detalla la arquitectura interna del Bounded Context de Rental Management:
-- `RentalController`: Controlador REST (`@RestController`) que publica endpoints GET, POST y PATCH en `/api/v1/rentals`.
-- `RentalApplicationService`: Servicio de aplicación (`@Service`) que orquesta los casos de uso `requestRental()`, `confirmRental()`, `cancelRental()` y `updateDates()`.
-- `Rental Aggregate`: Agregado raíz del dominio que gobierna el ciclo de vida del alquiler, el periodo pactado (`RentalPeriod`), el cálculo de importes (`Money`) y las transiciones de estado.
-- `RentalRepository`: Repositorio Spring Data JPA que implementa métodos de consulta y persistencia como `save()`, `findById()`, `findByStatus()` y `findByContractorId()`.
-- `SecurityConnector`: Valida que las solicitudes sean emitidas por contratistas registrados y autorizados.
+- Controladores REST (`@RestController`): `RentalsController` (`/api/v1/rentals`).
+- `RentalManagementCommandService`: atiende los comandos Request Rental, Confirm Reservation, Reject Reservation, Cancel Reservation, Start Rental y Complete Rental.
+- `RentalManagementQueryService`: atiende las queries View Pending Requests, View My Reservations y Check Machinery Availability.
+- `RentalEventHandler` reacciona a Operation Started y Operation Completed, y envía Start Rental y Complete Rental.
+- Domain Model: el agregado `Rental` con sus Value Objects, donde se aplican las reglas de negocio.
+- `RentalRepository`: repositorios Spring Data JPA (`@Repository`) que persisten los agregados en la base de datos relacional.
 
 ![Rental Management Component Diagram](assets/c4-rental-management-component-diagram.png)
 
 #### Maintenance Management Bounded Context Component Diagram
 
 Detalla la arquitectura interna del Bounded Context de Maintenance Management:
-- `MaintenanceController`: Controlador REST (`@RestController`) con endpoints GET, POST y PUT en `/api/v1/maintenances`.
-- `MaintenanceApplicationService`: Servicio de aplicación (`@Service`) que coordina `scheduleMaintenance()`, `reportBreakdown()` y `completeMaintenance()`.
-- `Maintenance Aggregate`: Agregado del dominio encargado de registrar revisiones técnicas, tipos de mantenimiento (`MaintenanceType`) y bloqueos operativos de maquinaria averiada.
-- `MaintenanceRepository`: Repositorio Spring Data JPA con métodos `save()`, `findById()`, `findByMachineryId()` y `findByStatus()`.
-- `SecurityConnector`: Controla que únicamente administradores de flota y personal técnico autorizado gestionen las órdenes de trabajo.
+- Controladores REST (`@RestController`): `MaintenancesController` (`/api/v1/maintenances`) y `BreakdownReportsController` (`/api/v1/breakdown-reports`).
+- `MaintenanceManagementCommandService`: atiende los comandos Schedule Maintenance, Start Maintenance, Complete Maintenance y Report Breakdown.
+- `MaintenanceManagementQueryService`: atiende las queries View Maintenance Schedule, View Breakdown Reports y View Maintenance History.
+- `MaintenanceEventHandler` reacciona a Breakdown Reported y Worked Hours Validated, y envía Schedule Maintenance.
+- Domain Model: el agregado `Maintenance` y la entidad `BreakdownReport` con sus Value Objects, donde se aplican las reglas de negocio.
+- `MaintenanceRepository`: repositorios Spring Data JPA (`@Repository`) que persisten los agregados en la base de datos relacional.
 
 ![Maintenance Management Component Diagram](assets/c4-maintenance-management-component-diagram.png)
 
 #### Operations Management Bounded Context Component Diagram
 
 Detalla la arquitectura interna del Bounded Context de Operations Management:
-- `ServiceOperationController`: Controlador REST (`@RestController`) con endpoints GET, POST, PUT y PATCH en `/api/v1/service-operations`.
-- `OperationsApplicationService`: Servicio de aplicación (`@Service`) que coordina `startService()`, `recordWorkedHours()` y `completeService()`.
-- `ServiceOperation Aggregate`: Agregado que gobierna el parte diario de servicio, validación del horómetro (`WorkedHours`) y cierre operativo.
-- `ServiceOperationRepository`: Repositorio Spring Data JPA que ejecuta operaciones `save()`, `findById()`, `findByRentalId()` y `findByStatus()`.
-- `SecurityConnector`: Valida permisos del operador o supervisor de obra responsable del registro de horas.
+- Controladores REST (`@RestController`): `ServiceOperationsController` (`/api/v1/service-operations`).
+- `OperationsManagementCommandService`: atiende los comandos Start Operation, Record Worked Hours, Validate Worked Hours, Reject Worked Hours y Complete Operation.
+- `OperationsManagementQueryService`: atiende las queries View Service Operation y View Worked Hours.
+- Domain Model: el agregado `ServiceOperation` y la entidad `WorkedHours` con sus Value Objects, donde se aplican las reglas de negocio.
+- `ServiceOperationRepository`: repositorios Spring Data JPA (`@Repository`) que persisten los agregados en la base de datos relacional.
 
 ![Operations Management Component Diagram](assets/c4-operations-management-component-diagram.png)
 
 #### Profiles Management Bounded Context Component Diagram
 
 Detalla la arquitectura interna del Bounded Context de Profiles Management:
-- `ProfileController`: Controlador REST (`@RestController`) que expone los endpoints GET, POST y PUT en `/api/v1/profiles` y `/api/v1/organizations`.
-- `ProfileApplicationService`: Servicio de aplicación (`@Service`) que coordina `viewProfile()`, `updateProfile()` y `registerOrganization()`.
-- `Profile Aggregate`: Agregado del dominio que contiene el perfil de usuario, información de contacto (`ContactInformation`) y pertenencia a empresa u organización (`Organization`).
-- `ProfileRepository`: Repositorio Spring Data JPA con métodos de persistencia `save()`, `findById()`, `findByEmail()` y `existsByUserId()`.
-- `SecurityConnector`: Garantiza que cada usuario consulte y actualice exclusivamente su propia información de perfil o la de su organización autorizada.
+- Controladores REST (`@RestController`): `ProfilesController` (`/api/v1/profiles`) y `OrganizationsController` (`/api/v1/organizations`).
+- `ProfilesManagementCommandService`: atiende los comandos Create Profile, Update Profile, Create Organization y Update Organization.
+- `ProfilesManagementQueryService`: atiende las queries View Profile y View Organization.
+- `ProfilesEventHandler` reacciona a User Signed Up y envía Create Profile.
+- Domain Model: el agregado `Profile` y la entidad `Organization` con sus Value Objects, donde se aplican las reglas de negocio.
+- `ProfileRepository` y `OrganizationRepository`: repositorios Spring Data JPA (`@Repository`) que persisten los agregados en la base de datos relacional.
 
 ![Profiles Management Component Diagram](assets/c4-profiles-management-component-diagram.png)
 
 #### Identity & Access Management Bounded Context Component Diagram
 
 Detalla la arquitectura interna del Bounded Context de Identity & Access Management:
-- `AuthController`: Controlador REST (`@RestController`) que publica los endpoints de autenticación y registro en `/api/v1/authentication/sign-in` y `/api/v1/authentication/sign-up`.
-- `IdentityAccessService`: Servicio de aplicación (`@Service`) que ejecuta `authenticateUser()`, `registerUser()`, `assignRole()` y `changePassword()`.
-- `UserAccount Aggregate`: Agregado raíz de identidad que encapsula credenciales seguras (`Credential`), asignación de roles (`Role`) y políticas de activación o suspensión de cuentas.
-- `UserAccountRepository`: Repositorio Spring Data JPA que provee métodos de acceso a datos como `save()`, `findById()`, `findByEmail()` y `existsByEmail()`.
-- `SecurityFilterChain`: Cadena de filtros de Spring Security equipada con `JwtTokenFilter` para validar firmas de tokens JWT y autorizar el acceso a rutas protegidas.
+- Controladores REST (`@RestController`): `AuthenticationController` (`/api/v1/authentication/sign-up` y `/sign-in`) y `UserAccountsController` (`/api/v1/user-accounts` y `/api/v1/roles`).
+- `IdentityAccessCommandService`: atiende los comandos Sign Up, Sign In y Sign Out.
+- `IdentityAccessQueryService`: atiende las queries Get Signed-in Account y View Roles.
+- Domain Model: el agregado `UserAccount` y la entidad `Role` con sus Value Objects, donde se aplican las reglas de negocio.
+- `UserAccountRepository` y `RoleRepository`: repositorios Spring Data JPA (`@Repository`) que persisten los agregados en la base de datos relacional.
+- `SecurityFilterChain` aplica `JwtTokenFilter` para validar los tokens JWT en las rutas protegidas.
 
 ![Identity and Access Management Component Diagram](assets/c4-identity-access-management-component-diagram.png)
+
+#### Subscription Management Bounded Context Component Diagram
+
+Detalla la arquitectura interna del Bounded Context de Subscription Management:
+- Controladores REST (`@RestController`): `PlansController` (`/api/v1/plans`) y `SubscriptionsController` (`/api/v1/subscriptions`).
+- `SubscriptionManagementCommandService`: atiende los comandos Subscribe to Plan, Confirm Checkout, Activate Subscription y Cancel Subscription.
+- `SubscriptionManagementQueryService`: atiende las queries View Plans, View Subscription y View Payments.
+- `SubscriptionEventHandler` reacciona a Subscription Payment Approved y envía Activate Subscription.
+- Domain Model: el agregado `Subscription` y las entidades `SubscriptionPlan` y `Payment` con sus Value Objects, donde se aplican las reglas de negocio.
+- `SubscriptionRepository` y `SubscriptionPlanRepository`: repositorios Spring Data JPA (`@Repository`) que persisten los agregados en la base de datos relacional.
+- `MercadoPagoService` actúa como Anti-Corruption Layer frente a Mercado Pago Checkout Pro.
+
+![Subscription Management Component Diagram](assets/c4-subscription-management-component-diagram.png)
+
+#### Billing Management Bounded Context Component Diagram
+
+Detalla la arquitectura interna del Bounded Context de Billing Management:
+- Controladores REST (`@RestController`): `InvoicesController` (`/api/v1/invoices`) y `LatePenaltiesController` (`/api/v1/late-penalties`).
+- `BillingManagementCommandService`: atiende los comandos Calculate Rental Amount, Issue Invoice y Apply Late Penalty.
+- `BillingManagementQueryService`: atiende las queries View Invoice, View Invoice History y View Late Penalties.
+- `BillingEventHandler` reacciona a Operation Completed y Rental Completed, y envía Calculate Rental Amount y Apply Late Penalty.
+- Domain Model: los agregados `Invoice` y `LatePenalty` con sus Value Objects, donde se aplican las reglas de negocio.
+- `InvoiceRepository` y `LatePenaltyRepository`: repositorios Spring Data JPA (`@Repository`) que persisten los agregados en la base de datos relacional.
+- `SunatService` actúa como Anti-Corruption Layer para enviar los comprobantes electrónicos a SUNAT.
+
+![Billing Management Component Diagram](assets/c4-billing-management-component-diagram.png)
 
 ## 4.7 Software Object-Oriented Design
 
 El diseño orientado a objetos de MaquiControl representa las principales clases, interfaces, enumeraciones, atributos, operaciones y relaciones que conforman cada Bounded Context. Los modelos mantienen los límites definidos mediante Domain-Driven Design y evitan los tipos de datos primitivos en los atributos y parámetros del dominio. Cada identificador se modela como un Value Object propio (`MachineryId`, `RentalId`, `ProfileId`, entre otros), de modo que un agregado de otro contexto se referencia por su identificador tipado y no por un número sin significado, evitando el acoplamiento directo entre contextos. Los conceptos del dominio que antes se representaban como texto o números también se modelan como Value Objects que validan su propio formato, por ejemplo `EmailAddress`, `PhoneNumber`, `PersonName`, `DocumentNumber`, `TaxId`, `MachinerySpecification`, `HoursWorked`, `WorkShift`, `InvoiceNumber` y `MachineryLimit`. Los valores monetarios se modelan mediante el Value Object `Money`, que encapsula el importe y su moneda. Los tipos primitivos solo aparecen dentro de los Value Objects, que son los responsables de validarlos. Los identificadores de cada contexto se agrupan en el paquete `Identifiers` de su diagrama.
+
+La capa de aplicación de cada contexto se divide en un `CommandService` y un `QueryService`. El `CommandService` tiene un método `handle` por cada comando del Design-Level Event Storming, y cada comando se modela como una clase propia agrupada en el paquete `Commands` (por ejemplo `RegisterMachineryCommand` o `RejectReservationCommand`). Del mismo modo, el `QueryService` atiende una clase por cada query de los read models, agrupadas en el paquete `Queries`. Así, los nombres del diagrama de clases coinciden uno a uno con el Catálogo de comandos de la sección 4.6.1 y con la implementación en Spring Boot.
 
 ### 4.7.1 Class Diagrams
 
@@ -1765,7 +1844,7 @@ El diagrama de Subscription Management representa el agregado `Subscription`, la
 
 #### Billing Management Bounded Context Class Diagram
 
-El diagrama de Billing Management representa los agregados `Invoice` y `Late Penalty`, ambos referenciando el alquiler correspondiente mediante un identificador externo. Permite calcular el monto de alquiler, emitir o rechazar el comprobante electrónico y aplicar penalidades por mora, utilizando el Value Object `Money` para los importes involucrados.
+El diagrama de Billing Management representa los agregados `Invoice` y `Late Penalty`, ambos referenciando el alquiler correspondiente mediante un identificador externo. Atiende los comandos Calculate Rental Amount, Issue Invoice y Apply Late Penalty, y registra el rechazo de SUNAT cuando ocurre, utilizando el Value Object `Money` para los importes involucrados.
 
 ![Billing Management Class Diagram](assets/billing-management-class-diagram.png)
 

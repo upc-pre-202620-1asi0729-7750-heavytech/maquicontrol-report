@@ -18,13 +18,9 @@ package "Identity & Access Management" {
     - roles: Set<Role>
     - createdAt: LocalDateTime
     - lastLoginAt: LocalDateTime
-    + register(): void
-    + authenticate(rawPassword: PlainPassword): Boolean
-    + assignRole(role: Role): void
-    + removeRole(role: Role): void
-    + changePassword(passwordHash: PasswordHash): void
-    + activate(): void
-    + suspend(): void
+    + signUp(role: Role): void
+    + signIn(rawPassword: PlainPassword): Boolean
+    + signOut(): void
     + hasRole(roleName: RoleName): Boolean
   }
 
@@ -64,15 +60,40 @@ package "Identity & Access Management" {
     + existsByEmail(email: EmailAddress): Boolean
   }
 
-  class IdentityAccessService <<Application Service>> {
+  class IdentityAccessCommandService <<Application Service>> {
     - accountRepository: UserAccountRepository
-    + registerUser(account: UserAccount): UserAccount
-    + authenticateUser(email: EmailAddress, password: PlainPassword): UserAccount
-    + assignRole(accountId: UserAccountId, role: Role): UserAccount
-    + changePassword(accountId: UserAccountId, passwordHash: PasswordHash): UserAccount
-    + viewAccountDetails(accountId: UserAccountId): UserAccount
-    + viewUserRoles(accountId: UserAccountId): Set<Role>
-    + checkAuthenticationStatus(accountId: UserAccountId): AccountStatus
+    + handle(command: SignUpCommand): Optional<UserAccount>
+    + handle(command: SignInCommand): Optional<UserAccount>
+    + handle(command: SignOutCommand): void
+  }
+
+  class IdentityAccessQueryService <<Application Service>> {
+    - accountRepository: UserAccountRepository
+    + handle(query: GetSignedInAccountQuery): Optional<UserAccount>
+    + handle(query: ViewRolesQuery): List<Role>
+  }
+
+  package "Commands" {
+    class SignUpCommand <<Command>> {
+      - email: EmailAddress
+      - password: PlainPassword
+      - roleName: RoleName
+    }
+    class SignInCommand <<Command>> {
+      - email: EmailAddress
+      - password: PlainPassword
+    }
+    class SignOutCommand <<Command>> {
+      - userAccountId: UserAccountId
+    }
+  }
+
+  package "Queries" {
+    class GetSignedInAccountQuery <<Query>> {
+      - userAccountId: UserAccountId
+    }
+    class ViewRolesQuery <<Query>> {
+    }
   }
 
   class EmailAddress <<Value Object>> {
@@ -108,12 +129,19 @@ UserAccount "1" *-- "1" Credential : owns >
 UserAccount "1" o-- "1..*" Role : has >
 UserAccount --> AccountStatus : has >
 Role --> RoleName : identified by >
-IdentityAccessService "1" --> "1" UserAccountRepository : uses >
+IdentityAccessCommandService "1" --> "1" UserAccountRepository : uses >
+IdentityAccessQueryService "1" --> "1" UserAccountRepository : uses >
 UserAccountRepository ..> UserAccount : persists >
 
 UserAccount "1" *-- "1" EmailAddress : email >
 Credential "1" *-- "1" PasswordHash : passwordHash >
 Role "1" *-- "1" Description : description >
+
+IdentityAccessCommandService "1" ..> "1" SignUpCommand : handles >
+IdentityAccessCommandService "1" ..> "1" SignInCommand : handles >
+IdentityAccessCommandService "1" ..> "1" SignOutCommand : handles >
+IdentityAccessQueryService "1" ..> "1" GetSignedInAccountQuery : handles >
+IdentityAccessQueryService "1" ..> "1" ViewRolesQuery : handles >
 
 legend right
   |= Symbol |= Meaning |
@@ -124,5 +152,6 @@ legend right
   | --> | Association |
   | ..> | Dependency |
 endlegend
+
 
 @enduml
