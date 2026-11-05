@@ -24,7 +24,7 @@ entity "subscriptions" as subscriptions {
   * owner_profile_id : BIGINT <<EXTERNAL REF>>
   * plan_id : BIGINT <<FK, NOT NULL>>
   * status : VARCHAR(20) <<NOT NULL>>
-  * started_at : TIMESTAMP <<NOT NULL>>
+  started_at : TIMESTAMP
   current_period_end : TIMESTAMP
   * created_at : TIMESTAMP <<NOT NULL>>
   * updated_at : TIMESTAMP <<NOT NULL>>
@@ -65,8 +65,11 @@ note right of subscriptions
     REFERENCES subscription_plans(id)
     ON DELETE RESTRICT
   CHECK (status IN
-    PENDING, ACTIVE, PAST_DUE,
-    CANCELLED, EXPIRED)
+    PENDING_PAYMENT, ACTIVE, CANCELLED)
+  CHECK (
+    status <> 'ACTIVE'
+    OR started_at IS NOT NULL
+  )
 
   owner_profile_id references a Profile
   in Profiles Management.
@@ -82,7 +85,8 @@ note right of payments
   CHECK (amount >= 0)
   CHECK (currency IN ('PEN', 'USD'))
   CHECK (status IN
-    PENDING, APPROVED, REJECTED)
+    PENDING, IN_PROCESS, APPROVED,
+    REJECTED, CANCELLED)
   CHECK (
     status <> 'APPROVED'
     OR paid_at IS NOT NULL

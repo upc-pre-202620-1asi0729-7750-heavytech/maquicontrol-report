@@ -40,10 +40,11 @@ note right of rentals
   CHECK (total_currency IN ('PEN', 'USD'))
   CHECK (status IN
     REQUESTED, CONFIRMED, IN_PROGRESS,
-    COMPLETED, CANCELLED)
+    COMPLETED, REJECTED, CANCELLED)
   CHECK (
-    status <> 'CANCELLED'
-    OR cancelled_at IS NOT NULL
+    status NOT IN ('CANCELLED', 'REJECTED')
+    OR (cancelled_at IS NOT NULL
+        AND cancellation_reason IS NOT NULL)
   )
 
   machinery_id references Machinery.
