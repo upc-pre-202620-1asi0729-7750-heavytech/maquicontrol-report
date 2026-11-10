@@ -1,37 +1,65 @@
 @startuml
 !include <C4/C4_Component>
 
-title MaquiControl - Billing Management Bounded Context Component Diagram
+
+title MaquiControl - Billing Management Bounded Context Component Diagram\n<size:12>Layers and packages of the bounded context</size>
 
 Container(webapp, "Single Page Application", "Angular", "Provides the user interface through a web browser.")
 
 Container_Boundary(bc, "Billing Management Bounded Context") {
 
-    Component(controller0, "InvoicesController", "Spring Boot @RestController", "Exposes /api/v1/invoices endpoints and maps resources to commands and queries.")
-    Component(controller1, "LatePenaltiesController", "Spring Boot @RestController", "Exposes /api/v1/late-penalties endpoints and maps resources to commands and queries.")
-    Component(commandService, "BillingManagementCommandService", "Spring Boot @Service", "Handles CalculateRentalAmountCommand, IssueInvoiceCommand, ApplyLatePenaltyCommand.")
-    Component(queryService, "BillingManagementQueryService", "Spring Boot @Service", "Handles ViewInvoiceQuery, ViewInvoiceHistoryQuery, ViewLatePenaltiesQuery.")
-    Component(eventHandler0, "BillingEventHandler", "Spring @EventListener", "Reacts to Operation Completed and Rental Completed and executes CalculateRentalAmountCommand and ApplyLatePenaltyCommand.")
-    Component(domain, "Domain Model", "Java", "Invoice and LatePenalty aggregates, Money, InvoiceNumber and SunatCdr value objects.")
-    Component(repository, "InvoiceRepository and LatePenaltyRepository", "Spring Data JPA @Repository", "Persists and reads the aggregates of the bounded context.")
-    Component(sunatAcl, "SunatService", "Spring @Service (Anti-Corruption Layer)", "Translates requests and responses of SUNAT.")
+  Boundary(interfaces, "interfaces") {
+    Component(rest, "interfaces.rest", "Java package", "Controllers that expose /api/v1/invoices and /late-penalties, with the resources and transform subpackages that map JSON to commands and queries.")
+  }
+  Boundary(application, "application") {
+    Component(cs, "application.commandservices", "Java package", "Command service contract for Calculate Rental Amount, Issue Invoice and Apply Late Penalty.")
+    Component(qs, "application.queryservices", "Java package", "Query service contract for View Invoice, View Invoice History and View Late Penalties.")
+    Component(ics, "application.internal.commandservices", "Java package", "Command service implementation: loads the aggregate, runs its behavior and saves it, returning a Result.")
+    Component(iqs, "application.internal.queryservices", "Java package", "Query service implementation that reads aggregates through the repositories.")
+    Component(ieh, "application.internal.eventhandlers", "Java package", "Listen to Operation Completed and Rental Completed and send Calculate Rental Amount and Apply Late Penalty.")
+    Component(iob, "application.internal.outboundservices", "Java package", "Anti-corruption layer and electronic invoicing contract.")
+  }
+  Boundary(domain, "domain") {
+    Component(dagg, "domain.model.aggregates", "Java package", "Aggregate roots: Invoice and LatePenalty.")
+    Component(dvo, "domain.model.valueobjects", "Java package", "Value objects and enums of the bounded context.")
+    Component(dcmd, "domain.model.commands", "Java package", "One record per command: Calculate Rental Amount, Issue Invoice and Apply Late Penalty.")
+    Component(dqry, "domain.model.queries", "Java package", "One record per query: View Invoice, View Invoice History and View Late Penalties.")
+    Component(devt, "domain.model.events", "Java package", "Domain events registered by the aggregates.")
+    Component(drep, "domain.repositories", "Java package", "Repository interfaces of the aggregates, without JPA details.")
+  }
+  Boundary(infrastructure, "infrastructure") {
+    Component(jad, "infrastructure.persistence.jpa.adapters", "Java package", "Implement the domain repositories and publish the aggregate events to the outbox.")
+    Component(jas, "infrastructure.persistence.jpa.assemblers", "Java package", "Convert between aggregates and persistence entities.")
+    Component(jen, "infrastructure.persistence.jpa.entities", "Java package", "JPA persistence entities mapped to the tables.")
+    Component(jre, "infrastructure.persistence.jpa.repositories", "Java package", "Spring Data JPA repositories.")
+    Component(sunatpkg, "infrastructure.invoicing.sunat", "Java package", "Electronic invoicing client for SUNAT.")
+  }
 }
 
+Component(shared, "shared", "Java package", "Shared kernel: Result, ApplicationError, Money, base aggregate and the outbox relay.")
 System_Ext(sunat, "SUNAT", "Peruvian tax authority electronic invoicing service.")
-ContainerDb(database, "Database", "Relational Database", "Stores invoices and late penalties.")
+Component(opsacl, "operations.interfaces.acl", "Java package", "Context facade of another bounded context.")
+Component(rentalacl, "rental.interfaces.acl", "Java package", "Context facade of another bounded context.")
+ContainerDb(database, "Database", "MySQL", "Stores invoices and late penalties.")
 
-Rel(webapp, controller0, "Calls /api/v1/invoices", "HTTPS / JSON")
-Rel(controller0, commandService, "Sends commands")
-Rel(controller0, queryService, "Sends queries")
-Rel(webapp, controller1, "Calls /api/v1/late-penalties", "HTTPS / JSON")
-Rel(controller1, commandService, "Sends commands")
-Rel(controller1, queryService, "Sends queries")
-Rel(eventHandler0, commandService, "Sends CalculateRentalAmountCommand and ApplyLatePenaltyCommand")
-Rel(commandService, domain, "Executes aggregate behavior")
-Rel(commandService, repository, "Saves aggregates")
-Rel(queryService, repository, "Reads aggregates")
-Rel(commandService, sunatAcl, "Uses")
-Rel(sunatAcl, sunat, "Sends electronic invoices", "HTTPS / JSON")
-Rel(repository, database, "Reads from and writes to", "JPA / SQL")
+Rel_D(webapp, rest, "Calls /api/v1/invoices and /late-penalties", "HTTPS / JSON")
+Rel_D(rest, cs, "Sends commands")
+Rel_D(rest, qs, "Sends queries")
+Rel_D(ics, dagg, "Runs aggregate behavior")
+Rel_D(ics, drep, "Saves aggregates")
+Rel_D(iqs, drep, "Reads aggregates")
+Rel_U(jad, drep, "Implements")
+Rel_R(jad, jre, "Uses")
+Rel_D(jre, database, "Reads from and writes to", "JPA / SQL")
+rest -[hidden]down-> ics
+ics -[hidden]down-> dagg
+dagg -[hidden]down-> jad
+jad -[hidden]down-> shared
+Rel_L(ieh, cs, "Sends commands")
+Rel_D(iob, opsacl, "Calls")
+Rel_D(iob, rentalacl, "Calls")
+Rel_U(sunatpkg, iob, "Implements")
+Rel_D(sunatpkg, sunat, "Sends electronic invoices", "HTTPS / JSON")
+
 
 @enduml

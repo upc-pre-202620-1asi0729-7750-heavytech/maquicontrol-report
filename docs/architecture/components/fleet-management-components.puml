@@ -1,33 +1,59 @@
 @startuml
 !include <C4/C4_Component>
 
-title MaquiControl - Fleet Management Bounded Context Component Diagram
+
+title MaquiControl - Fleet Management Bounded Context Component Diagram\n<size:12>Layers and packages of the bounded context</size>
 
 Container(webapp, "Single Page Application", "Angular", "Provides the user interface through a web browser.")
 
 Container_Boundary(bc, "Fleet Management Bounded Context") {
 
-    Component(controller0, "MachineryController", "Spring Boot @RestController", "Exposes /api/v1/machinery endpoints and maps resources to commands and queries.")
-    Component(controller1, "CategoriesController", "Spring Boot @RestController", "Exposes /api/v1/categories endpoints and maps resources to commands and queries.")
-    Component(commandService, "FleetManagementCommandService", "Spring Boot @Service", "Handles RegisterMachineryCommand, UpdateMachineryCommand, ChangeMachineryStatusCommand, DeleteMachineryCommand, CreateCategoryCommand, RenameCategoryCommand, DeleteCategoryCommand.")
-    Component(queryService, "FleetManagementQueryService", "Spring Boot @Service", "Handles ViewMachineryCatalogQuery, CheckMachineryAvailabilityQuery, ViewCategoriesQuery.")
-    Component(eventHandler0, "FleetEventHandler", "Spring @EventListener", "Reacts to Reservation Confirmed, Reservation Cancelled, Maintenance Started and Maintenance Completed and executes ChangeMachineryStatusCommand.")
-    Component(domain, "Domain Model", "Java", "Machinery and Category aggregates, MachinerySpecification, MachineryLocation and Money value objects.")
-    Component(repository, "MachineryRepository and CategoryRepository", "Spring Data JPA @Repository", "Persists and reads the aggregates of the bounded context.")
+  Boundary(interfaces, "interfaces") {
+    Component(rest, "interfaces.rest", "Java package", "Controllers that expose /api/v1/machinery and /categories, with the resources and transform subpackages that map JSON to commands and queries.")
+    Component(ifacl, "interfaces.acl", "Java package", "Context facade that other bounded contexts use to check machinery ownership, status and hourly rate.")
+  }
+  Boundary(application, "application") {
+    Component(cs, "application.commandservices", "Java package", "Command service contract for Register Machinery, Update Machinery, Change Machinery Status, Delete Machinery, Create Category, Rename Category and Delete Category.")
+    Component(qs, "application.queryservices", "Java package", "Query service contract for View Machinery Catalog, Check Machinery Availability and View Categories.")
+    Component(ics, "application.internal.commandservices", "Java package", "Command service implementation: loads the aggregate, runs its behavior and saves it, returning a Result.")
+    Component(iqs, "application.internal.queryservices", "Java package", "Query service implementation that reads aggregates through the repositories.")
+    Component(ieh, "application.internal.eventhandlers", "Java package", "Listen to integration events from Rental and Maintenance and send Change Machinery Status; seed the categories at startup.")
+    Component(appacl, "application.acl", "Java package", "Implementation of the context facade on top of the query services.")
+  }
+  Boundary(domain, "domain") {
+    Component(dagg, "domain.model.aggregates", "Java package", "Aggregate roots: Machinery and Category.")
+    Component(dvo, "domain.model.valueobjects", "Java package", "Value objects and enums of the bounded context.")
+    Component(dcmd, "domain.model.commands", "Java package", "One record per command: Register Machinery, Update Machinery, Change Machinery Status, Delete Machinery, Create Category, Rename Category and Delete Category.")
+    Component(dqry, "domain.model.queries", "Java package", "One record per query: View Machinery Catalog, Check Machinery Availability and View Categories.")
+    Component(devt, "domain.model.events", "Java package", "Domain events registered by the aggregates.")
+    Component(drep, "domain.repositories", "Java package", "Repository interfaces of the aggregates, without JPA details.")
+  }
+  Boundary(infrastructure, "infrastructure") {
+    Component(jad, "infrastructure.persistence.jpa.adapters", "Java package", "Implement the domain repositories and publish the aggregate events to the outbox.")
+    Component(jas, "infrastructure.persistence.jpa.assemblers", "Java package", "Convert between aggregates and persistence entities.")
+    Component(jen, "infrastructure.persistence.jpa.entities", "Java package", "JPA persistence entities mapped to the tables.")
+    Component(jre, "infrastructure.persistence.jpa.repositories", "Java package", "Spring Data JPA repositories.")
+  }
 }
 
-ContainerDb(database, "Database", "Relational Database", "Stores categories, machinery and machinery locations.")
+Component(shared, "shared", "Java package", "Shared kernel: Result, ApplicationError, Money, base aggregate and the outbox relay.")
+ContainerDb(database, "Database", "MySQL", "Stores machinery and categories.")
 
-Rel(webapp, controller0, "Calls /api/v1/machinery", "HTTPS / JSON")
-Rel(controller0, commandService, "Sends commands")
-Rel(controller0, queryService, "Sends queries")
-Rel(webapp, controller1, "Calls /api/v1/categories", "HTTPS / JSON")
-Rel(controller1, commandService, "Sends commands")
-Rel(controller1, queryService, "Sends queries")
-Rel(eventHandler0, commandService, "Sends ChangeMachineryStatusCommand")
-Rel(commandService, domain, "Executes aggregate behavior")
-Rel(commandService, repository, "Saves aggregates")
-Rel(queryService, repository, "Reads aggregates")
-Rel(repository, database, "Reads from and writes to", "JPA / SQL")
+Rel_D(webapp, rest, "Calls /api/v1/machinery and /categories", "HTTPS / JSON")
+Rel_D(rest, cs, "Sends commands")
+Rel_D(rest, qs, "Sends queries")
+Rel_D(ics, dagg, "Runs aggregate behavior")
+Rel_D(ics, drep, "Saves aggregates")
+Rel_D(iqs, drep, "Reads aggregates")
+Rel_U(jad, drep, "Implements")
+Rel_R(jad, jre, "Uses")
+Rel_D(jre, database, "Reads from and writes to", "JPA / SQL")
+rest -[hidden]down-> ics
+ics -[hidden]down-> dagg
+dagg -[hidden]down-> jad
+jad -[hidden]down-> shared
+Rel_L(ieh, cs, "Sends commands")
+Rel_U(appacl, ifacl, "Implements")
+
 
 @enduml
