@@ -1,0 +1,141 @@
+@startuml
+title MaquiControl - Fleet Management Bounded Context\nMachinery Aggregate - Class Diagram
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam linetype ortho
+hide empty members
+
+package "Fleet Management - Machinery Aggregate" {
+
+  package "Aggregate" {
+    class Machinery <<Aggregate Root>> {
+    - id: MachineryId
+    - ownerProfileId: ProfileId
+    - categoryId: CategoryId
+    - specification: MachinerySpecification
+    - hourlyRate: Money
+    - status: MachineryStatus
+    - location: MachineryLocation
+    - createdAt: LocalDateTime
+    - updatedAt: LocalDateTime
+    + update(specification: MachinerySpecification, hourlyRate: Money, location: MachineryLocation, category: Category): void
+    + changeStatus(status: MachineryStatus): void
+    + isAvailable(): Boolean
+    }
+  }
+  package "Value Objects" {
+    class MachineryLocation <<Value Object>> {
+    - department: String
+    - province: String
+    - district: String
+    - address: String
+    - latitude: Double
+    - longitude: Double
+    + fullAddress(): String
+    + isValid(): Boolean
+    }
+    class Money <<Value Object>> {
+    - amount: BigDecimal
+    - currency: Currency
+    + add(other: Money): Money
+    + multiply(factor: BigDecimal): Money
+    + isNonNegative(): Boolean
+    }
+    enum Currency {
+    PEN
+    USD
+    }
+    enum MachineryStatus {
+    AVAILABLE
+    RESERVED
+    RENTED
+    IN_MAINTENANCE
+    OUT_OF_SERVICE
+    }
+    class MachinerySpecification <<Value Object>> {
+    - name: String
+    - brand: String
+    - model: String
+    - manufactureYear: Integer
+    - description: String
+    + isValidYear(): Boolean
+    }
+    class CategoryId <<Value Object>> {
+    - value: Long
+    }
+    class MachineryId <<Value Object>> {
+    - value: Long
+    }
+    class ProfileId <<Value Object>> {
+    - value: Long
+    }
+  }
+  package "Commands" {
+    class RegisterMachineryCommand <<Command>> {
+    - ownerProfileId: ProfileId
+    - categoryId: CategoryId
+    - specification: MachinerySpecification
+    - hourlyRate: Money
+    - location: MachineryLocation
+    }
+    class UpdateMachineryCommand <<Command>> {
+    - machineryId: MachineryId
+    - categoryId: CategoryId
+    - specification: MachinerySpecification
+    - hourlyRate: Money
+    - location: MachineryLocation
+    }
+    class ChangeMachineryStatusCommand <<Command>> {
+    - machineryId: MachineryId
+    - status: MachineryStatus
+    }
+    class DeleteMachineryCommand <<Command>> {
+    - machineryId: MachineryId
+    }
+  }
+  package "Queries" {
+    class ViewMachineryCatalogQuery <<Query>> {
+    - categoryId: CategoryId [0..1]
+    }
+    class CheckMachineryAvailabilityQuery <<Query>> {
+    - machineryId: MachineryId
+    }
+  }
+  package "Repositories" {
+    interface MachineryRepository {
+    + save(machinery: Machinery): Machinery
+    + findById(id: MachineryId): Optional<Machinery>
+    + findAll(): List<Machinery>
+    + findAvailable(): List<Machinery>
+    + findByCategoryId(categoryId: CategoryId): List<Machinery>
+    + existsById(id: MachineryId): Boolean
+    }
+  }
+}
+
+Machinery "1" *-- "1" MachineryLocation : contains >
+Machinery "1" *-- "1" Money : hourly rate >
+Money --> Currency : expressed in >
+Machinery --> MachineryStatus : has >
+MachineryRepository ..> Machinery : persists >
+Machinery "1" *-- "1" MachinerySpecification : specification >
+RegisterMachineryCommand ..> Machinery : targets >
+UpdateMachineryCommand ..> Machinery : targets >
+ChangeMachineryStatusCommand ..> Machinery : targets >
+DeleteMachineryCommand ..> Machinery : targets >
+ViewMachineryCatalogQuery ..> Machinery : targets >
+CheckMachineryAvailabilityQuery ..> Machinery : targets >
+
+legend right
+  |= Symbol |= Meaning |
+  | + | Public |
+  | - | Private |
+  | *-- | Composition |
+  | --> | Association |
+  | ..> | Dependency |
+endlegend
+
+@enduml

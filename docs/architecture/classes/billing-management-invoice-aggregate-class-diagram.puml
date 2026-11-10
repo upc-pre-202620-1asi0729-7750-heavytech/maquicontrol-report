@@ -1,0 +1,109 @@
+@startuml
+title MaquiControl - Billing Management Bounded Context\nInvoice Aggregate - Class Diagram
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam linetype ortho
+hide empty members
+
+package "Billing Management - Invoice Aggregate" {
+
+  package "Aggregate" {
+    class Invoice <<Aggregate Root>> {
+    - id: InvoiceId
+    - rentalId: RentalId
+    - invoiceNumber: InvoiceNumber
+    - sunatCdr: SunatCdr
+    - amount: Money
+    - status: InvoiceStatus
+    - issuedAt: LocalDateTime
+    + calculate(amount: Money): void
+    + issue(invoiceNumber: InvoiceNumber, sunatCdr: SunatCdr): void
+    + reject(reason: Reason): void
+    + isIssued(): Boolean
+    }
+  }
+  package "Value Objects" {
+    class Money <<Value Object>> {
+    - amount: BigDecimal
+    - currency: Currency
+    + add(other: Money): Money
+    + isNonNegative(): Boolean
+    }
+    enum Currency {
+    PEN
+    USD
+    }
+    enum InvoiceStatus {
+    PENDING
+    ISSUED
+    REJECTED
+    }
+    class Reason <<Value Object>> {
+    - value: String
+    }
+    class InvoiceNumber <<Value Object>> {
+    - series: String
+    - correlative: Integer
+    + format(): String
+    }
+    class SunatCdr <<Value Object>> {
+    - value: String
+    + isAccepted(): Boolean
+    }
+    class InvoiceId <<Value Object>> {
+    - value: Long
+    }
+    class RentalId <<Value Object>> {
+    - value: Long
+    }
+  }
+  package "Commands" {
+    class CalculateRentalAmountCommand <<Command>> {
+    - rentalId: RentalId
+    - amount: Money
+    }
+    class IssueInvoiceCommand <<Command>> {
+    - invoiceId: InvoiceId
+    }
+  }
+  package "Queries" {
+    class ViewInvoiceQuery <<Query>> {
+    - invoiceId: InvoiceId
+    }
+    class ViewInvoiceHistoryQuery <<Query>> {
+    - rentalId: RentalId
+    }
+  }
+  package "Repositories" {
+    interface InvoiceRepository {
+    + save(invoice: Invoice): Invoice
+    + findById(id: InvoiceId): Optional<Invoice>
+    + findByRentalId(rentalId: RentalId): Optional<Invoice>
+    }
+  }
+}
+
+Invoice "1" *-- "1" Money : amount >
+Money --> Currency : expressed in >
+Invoice --> InvoiceStatus : has >
+InvoiceRepository ..> Invoice : persists >
+Invoice "1" *-- "1" InvoiceNumber : invoiceNumber >
+Invoice "1" *-- "1" SunatCdr : sunatCdr >
+CalculateRentalAmountCommand ..> Invoice : targets >
+IssueInvoiceCommand ..> Invoice : targets >
+ViewInvoiceQuery ..> Invoice : targets >
+ViewInvoiceHistoryQuery ..> Invoice : targets >
+
+legend right
+  |= Symbol |= Meaning |
+  | + | Public |
+  | - | Private |
+  | *-- | Composition |
+  | --> | Association |
+  | ..> | Dependency |
+endlegend
+
+@enduml

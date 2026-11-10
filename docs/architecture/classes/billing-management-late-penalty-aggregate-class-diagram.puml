@@ -1,0 +1,80 @@
+@startuml
+title MaquiControl - Billing Management Bounded Context\nLate Penalty Aggregate - Class Diagram
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam linetype ortho
+hide empty members
+
+package "Billing Management - Late Penalty Aggregate" {
+
+  package "Aggregate" {
+    class LatePenalty <<Aggregate Root>> {
+    - id: LatePenaltyId
+    - rentalId: RentalId
+    - amount: Money
+    - reason: Reason
+    - appliedAt: LocalDateTime
+    + apply(): void
+    }
+  }
+  package "Value Objects" {
+    class Money <<Value Object>> {
+    - amount: BigDecimal
+    - currency: Currency
+    + add(other: Money): Money
+    + isNonNegative(): Boolean
+    }
+    enum Currency {
+    PEN
+    USD
+    }
+    class Reason <<Value Object>> {
+    - value: String
+    }
+    class LatePenaltyId <<Value Object>> {
+    - value: Long
+    }
+    class RentalId <<Value Object>> {
+    - value: Long
+    }
+  }
+  package "Commands" {
+    class ApplyLatePenaltyCommand <<Command>> {
+    - rentalId: RentalId
+    - amount: Money
+    - reason: Reason
+    }
+  }
+  package "Queries" {
+    class ViewLatePenaltiesQuery <<Query>> {
+    - rentalId: RentalId
+    }
+  }
+  package "Repositories" {
+    interface LatePenaltyRepository {
+    + save(penalty: LatePenalty): LatePenalty
+    + findByRentalId(rentalId: RentalId): List<LatePenalty>
+    }
+  }
+}
+
+LatePenalty "1" *-- "1" Money : amount >
+Money --> Currency : expressed in >
+LatePenaltyRepository ..> LatePenalty : persists >
+LatePenalty "1" *-- "1" Reason : reason >
+ApplyLatePenaltyCommand ..> LatePenalty : targets >
+ViewLatePenaltiesQuery ..> LatePenalty : targets >
+
+legend right
+  |= Symbol |= Meaning |
+  | + | Public |
+  | - | Private |
+  | *-- | Composition |
+  | --> | Association |
+  | ..> | Dependency |
+endlegend
+
+@enduml

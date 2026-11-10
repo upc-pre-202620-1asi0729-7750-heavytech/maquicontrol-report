@@ -1,5 +1,5 @@
 @startuml
-title MaquiControl - Identity & Access Management Bounded Context\nClass Diagram
+title MaquiControl - Identity & Access Management Bounded Context\nGeneral Class Diagram
 
 skinparam classAttributeIconSize 0
 skinparam shadowing false

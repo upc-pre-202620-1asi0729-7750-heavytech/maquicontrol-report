@@ -1,0 +1,87 @@
+@startuml
+title MaquiControl - Subscription Management Bounded Context\nSubscription Plan Aggregate - Class Diagram
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam linetype ortho
+hide empty members
+
+package "Subscription Management - Subscription Plan Aggregate" {
+
+  package "Aggregate" {
+    class SubscriptionPlan <<Aggregate Root>> {
+    - id: PlanId
+    - code: PlanCode
+    - name: PlanName
+    - machineryLimit: MachineryLimit
+    - price: Money
+    - billingCycle: BillingCycle
+    + allowsAdditionalMachinery(currentCount: MachineryCount): Boolean
+    }
+  }
+  package "Value Objects" {
+    class Money <<Value Object>> {
+    - amount: BigDecimal
+    - currency: Currency
+    + add(other: Money): Money
+    + isNonNegative(): Boolean
+    }
+    enum Currency {
+    PEN
+    USD
+    }
+    enum PlanCode {
+    ESSENTIAL
+    PRO
+    }
+    enum BillingCycle {
+    MONTHLY
+    ANNUAL
+    }
+    class PlanName <<Value Object>> {
+    - value: String
+    }
+    class MachineryLimit <<Value Object>> {
+    - value: Integer
+    + allows(currentCount: MachineryCount): Boolean
+    }
+    class MachineryCount <<Value Object>> {
+    - value: Integer
+    }
+    class PlanId <<Value Object>> {
+    - value: Long
+    }
+  }
+  package "Queries" {
+    class ViewPlansQuery <<Query>> {
+    }
+  }
+  package "Repositories" {
+    interface SubscriptionPlanRepository {
+    + findAll(): List<SubscriptionPlan>
+    + findByCode(code: PlanCode): Optional<SubscriptionPlan>
+    }
+  }
+}
+
+SubscriptionPlan "1" *-- "1" Money : price >
+Money --> Currency : expressed in >
+SubscriptionPlan --> PlanCode : identified by >
+SubscriptionPlan --> BillingCycle : billed as >
+SubscriptionPlanRepository ..> SubscriptionPlan : persists >
+SubscriptionPlan "1" *-- "1" PlanName : name >
+SubscriptionPlan "1" *-- "1" MachineryLimit : machineryLimit >
+ViewPlansQuery ..> SubscriptionPlan : targets >
+
+legend right
+  |= Symbol |= Meaning |
+  | + | Public |
+  | - | Private |
+  | *-- | Composition |
+  | --> | Association |
+  | ..> | Dependency |
+endlegend
+
+@enduml
