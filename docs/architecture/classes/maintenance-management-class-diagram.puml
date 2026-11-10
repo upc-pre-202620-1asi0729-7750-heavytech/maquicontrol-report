@@ -24,6 +24,7 @@ package "Maintenance Management" {
     - breakdownReports: List<BreakdownReport>
     + start(technicianName: TechnicianName): void
     + complete(cost: Money): void
+    + cancel(): void
     + reportBreakdown(report: BreakdownReport): void
     + isPending(): Boolean
   }
@@ -83,6 +84,7 @@ package "Maintenance Management" {
     - maintenanceRepository: MaintenanceRepository
     + handle(command: ScheduleMaintenanceCommand): Optional<Maintenance>
     + handle(command: StartMaintenanceCommand): Optional<Maintenance>
+    + handle(command: CancelMaintenanceCommand): Optional<Maintenance>
     + handle(command: CompleteMaintenanceCommand): Optional<Maintenance>
     + handle(command: ReportBreakdownCommand): Optional<Maintenance>
   }
@@ -104,6 +106,9 @@ package "Maintenance Management" {
     class StartMaintenanceCommand <<Command>> {
       - maintenanceId: MaintenanceId
       - technicianName: TechnicianName
+    }
+    class CancelMaintenanceCommand <<Command>> {
+      - maintenanceId: MaintenanceId
     }
     class CompleteMaintenanceCommand <<Command>> {
       - maintenanceId: MaintenanceId
@@ -175,6 +180,7 @@ BreakdownReport --> BreakdownStatus : status >
 
 MaintenanceManagementCommandService "1" ..> "1" ScheduleMaintenanceCommand : handles >
 MaintenanceManagementCommandService "1" ..> "1" StartMaintenanceCommand : handles >
+MaintenanceManagementCommandService "1" ..> "1" CancelMaintenanceCommand : handles >
 MaintenanceManagementCommandService "1" ..> "1" CompleteMaintenanceCommand : handles >
 MaintenanceManagementCommandService "1" ..> "1" ReportBreakdownCommand : handles >
 MaintenanceManagementQueryService "1" ..> "1" ViewMaintenanceScheduleQuery : handles >
