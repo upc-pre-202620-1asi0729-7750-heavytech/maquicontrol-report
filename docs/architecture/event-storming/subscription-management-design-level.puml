@@ -6,75 +6,58 @@ skinparam shadowing false
 skinparam roundcorner 8
 skinparam defaultFontName Arial
 skinparam rectangleFontSize 12
-skinparam noteBackgroundColor #FFFDE7
-skinparam noteBorderColor #BDB76B
 skinparam ArrowColor #555555
+skinparam noteBorderColor #BDB76B
+skinparam nodesep 30
+skinparam ranksep 40
 
-' ===== Actor -> Command -> Aggregate -> Domain Event =====
-rectangle "COMMAND\nSubscribe to Plan" as CMD_SUBSCRIBE_TO_PLAN #87CEFA
-rectangle "AGGREGATE\nSubscription" as AGG_SUBSCRIPTION_0 #FFF59D
-rectangle "DOMAIN EVENT\nSubscription Requested" as EVT_SUBSCRIPTION_REQUESTED #FFB74D
-rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_0 #FFF9C4
-rectangle "COMMAND\nConfirm Checkout" as CMD_CONFIRM_CHECKOUT #87CEFA
-rectangle "AGGREGATE\nSubscription" as AGG_SUBSCRIPTION_1 #FFF59D
-rectangle "DOMAIN EVENT\nSubscription Payment Approved" as EVT_SUBSCRIPTION_PAYMENT_APPROVED #FFB74D
-rectangle "COMMAND\nActivate Subscription" as CMD_ACTIVATE_SUBSCRIPTION #87CEFA
-rectangle "AGGREGATE\nSubscription" as AGG_SUBSCRIPTION_2 #FFF59D
-rectangle "DOMAIN EVENT\nSubscription Activated" as EVT_SUBSCRIPTION_ACTIVATED #FFB74D
-rectangle "COMMAND\nCancel Subscription" as CMD_CANCEL_SUBSCRIPTION #87CEFA
-rectangle "AGGREGATE\nSubscription" as AGG_SUBSCRIPTION_3 #FFF59D
-rectangle "DOMAIN EVENT\nSubscription Cancelled" as EVT_SUBSCRIPTION_CANCELLED #FFB74D
-rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_3 #FFF9C4
+rectangle "COMMAND\nSubscribe to Plan" as CMD_1 #87CEFA
+rectangle "ACTOR\nFleet Owner" as ACT_2 #FFF9C4
+ACT_2 -left-> CMD_1
+rectangle "AGGREGATE\nSubscription" as AGG_3 #FFF59D
+CMD_1 --> AGG_3
+rectangle "DOMAIN EVENT\nSubscription Requested" as EVT_4 #FFB74D
+AGG_3 --> EVT_4
+rectangle "POLICY\nWhen a plan is selected,\nredirect the owner to the checkout" as POL_5 #B39DDB
+EVT_4 --> POL_5
+rectangle "COMMAND\nConfirm Checkout" as CMD_6 #87CEFA
+POL_5 --> CMD_6
+rectangle "AGGREGATE\nSubscription" as AGG_7 #FFF59D
+CMD_6 --> AGG_7
+rectangle "DOMAIN EVENT\nSubscription Payment Approved" as EVT_8 #FFB74D
+AGG_7 --> EVT_8
+rectangle "POLICY\nWhen the payment is approved,\nactivate the subscription" as POL_9 #B39DDB
+EVT_8 --> POL_9
+rectangle "COMMAND\nActivate Subscription" as CMD_10 #87CEFA
+POL_9 --> CMD_10
+rectangle "AGGREGATE\nSubscription" as AGG_11 #FFF59D
+CMD_10 --> AGG_11
+rectangle "EXTERNAL SYSTEM\nMercado Pago\nCheckout Pro (sandbox)" as EXT_12 #E78AD9
+EXT_12 .left. CMD_6
+rectangle "HOTSPOT\nThe payment may be approved but\nthe owner never returns to the app" as HOT_13 #EF9A9A
+HOT_13 .right. EVT_8
+rectangle "COMMAND\nCancel Subscription" as CMD_14 #87CEFA
+rectangle "ACTOR\nFleet Owner" as ACT_15 #FFF9C4
+ACT_15 -left-> CMD_14
+rectangle "AGGREGATE\nSubscription" as AGG_16 #FFF59D
+CMD_14 --> AGG_16
+rectangle "<b>BUSINESS RULES (Subscription)</b>\n- Plan price must be greater than zero\n- Plan machinery limit is a positive integer\n- Status: PENDING_PAYMENT, ACTIVE\n  or CANCELLED\n- Only a subscription PENDING_PAYMENT\n  can be activated\n- Only an ACTIVE subscription\n  can be cancelled\n- An active subscription records its\n  payment and period" as BR_17 #FFFDE7
+rectangle "READ MODEL\nPlan Catalog\n<size:10><i>Query: View Plans</i></size>\n<size:10>Source: Plan</size>" as RM_18 #81C784
+rectangle "ACTOR\nFleet Owner" as ACT_19 #FFF9C4
+RM_18 ..> ACT_19 : informs
+rectangle "READ MODEL\nSubscription Status\n<size:10><i>Query: View Subscription</i></size>\n<size:10>Source: Subscription</size>" as RM_20 #81C784
+rectangle "ACTOR\nFleet Owner" as ACT_21 #FFF9C4
+RM_20 ..> ACT_21 : informs
+rectangle "READ MODEL\nPayment History\n<size:10><i>Query: View Payments</i></size>\n<size:10>Source: Subscription</size>" as RM_22 #81C784
+rectangle "ACTOR\nFleet Owner" as ACT_23 #FFF9C4
+RM_22 ..> ACT_23 : informs
 
-' ===== Policies =====
-rectangle "POLICY\nWhen a plan is selected,\nredirect the owner to the checkout" as POL_0 #B39DDB
-rectangle "POLICY\nWhen the payment is approved,\nactivate the subscription" as POL_1 #B39DDB
-
-' ===== Read Models =====
-rectangle "READ MODEL\nPlan Catalog\n<size:10><i>Query: View Plans</i></size>" as RM_0 #81C784
-rectangle "ACTOR\nFleet Owner" as ACT_RM_0 #FFF9C4
-rectangle "READ MODEL\nSubscription Status\n<size:10><i>Query: View Subscription</i></size>" as RM_1 #81C784
-rectangle "ACTOR\nFleet Owner" as ACT_RM_1 #FFF9C4
-rectangle "READ MODEL\nPayment History\n<size:10><i>Query: View Payments</i></size>" as RM_2 #81C784
-rectangle "ACTOR\nFleet Owner" as ACT_RM_2 #FFF9C4
-rectangle "EXTERNAL SYSTEM\nMercado Pago\nCheckout Pro (sandbox)" as EXT_0 #E78AD9
-rectangle "HOTSPOT\nThe payment may be approved but\nthe owner never returns to the app" as HOT_0 #EF9A9A
-
-ACT_FLEET_OWNER_0 --> CMD_SUBSCRIBE_TO_PLAN
-CMD_SUBSCRIBE_TO_PLAN --> AGG_SUBSCRIPTION_0
-AGG_SUBSCRIPTION_0 --> EVT_SUBSCRIPTION_REQUESTED
-note bottom of AGG_SUBSCRIPTION_0
-<b>Business rules (Subscription)</b>
-- Plan price must be greater than zero
-- Plan machinery limit is a positive integer
-- Status: PENDING_PAYMENT, ACTIVE
-  or CANCELLED
-- Only a subscription PENDING_PAYMENT
-  can be activated
-- Only an ACTIVE subscription
-  can be cancelled
-- An active subscription records its
-  payment and period
-end note
-CMD_CONFIRM_CHECKOUT --> AGG_SUBSCRIPTION_1
-AGG_SUBSCRIPTION_1 --> EVT_SUBSCRIPTION_PAYMENT_APPROVED
-CMD_ACTIVATE_SUBSCRIPTION --> AGG_SUBSCRIPTION_2
-AGG_SUBSCRIPTION_2 --> EVT_SUBSCRIPTION_ACTIVATED
-ACT_FLEET_OWNER_3 --> CMD_CANCEL_SUBSCRIPTION
-CMD_CANCEL_SUBSCRIPTION --> AGG_SUBSCRIPTION_3
-AGG_SUBSCRIPTION_3 --> EVT_SUBSCRIPTION_CANCELLED
-EVT_SUBSCRIPTION_REQUESTED --> POL_0
-POL_0 --> CMD_CONFIRM_CHECKOUT
-EVT_SUBSCRIPTION_PAYMENT_APPROVED --> POL_1
-POL_1 --> CMD_ACTIVATE_SUBSCRIPTION
-RM_0 ..> ACT_RM_0 : informs
-EVT_SUBSCRIPTION_ACTIVATED ..> RM_1 : updates
-EVT_SUBSCRIPTION_CANCELLED ..> RM_1 : updates
-RM_1 ..> ACT_RM_1 : informs
-EVT_SUBSCRIPTION_PAYMENT_APPROVED ..> RM_2 : updates
-RM_2 ..> ACT_RM_2 : informs
-CMD_CONFIRM_CHECKOUT .. EXT_0
-HOT_0 .. EVT_SUBSCRIPTION_PAYMENT_APPROVED
+' Flows are stacked from top to bottom; each one reads left to right
+CMD_14 -[hidden]left-> CMD_1
+RM_18 -[hidden]left-> CMD_14
+RM_20 -[hidden]left-> RM_18
+RM_22 -[hidden]left-> RM_20
+ACT_19 -[hidden]-> BR_17
 
 legend right
 |= Color |= Element |
@@ -83,10 +66,11 @@ legend right
 |<#FFF59D>| Aggregate |
 |<#FFB74D>| Domain Event |
 |<#B39DDB>| Policy |
+|<#FFE0B2>| Domain Event from another Bounded Context |
 |<#81C784>| Read Model |
-|<#E78AD9>| External System |
 |<#EF9A9A>| Hotspot |
-|<#FFFDE7>| Business Rules (note) |
+|<#E78AD9>| External System |
+|<#FFFDE7>| Business Rules |
 endlegend
 
 @enduml

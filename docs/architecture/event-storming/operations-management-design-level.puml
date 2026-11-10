@@ -6,86 +6,88 @@ skinparam shadowing false
 skinparam roundcorner 8
 skinparam defaultFontName Arial
 skinparam rectangleFontSize 12
-skinparam noteBackgroundColor #FFFDE7
-skinparam noteBorderColor #BDB76B
 skinparam ArrowColor #555555
+skinparam noteBorderColor #BDB76B
+skinparam nodesep 30
+skinparam ranksep 40
 
-' ===== Actor -> Command -> Aggregate -> Domain Event =====
-rectangle "COMMAND\nStart Operation" as CMD_START_OPERATION #87CEFA
-rectangle "AGGREGATE\nService Operation" as AGG_SERVICE_OPERATION_0 #FFF59D
-rectangle "DOMAIN EVENT\nOperation Started" as EVT_OPERATION_STARTED #FFB74D
-rectangle "ACTOR\nOperator" as ACT_OPERATOR_0 #FFF9C4
-rectangle "COMMAND\nRecord Worked Hours" as CMD_RECORD_WORKED_HOURS #87CEFA
-rectangle "AGGREGATE\nService Operation" as AGG_SERVICE_OPERATION_1 #FFF59D
-rectangle "DOMAIN EVENT\nWorked Hours Recorded" as EVT_WORKED_HOURS_RECORDED #FFB74D
-rectangle "ACTOR\nOperator" as ACT_OPERATOR_1 #FFF9C4
-rectangle "COMMAND\nValidate Worked Hours" as CMD_VALIDATE_WORKED_HOURS #87CEFA
-rectangle "AGGREGATE\nService Operation" as AGG_SERVICE_OPERATION_2 #FFF59D
-rectangle "DOMAIN EVENT\nWorked Hours Validated" as EVT_WORKED_HOURS_VALIDATED #FFB74D
-rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_2 #FFF9C4
-rectangle "COMMAND\nReject Worked Hours" as CMD_REJECT_WORKED_HOURS #87CEFA
-rectangle "AGGREGATE\nService Operation" as AGG_SERVICE_OPERATION_4 #FFF59D
-rectangle "DOMAIN EVENT\nWorked Hours Rejected" as EVT_WORKED_HOURS_REJECTED #FFB74D
-rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_4 #FFF9C4
-rectangle "COMMAND\nComplete Operation" as CMD_COMPLETE_OPERATION #87CEFA
-rectangle "AGGREGATE\nService Operation" as AGG_SERVICE_OPERATION_3 #FFF59D
-rectangle "DOMAIN EVENT\nOperation Completed" as EVT_OPERATION_COMPLETED #FFB74D
-rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_3 #FFF9C4
+rectangle "DOMAIN EVENT (Rental)\nReservation Confirmed" as XEVT_1 #FFE0B2
+rectangle "POLICY\nWhen a reservation is confirmed,\nenable its service operation" as POL_2 #B39DDB
+XEVT_1 --> POL_2
+rectangle "COMMAND\nStart Operation" as CMD_3 #87CEFA
+rectangle "ACTOR\nOperator" as ACT_4 #FFF9C4
+ACT_4 -left-> CMD_3
+POL_2 --> CMD_3
+rectangle "AGGREGATE\nService Operation" as AGG_5 #FFF59D
+CMD_3 --> AGG_5
+rectangle "DOMAIN EVENT\nOperation Started" as EVT_6 #FFB74D
+AGG_5 --> EVT_6
+rectangle "POLICY (Rental)\nWhen the service operation starts,\nmark the rental as IN_PROGRESS" as POL_7 #B39DDB
+EVT_6 --> POL_7
+rectangle "COMMAND (Rental)\nStart Rental" as CMD_8 #87CEFA
+POL_7 --> CMD_8
+rectangle "AGGREGATE (Rental)\nRental" as AGG_9 #FFF59D
+CMD_8 --> AGG_9
+rectangle "COMMAND\nRecord Worked Hours" as CMD_10 #87CEFA
+rectangle "ACTOR\nOperator" as ACT_11 #FFF9C4
+ACT_11 -left-> CMD_10
+rectangle "AGGREGATE\nService Operation" as AGG_12 #FFF59D
+CMD_10 --> AGG_12
+rectangle "DOMAIN EVENT\nWorked Hours Recorded" as EVT_13 #FFB74D
+AGG_12 --> EVT_13
+rectangle "POLICY\nWhen worked hours are recorded,\nrequest their validation or rejection" as POL_14 #B39DDB
+EVT_13 --> POL_14
+rectangle "COMMAND\nValidate Worked Hours" as CMD_15 #87CEFA
+rectangle "ACTOR\nFleet Owner" as ACT_16 #FFF9C4
+ACT_16 -left-> CMD_15
+POL_14 --> CMD_15
+rectangle "AGGREGATE\nService Operation" as AGG_17 #FFF59D
+CMD_15 --> AGG_17
+rectangle "DOMAIN EVENT\nWorked Hours Validated" as EVT_18 #FFB74D
+AGG_17 --> EVT_18
+rectangle "POLICY\nWhen all worked hours are validated,\nallow completing the operation" as POL_19 #B39DDB
+EVT_18 --> POL_19
+rectangle "COMMAND\nComplete Operation" as CMD_20 #87CEFA
+rectangle "ACTOR\nFleet Owner" as ACT_21 #FFF9C4
+ACT_21 -left-> CMD_20
+POL_19 --> CMD_20
+rectangle "AGGREGATE\nService Operation" as AGG_22 #FFF59D
+CMD_20 --> AGG_22
+rectangle "DOMAIN EVENT\nOperation Completed" as EVT_23 #FFB74D
+AGG_22 --> EVT_23
+rectangle "POLICY (Rental)\nWhen the service operation is completed,\nmark the rental as COMPLETED" as POL_24 #B39DDB
+EVT_23 --> POL_24
+rectangle "COMMAND (Rental)\nComplete Rental" as CMD_25 #87CEFA
+POL_24 --> CMD_25
+rectangle "AGGREGATE (Rental)\nRental" as AGG_26 #FFF59D
+CMD_25 --> AGG_26
+rectangle "HOTSPOT\nManually recorded hours may differ\nfrom the machine hour meter" as HOT_27 #EF9A9A
+HOT_27 .right. EVT_13
+rectangle "COMMAND\nReject Worked Hours" as CMD_28 #87CEFA
+rectangle "ACTOR\nFleet Owner" as ACT_29 #FFF9C4
+ACT_29 -left-> CMD_28
+POL_14 --> CMD_28
+rectangle "AGGREGATE\nService Operation" as AGG_30 #FFF59D
+CMD_28 --> AGG_30
+rectangle "POLICY (Billing)\nWhen the service operation is completed,\ncalculate the rental amount" as POL_31 #B39DDB
+EVT_23 --> POL_31
+rectangle "COMMAND (Billing)\nCalculate Rental Amount" as CMD_32 #87CEFA
+POL_31 --> CMD_32
+rectangle "AGGREGATE (Billing)\nInvoice" as AGG_33 #FFF59D
+CMD_32 --> AGG_33
+rectangle "<b>BUSINESS RULES (Service Operation)</b>\n- Only a CONFIRMED rental can start\n  a service operation\n- Worked hours cannot be negative\n- Recorded hours are PENDING until the\n  fleet owner validates or rejects them\n- No worked hours may remain PENDING\n  before completion\n- A completed operation records\n  its completion date" as BR_34 #FFFDE7
+rectangle "READ MODEL\nService Operation Status\n<size:10><i>Query: View Service Operation</i></size>\n<size:10>Source: Service Operation</size>" as RM_35 #81C784
+rectangle "ACTOR\nFleet Owner" as ACT_36 #FFF9C4
+RM_35 ..> ACT_36 : informs
+rectangle "READ MODEL\nWorked Hours Summary\n<size:10><i>Query: View Worked Hours</i></size>\n<size:10>Source: Service Operation</size>" as RM_37 #81C784
+rectangle "ACTOR\nOperator" as ACT_38 #FFF9C4
+RM_37 ..> ACT_38 : informs
 
-' ===== Policies =====
-rectangle "DOMAIN EVENT (Rental)\nReservation Confirmed" as XEVT_RESERVATION_CONFIRMED #FFE0B2
-rectangle "POLICY\nWhen a reservation is confirmed,\nenable its service operation" as POL_0 #B39DDB
-rectangle "POLICY\nWhen worked hours are recorded,\nrequest their validation or rejection" as POL_1 #B39DDB
-rectangle "POLICY\nWhen all worked hours are validated,\nallow completing the operation" as POL_2 #B39DDB
-
-' ===== Read Models =====
-rectangle "READ MODEL\nService Operation Status\n<size:10><i>Query: View Service Operation</i></size>" as RM_0 #81C784
-rectangle "ACTOR\nFleet Owner" as ACT_RM_0 #FFF9C4
-rectangle "READ MODEL\nWorked Hours Summary\n<size:10><i>Query: View Worked Hours</i></size>" as RM_1 #81C784
-rectangle "ACTOR\nOperator" as ACT_RM_1 #FFF9C4
-rectangle "HOTSPOT\nManually recorded hours may differ\nfrom the machine hour meter" as HOT_0 #EF9A9A
-
-ACT_OPERATOR_0 --> CMD_START_OPERATION
-CMD_START_OPERATION --> AGG_SERVICE_OPERATION_0
-AGG_SERVICE_OPERATION_0 --> EVT_OPERATION_STARTED
-note bottom of AGG_SERVICE_OPERATION_0
-<b>Business rules (Service Operation)</b>
-- Only a CONFIRMED rental can start
-  a service operation
-- Worked hours cannot be negative
-- Recorded hours are PENDING until the
-  fleet owner validates or rejects them
-- No worked hours may remain PENDING
-  before completion
-- A completed operation records
-  its completion date
-end note
-ACT_OPERATOR_1 --> CMD_RECORD_WORKED_HOURS
-CMD_RECORD_WORKED_HOURS --> AGG_SERVICE_OPERATION_1
-AGG_SERVICE_OPERATION_1 --> EVT_WORKED_HOURS_RECORDED
-ACT_FLEET_OWNER_2 --> CMD_VALIDATE_WORKED_HOURS
-CMD_VALIDATE_WORKED_HOURS --> AGG_SERVICE_OPERATION_2
-AGG_SERVICE_OPERATION_2 --> EVT_WORKED_HOURS_VALIDATED
-ACT_FLEET_OWNER_4 --> CMD_REJECT_WORKED_HOURS
-CMD_REJECT_WORKED_HOURS --> AGG_SERVICE_OPERATION_4
-AGG_SERVICE_OPERATION_4 --> EVT_WORKED_HOURS_REJECTED
-ACT_FLEET_OWNER_3 --> CMD_COMPLETE_OPERATION
-CMD_COMPLETE_OPERATION --> AGG_SERVICE_OPERATION_3
-AGG_SERVICE_OPERATION_3 --> EVT_OPERATION_COMPLETED
-XEVT_RESERVATION_CONFIRMED --> POL_0
-POL_0 --> CMD_START_OPERATION
-EVT_WORKED_HOURS_RECORDED --> POL_1
-POL_1 --> CMD_VALIDATE_WORKED_HOURS
-EVT_WORKED_HOURS_VALIDATED --> POL_2
-POL_2 --> CMD_COMPLETE_OPERATION
-EVT_OPERATION_STARTED ..> RM_0 : updates
-EVT_OPERATION_COMPLETED ..> RM_0 : updates
-RM_0 ..> ACT_RM_0 : informs
-EVT_WORKED_HOURS_RECORDED ..> RM_1 : updates
-EVT_WORKED_HOURS_VALIDATED ..> RM_1 : updates
-EVT_WORKED_HOURS_REJECTED ..> RM_1 : updates
-RM_1 ..> ACT_RM_1 : informs
-HOT_0 .. EVT_WORKED_HOURS_RECORDED
+' Flows are stacked from top to bottom; each one reads left to right
+CMD_10 -[hidden]left-> XEVT_1
+RM_35 -[hidden]left-> CMD_10
+RM_37 -[hidden]left-> RM_35
+ACT_36 -[hidden]-> BR_34
 
 legend right
 |= Color |= Element |
@@ -94,10 +96,10 @@ legend right
 |<#FFF59D>| Aggregate |
 |<#FFB74D>| Domain Event |
 |<#B39DDB>| Policy |
-|<#81C784>| Read Model |
 |<#FFE0B2>| Domain Event from another Bounded Context |
+|<#81C784>| Read Model |
 |<#EF9A9A>| Hotspot |
-|<#FFFDE7>| Business Rules (note) |
+|<#FFFDE7>| Business Rules |
 endlegend
 
 @enduml

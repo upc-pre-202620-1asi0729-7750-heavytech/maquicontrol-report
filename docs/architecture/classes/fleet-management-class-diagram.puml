@@ -1,5 +1,5 @@
 @startuml
-title MaquiControl - Fleet Management Bounded Context\nClass Diagram
+title MaquiControl - Fleet Management Bounded Context\nGeneral Class Diagram
 
 skinparam classAttributeIconSize 0
 skinparam shadowing false
@@ -25,7 +25,7 @@ package "Fleet Management" {
     + isAvailable(): Boolean
   }
 
-  class Category <<Entity>> {
+  class Category <<Aggregate Root>> {
     - id: CategoryId
     - code: CategoryCode
     - name: CategoryName

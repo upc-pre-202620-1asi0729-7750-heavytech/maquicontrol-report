@@ -1,33 +1,60 @@
 @startuml
 !include <C4/C4_Component>
 
-title MaquiControl - Profiles Management Bounded Context Component Diagram
+
+title MaquiControl - Profiles Management Bounded Context Component Diagram\n<size:12>Layers and packages of the bounded context</size>
 
 Container(webapp, "Single Page Application", "Angular", "Provides the user interface through a web browser.")
 
 Container_Boundary(bc, "Profiles Management Bounded Context") {
 
-    Component(controller0, "ProfilesController", "Spring Boot @RestController", "Exposes /api/v1/profiles endpoints and maps resources to commands and queries.")
-    Component(controller1, "OrganizationsController", "Spring Boot @RestController", "Exposes /api/v1/organizations endpoints and maps resources to commands and queries.")
-    Component(commandService, "ProfilesManagementCommandService", "Spring Boot @Service", "Handles CreateProfileCommand, UpdateProfileCommand, CreateOrganizationCommand, UpdateOrganizationCommand.")
-    Component(queryService, "ProfilesManagementQueryService", "Spring Boot @Service", "Handles ViewProfileQuery, ViewOrganizationQuery.")
-    Component(eventHandler0, "ProfilesEventHandler", "Spring @EventListener", "Reacts to User Signed Up and executes CreateProfileCommand.")
-    Component(domain, "Domain Model", "Java", "Profile aggregate, Organization entity, ContactInformation, PersonName and TaxId value objects.")
-    Component(repository, "ProfileRepository and OrganizationRepository", "Spring Data JPA @Repository", "Persists and reads the aggregates of the bounded context.")
+  Boundary(interfaces, "interfaces") {
+    Component(rest, "interfaces.rest", "Java package", "Controllers that expose /api/v1/profiles and /organizations, with the resources and transform subpackages that map JSON to commands and queries.")
+    Component(ifacl, "interfaces.acl", "Java package", "Context facade that other bounded contexts use to get the profile id of a user.")
+  }
+  Boundary(application, "application") {
+    Component(cs, "application.commandservices", "Java package", "Command service contract for Create Profile, Update Profile, Create Organization and Update Organization.")
+    Component(qs, "application.queryservices", "Java package", "Query service contract for View Profile and View Organization.")
+    Component(ics, "application.internal.commandservices", "Java package", "Command service implementation: loads the aggregate, runs its behavior and saves it, returning a Result.")
+    Component(iqs, "application.internal.queryservices", "Java package", "Query service implementation that reads aggregates through the repositories.")
+    Component(iob, "application.internal.outboundservices", "Java package", "Anti-corruption layer that reads the signed-in user account from Identity & Access Management.")
+    Component(appacl, "application.acl", "Java package", "Implementation of the context facade on top of the query services.")
+  }
+  Boundary(domain, "domain") {
+    Component(dagg, "domain.model.aggregates", "Java package", "Aggregate roots: Profile and Organization.")
+    Component(dvo, "domain.model.valueobjects", "Java package", "Value objects and enums of the bounded context.")
+    Component(dcmd, "domain.model.commands", "Java package", "One record per command: Create Profile, Update Profile, Create Organization and Update Organization.")
+    Component(dqry, "domain.model.queries", "Java package", "One record per query: View Profile and View Organization.")
+    Component(devt, "domain.model.events", "Java package", "Domain events registered by the aggregates.")
+    Component(drep, "domain.repositories", "Java package", "Repository interfaces of the aggregates, without JPA details.")
+  }
+  Boundary(infrastructure, "infrastructure") {
+    Component(jad, "infrastructure.persistence.jpa.adapters", "Java package", "Implement the domain repositories and publish the aggregate events to the outbox.")
+    Component(jas, "infrastructure.persistence.jpa.assemblers", "Java package", "Convert between aggregates and persistence entities.")
+    Component(jen, "infrastructure.persistence.jpa.entities", "Java package", "JPA persistence entities mapped to the tables.")
+    Component(jre, "infrastructure.persistence.jpa.repositories", "Java package", "Spring Data JPA repositories.")
+  }
 }
 
-ContainerDb(database, "Database", "Relational Database", "Stores profiles, contact information and organizations.")
+Component(shared, "shared", "Java package", "Shared kernel: Result, ApplicationError, Money, base aggregate and the outbox relay.")
+Component(iamacl, "iam.interfaces.acl", "Java package", "Context facade of another bounded context.")
+ContainerDb(database, "Database", "MySQL", "Stores profiles and organizations.")
 
-Rel(webapp, controller0, "Calls /api/v1/profiles", "HTTPS / JSON")
-Rel(controller0, commandService, "Sends commands")
-Rel(controller0, queryService, "Sends queries")
-Rel(webapp, controller1, "Calls /api/v1/organizations", "HTTPS / JSON")
-Rel(controller1, commandService, "Sends commands")
-Rel(controller1, queryService, "Sends queries")
-Rel(eventHandler0, commandService, "Sends CreateProfileCommand")
-Rel(commandService, domain, "Executes aggregate behavior")
-Rel(commandService, repository, "Saves aggregates")
-Rel(queryService, repository, "Reads aggregates")
-Rel(repository, database, "Reads from and writes to", "JPA / SQL")
+Rel_D(webapp, rest, "Calls /api/v1/profiles and /organizations", "HTTPS / JSON")
+Rel_D(rest, cs, "Sends commands")
+Rel_D(rest, qs, "Sends queries")
+Rel_D(ics, dagg, "Runs aggregate behavior")
+Rel_D(ics, drep, "Saves aggregates")
+Rel_D(iqs, drep, "Reads aggregates")
+Rel_U(jad, drep, "Implements")
+Rel_R(jad, jre, "Uses")
+Rel_D(jre, database, "Reads from and writes to", "JPA / SQL")
+rest -[hidden]down-> ics
+ics -[hidden]down-> dagg
+dagg -[hidden]down-> jad
+jad -[hidden]down-> shared
+Rel_U(appacl, ifacl, "Implements")
+Rel_D(iob, iamacl, "Calls")
+
 
 @enduml

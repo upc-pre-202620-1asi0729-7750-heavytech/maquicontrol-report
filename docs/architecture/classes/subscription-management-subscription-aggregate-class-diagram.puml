@@ -1,0 +1,149 @@
+@startuml
+title MaquiControl - Subscription Management Bounded Context\nSubscription Aggregate - Class Diagram
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam linetype ortho
+hide empty members
+
+package "Subscription Management - Subscription Aggregate" {
+
+  package "Aggregate" {
+    class Subscription <<Aggregate Root>> {
+    - id: SubscriptionId
+    - ownerProfileId: ProfileId
+    - planId: PlanId
+    - status: SubscriptionStatus
+    - startedAt: LocalDateTime
+    - currentPeriodEnd: LocalDateTime
+    - payments: List<Payment>
+    - createdAt: LocalDateTime
+    - updatedAt: LocalDateTime
+    + registerPayment(payment: Payment): void
+    + activate(): void
+    + cancel(reason: Reason): void
+    + isActive(): Boolean
+    }
+    class Payment <<Entity>> {
+    - id: PaymentId
+    - provider: PaymentProviderName
+    - providerPaymentId: ProviderPaymentId
+    - amount: Money
+    - status: PaymentStatus
+    - paidAt: LocalDateTime
+    + approve(): void
+    + reject(): void
+    + isApproved(): Boolean
+    }
+  }
+  package "Value Objects" {
+    class Money <<Value Object>> {
+    - amount: BigDecimal
+    - currency: Currency
+    + add(other: Money): Money
+    + isNonNegative(): Boolean
+    }
+    enum Currency {
+    PEN
+    USD
+    }
+    enum PlanCode {
+    ESSENTIAL
+    PRO
+    }
+    enum SubscriptionStatus {
+    PENDING_PAYMENT
+    ACTIVE
+    CANCELLED
+    }
+    enum PaymentProviderName {
+    MERCADO_PAGO
+    }
+    enum PaymentStatus {
+    PENDING
+    IN_PROCESS
+    APPROVED
+    REJECTED
+    CANCELLED
+    }
+    class Reason <<Value Object>> {
+    - value: String
+    }
+    class ProviderPaymentId <<Value Object>> {
+    - value: String
+    }
+    class PaymentId <<Value Object>> {
+    - value: Long
+    }
+    class PlanId <<Value Object>> {
+    - value: Long
+    }
+    class ProfileId <<Value Object>> {
+    - value: Long
+    }
+    class SubscriptionId <<Value Object>> {
+    - value: Long
+    }
+  }
+  package "Commands" {
+    class SubscribeToPlanCommand <<Command>> {
+    - ownerProfileId: ProfileId
+    - planCode: PlanCode
+    }
+    class ConfirmCheckoutCommand <<Command>> {
+    - subscriptionId: SubscriptionId
+    - providerPaymentId: ProviderPaymentId
+    }
+    class ActivateSubscriptionCommand <<Command>> {
+    - subscriptionId: SubscriptionId
+    }
+    class CancelSubscriptionCommand <<Command>> {
+    - subscriptionId: SubscriptionId
+    - reason: Reason
+    }
+  }
+  package "Queries" {
+    class ViewSubscriptionQuery <<Query>> {
+    - ownerProfileId: ProfileId
+    }
+    class ViewPaymentsQuery <<Query>> {
+    - subscriptionId: SubscriptionId
+    }
+  }
+  package "Repositories" {
+    interface SubscriptionRepository {
+    + save(subscription: Subscription): Subscription
+    + findById(id: SubscriptionId): Optional<Subscription>
+    + findByOwnerProfileId(ownerProfileId: ProfileId): Optional<Subscription>
+    + existsActiveByOwnerProfileId(ownerProfileId: ProfileId): Boolean
+    }
+  }
+}
+
+Subscription "1" *-- "0..*" Payment : records >
+Payment "1" *-- "1" Money : amount >
+Money --> Currency : expressed in >
+Subscription --> SubscriptionStatus : has >
+Payment --> PaymentStatus : has >
+Payment --> PaymentProviderName : processed by >
+SubscriptionRepository ..> Subscription : persists >
+Payment "1" *-- "1" ProviderPaymentId : providerPaymentId >
+SubscribeToPlanCommand ..> Subscription : targets >
+ConfirmCheckoutCommand ..> Subscription : targets >
+ActivateSubscriptionCommand ..> Subscription : targets >
+CancelSubscriptionCommand ..> Subscription : targets >
+ViewSubscriptionQuery ..> Subscription : targets >
+ViewPaymentsQuery ..> Subscription : targets >
+
+legend right
+  |= Symbol |= Meaning |
+  | + | Public |
+  | - | Private |
+  | *-- | Composition |
+  | --> | Association |
+  | ..> | Dependency |
+endlegend
+
+@enduml

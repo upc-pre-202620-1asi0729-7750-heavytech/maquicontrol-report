@@ -1,29 +1,65 @@
 @startuml
 !include <C4/C4_Component>
 
-title MaquiControl - Rental Management Bounded Context Component Diagram
+
+title MaquiControl - Rental Management Bounded Context Component Diagram\n<size:12>Layers and packages of the bounded context</size>
 
 Container(webapp, "Single Page Application", "Angular", "Provides the user interface through a web browser.")
 
 Container_Boundary(bc, "Rental Management Bounded Context") {
 
-    Component(controller0, "RentalsController", "Spring Boot @RestController", "Exposes /api/v1/rentals endpoints and maps resources to commands and queries.")
-    Component(commandService, "RentalManagementCommandService", "Spring Boot @Service", "Handles RequestRentalCommand, ConfirmReservationCommand, RejectReservationCommand, CancelReservationCommand, StartRentalCommand, CompleteRentalCommand.")
-    Component(queryService, "RentalManagementQueryService", "Spring Boot @Service", "Handles ViewPendingRequestsQuery, ViewMyReservationsQuery, CheckMachineryAvailabilityQuery.")
-    Component(eventHandler0, "RentalEventHandler", "Spring @EventListener", "Reacts to Operation Started and Operation Completed and executes StartRentalCommand and CompleteRentalCommand.")
-    Component(domain, "Domain Model", "Java", "Rental aggregate, RentalPeriod, Money and Reason value objects.")
-    Component(repository, "RentalRepository", "Spring Data JPA @Repository", "Persists and reads the aggregates of the bounded context.")
+  Boundary(interfaces, "interfaces") {
+    Component(rest, "interfaces.rest", "Java package", "Controllers that expose /api/v1/rentals, with the resources and transform subpackages that map JSON to commands and queries.")
+    Component(ifacl, "interfaces.acl", "Java package", "Context facade that other bounded contexts use to check whether a contractor has a rental in progress.")
+    Component(ifevents, "interfaces.events", "Java package", "Integration events published to other bounded contexts: Reservation Confirmed, Reservation Cancelled, Rental Started and Rental Completed.")
+  }
+  Boundary(application, "application") {
+    Component(cs, "application.commandservices", "Java package", "Command service contract for Request Rental, Confirm Reservation, Reject Reservation, Cancel Reservation, Start Rental and Complete Rental.")
+    Component(qs, "application.queryservices", "Java package", "Query service contract for View Pending Requests, View My Reservations and Check Machinery Availability.")
+    Component(ics, "application.internal.commandservices", "Java package", "Command service implementation: loads the aggregate, runs its behavior and saves it, returning a Result.")
+    Component(iqs, "application.internal.queryservices", "Java package", "Query service implementation that reads aggregates through the repositories.")
+    Component(ieh, "application.internal.eventhandlers", "Java package", "Translate Rental domain events into integration events.")
+    Component(ipol, "application.internal.policies", "Java package", "Start Rental and Complete Rental policies that send their commands automatically.")
+    Component(iob, "application.internal.outboundservices", "Java package", "Anti-corruption layer that reads machinery data from Fleet Management.")
+    Component(appacl, "application.acl", "Java package", "Implementation of the context facade on top of the query services.")
+  }
+  Boundary(domain, "domain") {
+    Component(dagg, "domain.model.aggregates", "Java package", "Aggregate roots: Rental.")
+    Component(dvo, "domain.model.valueobjects", "Java package", "Value objects and enums of the bounded context.")
+    Component(dcmd, "domain.model.commands", "Java package", "One record per command: Request Rental, Confirm Reservation, Reject Reservation, Cancel Reservation, Start Rental and Complete Rental.")
+    Component(dqry, "domain.model.queries", "Java package", "One record per query: View Pending Requests, View My Reservations and Check Machinery Availability.")
+    Component(devt, "domain.model.events", "Java package", "Domain events registered by the aggregates.")
+    Component(drep, "domain.repositories", "Java package", "Repository interfaces of the aggregates, without JPA details.")
+  }
+  Boundary(infrastructure, "infrastructure") {
+    Component(jad, "infrastructure.persistence.jpa.adapters", "Java package", "Implement the domain repositories and publish the aggregate events to the outbox.")
+    Component(jas, "infrastructure.persistence.jpa.assemblers", "Java package", "Convert between aggregates and persistence entities.")
+    Component(jen, "infrastructure.persistence.jpa.entities", "Java package", "JPA persistence entities mapped to the tables.")
+    Component(jre, "infrastructure.persistence.jpa.repositories", "Java package", "Spring Data JPA repositories.")
+  }
 }
 
-ContainerDb(database, "Database", "Relational Database", "Stores rentals and rental periods.")
+Component(shared, "shared", "Java package", "Shared kernel: Result, ApplicationError, Money, base aggregate and the outbox relay.")
+Component(fleetacl, "fleet.interfaces.acl", "Java package", "Context facade of another bounded context.")
+ContainerDb(database, "Database", "MySQL", "Stores rentals.")
 
-Rel(webapp, controller0, "Calls /api/v1/rentals", "HTTPS / JSON")
-Rel(controller0, commandService, "Sends commands")
-Rel(controller0, queryService, "Sends queries")
-Rel(eventHandler0, commandService, "Sends StartRentalCommand and CompleteRentalCommand")
-Rel(commandService, domain, "Executes aggregate behavior")
-Rel(commandService, repository, "Saves aggregates")
-Rel(queryService, repository, "Reads aggregates")
-Rel(repository, database, "Reads from and writes to", "JPA / SQL")
+Rel_D(webapp, rest, "Calls /api/v1/rentals", "HTTPS / JSON")
+Rel_D(rest, cs, "Sends commands")
+Rel_D(rest, qs, "Sends queries")
+Rel_D(ics, dagg, "Runs aggregate behavior")
+Rel_D(ics, drep, "Saves aggregates")
+Rel_D(iqs, drep, "Reads aggregates")
+Rel_U(jad, drep, "Implements")
+Rel_R(jad, jre, "Uses")
+Rel_D(jre, database, "Reads from and writes to", "JPA / SQL")
+rest -[hidden]down-> ics
+ics -[hidden]down-> dagg
+dagg -[hidden]down-> jad
+jad -[hidden]down-> shared
+Rel_L(ieh, cs, "Sends commands")
+Rel_L(ipol, cs, "Sends commands")
+Rel_U(appacl, ifacl, "Implements")
+Rel_D(iob, fleetacl, "Calls")
+
 
 @enduml

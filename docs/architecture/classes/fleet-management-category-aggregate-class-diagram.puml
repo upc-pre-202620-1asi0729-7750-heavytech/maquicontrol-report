@@ -1,0 +1,77 @@
+@startuml
+title MaquiControl - Fleet Management Bounded Context\nCategory Aggregate - Class Diagram
+
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam roundcorner 8
+skinparam defaultFontName Arial
+skinparam linetype ortho
+hide empty members
+
+package "Fleet Management - Category Aggregate" {
+
+  package "Aggregate" {
+    class Category <<Aggregate Root>> {
+    - id: CategoryId
+    - code: CategoryCode
+    - name: CategoryName
+    + rename(name: CategoryName): void
+    }
+  }
+  package "Value Objects" {
+    class CategoryCode <<Value Object>> {
+    - value: String
+    }
+    class CategoryName <<Value Object>> {
+    - value: String
+    + equalsIgnoreCase(other: CategoryName): Boolean
+    }
+    class CategoryId <<Value Object>> {
+    - value: Long
+    }
+  }
+  package "Commands" {
+    class CreateCategoryCommand <<Command>> {
+    - name: CategoryName
+    }
+    class RenameCategoryCommand <<Command>> {
+    - categoryId: CategoryId
+    - name: CategoryName
+    }
+    class DeleteCategoryCommand <<Command>> {
+    - categoryId: CategoryId
+    }
+  }
+  package "Queries" {
+    class ViewCategoriesQuery <<Query>> {
+    }
+  }
+  package "Repositories" {
+    interface CategoryRepository {
+    + save(category: Category): Category
+    + findById(id: CategoryId): Optional<Category>
+    + findAll(): List<Category>
+    + existsByName(name: CategoryName): Boolean
+    + existsById(id: CategoryId): Boolean
+    }
+  }
+}
+
+CategoryRepository ..> Category : persists >
+Category "1" *-- "1" CategoryCode : code >
+Category "1" *-- "1" CategoryName : name >
+CreateCategoryCommand ..> Category : targets >
+RenameCategoryCommand ..> Category : targets >
+DeleteCategoryCommand ..> Category : targets >
+ViewCategoriesQuery ..> Category : targets >
+
+legend right
+  |= Symbol |= Meaning |
+  | + | Public |
+  | - | Private |
+  | *-- | Composition |
+  | --> | Association |
+  | ..> | Dependency |
+endlegend
+
+@enduml

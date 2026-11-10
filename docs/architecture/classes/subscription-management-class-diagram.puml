@@ -1,5 +1,5 @@
 @startuml
-title MaquiControl - Subscription Management Bounded Context\nClass Diagram
+title MaquiControl - Subscription Management Bounded Context\nGeneral Class Diagram
 
 skinparam classAttributeIconSize 0
 skinparam shadowing false
@@ -10,7 +10,7 @@ hide empty members
 
 package "Subscription Management" {
 
-  class SubscriptionPlan <<Entity>> {
+  class SubscriptionPlan <<Aggregate Root>> {
     - id: PlanId
     - code: PlanCode
     - name: PlanName

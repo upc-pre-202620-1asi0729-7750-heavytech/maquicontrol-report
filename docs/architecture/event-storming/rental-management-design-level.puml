@@ -6,98 +6,94 @@ skinparam shadowing false
 skinparam roundcorner 8
 skinparam defaultFontName Arial
 skinparam rectangleFontSize 12
-skinparam noteBackgroundColor #FFFDE7
-skinparam noteBorderColor #BDB76B
 skinparam ArrowColor #555555
+skinparam noteBorderColor #BDB76B
+skinparam nodesep 30
+skinparam ranksep 40
 
-' ===== Actor -> Command -> Aggregate -> Domain Event =====
-rectangle "COMMAND\nRequest Rental" as CMD_REQUEST_RENTAL #87CEFA
-rectangle "AGGREGATE\nRental" as AGG_RENTAL_0 #FFF59D
-rectangle "DOMAIN EVENT\nRental Requested" as EVT_RENTAL_REQUESTED #FFB74D
-rectangle "ACTOR\nContractor" as ACT_CONTRACTOR_0 #FFF9C4
-rectangle "COMMAND\nConfirm Reservation" as CMD_CONFIRM_RESERVATION #87CEFA
-rectangle "AGGREGATE\nRental" as AGG_RENTAL_1 #FFF59D
-rectangle "DOMAIN EVENT\nReservation Confirmed" as EVT_RESERVATION_CONFIRMED #FFB74D
-rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_1 #FFF9C4
-rectangle "COMMAND\nReject Reservation" as CMD_REJECT_RESERVATION #87CEFA
-rectangle "AGGREGATE\nRental" as AGG_RENTAL_5 #FFF59D
-rectangle "DOMAIN EVENT\nReservation Rejected" as EVT_RESERVATION_REJECTED #FFB74D
-rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_5 #FFF9C4
-rectangle "COMMAND\nCancel Reservation" as CMD_CANCEL_RESERVATION #87CEFA
-rectangle "AGGREGATE\nRental" as AGG_RENTAL_2 #FFF59D
-rectangle "DOMAIN EVENT\nReservation Cancelled" as EVT_RESERVATION_CANCELLED #FFB74D
-rectangle "ACTOR\nContractor" as ACT_CONTRACTOR_2 #FFF9C4
-rectangle "COMMAND\nStart Rental" as CMD_START_RENTAL #87CEFA
-rectangle "AGGREGATE\nRental" as AGG_RENTAL_3 #FFF59D
-rectangle "DOMAIN EVENT\nRental Started" as EVT_RENTAL_STARTED #FFB74D
-rectangle "COMMAND\nComplete Rental" as CMD_COMPLETE_RENTAL #87CEFA
-rectangle "AGGREGATE\nRental" as AGG_RENTAL_4 #FFF59D
-rectangle "DOMAIN EVENT\nRental Completed" as EVT_RENTAL_COMPLETED #FFB74D
+rectangle "COMMAND\nRequest Rental" as CMD_1 #87CEFA
+rectangle "ACTOR\nContractor" as ACT_2 #FFF9C4
+ACT_2 -left-> CMD_1
+rectangle "AGGREGATE\nRental" as AGG_3 #FFF59D
+CMD_1 --> AGG_3
+rectangle "DOMAIN EVENT\nRental Requested" as EVT_4 #FFB74D
+AGG_3 --> EVT_4
+rectangle "COMMAND\nConfirm Reservation" as CMD_5 #87CEFA
+rectangle "ACTOR\nFleet Owner" as ACT_6 #FFF9C4
+ACT_6 -left-> CMD_5
+EVT_4 --> CMD_5
+rectangle "AGGREGATE\nRental" as AGG_7 #FFF59D
+CMD_5 --> AGG_7
+rectangle "DOMAIN EVENT\nReservation Confirmed" as EVT_8 #FFB74D
+AGG_7 --> EVT_8
+rectangle "POLICY (Fleet)\nWhen a reservation is confirmed,\nset the machinery to RESERVED" as POL_9 #B39DDB
+EVT_8 --> POL_9
+rectangle "COMMAND (Fleet)\nChange Machinery Status" as CMD_10 #87CEFA
+POL_9 --> CMD_10
+rectangle "AGGREGATE (Fleet)\nMachinery" as AGG_11 #FFF59D
+CMD_10 --> AGG_11
+rectangle "HOTSPOT\nTwo contractors may request the same\nmachinery for overlapping dates" as HOT_12 #EF9A9A
+HOT_12 .right. EVT_4
+rectangle "COMMAND\nReject Reservation" as CMD_13 #87CEFA
+rectangle "ACTOR\nFleet Owner" as ACT_14 #FFF9C4
+ACT_14 -left-> CMD_13
+EVT_4 --> CMD_13
+rectangle "AGGREGATE\nRental" as AGG_15 #FFF59D
+CMD_13 --> AGG_15
+rectangle "COMMAND\nCancel Reservation" as CMD_16 #87CEFA
+rectangle "ACTOR\nContractor" as ACT_17 #FFF9C4
+ACT_17 -left-> CMD_16
+rectangle "AGGREGATE\nRental" as AGG_18 #FFF59D
+CMD_16 --> AGG_18
+rectangle "DOMAIN EVENT\nReservation Cancelled" as EVT_19 #FFB74D
+AGG_18 --> EVT_19
+rectangle "POLICY (Fleet)\nWhen a reservation is cancelled,\nset the machinery back to AVAILABLE" as POL_20 #B39DDB
+EVT_19 --> POL_20
+rectangle "COMMAND (Fleet)\nChange Machinery Status" as CMD_21 #87CEFA
+POL_20 --> CMD_21
+rectangle "AGGREGATE (Fleet)\nMachinery" as AGG_22 #FFF59D
+CMD_21 --> AGG_22
+rectangle "DOMAIN EVENT (Operations)\nOperation Started" as XEVT_23 #FFE0B2
+rectangle "POLICY\nWhen the service operation starts,\nmark the rental as IN_PROGRESS" as POL_24 #B39DDB
+XEVT_23 --> POL_24
+rectangle "COMMAND\nStart Rental" as CMD_25 #87CEFA
+POL_24 --> CMD_25
+rectangle "AGGREGATE\nRental" as AGG_26 #FFF59D
+CMD_25 --> AGG_26
+rectangle "DOMAIN EVENT (Operations)\nOperation Completed" as XEVT_27 #FFE0B2
+rectangle "POLICY\nWhen the service operation is completed,\nmark the rental as COMPLETED" as POL_28 #B39DDB
+XEVT_27 --> POL_28
+rectangle "COMMAND\nComplete Rental" as CMD_29 #87CEFA
+POL_28 --> CMD_29
+rectangle "AGGREGATE\nRental" as AGG_30 #FFF59D
+CMD_29 --> AGG_30
+rectangle "DOMAIN EVENT\nRental Completed" as EVT_31 #FFB74D
+AGG_30 --> EVT_31
+rectangle "POLICY (Billing)\nWhen a rental ends after its\nagreed date, apply a late penalty" as POL_32 #B39DDB
+EVT_31 --> POL_32
+rectangle "COMMAND (Billing)\nApply Late Penalty" as CMD_33 #87CEFA
+POL_32 --> CMD_33
+rectangle "AGGREGATE (Billing)\nLate Penalty" as AGG_34 #FFF59D
+CMD_33 --> AGG_34
+rectangle "<b>BUSINESS RULES (Rental)</b>\n- Rental period end date cannot be\n  before its start date\n- Machinery cannot have overlapping\n  active rentals\n- Valid transitions: REQUESTED -> CONFIRMED\n  -> IN_PROGRESS -> COMPLETED\n- Only REQUESTED rentals can be rejected\n  by the fleet owner (status REJECTED)\n- Only REQUESTED or CONFIRMED rentals\n  can be cancelled by the contractor\n- Total amount (Money) cannot be negative\n- A cancelled rental records its cancellation date" as BR_35 #FFFDE7
+rectangle "READ MODEL\nPending Rental Requests\n<size:10><i>Query: View Pending Requests</i></size>\n<size:10>Source: Rental</size>" as RM_36 #81C784
+rectangle "ACTOR\nFleet Owner" as ACT_37 #FFF9C4
+RM_36 ..> ACT_37 : informs
+rectangle "READ MODEL\nMy Reservations\n<size:10><i>Query: View My Reservations</i></size>\n<size:10>Source: Rental</size>" as RM_38 #81C784
+rectangle "ACTOR\nContractor" as ACT_39 #FFF9C4
+RM_38 ..> ACT_39 : informs
+rectangle "READ MODEL\nMachinery Availability\n<size:10><i>Query: Check Machinery Availability</i></size>\n<size:10>Source: Machinery (Fleet)</size>" as RM_40 #81C784
+rectangle "ACTOR\nContractor" as ACT_41 #FFF9C4
+RM_40 ..> ACT_41 : informs
 
-' ===== Policies =====
-rectangle "DOMAIN EVENT (Operations)\nOperation Started" as XEVT_OPERATION_STARTED #FFE0B2
-rectangle "POLICY\nWhen the service operation starts,\nmark the rental as IN_PROGRESS" as POL_0 #B39DDB
-rectangle "DOMAIN EVENT (Operations)\nOperation Completed" as XEVT_OPERATION_COMPLETED #FFE0B2
-rectangle "POLICY\nWhen the service operation is completed,\nmark the rental as COMPLETED" as POL_1 #B39DDB
-
-' ===== Read Models =====
-rectangle "READ MODEL\nPending Rental Requests\n<size:10><i>Query: View Pending Requests</i></size>" as RM_0 #81C784
-rectangle "ACTOR\nFleet Owner" as ACT_RM_0 #FFF9C4
-rectangle "READ MODEL\nMy Reservations\n<size:10><i>Query: View My Reservations</i></size>" as RM_1 #81C784
-rectangle "ACTOR\nContractor" as ACT_RM_1 #FFF9C4
-rectangle "READ MODEL\nMachinery Availability (Fleet)\n<size:10><i>Query: Check Machinery Availability</i></size>" as RM_2 #81C784
-rectangle "ACTOR\nContractor" as ACT_RM_2 #FFF9C4
-rectangle "HOTSPOT\nTwo contractors may request the same\nmachinery for overlapping dates" as HOT_0 #EF9A9A
-
-ACT_CONTRACTOR_0 --> CMD_REQUEST_RENTAL
-CMD_REQUEST_RENTAL --> AGG_RENTAL_0
-AGG_RENTAL_0 --> EVT_RENTAL_REQUESTED
-note bottom of AGG_RENTAL_0
-<b>Business rules (Rental)</b>
-- Rental period end date cannot be
-  before its start date
-- Machinery cannot have overlapping
-  active rentals
-- Valid transitions: REQUESTED -> CONFIRMED
-  -> IN_PROGRESS -> COMPLETED
-- Only REQUESTED rentals can be rejected
-  by the fleet owner (status REJECTED)
-- Only REQUESTED or CONFIRMED rentals
-  can be cancelled by the contractor
-- Total amount (Money) cannot be negative
-- A cancelled rental records its cancellation date
-end note
-ACT_FLEET_OWNER_1 --> CMD_CONFIRM_RESERVATION
-CMD_CONFIRM_RESERVATION --> AGG_RENTAL_1
-AGG_RENTAL_1 --> EVT_RESERVATION_CONFIRMED
-ACT_FLEET_OWNER_5 --> CMD_REJECT_RESERVATION
-CMD_REJECT_RESERVATION --> AGG_RENTAL_5
-AGG_RENTAL_5 --> EVT_RESERVATION_REJECTED
-ACT_CONTRACTOR_2 --> CMD_CANCEL_RESERVATION
-CMD_CANCEL_RESERVATION --> AGG_RENTAL_2
-AGG_RENTAL_2 --> EVT_RESERVATION_CANCELLED
-CMD_START_RENTAL --> AGG_RENTAL_3
-AGG_RENTAL_3 --> EVT_RENTAL_STARTED
-CMD_COMPLETE_RENTAL --> AGG_RENTAL_4
-AGG_RENTAL_4 --> EVT_RENTAL_COMPLETED
-XEVT_OPERATION_STARTED --> POL_0
-POL_0 --> CMD_START_RENTAL
-XEVT_OPERATION_COMPLETED --> POL_1
-POL_1 --> CMD_COMPLETE_RENTAL
-EVT_RENTAL_REQUESTED ..> RM_0 : updates
-EVT_RESERVATION_CONFIRMED ..> RM_0 : updates
-EVT_RESERVATION_CANCELLED ..> RM_0 : updates
-EVT_RESERVATION_REJECTED ..> RM_0 : updates
-EVT_RESERVATION_REJECTED ..> RM_1 : updates
-RM_0 ..> ACT_RM_0 : informs
-EVT_RENTAL_REQUESTED ..> RM_1 : updates
-EVT_RESERVATION_CONFIRMED ..> RM_1 : updates
-EVT_RESERVATION_CANCELLED ..> RM_1 : updates
-EVT_RENTAL_STARTED ..> RM_1 : updates
-EVT_RENTAL_COMPLETED ..> RM_1 : updates
-RM_1 ..> ACT_RM_1 : informs
-RM_2 ..> ACT_RM_2 : informs
-HOT_0 .. EVT_RENTAL_REQUESTED
+' Flows are stacked from top to bottom; each one reads left to right
+CMD_16 -[hidden]left-> CMD_1
+XEVT_23 -[hidden]left-> CMD_16
+XEVT_27 -[hidden]left-> XEVT_23
+RM_36 -[hidden]left-> XEVT_27
+RM_38 -[hidden]left-> RM_36
+RM_40 -[hidden]left-> RM_38
+ACT_37 -[hidden]-> BR_35
 
 legend right
 |= Color |= Element |
@@ -106,10 +102,10 @@ legend right
 |<#FFF59D>| Aggregate |
 |<#FFB74D>| Domain Event |
 |<#B39DDB>| Policy |
-|<#81C784>| Read Model |
 |<#FFE0B2>| Domain Event from another Bounded Context |
+|<#81C784>| Read Model |
 |<#EF9A9A>| Hotspot |
-|<#FFFDE7>| Business Rules (note) |
+|<#FFFDE7>| Business Rules |
 endlegend
 
 @enduml

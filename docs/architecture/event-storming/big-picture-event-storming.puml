@@ -1,28 +1,26 @@
 @startuml
-title MaquiControl - Big Picture Event Storming
+title MaquiControl - Big Picture Event Storming\n<size:12>Timeline: left to right</size>
 
-top to bottom direction
+left to right direction
 skinparam shadowing false
 skinparam roundcorner 8
 skinparam defaultFontName Arial
-skinparam linetype ortho
+skinparam rectangleFontSize 12
+skinparam ArrowColor #555555
+skinparam nodesep 30
+skinparam ranksep 40
 
-rectangle "ACTOR / ROLE\nContractor / Site Manager" as ACT_CONTRACTOR #FFE66D
-rectangle "ACTOR / ROLE\nMachinery Owner / Fleet Administrator" as ACT_OWNER #FFE66D
 
-package "Candidate Area: Discovery & Rental Management" {
-  rectangle "DOMAIN EVENT\nMachinery Need Identified" as EVT_NEED #FFB74D
-  rectangle "DOMAIN EVENT\nMatching Machinery Displayed" as EVT_MATCHED #FFB74D
-  rectangle "DOMAIN EVENT\nAvailability Verified" as EVT_AVAILABLE #FFB74D
-  rectangle "DOMAIN EVENT\nQuotation Generated" as EVT_QUOTED #FFB74D
-  rectangle "DOMAIN EVENT\nRental Request Submitted" as EVT_REQUESTED #FFB74D
-  rectangle "DOMAIN EVENT\nReservation Confirmed" as EVT_RESERVED #FFB74D
-
-  rectangle "HOTSPOT\nAvailability may be outdated" as HOT_AVAILABILITY #EF9A9A
-  rectangle "HOTSPOT\nRisk of double booking" as HOT_DOUBLE #EF9A9A
+package "4. Billing & Closure" {
+  rectangle "DOMAIN EVENT\nRental Amount Calculated" as EVT_AMOUNT #FFB74D
+  rectangle "DOMAIN EVENT\nInvoice Issued" as EVT_INVOICE #FFB74D
+  rectangle "DOMAIN EVENT\nRental Closed" as EVT_CLOSED #FFB74D
+  rectangle "EXTERNAL SYSTEM\nSUNAT" as EXT_SUNAT #E78AD9
+  rectangle "HOTSPOT\nManual calculations and delayed invoicing" as HOT_INVOICE #EF9A9A
 }
 
-package "Candidate Area: Service Execution & Maintenance" {
+package "3. Service Execution & Maintenance" {
+  rectangle "ACTOR / ROLE\nOperator" as ACT_OPERATOR #FFE66D
   rectangle "DOMAIN EVENT\nMachinery Assigned" as EVT_ASSIGNED #FFB74D
   rectangle "DOMAIN EVENT\nService Started" as EVT_STARTED #FFB74D
   rectangle "DOMAIN EVENT\nWorked Hours Reported" as EVT_HOURS_REPORTED #FFB74D
@@ -30,58 +28,70 @@ package "Candidate Area: Service Execution & Maintenance" {
   rectangle "DOMAIN EVENT\nMaintenance Need Detected" as EVT_MAINTENANCE_NEED #FFB74D
   rectangle "DOMAIN EVENT\nMaintenance Scheduled" as EVT_MAINTENANCE_SCHEDULED #FFB74D
   rectangle "DOMAIN EVENT\nMaintenance Completed" as EVT_MAINTENANCE_COMPLETED #FFB74D
-
   rectangle "HOTSPOT\nManual hour records may differ" as HOT_HOURS #EF9A9A
   rectangle "HOTSPOT\nUnexpected failures may delay work" as HOT_FAILURE #EF9A9A
 }
 
-package "Candidate Area: Billing, Closure & Subscription" {
-  rectangle "DOMAIN EVENT\nRental Amount Calculated" as EVT_AMOUNT #FFB74D
-  rectangle "DOMAIN EVENT\nInvoice Issued" as EVT_INVOICE #FFB74D
-  rectangle "DOMAIN EVENT\nRental Closed" as EVT_CLOSED #FFB74D
+package "2. Discovery & Rental Management" {
+  rectangle "ACTOR / ROLE\nMachinery Owner / Fleet Administrator" as ACT_OWNER_2 #FFE66D
+  rectangle "ACTOR / ROLE\nContractor / Site Manager" as ACT_CONTRACTOR #FFE66D
+  rectangle "DOMAIN EVENT\nMachinery Need Identified" as EVT_NEED #FFB74D
+  rectangle "DOMAIN EVENT\nMatching Machinery Displayed" as EVT_MATCHED #FFB74D
+  rectangle "DOMAIN EVENT\nAvailability Verified" as EVT_AVAILABLE #FFB74D
+  rectangle "DOMAIN EVENT\nQuotation Generated" as EVT_QUOTED #FFB74D
+  rectangle "DOMAIN EVENT\nRental Request Submitted" as EVT_REQUESTED #FFB74D
+  rectangle "DOMAIN EVENT\nReservation Confirmed" as EVT_RESERVED #FFB74D
+  rectangle "HOTSPOT\nAvailability may be outdated" as HOT_AVAILABILITY #EF9A9A
+  rectangle "HOTSPOT\nRisk of double booking" as HOT_DOUBLE #EF9A9A
+}
+
+package "1. Subscription & Fleet Setup" {
+  rectangle "ACTOR / ROLE\nMachinery Owner / Fleet Administrator" as ACT_OWNER #FFE66D
   rectangle "DOMAIN EVENT\nSubscription Plan Selected" as EVT_PLAN #FFB74D
   rectangle "DOMAIN EVENT\nSubscription Payment Approved" as EVT_PAYMENT #FFB74D
   rectangle "DOMAIN EVENT\nSubscription Activated / Renewed" as EVT_SUBSCRIPTION #FFB74D
-
-  rectangle "EXTERNAL SYSTEM\nSUNAT" as EXT_SUNAT #E78AD9
+  rectangle "DOMAIN EVENT\nMachinery Registered" as EVT_MACHINERY #FFB74D
   rectangle "EXTERNAL SYSTEM\nPayment Provider" as EXT_PAYMENT #E78AD9
-
-  rectangle "HOTSPOT\nManual calculations and delayed invoicing" as HOT_INVOICE #EF9A9A
   rectangle "HOTSPOT\nPayment or renewal may fail" as HOT_PAYMENT #EF9A9A
 }
 
-ACT_CONTRACTOR ..> EVT_NEED : originates
-ACT_OWNER ..> EVT_MATCHED : publishes fleet
+' 4. Billing & Closure
+EVT_AMOUNT --> EVT_INVOICE
+EVT_INVOICE --> EVT_CLOSED
+EXT_SUNAT .left. EVT_INVOICE
+HOT_INVOICE .right. EVT_INVOICE
 
+' 3. Service Execution & Maintenance
+EVT_ASSIGNED --> EVT_STARTED
+ACT_OPERATOR .right.> EVT_STARTED
+EVT_STARTED --> EVT_HOURS_REPORTED
+EVT_HOURS_REPORTED --> EVT_HOURS_VALIDATED
+HOT_HOURS .right. EVT_HOURS_REPORTED
+EVT_STARTED --> EVT_MAINTENANCE_NEED : failure detected
+EVT_MAINTENANCE_NEED --> EVT_MAINTENANCE_SCHEDULED
+EVT_MAINTENANCE_SCHEDULED --> EVT_MAINTENANCE_COMPLETED
+HOT_FAILURE .left. EVT_MAINTENANCE_NEED
+
+' 2. Discovery & Rental Management
+ACT_CONTRACTOR .right.> EVT_NEED
 EVT_NEED --> EVT_MATCHED
 EVT_MATCHED --> EVT_AVAILABLE
 EVT_AVAILABLE --> EVT_QUOTED
 EVT_QUOTED --> EVT_REQUESTED
 EVT_REQUESTED --> EVT_RESERVED
-HOT_AVAILABILITY .. EVT_AVAILABLE
-HOT_DOUBLE .. EVT_RESERVED
+ACT_OWNER_2 .right.> EVT_RESERVED
+HOT_AVAILABILITY .left. EVT_AVAILABLE
+HOT_DOUBLE .left. EVT_RESERVED
 
-EVT_RESERVED --> EVT_ASSIGNED
-EVT_ASSIGNED --> EVT_STARTED
-EVT_STARTED --> EVT_HOURS_REPORTED
-EVT_HOURS_REPORTED --> EVT_HOURS_VALIDATED
-HOT_HOURS .. EVT_HOURS_REPORTED
-
-EVT_MAINTENANCE_NEED --> EVT_MAINTENANCE_SCHEDULED
-EVT_MAINTENANCE_SCHEDULED --> EVT_MAINTENANCE_COMPLETED
-HOT_FAILURE .. EVT_MAINTENANCE_NEED
-EVT_STARTED ..> EVT_MAINTENANCE_NEED : failure detected
-
-EVT_HOURS_VALIDATED --> EVT_AMOUNT
-EVT_AMOUNT --> EVT_INVOICE
-EXT_SUNAT .. EVT_INVOICE
-EVT_INVOICE --> EVT_CLOSED
-HOT_INVOICE .. EVT_INVOICE
-
+' 1. Subscription & Fleet Setup
+ACT_OWNER .right.> EVT_PLAN
 EVT_PLAN --> EVT_PAYMENT
-EXT_PAYMENT .. EVT_PAYMENT
 EVT_PAYMENT --> EVT_SUBSCRIPTION
-HOT_PAYMENT .. EVT_PAYMENT
+EVT_SUBSCRIPTION --> EVT_MACHINERY
+EXT_PAYMENT .left. EVT_PAYMENT
+HOT_PAYMENT .right. EVT_PAYMENT
+
+' The phases follow each other in time: each package continues the timeline of the one above
 
 legend right
 |= Color |= Element |

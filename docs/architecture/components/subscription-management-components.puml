@@ -1,37 +1,65 @@
 @startuml
 !include <C4/C4_Component>
 
-title MaquiControl - Subscription Management Bounded Context Component Diagram
+
+title MaquiControl - Subscription Management Bounded Context Component Diagram\n<size:12>Layers and packages of the bounded context</size>
 
 Container(webapp, "Single Page Application", "Angular", "Provides the user interface through a web browser.")
 
 Container_Boundary(bc, "Subscription Management Bounded Context") {
 
-    Component(controller0, "PlansController", "Spring Boot @RestController", "Exposes /api/v1/plans endpoints and maps resources to commands and queries.")
-    Component(controller1, "SubscriptionsController", "Spring Boot @RestController", "Exposes /api/v1/subscriptions endpoints and maps resources to commands and queries.")
-    Component(commandService, "SubscriptionManagementCommandService", "Spring Boot @Service", "Handles SubscribeToPlanCommand, ConfirmCheckoutCommand, ActivateSubscriptionCommand, CancelSubscriptionCommand.")
-    Component(queryService, "SubscriptionManagementQueryService", "Spring Boot @Service", "Handles ViewPlansQuery, ViewSubscriptionQuery, ViewPaymentsQuery.")
-    Component(eventHandler0, "SubscriptionEventHandler", "Spring @EventListener", "Reacts to Subscription Payment Approved and executes ActivateSubscriptionCommand.")
-    Component(domain, "Domain Model", "Java", "Subscription aggregate, SubscriptionPlan and Payment entities, Money and MachineryLimit value objects.")
-    Component(repository, "SubscriptionRepository and SubscriptionPlanRepository", "Spring Data JPA @Repository", "Persists and reads the aggregates of the bounded context.")
-    Component(mercadoPagoAcl, "MercadoPagoService", "Spring @Service (Anti-Corruption Layer)", "Translates requests and responses of Mercado Pago.")
+  Boundary(interfaces, "interfaces") {
+    Component(rest, "interfaces.rest", "Java package", "Controllers that expose /api/v1/plans and /subscriptions, with the resources and transform subpackages that map JSON to commands and queries.")
+    Component(ifacl, "interfaces.acl", "Java package", "Context facade that other bounded contexts use to read the machinery limit of the active plan.")
+  }
+  Boundary(application, "application") {
+    Component(cs, "application.commandservices", "Java package", "Command service contract for Subscribe to Plan, Confirm Checkout, Activate Subscription and Cancel Subscription.")
+    Component(qs, "application.queryservices", "Java package", "Query service contract for View Plans, View Subscription and View Payments.")
+    Component(ics, "application.internal.commandservices", "Java package", "Command service implementation: loads the aggregate, runs its behavior and saves it, returning a Result.")
+    Component(iqs, "application.internal.queryservices", "Java package", "Query service implementation that reads aggregates through the repositories.")
+    Component(ieh, "application.internal.eventhandlers", "Java package", "Policy that sends Activate Subscription when the payment is approved.")
+    Component(iob, "application.internal.outboundservices", "Java package", "Payment provider contract used to create the checkout and read the payment.")
+    Component(appacl, "application.acl", "Java package", "Implementation of the context facade on top of the query services.")
+  }
+  Boundary(domain, "domain") {
+    Component(dagg, "domain.model.aggregates", "Java package", "Aggregate roots: Subscription and SubscriptionPlan.")
+    Component(dent, "domain.model.entities", "Java package", "Entities inside the aggregates: Payment.")
+    Component(dvo, "domain.model.valueobjects", "Java package", "Value objects and enums of the bounded context.")
+    Component(dcmd, "domain.model.commands", "Java package", "One record per command: Subscribe to Plan, Confirm Checkout, Activate Subscription and Cancel Subscription.")
+    Component(dqry, "domain.model.queries", "Java package", "One record per query: View Plans, View Subscription and View Payments.")
+    Component(devt, "domain.model.events", "Java package", "Domain events registered by the aggregates.")
+    Component(drep, "domain.repositories", "Java package", "Repository interfaces of the aggregates, without JPA details.")
+  }
+  Boundary(infrastructure, "infrastructure") {
+    Component(jad, "infrastructure.persistence.jpa.adapters", "Java package", "Implement the domain repositories and publish the aggregate events to the outbox.")
+    Component(jas, "infrastructure.persistence.jpa.assemblers", "Java package", "Convert between aggregates and persistence entities.")
+    Component(jen, "infrastructure.persistence.jpa.entities", "Java package", "JPA persistence entities mapped to the tables.")
+    Component(jre, "infrastructure.persistence.jpa.repositories", "Java package", "Spring Data JPA repositories.")
+    Component(mp, "infrastructure.payments.mercadopago", "Java package", "Mercado Pago Checkout Pro implementation of the payment provider.")
+  }
 }
 
-System_Ext(mercadoPago, "Mercado Pago", "Checkout Pro payment provider (sandbox).")
-ContainerDb(database, "Database", "Relational Database", "Stores subscription plans, subscriptions and payments.")
+Component(shared, "shared", "Java package", "Shared kernel: Result, ApplicationError, Money, base aggregate and the outbox relay.")
+System_Ext(mercadopago, "Mercado Pago", "Checkout Pro payment provider (sandbox).")
+ContainerDb(database, "Database", "MySQL", "Stores plans, subscriptions and payments.")
 
-Rel(webapp, controller0, "Calls /api/v1/plans", "HTTPS / JSON")
-Rel(controller0, commandService, "Sends commands")
-Rel(controller0, queryService, "Sends queries")
-Rel(webapp, controller1, "Calls /api/v1/subscriptions", "HTTPS / JSON")
-Rel(controller1, commandService, "Sends commands")
-Rel(controller1, queryService, "Sends queries")
-Rel(eventHandler0, commandService, "Sends ActivateSubscriptionCommand")
-Rel(commandService, domain, "Executes aggregate behavior")
-Rel(commandService, repository, "Saves aggregates")
-Rel(queryService, repository, "Reads aggregates")
-Rel(commandService, mercadoPagoAcl, "Uses")
-Rel(mercadoPagoAcl, mercadoPago, "Creates checkout preferences and reads payments", "HTTPS / JSON")
-Rel(repository, database, "Reads from and writes to", "JPA / SQL")
+Rel_D(webapp, rest, "Calls /api/v1/plans and /subscriptions", "HTTPS / JSON")
+Rel_D(rest, cs, "Sends commands")
+Rel_D(rest, qs, "Sends queries")
+Rel_D(ics, dagg, "Runs aggregate behavior")
+Rel_D(ics, drep, "Saves aggregates")
+Rel_D(iqs, drep, "Reads aggregates")
+Rel_U(jad, drep, "Implements")
+Rel_R(jad, jre, "Uses")
+Rel_D(jre, database, "Reads from and writes to", "JPA / SQL")
+rest -[hidden]down-> ics
+ics -[hidden]down-> dagg
+dagg -[hidden]down-> jad
+jad -[hidden]down-> shared
+Rel_L(ieh, cs, "Sends commands")
+Rel_U(appacl, ifacl, "Implements")
+Rel_U(mp, iob, "Implements")
+Rel_D(mp, mercadopago, "Creates preferences and reads payments", "HTTPS / JSON")
+
 
 @enduml

@@ -1,33 +1,63 @@
 @startuml
 !include <C4/C4_Component>
 
-title MaquiControl - Maintenance Management Bounded Context Component Diagram
+
+title MaquiControl - Maintenance Management Bounded Context Component Diagram\n<size:12>Layers and packages of the bounded context</size>
 
 Container(webapp, "Single Page Application", "Angular", "Provides the user interface through a web browser.")
 
 Container_Boundary(bc, "Maintenance Management Bounded Context") {
 
-    Component(controller0, "MaintenancesController", "Spring Boot @RestController", "Exposes /api/v1/maintenances endpoints and maps resources to commands and queries.")
-    Component(controller1, "BreakdownReportsController", "Spring Boot @RestController", "Exposes /api/v1/breakdown-reports endpoints and maps resources to commands and queries.")
-    Component(commandService, "MaintenanceManagementCommandService", "Spring Boot @Service", "Handles ScheduleMaintenanceCommand, StartMaintenanceCommand, CompleteMaintenanceCommand, ReportBreakdownCommand.")
-    Component(queryService, "MaintenanceManagementQueryService", "Spring Boot @Service", "Handles ViewMaintenanceScheduleQuery, ViewBreakdownReportsQuery, ViewMaintenanceHistoryQuery.")
-    Component(eventHandler0, "MaintenanceEventHandler", "Spring @EventListener", "Reacts to Breakdown Reported and Worked Hours Validated and executes ScheduleMaintenanceCommand.")
-    Component(domain, "Domain Model", "Java", "Maintenance aggregate, BreakdownReport entity, Money and TechnicianName value objects.")
-    Component(repository, "MaintenanceRepository", "Spring Data JPA @Repository", "Persists and reads the aggregates of the bounded context.")
+  Boundary(interfaces, "interfaces") {
+    Component(rest, "interfaces.rest", "Java package", "Controllers that expose /api/v1/maintenances, with the resources and transform subpackages that map JSON to commands and queries.")
+    Component(ifevents, "interfaces.events", "Java package", "Integration events published to other bounded contexts: Maintenance Started and Maintenance Completed.")
+  }
+  Boundary(application, "application") {
+    Component(cs, "application.commandservices", "Java package", "Command service contract for Schedule Maintenance, Start Maintenance, Complete Maintenance and Report Breakdown.")
+    Component(qs, "application.queryservices", "Java package", "Query service contract for View Maintenance Schedule, View Breakdown Reports and View Maintenance History.")
+    Component(ics, "application.internal.commandservices", "Java package", "Command service implementation: loads the aggregate, runs its behavior and saves it, returning a Result.")
+    Component(iqs, "application.internal.queryservices", "Java package", "Query service implementation that reads aggregates through the repositories.")
+    Component(ieh, "application.internal.eventhandlers", "Java package", "Translate Maintenance domain events into integration events.")
+    Component(iob, "application.internal.outboundservices", "Java package", "Anti-corruption layer that reads machinery from Fleet Management and rentals in progress from Rental Management.")
+  }
+  Boundary(domain, "domain") {
+    Component(dagg, "domain.model.aggregates", "Java package", "Aggregate roots: Maintenance.")
+    Component(dent, "domain.model.entities", "Java package", "Entities inside the aggregates: BreakdownReport.")
+    Component(dvo, "domain.model.valueobjects", "Java package", "Value objects and enums of the bounded context.")
+    Component(dcmd, "domain.model.commands", "Java package", "One record per command: Schedule Maintenance, Start Maintenance, Complete Maintenance and Report Breakdown.")
+    Component(dqry, "domain.model.queries", "Java package", "One record per query: View Maintenance Schedule, View Breakdown Reports and View Maintenance History.")
+    Component(devt, "domain.model.events", "Java package", "Domain events registered by the aggregates.")
+    Component(drep, "domain.repositories", "Java package", "Repository interfaces of the aggregates, without JPA details.")
+  }
+  Boundary(infrastructure, "infrastructure") {
+    Component(jad, "infrastructure.persistence.jpa.adapters", "Java package", "Implement the domain repositories and publish the aggregate events to the outbox.")
+    Component(jas, "infrastructure.persistence.jpa.assemblers", "Java package", "Convert between aggregates and persistence entities.")
+    Component(jen, "infrastructure.persistence.jpa.entities", "Java package", "JPA persistence entities mapped to the tables.")
+    Component(jre, "infrastructure.persistence.jpa.repositories", "Java package", "Spring Data JPA repositories.")
+  }
 }
 
-ContainerDb(database, "Database", "Relational Database", "Stores maintenances and breakdown reports.")
+Component(shared, "shared", "Java package", "Shared kernel: Result, ApplicationError, Money, base aggregate and the outbox relay.")
+Component(fleetacl, "fleet.interfaces.acl", "Java package", "Context facade of another bounded context.")
+Component(rentalacl, "rental.interfaces.acl", "Java package", "Context facade of another bounded context.")
+ContainerDb(database, "Database", "MySQL", "Stores maintenances and breakdown reports.")
 
-Rel(webapp, controller0, "Calls /api/v1/maintenances", "HTTPS / JSON")
-Rel(controller0, commandService, "Sends commands")
-Rel(controller0, queryService, "Sends queries")
-Rel(webapp, controller1, "Calls /api/v1/breakdown-reports", "HTTPS / JSON")
-Rel(controller1, commandService, "Sends commands")
-Rel(controller1, queryService, "Sends queries")
-Rel(eventHandler0, commandService, "Sends ScheduleMaintenanceCommand")
-Rel(commandService, domain, "Executes aggregate behavior")
-Rel(commandService, repository, "Saves aggregates")
-Rel(queryService, repository, "Reads aggregates")
-Rel(repository, database, "Reads from and writes to", "JPA / SQL")
+Rel_D(webapp, rest, "Calls /api/v1/maintenances", "HTTPS / JSON")
+Rel_D(rest, cs, "Sends commands")
+Rel_D(rest, qs, "Sends queries")
+Rel_D(ics, dagg, "Runs aggregate behavior")
+Rel_D(ics, drep, "Saves aggregates")
+Rel_D(iqs, drep, "Reads aggregates")
+Rel_U(jad, drep, "Implements")
+Rel_R(jad, jre, "Uses")
+Rel_D(jre, database, "Reads from and writes to", "JPA / SQL")
+rest -[hidden]down-> ics
+ics -[hidden]down-> dagg
+dagg -[hidden]down-> jad
+jad -[hidden]down-> shared
+Rel_L(ieh, cs, "Sends commands")
+Rel_D(iob, fleetacl, "Calls")
+Rel_D(iob, rentalacl, "Calls")
+
 
 @enduml

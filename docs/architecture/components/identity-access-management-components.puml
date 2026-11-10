@@ -1,33 +1,66 @@
 @startuml
 !include <C4/C4_Component>
 
-title MaquiControl - Identity & Access Management Bounded Context Component Diagram
+
+title MaquiControl - Identity & Access Management Bounded Context Component Diagram\n<size:12>Layers and packages of the bounded context</size>
 
 Container(webapp, "Single Page Application", "Angular", "Provides the user interface through a web browser.")
 
 Container_Boundary(bc, "Identity & Access Management Bounded Context") {
 
-    Component(controller0, "AuthenticationController", "Spring Boot @RestController", "Exposes /api/v1/authentication/sign-up and /sign-in endpoints and maps resources to commands and queries.")
-    Component(controller1, "UserAccountsController", "Spring Boot @RestController", "Exposes /api/v1/user-accounts and /api/v1/roles endpoints and maps resources to commands and queries.")
-    Component(commandService, "IdentityAccessCommandService", "Spring Boot @Service", "Handles SignUpCommand, SignInCommand, SignOutCommand.")
-    Component(queryService, "IdentityAccessQueryService", "Spring Boot @Service", "Handles GetSignedInAccountQuery, ViewRolesQuery.")
-    Component(security, "SecurityFilterChain", "Spring Security Component", "Applies JwtTokenFilter to validate Bearer tokens on protected routes.")
-    Component(domain, "Domain Model", "Java", "UserAccount aggregate, Role entity, Credential, EmailAddress and PasswordHash value objects.")
-    Component(repository, "UserAccountRepository and RoleRepository", "Spring Data JPA @Repository", "Persists and reads the aggregates of the bounded context.")
+  Boundary(interfaces, "interfaces") {
+    Component(rest, "interfaces.rest", "Java package", "Controllers that expose /api/v1/authentication, /user-accounts and /roles, with the resources and transform subpackages that map JSON to commands and queries.")
+    Component(ifacl, "interfaces.acl", "Java package", "Context facade that other bounded contexts use to look up user accounts and roles by email.")
+  }
+  Boundary(application, "application") {
+    Component(cs, "application.commandservices", "Java package", "Command service contract for Sign Up, Sign In and Sign Out.")
+    Component(qs, "application.queryservices", "Java package", "Query service contract for Get Signed-in Account and View Roles.")
+    Component(ics, "application.internal.commandservices", "Java package", "Command service implementation: loads the aggregate, runs its behavior and saves it, returning a Result.")
+    Component(iqs, "application.internal.queryservices", "Java package", "Query service implementation that reads aggregates through the repositories.")
+    Component(ieh, "application.internal.eventhandlers", "Java package", "Seeds the roles when the application starts.")
+    Component(iob, "application.internal.outboundservices", "Java package", "Hashing and token service contracts (hashing, tokens) used by the command services.")
+    Component(appacl, "application.acl", "Java package", "Implementation of the context facade on top of the query services.")
+  }
+  Boundary(domain, "domain") {
+    Component(dagg, "domain.model.aggregates", "Java package", "Aggregate roots: UserAccount.")
+    Component(dent, "domain.model.entities", "Java package", "Entities inside the aggregates: Role.")
+    Component(dvo, "domain.model.valueobjects", "Java package", "Value objects and enums of the bounded context.")
+    Component(dcmd, "domain.model.commands", "Java package", "One record per command: Sign Up, Sign In and Sign Out.")
+    Component(dqry, "domain.model.queries", "Java package", "One record per query: Get Signed-in Account and View Roles.")
+    Component(devt, "domain.model.events", "Java package", "Domain events registered by the aggregates.")
+    Component(drep, "domain.repositories", "Java package", "Repository interfaces of the aggregates, without JPA details.")
+  }
+  Boundary(infrastructure, "infrastructure") {
+    Component(jad, "infrastructure.persistence.jpa.adapters", "Java package", "Implement the domain repositories and publish the aggregate events to the outbox.")
+    Component(jas, "infrastructure.persistence.jpa.assemblers", "Java package", "Convert between aggregates and persistence entities.")
+    Component(jen, "infrastructure.persistence.jpa.entities", "Java package", "JPA persistence entities mapped to the tables.")
+    Component(jre, "infrastructure.persistence.jpa.repositories", "Java package", "Spring Data JPA repositories.")
+    Component(hash, "infrastructure.hashing.bcrypt", "Java package", "BCrypt implementation of the hashing service.")
+    Component(tok, "infrastructure.tokens.jwt", "Java package", "JWT implementation of the token service.")
+    Component(sfs, "infrastructure.authorization.sfs", "Java package", "Spring Security configuration and the bearer token filter pipeline.")
+  }
 }
 
-ContainerDb(database, "Database", "Relational Database", "Stores user accounts, credentials, roles and their assignment.")
+Component(shared, "shared", "Java package", "Shared kernel: Result, ApplicationError, Money, base aggregate and the outbox relay.")
+ContainerDb(database, "Database", "MySQL", "Stores user accounts and roles.")
 
-Rel(webapp, controller0, "Calls /api/v1/authentication/sign-up and /sign-in", "HTTPS / JSON")
-Rel(controller0, commandService, "Sends commands")
-Rel(controller0, queryService, "Sends queries")
-Rel(webapp, controller1, "Calls /api/v1/user-accounts and /api/v1/roles", "HTTPS / JSON")
-Rel(controller1, commandService, "Sends commands")
-Rel(controller1, queryService, "Sends queries")
-Rel(commandService, domain, "Executes aggregate behavior")
-Rel(commandService, repository, "Saves aggregates")
-Rel(queryService, repository, "Reads aggregates")
-Rel(controller0, security, "Issues and validates JWT tokens")
-Rel(repository, database, "Reads from and writes to", "JPA / SQL")
+Rel_D(webapp, rest, "Calls /api/v1/authentication, /user-accounts and /roles", "HTTPS / JSON")
+Rel_D(rest, cs, "Sends commands")
+Rel_D(rest, qs, "Sends queries")
+Rel_D(ics, dagg, "Runs aggregate behavior")
+Rel_D(ics, drep, "Saves aggregates")
+Rel_D(iqs, drep, "Reads aggregates")
+Rel_U(jad, drep, "Implements")
+Rel_R(jad, jre, "Uses")
+Rel_D(jre, database, "Reads from and writes to", "JPA / SQL")
+rest -[hidden]down-> ics
+ics -[hidden]down-> dagg
+dagg -[hidden]down-> jad
+jad -[hidden]down-> shared
+Rel_L(ieh, cs, "Sends commands")
+Rel_U(appacl, ifacl, "Implements")
+Rel_U(hash, iob, "Implements")
+Rel_U(tok, iob, "Implements")
+
 
 @enduml
