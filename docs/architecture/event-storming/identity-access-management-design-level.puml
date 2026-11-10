@@ -18,7 +18,7 @@ rectangle "AGGREGATE\nUser Account" as AGG_3 #FFF59D
 CMD_1 --> AGG_3
 rectangle "DOMAIN EVENT\nUser Signed Up" as EVT_4 #FFB74D
 AGG_3 --> EVT_4
-rectangle "POLICY (Profiles)\nWhen a user signs up,\ncreate the profile of the account" as POL_5 #B39DDB
+rectangle "POLICY (Profiles)\nWhen a user signs up,\nask for the profile data" as POL_5 #B39DDB
 EVT_4 --> POL_5
 rectangle "COMMAND (Profiles)\nCreate Profile" as CMD_6 #87CEFA
 POL_5 --> CMD_6
@@ -37,7 +37,7 @@ ACT_13 -left-> CMD_12
 rectangle "AGGREGATE\nUser Account" as AGG_14 #FFF59D
 CMD_12 --> AGG_14
 AGG_10 -[hidden]-> CMD_12
-rectangle "<b>BUSINESS RULES (User Account)</b>\n- Email must be valid and unique\n- Password is stored as a credential hash\n- A role (FLEET_OWNER or CONTRACTOR)\n  is required to sign up\n- Only an active account can sign in" as BR_15 #FFFDE7
+rectangle "<b>BUSINESS RULES (User Account)</b>\n- Email must be valid and unique\n- Password is stored as a credential hash\n- A role (FLEET_OWNER, FLEET_ADMINISTRATOR,\n  CONTRACTOR or OPERATOR) is required\n  to sign up\n- Only an active account can sign in" as BR_15 #FFFDE7
 rectangle "READ MODEL\nCurrent Session\n<size:10><i>Query: Get Signed-in Account</i></size>\n<size:10>Source: User Account</size>" as RM_16 #81C784
 rectangle "ACTOR\nUser" as ACT_17 #FFF9C4
 RM_16 ..> ACT_17 : informs

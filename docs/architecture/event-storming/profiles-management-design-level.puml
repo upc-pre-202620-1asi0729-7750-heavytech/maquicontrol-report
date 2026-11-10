@@ -12,7 +12,7 @@ skinparam nodesep 30
 skinparam ranksep 40
 
 rectangle "DOMAIN EVENT (Identity & Access)\nUser Signed Up" as XEVT_1 #FFE0B2
-rectangle "POLICY\nWhen a user signs up,\ncreate the profile of the account" as POL_2 #B39DDB
+rectangle "POLICY\nWhen a user signs up,\nask for the profile data" as POL_2 #B39DDB
 XEVT_1 --> POL_2
 rectangle "COMMAND\nCreate Profile" as CMD_3 #87CEFA
 rectangle "ACTOR\nUser" as ACT_4 #FFF9C4

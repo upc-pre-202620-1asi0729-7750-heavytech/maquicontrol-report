@@ -16,74 +16,80 @@ rectangle "ACTOR\nFleet Owner" as ACT_2 #FFF9C4
 ACT_2 -left-> CMD_1
 rectangle "AGGREGATE\nMaintenance" as AGG_3 #FFF59D
 CMD_1 --> AGG_3
-rectangle "COMMAND\nStart Maintenance" as CMD_4 #87CEFA
+rectangle "COMMAND\nCancel Maintenance" as CMD_4 #87CEFA
 rectangle "ACTOR\nFleet Owner" as ACT_5 #FFF9C4
 ACT_5 -left-> CMD_4
 rectangle "AGGREGATE\nMaintenance" as AGG_6 #FFF59D
 CMD_4 --> AGG_6
-rectangle "DOMAIN EVENT\nMaintenance Started" as EVT_7 #FFB74D
-AGG_6 --> EVT_7
-rectangle "POLICY (Fleet)\nWhen maintenance starts,\nset the machinery to IN_MAINTENANCE" as POL_8 #B39DDB
-EVT_7 --> POL_8
-rectangle "COMMAND (Fleet)\nChange Machinery Status" as CMD_9 #87CEFA
-POL_8 --> CMD_9
-rectangle "AGGREGATE (Fleet)\nMachinery" as AGG_10 #FFF59D
-CMD_9 --> AGG_10
-rectangle "COMMAND\nComplete Maintenance" as CMD_11 #87CEFA
-rectangle "ACTOR\nFleet Owner" as ACT_12 #FFF9C4
-ACT_12 -left-> CMD_11
-rectangle "AGGREGATE\nMaintenance" as AGG_13 #FFF59D
-CMD_11 --> AGG_13
-rectangle "DOMAIN EVENT\nMaintenance Completed" as EVT_14 #FFB74D
-AGG_13 --> EVT_14
-rectangle "POLICY (Fleet)\nWhen maintenance is completed,\nset the machinery back to AVAILABLE" as POL_15 #B39DDB
-EVT_14 --> POL_15
-rectangle "COMMAND (Fleet)\nChange Machinery Status" as CMD_16 #87CEFA
-POL_15 --> CMD_16
-rectangle "AGGREGATE (Fleet)\nMachinery" as AGG_17 #FFF59D
-CMD_16 --> AGG_17
-rectangle "COMMAND\nReport Breakdown" as CMD_18 #87CEFA
-rectangle "ACTOR\nContractor" as ACT_19 #FFF9C4
-ACT_19 -left-> CMD_18
-rectangle "AGGREGATE\nMaintenance" as AGG_20 #FFF59D
-CMD_18 --> AGG_20
-rectangle "DOMAIN EVENT\nBreakdown Reported" as EVT_21 #FFB74D
-AGG_20 --> EVT_21
-rectangle "POLICY\nWhen a breakdown is reported,\nschedule a corrective maintenance" as POL_22 #B39DDB
-EVT_21 --> POL_22
-rectangle "COMMAND\nSchedule Maintenance" as CMD_23 #87CEFA
-POL_22 --> CMD_23
-rectangle "AGGREGATE\nMaintenance" as AGG_24 #FFF59D
-CMD_23 --> AGG_24
-rectangle "HOTSPOT\nA critical breakdown during an active\nrental may stop work at the site" as HOT_25 #EF9A9A
-HOT_25 .right. EVT_21
-rectangle "DOMAIN EVENT (Operations)\nWorked Hours Validated" as XEVT_26 #FFE0B2
-rectangle "POLICY\nWhen accumulated hours reach the\npreventive threshold, schedule\na preventive maintenance" as POL_27 #B39DDB
-XEVT_26 --> POL_27
-rectangle "COMMAND\nSchedule Maintenance" as CMD_28 #87CEFA
-POL_27 --> CMD_28
-rectangle "AGGREGATE\nMaintenance" as AGG_29 #FFF59D
-CMD_28 --> AGG_29
-rectangle "<b>BUSINESS RULES (Maintenance)</b>\n- Description is required\n- Type: PREVENTIVE, CORRECTIVE or INSPECTION\n- The scheduled date cannot be in the past\n- Cost (Money) cannot be negative\n- A completed maintenance records\n  its completion date and resolves\n  its breakdown reports\n- Breakdown severity: LOW, MEDIUM,\n  HIGH or CRITICAL" as BR_30 #FFFDE7
-rectangle "READ MODEL\nMaintenance Schedule\n<size:10><i>Query: View Maintenance Schedule</i></size>\n<size:10>Source: Maintenance</size>" as RM_31 #81C784
-rectangle "ACTOR\nFleet Owner" as ACT_32 #FFF9C4
-RM_31 ..> ACT_32 : informs
-rectangle "READ MODEL\nBreakdown Reports\n<size:10><i>Query: View Breakdown Reports</i></size>\n<size:10>Source: Maintenance</size>" as RM_33 #81C784
-rectangle "ACTOR\nFleet Owner" as ACT_34 #FFF9C4
-RM_33 ..> ACT_34 : informs
-rectangle "READ MODEL\nMaintenance History\n<size:10><i>Query: View Maintenance History</i></size>\n<size:10>Source: Maintenance</size>" as RM_35 #81C784
-rectangle "ACTOR\nContractor" as ACT_36 #FFF9C4
-RM_35 ..> ACT_36 : informs
+AGG_3 -[hidden]-> CMD_4
+rectangle "COMMAND\nStart Maintenance" as CMD_7 #87CEFA
+rectangle "ACTOR\nFleet Owner" as ACT_8 #FFF9C4
+ACT_8 -left-> CMD_7
+rectangle "AGGREGATE\nMaintenance" as AGG_9 #FFF59D
+CMD_7 --> AGG_9
+rectangle "DOMAIN EVENT\nMaintenance Started" as EVT_10 #FFB74D
+AGG_9 --> EVT_10
+rectangle "POLICY (Fleet)\nWhen maintenance starts,\nset the machinery to IN_MAINTENANCE" as POL_11 #B39DDB
+EVT_10 --> POL_11
+rectangle "COMMAND (Fleet)\nChange Machinery Status" as CMD_12 #87CEFA
+POL_11 --> CMD_12
+rectangle "AGGREGATE (Fleet)\nMachinery" as AGG_13 #FFF59D
+CMD_12 --> AGG_13
+rectangle "COMMAND\nComplete Maintenance" as CMD_14 #87CEFA
+rectangle "ACTOR\nFleet Owner" as ACT_15 #FFF9C4
+ACT_15 -left-> CMD_14
+rectangle "AGGREGATE\nMaintenance" as AGG_16 #FFF59D
+CMD_14 --> AGG_16
+rectangle "DOMAIN EVENT\nMaintenance Completed" as EVT_17 #FFB74D
+AGG_16 --> EVT_17
+rectangle "POLICY (Fleet)\nWhen maintenance is completed,\nset the machinery back to AVAILABLE" as POL_18 #B39DDB
+EVT_17 --> POL_18
+rectangle "COMMAND (Fleet)\nChange Machinery Status" as CMD_19 #87CEFA
+POL_18 --> CMD_19
+rectangle "AGGREGATE (Fleet)\nMachinery" as AGG_20 #FFF59D
+CMD_19 --> AGG_20
+rectangle "COMMAND\nReport Breakdown" as CMD_21 #87CEFA
+rectangle "ACTOR\nContractor" as ACT_22 #FFF9C4
+ACT_22 -left-> CMD_21
+rectangle "AGGREGATE\nMaintenance" as AGG_23 #FFF59D
+CMD_21 --> AGG_23
+rectangle "DOMAIN EVENT\nBreakdown Reported" as EVT_24 #FFB74D
+AGG_23 --> EVT_24
+rectangle "POLICY\nWhen a breakdown is reported,\nschedule a corrective maintenance" as POL_25 #B39DDB
+EVT_24 --> POL_25
+rectangle "COMMAND\nSchedule Maintenance" as CMD_26 #87CEFA
+POL_25 --> CMD_26
+rectangle "AGGREGATE\nMaintenance" as AGG_27 #FFF59D
+CMD_26 --> AGG_27
+rectangle "HOTSPOT\nA critical breakdown during an active\nrental may stop work at the site" as HOT_28 #EF9A9A
+HOT_28 .right. EVT_24
+rectangle "DOMAIN EVENT (Operations)\nWorked Hours Validated" as XEVT_29 #FFE0B2
+rectangle "POLICY\nWhen accumulated hours reach the\npreventive threshold, schedule\na preventive maintenance" as POL_30 #B39DDB
+XEVT_29 --> POL_30
+rectangle "COMMAND\nSchedule Maintenance" as CMD_31 #87CEFA
+POL_30 --> CMD_31
+rectangle "AGGREGATE\nMaintenance" as AGG_32 #FFF59D
+CMD_31 --> AGG_32
+rectangle "<b>BUSINESS RULES (Maintenance)</b>\n- Description is required\n- Type: PREVENTIVE, CORRECTIVE or INSPECTION\n- The scheduled date cannot be in the past\n- Only a SCHEDULED maintenance\n  can be cancelled\n- Cost (Money) cannot be negative\n- A completed maintenance records\n  its completion date and resolves\n  its breakdown reports\n- Breakdown severity: LOW, MEDIUM,\n  HIGH or CRITICAL" as BR_33 #FFFDE7
+rectangle "READ MODEL\nMaintenance Schedule\n<size:10><i>Query: View Maintenance Schedule</i></size>\n<size:10>Source: Maintenance</size>" as RM_34 #81C784
+rectangle "ACTOR\nFleet Owner" as ACT_35 #FFF9C4
+RM_34 ..> ACT_35 : informs
+rectangle "READ MODEL\nBreakdown Reports\n<size:10><i>Query: View Breakdown Reports</i></size>\n<size:10>Source: Maintenance</size>" as RM_36 #81C784
+rectangle "ACTOR\nFleet Owner" as ACT_37 #FFF9C4
+RM_36 ..> ACT_37 : informs
+rectangle "READ MODEL\nMaintenance History\n<size:10><i>Query: View Maintenance History</i></size>\n<size:10>Source: Maintenance</size>" as RM_38 #81C784
+rectangle "ACTOR\nContractor" as ACT_39 #FFF9C4
+RM_38 ..> ACT_39 : informs
 
 ' Flows are stacked from top to bottom; each one reads left to right
-CMD_4 -[hidden]left-> CMD_1
-CMD_11 -[hidden]left-> CMD_4
-CMD_18 -[hidden]left-> CMD_11
-XEVT_26 -[hidden]left-> CMD_18
-RM_31 -[hidden]left-> XEVT_26
-RM_33 -[hidden]left-> RM_31
-RM_35 -[hidden]left-> RM_33
-ACT_32 -[hidden]-> BR_30
+CMD_7 -[hidden]left-> CMD_1
+CMD_14 -[hidden]left-> CMD_7
+CMD_21 -[hidden]left-> CMD_14
+XEVT_29 -[hidden]left-> CMD_21
+RM_34 -[hidden]left-> XEVT_29
+RM_36 -[hidden]left-> RM_34
+RM_38 -[hidden]left-> RM_36
+ACT_35 -[hidden]-> BR_33
 
 legend right
 |= Color |= Element |
