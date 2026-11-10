@@ -1433,7 +1433,7 @@ Este Bounded Context gestiona las solicitudes y reservas de maquinaria. El contr
 
 #### Maintenance Management Bounded Context
 
-Este Bounded Context agrupa la programación, ejecución y cierre de los mantenimientos, junto con el reporte de averías. El propietario de flota ejecuta Schedule Maintenance, Start Maintenance y Complete Maintenance, y el contratista ejecuta Report Breakdown desde la obra. Su agregado Maintenance exige descripción, tipo preventivo o correctivo, costo no negativo y fecha de cierre al completarse. Sus políticas ejecutan Schedule Maintenance de forma automática: un mantenimiento correctivo cuando se reporta una avería y uno preventivo cuando las horas validadas en Operations Management alcanzan el umbral definido. Los read models Maintenance Schedule, Breakdown Reports y Maintenance History informan al propietario y al contratista.
+Este Bounded Context agrupa la programación, ejecución y cierre de los mantenimientos, junto con el reporte de averías. El propietario de flota ejecuta Schedule Maintenance, Start Maintenance, Cancel Maintenance y Complete Maintenance, y el contratista ejecuta Report Breakdown desde la obra. Su agregado Maintenance exige descripción, tipo preventivo, correctivo o de inspección, costo no negativo, solo permite cancelar un mantenimiento que aún no empezó y registra la fecha de cierre al completarse. Sus políticas ejecutan Schedule Maintenance de forma automática: un mantenimiento correctivo cuando se reporta una avería y uno preventivo cuando las horas validadas en Operations Management alcanzan el umbral definido. Los read models Maintenance Schedule, Breakdown Reports y Maintenance History informan al propietario y al contratista.
 
 ![Maintenance Management Design-Level Event Storming](assets/maintenance-management-design-level.png)
 
@@ -1445,7 +1445,7 @@ Este Bounded Context representa la ejecución del servicio de una reserva confir
 
 #### Profiles Management Bounded Context
 
-Este Bounded Context gestiona el perfil de cada usuario y la organización a la que pertenece. Sus comandos son Create Profile, Update Profile, Create Organization y Update Organization. El agregado Profile exige nombres, documento e información de contacto válida, y la entidad Organization exige razón social, RUC y dirección. Su política ejecuta Create Profile cuando Identity & Access Management registra una nueva cuenta y luego solicita los datos de la organización. Los read models Profile Details y Organization Details informan al usuario, y el hotspot es que el RUC todavía no se verifica contra SUNAT.
+Este Bounded Context gestiona el perfil de cada usuario y la organización a la que pertenece. Sus comandos son Create Profile, Update Profile, Create Organization y Update Organization. El agregado Profile exige nombres, documento e información de contacto válida, y la entidad Organization exige razón social, RUC y dirección. Cuando Identity & Access Management registra una nueva cuenta, su política solicita al usuario los datos del perfil, que este registra con Create Profile, y luego solicita los datos de la organización. Los read models Profile Details y Organization Details informan al usuario, y el hotspot es que el RUC todavía no se verifica contra SUNAT.
 
 ![Profiles Management Design-Level Event Storming](assets/profiles-management-design-level.png)
 
@@ -1463,7 +1463,7 @@ Este Bounded Context concentra el cálculo del monto de alquiler, la emisión de
 
 #### Identity & Access Management Bounded Context
 
-Este Bounded Context se encarga del registro, la autenticación y los roles de los usuarios de MaquiControl. El visitante ejecuta Sign Up indicando su correo, contraseña y el rol de propietario de flota o contratista, y el usuario ejecuta Sign In y Sign Out. Como el rol se elige dentro de Sign Up, no existe un comando separado de asignación de roles. Su agregado User Account exige un correo válido y único, una credencial y un rol al registrarse, y solo permite iniciar sesión a cuentas activas. El evento User Signed Up es consumido por Profiles Management para crear el perfil. El read model Current Session alimenta los guards de rutas, y el hotspot es que el token JWT debe expirar y descartarse en el cliente al cerrar sesión.
+Este Bounded Context se encarga del registro, la autenticación y los roles de los usuarios de MaquiControl. El visitante ejecuta Sign Up indicando su correo, contraseña y su rol (propietario de flota, administrador de flota, contratista u operador; el rol de administrador del sistema no se puede elegir), y el usuario ejecuta Sign In y Sign Out. Como el rol se elige dentro de Sign Up, no existe un comando separado de asignación de roles. Su agregado User Account exige un correo válido y único, una credencial y un rol al registrarse, y solo permite iniciar sesión a cuentas activas. El evento User Signed Up es consumido por Profiles Management, que pide al usuario completar su perfil. El read model Current Session alimenta los guards de rutas, y el hotspot es que el token JWT debe expirar y descartarse en el cliente al cerrar sesión.
 
 ![Identity and Access Management Design-Level Event Storming](assets/identity-access-management-design-level.png)
 
@@ -1491,6 +1491,7 @@ La siguiente tabla es la referencia única de los comandos de MaquiControl. Cada
 | Rental Management | Complete Rental | Política | Rental Completed | No aplica (reacciona a Operation Completed) | Estado *Completed* en *My reservations* |
 | Maintenance Management | Schedule Maintenance | Fleet Owner / Política | — (fin del flujo) | `POST /api/v1/maintenances` | `scheduleMaintenance()` · botón *Schedule* |
 | Maintenance Management | Start Maintenance | Fleet Owner | Maintenance Started | `PATCH /api/v1/maintenances/{maintenanceId}/status` (`IN_PROGRESS`) | `startMaintenance()` · botón *Start* |
+| Maintenance Management | Cancel Maintenance | Fleet Owner | — (fin del flujo) | `PATCH /api/v1/maintenances/{maintenanceId}/status` (`CANCELLED`) | `cancelMaintenance()` · botón *Cancel* |
 | Maintenance Management | Complete Maintenance | Fleet Owner | Maintenance Completed | `PATCH /api/v1/maintenances/{maintenanceId}/status` (`COMPLETED`, costo) | `completeMaintenance()` · botón *Complete* |
 | Maintenance Management | Report Breakdown | Contractor | Breakdown Reported | `POST /api/v1/breakdown-reports` | `reportBreakdown()` · botón *Report breakdown* |
 | Operations Management | Start Operation | Operator | Operation Started | `POST /api/v1/service-operations` | `startOperation()` · botón *Start operation* |
@@ -1498,7 +1499,7 @@ La siguiente tabla es la referencia única de los comandos de MaquiControl. Cada
 | Operations Management | Validate Worked Hours | Fleet Owner | Worked Hours Validated | `PATCH /api/v1/service-operations/{operationId}/worked-hours/{workedHoursId}/status` (`VALIDATED`) | `validateWorkedHours()` · botón *Validate* |
 | Operations Management | Reject Worked Hours | Fleet Owner | — (fin del flujo) | `PATCH /api/v1/service-operations/{operationId}/worked-hours/{workedHoursId}/status` (`REJECTED`) | `rejectWorkedHours()` · botón *Reject* |
 | Operations Management | Complete Operation | Fleet Owner | Operation Completed | `PATCH /api/v1/service-operations/{operationId}/status` (`COMPLETED`) | `completeOperation()` · botón *Complete operation* |
-| Profiles Management | Create Profile | Política (User Signed Up) / User | Profile Created | `POST /api/v1/profiles` | `createProfile()` · botón *Save profile* |
+| Profiles Management | Create Profile | User (tras User Signed Up) | Profile Created | `POST /api/v1/profiles` | `createProfile()` · botón *Save profile* |
 | Profiles Management | Update Profile | User | — (fin del flujo) | `PUT /api/v1/profiles/{profileId}` | `updateProfile()` · botón *Save profile* |
 | Profiles Management | Create Organization | User | — (fin del flujo) | `POST /api/v1/organizations` | `createOrganization()` · botón *Save organization* |
 | Profiles Management | Update Organization | User | — (fin del flujo) | `PUT /api/v1/organizations/{organizationId}` | `updateOrganization()` · botón *Save organization* |
@@ -1717,8 +1718,8 @@ Muestra las capas y packages del Bounded Context de Fleet Management:
 #### Rental Management Bounded Context Component Diagram
 
 Muestra las capas y packages del Bounded Context de Rental Management:
-- `interfaces`: `rest` (controladores de `/api/v1/rentals`, con los subpackages `resources` y `transform`), `acl` (facade para saber si un contratista tiene un alquiler en curso) y `events` (eventos de integración Reservation Confirmed, Reservation Cancelled, Rental Started y Rental Completed).
-- `application`: `commandservices` y `queryservices` (contratos de los servicios), `internal.commandservices` e `internal.queryservices` (sus implementaciones), `internal.eventhandlers` (traducen los eventos de dominio a eventos de integración), `internal.policies` (Start Rental y Complete Rental), `internal.outboundservices.acl` (consulta la maquinaria en Fleet Management) y `acl`.
+- `interfaces`: `rest` (controladores de `/api/v1/rentals`, con los subpackages `resources` y `transform`), `acl` (facade para leer los alquileres y saber quién participa en ellos) y `events` (eventos de integración Reservation Confirmed, Reservation Cancelled, Rental Started y Rental Completed).
+- `application`: `commandservices` y `queryservices` (contratos de los servicios), `internal.commandservices` e `internal.queryservices` (sus implementaciones), `internal.eventhandlers` (traducen los eventos de dominio a eventos de integración y escuchan Operation Started y Operation Completed), `internal.policies` (Start Rental y Complete Rental), `internal.outboundservices.acl` (consulta la maquinaria en Fleet Management) y `acl`.
 - `domain`: `model.aggregates` (`Rental`), `model.valueobjects`, `model.commands`, `model.queries`, `model.events` y `repositories`.
 - `infrastructure`: `persistence.jpa` con `adapters`, `assemblers`, `entities` y `repositories`.
 
@@ -1727,8 +1728,8 @@ Muestra las capas y packages del Bounded Context de Rental Management:
 #### Maintenance Management Bounded Context Component Diagram
 
 Muestra las capas y packages del Bounded Context de Maintenance Management:
-- `interfaces`: `rest` (controladores de `/api/v1/maintenances`, con los subpackages `resources` y `transform`) y `events` (eventos de integración Maintenance Started y Maintenance Completed).
-- `application`: `commandservices` y `queryservices` (contratos de los servicios), `internal.commandservices` e `internal.queryservices` (sus implementaciones), `internal.eventhandlers` (traducen los eventos de dominio a eventos de integración) e `internal.outboundservices.acl` (consulta Fleet Management y Rental Management).
+- `interfaces`: `rest` (controladores de `/api/v1/maintenances` y `/api/v1/breakdown-reports`, con los subpackages `resources` y `transform`) y `events` (eventos de integración Maintenance Started y Maintenance Completed).
+- `application`: `commandservices` y `queryservices` (contratos de los servicios), `internal.commandservices` e `internal.queryservices` (sus implementaciones), `internal.eventhandlers` (traducen los eventos de dominio a eventos de integración y, ante Worked Hours Validated, programan el mantenimiento preventivo) e `internal.outboundservices.acl` (consulta Fleet Management, Rental Management y Operations Management).
 - `domain`: `model.aggregates` (`Maintenance`), `model.entities` (`BreakdownReport`), `model.valueobjects`, `model.commands`, `model.queries`, `model.events` y `repositories`.
 - `infrastructure`: `persistence.jpa` con `adapters`, `assemblers`, `entities` y `repositories`.
 
@@ -1737,8 +1738,8 @@ Muestra las capas y packages del Bounded Context de Maintenance Management:
 #### Operations Management Bounded Context Component Diagram
 
 Muestra las capas y packages del Bounded Context de Operations Management:
-- `interfaces`: `rest` (controladores de `/api/v1/service-operations`, con los subpackages `resources` y `transform`) y `events` (eventos de integración Operation Started, Worked Hours Validated y Operation Completed).
-- `application`: `commandservices` y `queryservices` (contratos de los servicios), `internal.commandservices` e `internal.queryservices` (sus implementaciones), `internal.eventhandlers` (reaccionan a Reservation Confirmed y publican los eventos de integración) e `internal.outboundservices.acl` (consulta Rental Management).
+- `interfaces`: `rest` (controladores de `/api/v1/service-operations`, con los subpackages `resources` y `transform`), `acl` (facade para leer operaciones completadas y horas validadas) y `events` (eventos de integración Operation Started, Worked Hours Validated y Operation Completed).
+- `application`: `commandservices` y `queryservices` (contratos de los servicios), `internal.commandservices` e `internal.queryservices` (sus implementaciones), `internal.eventhandlers` (publican los eventos de integración), `internal.outboundservices.acl` (consulta Rental Management y Fleet Management) y `acl`.
 - `domain`: `model.aggregates` (`ServiceOperation`), `model.entities` (`WorkedHours`), `model.valueobjects`, `model.commands`, `model.queries`, `model.events` y `repositories`.
 - `infrastructure`: `persistence.jpa` con `adapters`, `assemblers`, `entities` y `repositories`.
 
@@ -1767,10 +1768,10 @@ Muestra las capas y packages del Bounded Context de Identity & Access Management
 #### Subscription Management Bounded Context Component Diagram
 
 Muestra las capas y packages del Bounded Context de Subscription Management:
-- `interfaces`: `rest` (controladores de `/api/v1/plans` y `/api/v1/subscriptions`, con los subpackages `resources` y `transform`) y `acl` (facade para leer el límite de maquinarias del plan activo).
-- `application`: `commandservices` y `queryservices` (contratos de los servicios), `internal.commandservices` e `internal.queryservices` (sus implementaciones), `internal.eventhandlers` (política que envía Activate Subscription cuando el pago es aprobado), `internal.outboundservices` (contrato del proveedor de pagos) y `acl`.
+- `interfaces`: `rest` (controladores de `/api/v1/plans` y `/api/v1/subscriptions`, con los subpackages `resources` y `transform`) `acl` (facade para saber si hay una suscripción activa y leer el límite de maquinarias de su plan) y `events` (eventos de integración Subscription Activated y Subscription Cancelled).
+- `application`: `commandservices` y `queryservices` (contratos de los servicios), `internal.commandservices` e `internal.queryservices` (sus implementaciones), `internal.eventhandlers` (traducen los eventos de dominio a eventos de integración), `internal.outboundservices.acl` (Anti-Corruption Layer frente a Mercado Pago Checkout Pro) y `acl`.
 - `domain`: `model.aggregates` (`Subscription` y `SubscriptionPlan`), `model.entities` (`Payment`), `model.valueobjects`, `model.commands`, `model.queries`, `model.events` y `repositories`.
-- `infrastructure`: `persistence.jpa` con `adapters`, `assemblers`, `entities` y `repositories` y `payments.mercadopago` (Anti-Corruption Layer frente a Mercado Pago Checkout Pro).
+- `infrastructure`: `persistence.jpa` con `adapters`, `assemblers`, `entities` y `repositories` y `seeding` (crea los planes Essential y Pro al iniciar).
 
 ![Subscription Management Component Diagram](assets/c4-subscription-management-component-diagram.png)
 
@@ -1778,9 +1779,9 @@ Muestra las capas y packages del Bounded Context de Subscription Management:
 
 Muestra las capas y packages del Bounded Context de Billing Management:
 - `interfaces`: `rest` (controladores de `/api/v1/invoices` y `/api/v1/late-penalties`, con los subpackages `resources` y `transform`).
-- `application`: `commandservices` y `queryservices` (contratos de los servicios), `internal.commandservices` e `internal.queryservices` (sus implementaciones), `internal.eventhandlers` (reaccionan a Operation Completed y Rental Completed) e `internal.outboundservices` (consulta Operations y Rental, y contrato de facturación electrónica).
+- `application`: `commandservices` y `queryservices` (contratos de los servicios), `internal.commandservices` e `internal.queryservices` (sus implementaciones), `internal.eventhandlers` (reaccionan a Operation Completed y Rental Completed) e `internal.outboundservices.acl` (consulta Rental Management y Fleet Management, y Anti-Corruption Layer para enviar comprobantes a SUNAT).
 - `domain`: `model.aggregates` (`Invoice` y `LatePenalty`), `model.valueobjects`, `model.commands`, `model.queries`, `model.events` y `repositories`.
-- `infrastructure`: `persistence.jpa` con `adapters`, `assemblers`, `entities` y `repositories` e `invoicing.sunat` (Anti-Corruption Layer para enviar comprobantes a SUNAT).
+- `infrastructure`: `persistence.jpa` con `adapters`, `assemblers`, `entities` y `repositories`.
 
 ![Billing Management Component Diagram](assets/c4-billing-management-component-diagram.png)
 
@@ -1820,7 +1821,7 @@ El diagrama de Rental Management representa el agregado `Rental` y los objetos d
 
 #### Maintenance Management Bounded Context Class Diagram
 
-El diagrama de Maintenance Management representa el agregado `Maintenance`, las entidades asociadas a los reportes de averías y el objeto de valor `Money` para registrar el costo del mantenimiento con su moneda. Permite programar, iniciar y completar mantenimientos, actualizar sus estados y conservar el historial técnico de cada maquinaria.
+El diagrama de Maintenance Management representa el agregado `Maintenance`, las entidades asociadas a los reportes de averías y el objeto de valor `Money` para registrar el costo del mantenimiento con su moneda. Permite programar, iniciar, cancelar y completar mantenimientos y conservar el historial técnico de cada maquinaria.
 
 ![Maintenance Management Class Diagram](assets/maintenance-management-class-diagram.png)
 
