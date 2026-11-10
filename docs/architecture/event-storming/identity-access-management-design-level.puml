@@ -6,55 +6,50 @@ skinparam shadowing false
 skinparam roundcorner 8
 skinparam defaultFontName Arial
 skinparam rectangleFontSize 12
-skinparam noteBackgroundColor #FFFDE7
-skinparam noteBorderColor #BDB76B
 skinparam ArrowColor #555555
+skinparam noteBorderColor #BDB76B
+skinparam nodesep 30
+skinparam ranksep 40
 
-' ===== Actor -> Command -> Aggregate -> Domain Event =====
-rectangle "COMMAND\nSign Up\n<size:10>(email, password, role)</size>" as CMD_SIGN_UP #87CEFA
-rectangle "AGGREGATE\nUser Account" as AGG_USER_ACCOUNT_0 #FFF59D
-rectangle "DOMAIN EVENT\nUser Signed Up" as EVT_USER_SIGNED_UP #FFB74D
-rectangle "ACTOR\nVisitor" as ACT_VISITOR_0 #FFF9C4
-rectangle "COMMAND\nSign In" as CMD_SIGN_IN #87CEFA
-rectangle "AGGREGATE\nUser Account" as AGG_USER_ACCOUNT_1 #FFF59D
-rectangle "DOMAIN EVENT\nUser Signed In" as EVT_USER_SIGNED_IN #FFB74D
-rectangle "ACTOR\nUser" as ACT_USER_1 #FFF9C4
-rectangle "COMMAND\nSign Out" as CMD_SIGN_OUT #87CEFA
-rectangle "AGGREGATE\nUser Account" as AGG_USER_ACCOUNT_2 #FFF59D
-rectangle "DOMAIN EVENT\nUser Signed Out" as EVT_USER_SIGNED_OUT #FFB74D
-rectangle "ACTOR\nUser" as ACT_USER_2 #FFF9C4
+rectangle "COMMAND\nSign Up\n<size:10>(email, password, role)</size>" as CMD_1 #87CEFA
+rectangle "ACTOR\nVisitor" as ACT_2 #FFF9C4
+ACT_2 -left-> CMD_1
+rectangle "AGGREGATE\nUser Account" as AGG_3 #FFF59D
+CMD_1 --> AGG_3
+rectangle "DOMAIN EVENT\nUser Signed Up" as EVT_4 #FFB74D
+AGG_3 --> EVT_4
+rectangle "POLICY (Profiles)\nWhen a user signs up,\ncreate the profile of the account" as POL_5 #B39DDB
+EVT_4 --> POL_5
+rectangle "COMMAND (Profiles)\nCreate Profile" as CMD_6 #87CEFA
+POL_5 --> CMD_6
+rectangle "AGGREGATE (Profiles)\nProfile" as AGG_7 #FFF59D
+CMD_6 --> AGG_7
+rectangle "COMMAND\nSign In" as CMD_8 #87CEFA
+rectangle "ACTOR\nUser" as ACT_9 #FFF9C4
+ACT_9 -left-> CMD_8
+rectangle "AGGREGATE\nUser Account" as AGG_10 #FFF59D
+CMD_8 --> AGG_10
+rectangle "HOTSPOT\nThe JWT token must expire and be\ndiscarded by the client on Sign Out" as HOT_11 #EF9A9A
+HOT_11 .right. AGG_10
+rectangle "COMMAND\nSign Out" as CMD_12 #87CEFA
+rectangle "ACTOR\nUser" as ACT_13 #FFF9C4
+ACT_13 -left-> CMD_12
+rectangle "AGGREGATE\nUser Account" as AGG_14 #FFF59D
+CMD_12 --> AGG_14
+AGG_10 -[hidden]-> CMD_12
+rectangle "<b>BUSINESS RULES (User Account)</b>\n- Email must be valid and unique\n- Password is stored as a credential hash\n- A role (FLEET_OWNER or CONTRACTOR)\n  is required to sign up\n- Only an active account can sign in" as BR_15 #FFFDE7
+rectangle "READ MODEL\nCurrent Session\n<size:10><i>Query: Get Signed-in Account</i></size>\n<size:10>Source: User Account</size>" as RM_16 #81C784
+rectangle "ACTOR\nUser" as ACT_17 #FFF9C4
+RM_16 ..> ACT_17 : informs
+rectangle "READ MODEL\nRole Catalog\n<size:10><i>Query: View Roles</i></size>\n<size:10>Source: Role</size>" as RM_18 #81C784
+rectangle "ACTOR\nVisitor" as ACT_19 #FFF9C4
+RM_18 ..> ACT_19 : informs
 
-' ===== Policies =====
-
-' ===== Read Models =====
-rectangle "READ MODEL\nCurrent Session\n<size:10><i>Query: Get Signed-in Account</i></size>" as RM_0 #81C784
-rectangle "ACTOR\nUser" as ACT_RM_0 #FFF9C4
-rectangle "READ MODEL\nRole Catalog\n<size:10><i>Query: View Roles</i></size>" as RM_1 #81C784
-rectangle "ACTOR\nVisitor" as ACT_RM_1 #FFF9C4
-rectangle "HOTSPOT\nThe JWT token must expire and be\ndiscarded by the client on Sign Out" as HOT_0 #EF9A9A
-
-ACT_VISITOR_0 --> CMD_SIGN_UP
-CMD_SIGN_UP --> AGG_USER_ACCOUNT_0
-AGG_USER_ACCOUNT_0 --> EVT_USER_SIGNED_UP
-note bottom of AGG_USER_ACCOUNT_0
-<b>Business rules (User Account)</b>
-- Email must be valid and unique
-- Password is stored as a credential hash
-- A role (FLEET_OWNER or CONTRACTOR)
-  is required to sign up
-- Only an active account can sign in
-end note
-ACT_USER_1 --> CMD_SIGN_IN
-CMD_SIGN_IN --> AGG_USER_ACCOUNT_1
-AGG_USER_ACCOUNT_1 --> EVT_USER_SIGNED_IN
-ACT_USER_2 --> CMD_SIGN_OUT
-CMD_SIGN_OUT --> AGG_USER_ACCOUNT_2
-AGG_USER_ACCOUNT_2 --> EVT_USER_SIGNED_OUT
-EVT_USER_SIGNED_IN ..> RM_0 : updates
-EVT_USER_SIGNED_OUT ..> RM_0 : updates
-RM_0 ..> ACT_RM_0 : informs
-RM_1 ..> ACT_RM_1 : informs
-HOT_0 .. CMD_SIGN_IN
+' Flows are stacked from top to bottom; each one reads left to right
+CMD_8 -[hidden]left-> CMD_1
+RM_16 -[hidden]left-> CMD_8
+RM_18 -[hidden]left-> RM_16
+ACT_17 -[hidden]-> BR_15
 
 legend right
 |= Color |= Element |
@@ -63,9 +58,10 @@ legend right
 |<#FFF59D>| Aggregate |
 |<#FFB74D>| Domain Event |
 |<#B39DDB>| Policy |
+|<#FFE0B2>| Domain Event from another Bounded Context |
 |<#81C784>| Read Model |
 |<#EF9A9A>| Hotspot |
-|<#FFFDE7>| Business Rules (note) |
+|<#FFFDE7>| Business Rules |
 endlegend
 
 @enduml

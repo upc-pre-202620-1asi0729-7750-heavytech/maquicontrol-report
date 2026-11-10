@@ -6,72 +6,58 @@ skinparam shadowing false
 skinparam roundcorner 8
 skinparam defaultFontName Arial
 skinparam rectangleFontSize 12
-skinparam noteBackgroundColor #FFFDE7
-skinparam noteBorderColor #BDB76B
 skinparam ArrowColor #555555
+skinparam noteBorderColor #BDB76B
+skinparam nodesep 30
+skinparam ranksep 40
 
-' ===== Actor -> Command -> Aggregate -> Domain Event =====
-rectangle "COMMAND\nCalculate Rental Amount" as CMD_CALCULATE_RENTAL_AMOUNT #87CEFA
-rectangle "AGGREGATE\nInvoice" as AGG_INVOICE_0 #FFF59D
-rectangle "DOMAIN EVENT\nRental Amount Calculated" as EVT_RENTAL_AMOUNT_CALCULATED #FFB74D
-rectangle "COMMAND\nIssue Invoice" as CMD_ISSUE_INVOICE #87CEFA
-rectangle "AGGREGATE\nInvoice" as AGG_INVOICE_1 #FFF59D
-rectangle "DOMAIN EVENT\nInvoice Issued" as EVT_INVOICE_ISSUED #FFB74D
-rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_1 #FFF9C4
-rectangle "COMMAND\nApply Late Penalty" as CMD_APPLY_LATE_PENALTY #87CEFA
-rectangle "AGGREGATE\nLate Penalty" as AGG_LATE_PENALTY_2 #FFF59D
-rectangle "DOMAIN EVENT\nLate Penalty Applied" as EVT_LATE_PENALTY_APPLIED #FFB74D
+rectangle "DOMAIN EVENT (Operations)\nOperation Completed" as XEVT_1 #FFE0B2
+rectangle "POLICY\nWhen the service operation is completed,\ncalculate the rental amount" as POL_2 #B39DDB
+XEVT_1 --> POL_2
+rectangle "COMMAND\nCalculate Rental Amount" as CMD_3 #87CEFA
+POL_2 --> CMD_3
+rectangle "AGGREGATE\nInvoice" as AGG_4 #FFF59D
+CMD_3 --> AGG_4
+rectangle "DOMAIN EVENT\nRental Amount Calculated" as EVT_5 #FFB74D
+AGG_4 --> EVT_5
+rectangle "POLICY\nWhen the amount is calculated,\nnotify the fleet owner to issue the invoice" as POL_6 #B39DDB
+EVT_5 --> POL_6
+rectangle "COMMAND\nIssue Invoice" as CMD_7 #87CEFA
+rectangle "ACTOR\nFleet Owner" as ACT_8 #FFF9C4
+ACT_8 -left-> CMD_7
+POL_6 --> CMD_7
+rectangle "AGGREGATE\nInvoice" as AGG_9 #FFF59D
+CMD_7 --> AGG_9
+rectangle "EXTERNAL SYSTEM\nSUNAT" as EXT_10 #E78AD9
+EXT_10 .left. AGG_9
+rectangle "HOTSPOT\nSUNAT may reject or delay\nthe electronic invoice" as HOT_11 #EF9A9A
+HOT_11 .right. AGG_9
+rectangle "DOMAIN EVENT (Rental)\nRental Completed" as XEVT_12 #FFE0B2
+rectangle "POLICY\nWhen a rental ends after its\nagreed date, apply a late penalty" as POL_13 #B39DDB
+XEVT_12 --> POL_13
+rectangle "COMMAND\nApply Late Penalty" as CMD_14 #87CEFA
+POL_13 --> CMD_14
+rectangle "AGGREGATE\nLate Penalty" as AGG_15 #FFF59D
+CMD_14 --> AGG_15
+rectangle "<b>BUSINESS RULES (Invoice)</b>\n- Amount = validated hours x hourly rate\n- References the rental by its id\n- An invoice is issued only once\n  per rental" as BR_16 #FFFDE7
+rectangle "<b>BUSINESS RULES (Late Penalty)</b>\n- Applies only when machinery is\n  returned after the agreed end date" as BR_17 #FFFDE7
+rectangle "READ MODEL\nInvoice Details\n<size:10><i>Query: View Invoice</i></size>\n<size:10>Source: Invoice</size>" as RM_18 #81C784
+rectangle "ACTOR\nFleet Owner" as ACT_19 #FFF9C4
+RM_18 ..> ACT_19 : informs
+rectangle "READ MODEL\nInvoice History\n<size:10><i>Query: View Invoice History</i></size>\n<size:10>Source: Invoice</size>" as RM_20 #81C784
+rectangle "ACTOR\nContractor" as ACT_21 #FFF9C4
+RM_20 ..> ACT_21 : informs
+rectangle "READ MODEL\nLate Penalties\n<size:10><i>Query: View Late Penalties</i></size>\n<size:10>Source: Late Penalty</size>" as RM_22 #81C784
+rectangle "ACTOR\nContractor" as ACT_23 #FFF9C4
+RM_22 ..> ACT_23 : informs
 
-' ===== Policies =====
-rectangle "DOMAIN EVENT (Operations)\nOperation Completed" as XEVT_OPERATION_COMPLETED #FFE0B2
-rectangle "POLICY\nWhen the service operation is completed,\ncalculate the rental amount" as POL_0 #B39DDB
-rectangle "POLICY\nWhen the amount is calculated,\nnotify the fleet owner to issue the invoice" as POL_1 #B39DDB
-rectangle "DOMAIN EVENT (Rental)\nRental Completed" as XEVT_RENTAL_COMPLETED #FFE0B2
-rectangle "POLICY\nWhen a rental ends after its\nagreed date, apply a late penalty" as POL_2 #B39DDB
-
-' ===== Read Models =====
-rectangle "READ MODEL\nInvoice Details\n<size:10><i>Query: View Invoice</i></size>" as RM_0 #81C784
-rectangle "ACTOR\nFleet Owner" as ACT_RM_0 #FFF9C4
-rectangle "READ MODEL\nInvoice History\n<size:10><i>Query: View Invoice History</i></size>" as RM_1 #81C784
-rectangle "ACTOR\nContractor" as ACT_RM_1 #FFF9C4
-rectangle "READ MODEL\nLate Penalties\n<size:10><i>Query: View Late Penalties</i></size>" as RM_2 #81C784
-rectangle "ACTOR\nContractor" as ACT_RM_2 #FFF9C4
-rectangle "EXTERNAL SYSTEM\nSUNAT" as EXT_0 #E78AD9
-rectangle "HOTSPOT\nSUNAT may reject or delay\nthe electronic invoice" as HOT_0 #EF9A9A
-
-CMD_CALCULATE_RENTAL_AMOUNT --> AGG_INVOICE_0
-AGG_INVOICE_0 --> EVT_RENTAL_AMOUNT_CALCULATED
-note bottom of AGG_INVOICE_0
-<b>Business rules (Invoice)</b>
-- Amount = validated hours x hourly rate
-- References the rental by its id
-- An invoice is issued only once
-  per rental
-end note
-ACT_FLEET_OWNER_1 --> CMD_ISSUE_INVOICE
-CMD_ISSUE_INVOICE --> AGG_INVOICE_1
-AGG_INVOICE_1 --> EVT_INVOICE_ISSUED
-CMD_APPLY_LATE_PENALTY --> AGG_LATE_PENALTY_2
-AGG_LATE_PENALTY_2 --> EVT_LATE_PENALTY_APPLIED
-note bottom of AGG_LATE_PENALTY_2
-<b>Business rules (Late Penalty)</b>
-- Applies only when machinery is
-  returned after the agreed end date
-end note
-XEVT_OPERATION_COMPLETED --> POL_0
-POL_0 --> CMD_CALCULATE_RENTAL_AMOUNT
-EVT_RENTAL_AMOUNT_CALCULATED --> POL_1
-POL_1 --> CMD_ISSUE_INVOICE
-XEVT_RENTAL_COMPLETED --> POL_2
-POL_2 --> CMD_APPLY_LATE_PENALTY
-EVT_INVOICE_ISSUED ..> RM_0 : updates
-RM_0 ..> ACT_RM_0 : informs
-EVT_INVOICE_ISSUED ..> RM_1 : updates
-RM_1 ..> ACT_RM_1 : informs
-EVT_LATE_PENALTY_APPLIED ..> RM_2 : updates
-RM_2 ..> ACT_RM_2 : informs
-CMD_ISSUE_INVOICE .. EXT_0
-HOT_0 .. EVT_INVOICE_ISSUED
+' Flows are stacked from top to bottom; each one reads left to right
+XEVT_12 -[hidden]left-> XEVT_1
+RM_18 -[hidden]left-> XEVT_12
+RM_20 -[hidden]left-> RM_18
+RM_22 -[hidden]left-> RM_20
+ACT_19 -[hidden]-> BR_16
+BR_16 -[hidden]-> BR_17
 
 legend right
 |= Color |= Element |
@@ -80,11 +66,11 @@ legend right
 |<#FFF59D>| Aggregate |
 |<#FFB74D>| Domain Event |
 |<#B39DDB>| Policy |
-|<#81C784>| Read Model |
 |<#FFE0B2>| Domain Event from another Bounded Context |
-|<#E78AD9>| External System |
+|<#81C784>| Read Model |
 |<#EF9A9A>| Hotspot |
-|<#FFFDE7>| Business Rules (note) |
+|<#E78AD9>| External System |
+|<#FFFDE7>| Business Rules |
 endlegend
 
 @enduml

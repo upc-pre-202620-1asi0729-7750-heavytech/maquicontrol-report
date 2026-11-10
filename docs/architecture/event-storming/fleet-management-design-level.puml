@@ -6,119 +6,114 @@ skinparam shadowing false
 skinparam roundcorner 8
 skinparam defaultFontName Arial
 skinparam rectangleFontSize 12
-skinparam noteBackgroundColor #FFFDE7
-skinparam noteBorderColor #BDB76B
 skinparam ArrowColor #555555
+skinparam noteBorderColor #BDB76B
+skinparam nodesep 30
+skinparam ranksep 40
 
-' ===== Actor -> Command -> Aggregate -> Domain Event =====
-rectangle "COMMAND\nRegister Machinery" as CMD_REGISTER_MACHINERY #87CEFA
-rectangle "AGGREGATE\nMachinery" as AGG_MACHINERY_0 #FFF59D
-rectangle "DOMAIN EVENT\nMachinery Registered" as EVT_MACHINERY_REGISTERED #FFB74D
-rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_0 #FFF9C4
-rectangle "COMMAND\nUpdate Machinery" as CMD_UPDATE_MACHINERY #87CEFA
-rectangle "AGGREGATE\nMachinery" as AGG_MACHINERY_1 #FFF59D
-rectangle "DOMAIN EVENT\nMachinery Updated" as EVT_MACHINERY_UPDATED #FFB74D
-rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_1 #FFF9C4
-rectangle "COMMAND\nChange Machinery Status" as CMD_CHANGE_MACHINERY_STATUS #87CEFA
-rectangle "AGGREGATE\nMachinery" as AGG_MACHINERY_2 #FFF59D
-rectangle "DOMAIN EVENT\nMachinery Status Changed" as EVT_MACHINERY_STATUS_CHANGED #FFB74D
-rectangle "COMMAND\nDelete Machinery" as CMD_DELETE_MACHINERY #87CEFA
-rectangle "AGGREGATE\nMachinery" as AGG_MACHINERY_3 #FFF59D
-rectangle "DOMAIN EVENT\nMachinery Deleted" as EVT_MACHINERY_DELETED #FFB74D
-rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_3 #FFF9C4
-rectangle "COMMAND\nCreate Category" as CMD_CREATE_CATEGORY #87CEFA
-rectangle "AGGREGATE\nCategory" as AGG_CATEGORY_4 #FFF59D
-rectangle "DOMAIN EVENT\nCategory Created" as EVT_CATEGORY_CREATED #FFB74D
-rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_4 #FFF9C4
-rectangle "COMMAND\nRename Category" as CMD_RENAME_CATEGORY #87CEFA
-rectangle "AGGREGATE\nCategory" as AGG_CATEGORY_5 #FFF59D
-rectangle "DOMAIN EVENT\nCategory Renamed" as EVT_CATEGORY_RENAMED #FFB74D
-rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_5 #FFF9C4
-rectangle "COMMAND\nDelete Category" as CMD_DELETE_CATEGORY #87CEFA
-rectangle "AGGREGATE\nCategory" as AGG_CATEGORY_6 #FFF59D
-rectangle "DOMAIN EVENT\nCategory Deleted" as EVT_CATEGORY_DELETED #FFB74D
-rectangle "ACTOR\nFleet Owner" as ACT_FLEET_OWNER_6 #FFF9C4
+rectangle "COMMAND\nRegister Machinery" as CMD_1 #87CEFA
+rectangle "ACTOR\nFleet Owner" as ACT_2 #FFF9C4
+ACT_2 -left-> CMD_1
+rectangle "AGGREGATE\nMachinery" as AGG_3 #FFF59D
+CMD_1 --> AGG_3
+rectangle "DOMAIN EVENT\nMachinery Registered" as EVT_4 #FFB74D
+AGG_3 --> EVT_4
+rectangle "POLICY\nWhen machinery is registered,\nset its status to AVAILABLE" as POL_5 #B39DDB
+EVT_4 --> POL_5
+rectangle "COMMAND\nChange Machinery Status" as CMD_6 #87CEFA
+POL_5 --> CMD_6
+rectangle "AGGREGATE\nMachinery" as AGG_7 #FFF59D
+CMD_6 --> AGG_7
+rectangle "HOTSPOT\nRegistration must respect the machinery\nlimit of the owner subscription plan" as HOT_8 #EF9A9A
+HOT_8 .right. CMD_1
+rectangle "COMMAND\nUpdate Machinery" as CMD_9 #87CEFA
+rectangle "ACTOR\nFleet Owner" as ACT_10 #FFF9C4
+ACT_10 -left-> CMD_9
+rectangle "AGGREGATE\nMachinery" as AGG_11 #FFF59D
+CMD_9 --> AGG_11
+rectangle "COMMAND\nDelete Machinery" as CMD_12 #87CEFA
+rectangle "ACTOR\nFleet Owner" as ACT_13 #FFF9C4
+ACT_13 -left-> CMD_12
+rectangle "AGGREGATE\nMachinery" as AGG_14 #FFF59D
+CMD_12 --> AGG_14
+AGG_11 -[hidden]-> CMD_12
+rectangle "COMMAND\nChange Machinery Status" as CMD_15 #87CEFA
+rectangle "ACTOR\nFleet Owner" as ACT_16 #FFF9C4
+ACT_16 -left-> CMD_15
+rectangle "AGGREGATE\nMachinery" as AGG_17 #FFF59D
+CMD_15 --> AGG_17
+AGG_14 -[hidden]-> CMD_15
+rectangle "DOMAIN EVENT (Rental)\nReservation Confirmed" as XEVT_18 #FFE0B2
+rectangle "POLICY\nWhen a reservation is confirmed,\nset the machinery to RESERVED" as POL_19 #B39DDB
+XEVT_18 --> POL_19
+rectangle "COMMAND\nChange Machinery Status" as CMD_20 #87CEFA
+POL_19 --> CMD_20
+rectangle "AGGREGATE\nMachinery" as AGG_21 #FFF59D
+CMD_20 --> AGG_21
+rectangle "HOTSPOT\nAvailability may be outdated if\nstatus changes are not propagated" as HOT_22 #EF9A9A
+HOT_22 .left. CMD_20
+rectangle "DOMAIN EVENT (Rental)\nReservation Cancelled" as XEVT_23 #FFE0B2
+rectangle "POLICY\nWhen a reservation is cancelled,\nset the machinery back to AVAILABLE" as POL_24 #B39DDB
+XEVT_23 --> POL_24
+rectangle "COMMAND\nChange Machinery Status" as CMD_25 #87CEFA
+POL_24 --> CMD_25
+rectangle "AGGREGATE\nMachinery" as AGG_26 #FFF59D
+CMD_25 --> AGG_26
+AGG_21 -[hidden]-> XEVT_23
+rectangle "DOMAIN EVENT (Maintenance)\nMaintenance Started" as XEVT_27 #FFE0B2
+rectangle "POLICY\nWhen maintenance starts,\nset the machinery to IN_MAINTENANCE" as POL_28 #B39DDB
+XEVT_27 --> POL_28
+rectangle "COMMAND\nChange Machinery Status" as CMD_29 #87CEFA
+POL_28 --> CMD_29
+rectangle "AGGREGATE\nMachinery" as AGG_30 #FFF59D
+CMD_29 --> AGG_30
+rectangle "DOMAIN EVENT (Maintenance)\nMaintenance Completed" as XEVT_31 #FFE0B2
+rectangle "POLICY\nWhen maintenance is completed,\nset the machinery back to AVAILABLE" as POL_32 #B39DDB
+XEVT_31 --> POL_32
+rectangle "COMMAND\nChange Machinery Status" as CMD_33 #87CEFA
+POL_32 --> CMD_33
+rectangle "AGGREGATE\nMachinery" as AGG_34 #FFF59D
+CMD_33 --> AGG_34
+AGG_30 -[hidden]-> XEVT_31
+rectangle "COMMAND\nCreate Category" as CMD_35 #87CEFA
+rectangle "ACTOR\nFleet Owner" as ACT_36 #FFF9C4
+ACT_36 -left-> CMD_35
+rectangle "AGGREGATE\nCategory" as AGG_37 #FFF59D
+CMD_35 --> AGG_37
+rectangle "COMMAND\nRename Category" as CMD_38 #87CEFA
+rectangle "ACTOR\nFleet Owner" as ACT_39 #FFF9C4
+ACT_39 -left-> CMD_38
+rectangle "AGGREGATE\nCategory" as AGG_40 #FFF59D
+CMD_38 --> AGG_40
+AGG_37 -[hidden]-> CMD_38
+rectangle "COMMAND\nDelete Category" as CMD_41 #87CEFA
+rectangle "ACTOR\nFleet Owner" as ACT_42 #FFF9C4
+ACT_42 -left-> CMD_41
+rectangle "AGGREGATE\nCategory" as AGG_43 #FFF59D
+CMD_41 --> AGG_43
+AGG_40 -[hidden]-> CMD_41
+rectangle "<b>BUSINESS RULES (Machinery)</b>\n- Name, brand and model are required\n- Manufacture year must be valid\n- Hourly rate (Money) cannot be negative\n- Status: AVAILABLE, RESERVED, RENTED,\n  IN_MAINTENANCE or OUT_OF_SERVICE\n- Only AVAILABLE machinery can be reserved\n- Machinery with active rentals\n  cannot be deleted" as BR_44 #FFFDE7
+rectangle "<b>BUSINESS RULES (Category)</b>\n- Name is required and unique\n- A category with machinery\n  cannot be deleted" as BR_45 #FFFDE7
+rectangle "READ MODEL\nMachinery Catalog\n<size:10><i>Query: View Machinery Catalog</i></size>\n<size:10>Source: Machinery</size>" as RM_46 #81C784
+rectangle "ACTOR\nContractor" as ACT_47 #FFF9C4
+RM_46 ..> ACT_47 : informs
+rectangle "READ MODEL\nMachinery Availability\n<size:10><i>Query: Check Machinery Availability</i></size>\n<size:10>Source: Machinery</size>" as RM_48 #81C784
+rectangle "ACTOR\nContractor" as ACT_49 #FFF9C4
+RM_48 ..> ACT_49 : informs
+rectangle "READ MODEL\nCategory Catalog\n<size:10><i>Query: View Categories</i></size>\n<size:10>Source: Category</size>" as RM_50 #81C784
+rectangle "ACTOR\nFleet Owner" as ACT_51 #FFF9C4
+RM_50 ..> ACT_51 : informs
 
-' ===== Policies =====
-rectangle "POLICY\nWhen machinery is registered,\nset its status to AVAILABLE" as POL_0 #B39DDB
-rectangle "DOMAIN EVENT (Rental)\nReservation Confirmed" as XEVT_RESERVATION_CONFIRMED #FFE0B2
-rectangle "POLICY\nWhen a reservation is confirmed,\nset the machinery to RESERVED" as POL_1 #B39DDB
-rectangle "DOMAIN EVENT (Rental)\nReservation Cancelled" as XEVT_RESERVATION_CANCELLED #FFE0B2
-rectangle "POLICY\nWhen a reservation is cancelled,\nset the machinery back to AVAILABLE" as POL_2 #B39DDB
-rectangle "DOMAIN EVENT (Maintenance)\nMaintenance Started" as XEVT_MAINTENANCE_STARTED #FFE0B2
-rectangle "POLICY\nWhen maintenance starts,\nset the machinery to IN_MAINTENANCE" as POL_3 #B39DDB
-rectangle "DOMAIN EVENT (Maintenance)\nMaintenance Completed" as XEVT_MAINTENANCE_COMPLETED #FFE0B2
-rectangle "POLICY\nWhen maintenance is completed,\nset the machinery back to AVAILABLE" as POL_4 #B39DDB
-
-' ===== Read Models =====
-rectangle "READ MODEL\nMachinery Catalog\n<size:10><i>Query: View Machinery Catalog</i></size>" as RM_0 #81C784
-rectangle "ACTOR\nContractor" as ACT_RM_0 #FFF9C4
-rectangle "READ MODEL\nMachinery Availability\n<size:10><i>Query: Check Machinery Availability</i></size>" as RM_1 #81C784
-rectangle "ACTOR\nContractor" as ACT_RM_1 #FFF9C4
-rectangle "READ MODEL\nCategory Catalog\n<size:10><i>Query: View Categories</i></size>" as RM_2 #81C784
-rectangle "ACTOR\nFleet Owner" as ACT_RM_2 #FFF9C4
-rectangle "HOTSPOT\nRegistration must respect the machinery\nlimit of the owner subscription plan" as HOT_0 #EF9A9A
-rectangle "HOTSPOT\nAvailability may be outdated if\nstatus changes are not propagated" as HOT_1 #EF9A9A
-
-ACT_FLEET_OWNER_0 --> CMD_REGISTER_MACHINERY
-CMD_REGISTER_MACHINERY --> AGG_MACHINERY_0
-AGG_MACHINERY_0 --> EVT_MACHINERY_REGISTERED
-note bottom of AGG_MACHINERY_0
-<b>Business rules (Machinery)</b>
-- Name, brand and model are required
-- Manufacture year must be valid
-- Hourly rate (Money) cannot be negative
-- Status: AVAILABLE, RESERVED, RENTED,
-  IN_MAINTENANCE or OUT_OF_SERVICE
-- Only AVAILABLE machinery can be reserved
-- Machinery with active rentals
-  cannot be deleted
-end note
-ACT_FLEET_OWNER_1 --> CMD_UPDATE_MACHINERY
-CMD_UPDATE_MACHINERY --> AGG_MACHINERY_1
-AGG_MACHINERY_1 --> EVT_MACHINERY_UPDATED
-CMD_CHANGE_MACHINERY_STATUS --> AGG_MACHINERY_2
-AGG_MACHINERY_2 --> EVT_MACHINERY_STATUS_CHANGED
-ACT_FLEET_OWNER_3 --> CMD_DELETE_MACHINERY
-CMD_DELETE_MACHINERY --> AGG_MACHINERY_3
-AGG_MACHINERY_3 --> EVT_MACHINERY_DELETED
-ACT_FLEET_OWNER_4 --> CMD_CREATE_CATEGORY
-CMD_CREATE_CATEGORY --> AGG_CATEGORY_4
-AGG_CATEGORY_4 --> EVT_CATEGORY_CREATED
-note bottom of AGG_CATEGORY_4
-<b>Business rules (Category)</b>
-- Name is required and unique
-- A category with machinery
-  cannot be deleted
-end note
-ACT_FLEET_OWNER_5 --> CMD_RENAME_CATEGORY
-CMD_RENAME_CATEGORY --> AGG_CATEGORY_5
-AGG_CATEGORY_5 --> EVT_CATEGORY_RENAMED
-ACT_FLEET_OWNER_6 --> CMD_DELETE_CATEGORY
-CMD_DELETE_CATEGORY --> AGG_CATEGORY_6
-AGG_CATEGORY_6 --> EVT_CATEGORY_DELETED
-EVT_MACHINERY_REGISTERED --> POL_0
-POL_0 --> CMD_CHANGE_MACHINERY_STATUS
-XEVT_RESERVATION_CONFIRMED --> POL_1
-POL_1 --> CMD_CHANGE_MACHINERY_STATUS
-XEVT_RESERVATION_CANCELLED --> POL_2
-POL_2 --> CMD_CHANGE_MACHINERY_STATUS
-XEVT_MAINTENANCE_STARTED --> POL_3
-POL_3 --> CMD_CHANGE_MACHINERY_STATUS
-XEVT_MAINTENANCE_COMPLETED --> POL_4
-POL_4 --> CMD_CHANGE_MACHINERY_STATUS
-EVT_MACHINERY_REGISTERED ..> RM_0 : updates
-EVT_MACHINERY_UPDATED ..> RM_0 : updates
-EVT_MACHINERY_DELETED ..> RM_0 : updates
-RM_0 ..> ACT_RM_0 : informs
-EVT_MACHINERY_STATUS_CHANGED ..> RM_1 : updates
-RM_1 ..> ACT_RM_1 : informs
-EVT_CATEGORY_CREATED ..> RM_2 : updates
-EVT_CATEGORY_RENAMED ..> RM_2 : updates
-EVT_CATEGORY_DELETED ..> RM_2 : updates
-RM_2 ..> ACT_RM_2 : informs
-HOT_0 .. CMD_REGISTER_MACHINERY
-HOT_1 .. EVT_MACHINERY_STATUS_CHANGED
+' Flows are stacked from top to bottom; each one reads left to right
+CMD_9 -[hidden]left-> CMD_1
+XEVT_18 -[hidden]left-> CMD_9
+XEVT_27 -[hidden]left-> XEVT_18
+CMD_35 -[hidden]left-> XEVT_27
+RM_46 -[hidden]left-> CMD_35
+RM_48 -[hidden]left-> RM_46
+RM_50 -[hidden]left-> RM_48
+ACT_47 -[hidden]-> BR_44
+BR_44 -[hidden]-> BR_45
 
 legend right
 |= Color |= Element |
@@ -127,10 +122,10 @@ legend right
 |<#FFF59D>| Aggregate |
 |<#FFB74D>| Domain Event |
 |<#B39DDB>| Policy |
-|<#81C784>| Read Model |
 |<#FFE0B2>| Domain Event from another Bounded Context |
+|<#81C784>| Read Model |
 |<#EF9A9A>| Hotspot |
-|<#FFFDE7>| Business Rules (note) |
+|<#FFFDE7>| Business Rules |
 endlegend
 
 @enduml
