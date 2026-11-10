@@ -10,15 +10,16 @@ Container_Boundary(bc, "Subscription Management Bounded Context") {
 
   Boundary(interfaces, "interfaces") {
     Component(rest, "interfaces.rest", "Java package", "Controllers that expose /api/v1/plans and /subscriptions, with the resources and transform subpackages that map JSON to commands and queries.")
-    Component(ifacl, "interfaces.acl", "Java package", "Context facade that other bounded contexts use to read the machinery limit of the active plan.")
+    Component(ifacl, "interfaces.acl", "Java package", "Context facade that other bounded contexts use to check the active subscription and the machinery limit of its plan.")
+    Component(ifevents, "interfaces.events", "Java package", "Integration events published to other bounded contexts: Subscription Activated and Subscription Cancelled.")
   }
   Boundary(application, "application") {
     Component(cs, "application.commandservices", "Java package", "Command service contract for Subscribe to Plan, Confirm Checkout, Activate Subscription and Cancel Subscription.")
     Component(qs, "application.queryservices", "Java package", "Query service contract for View Plans, View Subscription and View Payments.")
     Component(ics, "application.internal.commandservices", "Java package", "Command service implementation: loads the aggregate, runs its behavior and saves it, returning a Result.")
     Component(iqs, "application.internal.queryservices", "Java package", "Query service implementation that reads aggregates through the repositories.")
-    Component(ieh, "application.internal.eventhandlers", "Java package", "Policy that sends Activate Subscription when the payment is approved.")
-    Component(iob, "application.internal.outboundservices", "Java package", "Payment provider contract used to create the checkout and read the payment.")
+    Component(ieh, "application.internal.eventhandlers", "Java package", "Translate Subscription domain events into integration events.")
+    Component(iob, "application.internal.outboundservices", "Java package", "Anti-corruption layer with the Mercado Pago service that creates the checkout and reads the payment.")
     Component(appacl, "application.acl", "Java package", "Implementation of the context facade on top of the query services.")
   }
   Boundary(domain, "domain") {
@@ -35,7 +36,7 @@ Container_Boundary(bc, "Subscription Management Bounded Context") {
     Component(jas, "infrastructure.persistence.jpa.assemblers", "Java package", "Convert between aggregates and persistence entities.")
     Component(jen, "infrastructure.persistence.jpa.entities", "Java package", "JPA persistence entities mapped to the tables.")
     Component(jre, "infrastructure.persistence.jpa.repositories", "Java package", "Spring Data JPA repositories.")
-    Component(mp, "infrastructure.payments.mercadopago", "Java package", "Mercado Pago Checkout Pro implementation of the payment provider.")
+    Component(seed, "infrastructure.seeding", "Java package", "Seeds the Essential and Pro plans when the application starts.")
   }
 }
 
@@ -58,8 +59,7 @@ dagg -[hidden]down-> jad
 jad -[hidden]down-> shared
 Rel_L(ieh, cs, "Sends commands")
 Rel_U(appacl, ifacl, "Implements")
-Rel_U(mp, iob, "Implements")
-Rel_D(mp, mercadopago, "Creates preferences and reads payments", "HTTPS / JSON")
+Rel_D(iob, mercadopago, "Creates preferences and reads payments", "HTTPS / JSON")
 
 
 @enduml

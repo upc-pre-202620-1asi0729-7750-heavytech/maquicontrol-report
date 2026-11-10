@@ -9,22 +9,22 @@ Container(webapp, "Single Page Application", "Angular", "Provides the user inter
 Container_Boundary(bc, "Maintenance Management Bounded Context") {
 
   Boundary(interfaces, "interfaces") {
-    Component(rest, "interfaces.rest", "Java package", "Controllers that expose /api/v1/maintenances, with the resources and transform subpackages that map JSON to commands and queries.")
+    Component(rest, "interfaces.rest", "Java package", "Controllers that expose /api/v1/maintenances and /breakdown-reports, with the resources and transform subpackages that map JSON to commands and queries.")
     Component(ifevents, "interfaces.events", "Java package", "Integration events published to other bounded contexts: Maintenance Started and Maintenance Completed.")
   }
   Boundary(application, "application") {
-    Component(cs, "application.commandservices", "Java package", "Command service contract for Schedule Maintenance, Start Maintenance, Complete Maintenance and Report Breakdown.")
+    Component(cs, "application.commandservices", "Java package", "Command service contract for Schedule Maintenance, Start Maintenance, Cancel Maintenance, Complete Maintenance and Report Breakdown.")
     Component(qs, "application.queryservices", "Java package", "Query service contract for View Maintenance Schedule, View Breakdown Reports and View Maintenance History.")
     Component(ics, "application.internal.commandservices", "Java package", "Command service implementation: loads the aggregate, runs its behavior and saves it, returning a Result.")
     Component(iqs, "application.internal.queryservices", "Java package", "Query service implementation that reads aggregates through the repositories.")
-    Component(ieh, "application.internal.eventhandlers", "Java package", "Translate Maintenance domain events into integration events.")
-    Component(iob, "application.internal.outboundservices", "Java package", "Anti-corruption layer that reads machinery from Fleet Management and rentals in progress from Rental Management.")
+    Component(ieh, "application.internal.eventhandlers", "Java package", "Translate Maintenance domain events into integration events and listen to Worked Hours Validated to schedule the preventive maintenance.")
+    Component(iob, "application.internal.outboundservices", "Java package", "Anti-corruption layer that reads machinery from Fleet Management, rentals in progress from Rental Management and validated hours from Operations Management.")
   }
   Boundary(domain, "domain") {
     Component(dagg, "domain.model.aggregates", "Java package", "Aggregate roots: Maintenance.")
     Component(dent, "domain.model.entities", "Java package", "Entities inside the aggregates: BreakdownReport.")
     Component(dvo, "domain.model.valueobjects", "Java package", "Value objects and enums of the bounded context.")
-    Component(dcmd, "domain.model.commands", "Java package", "One record per command: Schedule Maintenance, Start Maintenance, Complete Maintenance and Report Breakdown.")
+    Component(dcmd, "domain.model.commands", "Java package", "One record per command: Schedule Maintenance, Start Maintenance, Cancel Maintenance, Complete Maintenance and Report Breakdown.")
     Component(dqry, "domain.model.queries", "Java package", "One record per query: View Maintenance Schedule, View Breakdown Reports and View Maintenance History.")
     Component(devt, "domain.model.events", "Java package", "Domain events registered by the aggregates.")
     Component(drep, "domain.repositories", "Java package", "Repository interfaces of the aggregates, without JPA details.")
@@ -40,9 +40,10 @@ Container_Boundary(bc, "Maintenance Management Bounded Context") {
 Component(shared, "shared", "Java package", "Shared kernel: Result, ApplicationError, Money, base aggregate and the outbox relay.")
 Component(fleetacl, "fleet.interfaces.acl", "Java package", "Context facade of another bounded context.")
 Component(rentalacl, "rental.interfaces.acl", "Java package", "Context facade of another bounded context.")
+Component(opsacl, "operations.interfaces.acl", "Java package", "Context facade of another bounded context.")
 ContainerDb(database, "Database", "MySQL", "Stores maintenances and breakdown reports.")
 
-Rel_D(webapp, rest, "Calls /api/v1/maintenances", "HTTPS / JSON")
+Rel_D(webapp, rest, "Calls /api/v1/maintenances and /breakdown-reports", "HTTPS / JSON")
 Rel_D(rest, cs, "Sends commands")
 Rel_D(rest, qs, "Sends queries")
 Rel_D(ics, dagg, "Runs aggregate behavior")
@@ -58,6 +59,7 @@ jad -[hidden]down-> shared
 Rel_L(ieh, cs, "Sends commands")
 Rel_D(iob, fleetacl, "Calls")
 Rel_D(iob, rentalacl, "Calls")
+Rel_D(iob, opsacl, "Calls")
 
 
 @enduml

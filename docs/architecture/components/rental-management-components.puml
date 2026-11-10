@@ -10,7 +10,7 @@ Container_Boundary(bc, "Rental Management Bounded Context") {
 
   Boundary(interfaces, "interfaces") {
     Component(rest, "interfaces.rest", "Java package", "Controllers that expose /api/v1/rentals, with the resources and transform subpackages that map JSON to commands and queries.")
-    Component(ifacl, "interfaces.acl", "Java package", "Context facade that other bounded contexts use to check whether a contractor has a rental in progress.")
+    Component(ifacl, "interfaces.acl", "Java package", "Context facade that other bounded contexts use to read rentals and check who takes part in them.")
     Component(ifevents, "interfaces.events", "Java package", "Integration events published to other bounded contexts: Reservation Confirmed, Reservation Cancelled, Rental Started and Rental Completed.")
   }
   Boundary(application, "application") {
@@ -18,7 +18,7 @@ Container_Boundary(bc, "Rental Management Bounded Context") {
     Component(qs, "application.queryservices", "Java package", "Query service contract for View Pending Requests, View My Reservations and Check Machinery Availability.")
     Component(ics, "application.internal.commandservices", "Java package", "Command service implementation: loads the aggregate, runs its behavior and saves it, returning a Result.")
     Component(iqs, "application.internal.queryservices", "Java package", "Query service implementation that reads aggregates through the repositories.")
-    Component(ieh, "application.internal.eventhandlers", "Java package", "Translate Rental domain events into integration events.")
+    Component(ieh, "application.internal.eventhandlers", "Java package", "Translate Rental domain events into integration events and listen to Operation Started and Operation Completed.")
     Component(ipol, "application.internal.policies", "Java package", "Start Rental and Complete Rental policies that send their commands automatically.")
     Component(iob, "application.internal.outboundservices", "Java package", "Anti-corruption layer that reads machinery data from Fleet Management.")
     Component(appacl, "application.acl", "Java package", "Implementation of the context facade on top of the query services.")
