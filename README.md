@@ -288,6 +288,10 @@ Los commits del periodo TB1 se cuentan desde el commit `69f392a`, corte de la en
 
 Para el avance AV2 el equipo trabajó la RESTful API en el nuevo repositorio `maquicontrol-backend`, repartiendo los Bounded Contexts entre los integrantes, y mantuvo GitFlow en el informe para corregir el Capítulo IV según la retroalimentación del TB1 y documentar el Sprint 3. El detalle por repositorio se presenta en el punto 5.2.3.8.
 
+#### Evidencias de commits en `develop`
+
+![Historial de commits de develop - AV2](assets/project-report-collaboration-av2-commits.png)
+
 #### Resumen de contribuciones
 
 | Integrante | Commits en el Informe (AV2) | Commits en el Backend | Commits en el Frontend (AV2) |
@@ -306,7 +310,7 @@ Los siguientes gráficos se obtuvieron de la pestaña **Insights** de cada repos
 
 #### Informe (`maquicontrol-report`)
 
-El informe concentra la mayor participación del equipo. Los aportes se registran desde septiembre, durante AV1, y continúan en octubre con las correcciones y el desarrollo de TB1.
+El informe concentra la mayor participación del equipo. Los aportes se registran desde septiembre, durante AV1, y continúan en octubre con las correcciones y el desarrollo de TB1, y en noviembre con la corrección del Capítulo IV y el Sprint 3 del avance AV2.
 
 ![Contributors del repositorio del informe](assets/insights-report-contributors.png)
 
@@ -314,7 +318,7 @@ El informe concentra la mayor participación del equipo. Los aportes se registra
 
 #### Aplicación web (`maquicontrol-webapp`)
 
-La aplicación web se desarrolló en el Sprint 2, entre fines de septiembre y la primera semana de octubre, hasta la publicación de la versión `v1.0.1`.
+La aplicación web se desarrolló en el Sprint 2, entre fines de septiembre y la primera semana de octubre, hasta la publicación de la versión `v1.0.1`. En noviembre, durante el Sprint 3, se conectó con la RESTful API.
 
 ![Contributors del repositorio de la aplicación web](assets/insights-webapp-contributors.png)
 
@@ -335,6 +339,14 @@ El repositorio de la Fake API se creó en octubre para publicar en Azure App Ser
 ![Contributors del repositorio de la Fake API](assets/insights-platform-contributors.png)
 
 ![Commits por semana del repositorio de la Fake API](assets/insights-platform-commits.png)
+
+#### RESTful API (`maquicontrol-backend`)
+
+El repositorio de la RESTful API se creó en noviembre, durante el Sprint 3. Es el repositorio con más integrantes participando en el código, porque cada uno desarrolló uno o más Bounded Contexts.
+
+![Contributors del repositorio de la RESTful API](assets/insights-backend-contributors.png)
+
+![Commits por semana del repositorio de la RESTful API](assets/sprint-3-backend-commits.png)
 
 ## Contenido
 
@@ -2010,24 +2022,24 @@ A continuación, se detallan los productos de software seleccionados, organizado
 | **Product UX/UI Design** | UXPressia | SaaS | Cloud | Elaboración y documentación de artefactos de diseño centrado en el usuario: User Personas, User Journey Maps, Empathy Maps e Impact Mapping. | [UXPressia](https://uxpressia.com/) |
 | **Software Development (SDK & Runtime)** | Eclipse Temurin OpenJDK (Java SE) | Local | 21.0.x LTS | Kit de desarrollo oficial de Java para compilar y ejecutar la lógica de negocio, servicios RESTful y algoritmos transaccionales del backend. | [Adoptium Temurin 21](https://adoptium.net/temurin/releases/?version=21) |
 | **Software Development (Build Tool)** | Apache Maven | Local | 3.9.x | Herramienta de gestión de dependencias, automatización de construcción, compilación y empaquetado del backend en archivos ejecutables JAR. | [Apache Maven](https://maven.apache.org/download.cgi) |
-| **Software Development (Framework)** | Spring Boot | Framework | 3.3.x | Framework de desarrollo de backend Java para la creación rápida de servicios RESTful empresariales con Spring Data JPA y Spring Security. | [Spring Initializr](https://start.spring.io/) |
+| **Software Development (Framework)** | Spring Boot | Framework | 4.1.x | Framework de desarrollo de backend Java para la creación rápida de servicios RESTful empresariales con Spring Data JPA y Spring Security. | [Spring Initializr](https://start.spring.io/) |
 | **Software Development (Runtime)** | Node.js & npm | Local | v24.x LTS (npm v11.x) | Entorno de ejecución de JavaScript y gestor de paquetes para la compilación de la aplicación Angular y la ejecución de la Fake API. El `package.json` del frontend fija `"engines": { "node": "^22.22.3 \|\| ^24.15.0" }`. | [Node.js Downloads](https://nodejs.org/en/download) |
 | **Software Development (Framework/CLI)** | Angular CLI | Framework / CLI | 22.x | Interfaz de línea de comandos para la generación de componentes standalone, servicios y la compilación optimizada de la Single Page Application. | [Angular Docs](https://angular.dev/tools/cli) |
 | **Software Development (UI Library)** | Angular Material | Biblioteca | 22.x | Componentes de interfaz (formularios, tarjetas, tablas, toolbar) con tema global y personalización de colores para cumplir el contraste de accesibilidad. | [Angular Material](https://material.angular.dev/) |
 | **Software Development (i18n)** | ngx-translate | Biblioteca | 18.x | Internacionalización de la aplicación web en inglés (`en`) y español latinoamericano (`es-419`) mediante diccionarios JSON en `public/i18n`. | [ngx-translate](https://github.com/ngx-translate/core) |
 | **Software Development (IDE Backend)** | IntelliJ IDEA (Ultimate / Community) | Local | 2024.x | Entorno de desarrollo integrado especializado en Java y Spring Boot, con refactorización avanzada, navegación de código e integración con Maven. | [IntelliJ IDEA](https://www.jetbrains.com/idea/download/) |
 | **Software Development (IDE Frontend)** | WebStorm | Local | 2025.x+ | IDE utilizado para el desarrollo de la Landing Page, la aplicación Angular y la Fake API, con terminal integrada y el plugin Git Flow Helper para aplicar GitFlow. | [WebStorm](https://www.jetbrains.com/webstorm/download/) |
-| **Software Development (Mock API)** | json-server | Local / Cloud | 0.17.4 | Fake API REST basada en `db.json` que expone las colecciones de los Bounded Contexts bajo `/api/v1` mientras se implementa la RESTful API en Spring Boot. | [json-server](https://github.com/typicode/json-server) |
+| **Software Development (Mock API)** | json-server | Local / Cloud | 0.17.4 | Fake API REST basada en `db.json` que expuso las colecciones de los Bounded Contexts bajo `/api/v1` durante el Sprint 2. Desde el Sprint 3 solo se usa como servicio de pagos con Mercado Pago. | [json-server](https://github.com/typicode/json-server) |
 | **Software Development (VCS Client)** | Git | Local | 2.45+ | Sistema de control de versiones distribuido para la gestión de ramas, confirmaciones locales y sincronización con GitHub. | [Git SCM](https://git-scm.com/downloads) |
-| **Software Development (Database)** | PostgreSQL | Local / Server | 16.x | Sistema de gestión de bases de datos relacional para pruebas y desarrollo local de esquemas, tablas, restricciones e índices. | [PostgreSQL Downloads](https://www.postgresql.org/download/) |
+| **Software Development (Database)** | MySQL | Local / Server | 8.x | Sistema de gestión de bases de datos relacional usado por la RESTful API en el perfil `dev` (local) y en producción mediante Azure Database for MySQL. |
 | **Software Development (DB Tool)** | DBeaver Community | Local | 24.x | Cliente universal de administración y consulta de bases de datos relacionales para validación de estructuras y datos en desarrollo. | [DBeaver Download](https://dbeaver.io/download/) |
-| **Software Deployment (Cloud Hosting)** | Microsoft Azure App Service | SaaS | Plan F1 (Free) | Hospedaje en Linux (Node 24 LTS, región Central US) de la Fake API y de los endpoints de pago; en los siguientes Sprints alojará la RESTful API en Spring Boot. | [Azure App Service](https://azure.microsoft.com/products/app-service) |
-| **Software Deployment (Cloud Database)** | Neon Serverless PostgreSQL | SaaS | Cloud | Servicio de base de datos PostgreSQL Serverless alojado en la nube para el almacenamiento de datos en entornos de producción y pruebas. | [Neon Console](https://neon.tech/) |
+| **Software Deployment (Cloud Hosting)** | Microsoft Azure App Service | SaaS | Linux | Hospedaje de la RESTful API en Spring Boot (Java 21, región Central US) y del servicio de pagos json-server (Node 24 LTS, plan F1). |
+| **Software Deployment (Cloud Database)** | Azure Database for MySQL - Servidor flexible | SaaS | B1ms (Burstable) | Base de datos MySQL 8 de producción de la RESTful API, alojada en la región Chile Central. |
 | **Software Deployment (Frontend Hosting)** | Azure Static Web Apps | SaaS | Plan Free | Hospedaje de la Single Page Application Angular con CDN, HTTPS y despliegue continuo desde la rama `main` mediante GitHub Actions. | [Azure Static Web Apps](https://azure.microsoft.com/products/app-service/static) |
 | **Software Deployment (Landing Hosting)** | GitHub Pages | SaaS | Cloud | Publicación del sitio estático de la Landing Page desde la rama `main` del repositorio `maquicontrol-website`. | [GitHub Pages](https://pages.github.com/) |
 | **Software Integration (Payments)** | Mercado Pago Checkout Pro | SaaS | Sandbox | Pasarela de pagos en modo de prueba para la contratación de los planes de suscripción. El Access Token se configura solo como variable de entorno en Azure. | [Mercado Pago Developers](https://www.mercadopago.com.pe/developers) |
 | **Software Deployment (CI/CD)** | GitHub Actions | SaaS | Cloud | Motor de automatización de flujos de trabajo para ejecutar pruebas unitarias, verificación de sintaxis y disparar el despliegue automático ante confirmaciones. | [GitHub Actions](https://github.com/features/actions) |
-| **Software Documentation (API Specs)** | SpringDoc OpenAPI & Swagger UI | Biblioteca / SaaS | 2.5.x | Generación automática y visualización interactiva de especificaciones OpenAPI 3.0 para la documentación y pruebas de los endpoints de la API REST. | [SpringDoc OpenAPI](https://springdoc.org/) |
+| **Software Documentation (API Specs)** | SpringDoc OpenAPI & Swagger UI | Biblioteca / SaaS | 3.2.x | Generación automática y visualización interactiva de especificaciones OpenAPI 3.0 para la documentación y pruebas de los endpoints de la API REST. | [SpringDoc OpenAPI](https://springdoc.org/) |
 | **Software Documentation (API Client)** | Postman | SaaS / Local | v11.x | Plataforma colaborativa para el diseño, depuración, ejecución y pruebas de integración de solicitudes HTTP hacia los endpoints de la RESTful API. | [Postman Download](https://www.postman.com/downloads/) |
 | **Software Documentation (Diagrams)** | Mermaid.js / PlantUML | SaaS / Local | - | Herramientas de diagramación basada en texto (*Diagrams as Code*) integradas en Markdown para generar diagramas C4, UML y flujos de arquitectura. | [Mermaid Live](https://mermaid.live/) |
 
@@ -2069,15 +2081,19 @@ Dentro de dicha organización se han estructurado repositorios dedicados e indep
 - **URL:** [https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website)
 - **Descripción:** Alberga el código fuente del sitio web público y estático de difusión comercial de MaquiControl (HTML5 semántico, CSS3 adaptable y JavaScript modular), optimizado para SEO, accesibilidad e interfaces responsivas en escritorio y móviles.
 
-2. **Repositorio de Web Services (Fake API):**
-- **URL:** [https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform)
-- **Descripción:** Contiene la Fake API construida con json-server, que expone los endpoints REST bajo el prefijo `/api/v1` consumidos por la aplicación web y la integración de pagos con Mercado Pago en modo sandbox. Se despliega en Azure App Service. El backend definitivo con Java y Spring Boot se implementará en un repositorio propio en los siguientes sprints.
+2. **Repositorio de Web Services (RESTful API):**
+- **URL:** [https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend)
+- **Descripción:** Contiene la RESTful API desarrollada con Spring Boot 4 y Java 21, organizada por Bounded Contexts con DDD y CQRS. Expone los endpoints bajo el prefijo `/api/v1`, protegidos con JWT, persiste los datos en MySQL y documenta sus servicios con OpenAPI (Swagger UI).
 
-3. **Repositorio de Frontend Web Application:**
+3. **Repositorio del servicio de pagos (Fake API):**
+- **URL:** [https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform)
+- **Descripción:** Contiene la Fake API construida con json-server que la aplicación web consumió en el Sprint 2. Desde el Sprint 3 solo se usa como intermediario con Mercado Pago para crear las preferencias de Checkout Pro y consultar los pagos.
+
+4. **Repositorio de Frontend Web Application:**
 - **URL:** [https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp)
 - **Descripción:** Aloja el código de la Single Page Application (SPA) desarrollada con el framework Angular y TypeScript. Implementa la arquitectura basada en componentes, servicios HTTP para el consumo de la RESTful API, guards de protección de rutas y estilos CSS basados en el Design System del producto.
 
-4. **Repositorio del Informe y Gestión del Proyecto (Project Report):**
+5. **Repositorio del Informe y Gestión del Proyecto (Project Report):**
 - **URL:** [https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-report](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-report)
 - **Descripción:** Repositorio central que contiene el informe técnico colaborativo en formato Markdown, las minutas de Sprint Planning, el registro de versiones y los artefactos de análisis y diseño.
 
