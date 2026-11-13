@@ -2766,11 +2766,11 @@ La tabla presenta los commits principales del Sprint. Los identificadores y mens
 | upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `55427c0` | `feat(maintenance): split start and cancel commands, add breakdown reports resource and schedule preventive maintenance by accumulated hours` | No se registró body adicional. | 10/11/2026 |
 | upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `0fecf9b` | `chore(build): target Java 21 LTS to match the report and ease cloud deployment` | No se registró body adicional. | 11/11/2026 |
 | upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `1539699` | `ci(deploy): add GitHub Actions workflow to deploy the backend to Azure App Service` | No se registró body adicional. | 11/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `{{BE_FLEET_RENTALS}}` | `feat(rental): let fleet owners view every rental of their machinery` | No se registró body adicional. | 13/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `bbe4aa1` | `feat(rental): let fleet owners view every rental of their machinery` | No se registró body adicional. | 13/11/2026 |
 | upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `546e2e0` | `fix(rental-management): validate rental period dates` | No se registró body adicional. | 13/10/2026 |
 | upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `8a4a7ea` | `fix(rental-management): validate reservation status transitions` | No se registró body adicional. | 13/10/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `main` | `{{WEB_REMOVE_MOCK}}` | `chore: remove the json-server mock now that the app uses the real backend` | No se registró body adicional. | 13/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `main` | `{{WEB_INTEGRATION}}` | `feat: connect the web app to the MaquiControl RESTful API` | Sign-in, sign-up, profiles, organizations, fleet, rentals, maintenance, service operations and subscriptions now call the Spring Boot backend deployed on Azure, with the JWT sent as a bearer token. | 13/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `main` | `4f57791` | `chore: remove the json-server mock now that the app uses the real backend` | No se registró body adicional. | 13/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `main` | `6cb9c03` | `feat: connect the web app to the MaquiControl RESTful API` | Sign-in, sign-up, profiles, organizations, fleet, rentals, maintenance, service operations and subscriptions now call the Spring Boot backend deployed on Azure, with the JWT sent as a bearer token. | 13/11/2026 |
 
 #### 5.2.3.5. Execution Evidence for Sprint Review
 
