@@ -2968,6 +2968,8 @@ Pendiente: se completará con los hallazgos de las entrevistas de validación, e
 
 ## 5.4. Video About-the-Product
 
+Video de presentación del producto MaquiControl, publicado en YouTube: [https://youtu.be/OBhNOHt9zh0](https://youtu.be/OBhNOHt9zh0). El enlace también se incluyó en la Landing Page junto con el Video About-the-Team.
+
 ## Conclusiones
 
 - El análisis realizado permitió identificar que la gestión y alquiler de maquinaria pesada presenta dificultades relacionadas con la disponibilidad de equipos, coordinación de reservas, seguimiento de mantenimientos y procesos administrativos, debido principalmente al uso de herramientas manuales y a la falta de información centralizada.
