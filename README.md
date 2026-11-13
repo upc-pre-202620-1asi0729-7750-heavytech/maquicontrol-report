@@ -51,7 +51,7 @@
 
 <br>
 
-<p><strong>Octubre 2026</strong></p>
+<p><strong>Noviembre 2026</strong></p>
 
 </div>
 
@@ -224,6 +224,7 @@
 | 0.14 | 05/11/2026 | Carlos Gabriel Cespedes Lezcano | Corrección del Capítulo IV según la retroalimentación del TB1: unificación de los nombres de comandos entre Design-Level Event Storming, diagramas de clases, base de datos y Frontend Web Application; nuevo Catálogo de comandos y trazabilidad; incorporación de Reject Reservation y Reject Worked Hours; división de servicios en CommandService y QueryService; alineación de estados de Rental y Subscription. |
 | 0.15 | 09/11/2026 | Carlos Gabriel Cespedes Lezcano | Corrección del Big Picture y del Design-Level Event Storming según la retroalimentación del profesor: diagramas en horizontal como línea de tiempo, actor debajo de cada comando, cadenas Command → Aggregate → Domain Event → Policy → Command y cierre de cada flujo en Command → Aggregate sin evento final; actualización del Catálogo de comandos. Diagramas de componentes por Bounded Context con capas y packages en lugar de clases, y diagramas de clases divididos en un diagrama general y uno por agregado. |
 | 0.16 | 13/11/2026 | Carlos Gabriel Cespedes Lezcano | Avance AV2: desarrollo del punto 5.2.3 Sprint 3 con la RESTful API en Spring Boot, su documentación OpenAPI, el despliegue en Azure App Service con Azure Database for MySQL y la integración de la aplicación web; actualización del punto 5.1.4 con la configuración de despliegue de la API; incorporación de View Fleet Rentals a las queries de Rental Management; diseño de las entrevistas de validación (5.3); actualización de Project Report Collaboration Insights, Student Outcome, Conclusiones, Bibliografía y Anexos. |
+| 0.17 | 13/11/2026 | Carlos Gabriel Cespedes Lezcano | Migración del despliegue de la RESTful API de Azure App Service (Publish: Code, Java 21) a despliegue por contenedor (Publish: Container, JDK 27): nuevo `Dockerfile` multi-stage, archivos `docker-compose` para desarrollo local y verificación previa a producción, Azure Container Registry `maquicontrolacr`, y reconfiguración del App Service existente para extraer la imagen; actualización de los puntos 5.1.1 y 5.1.4 con las herramientas y la configuración de despliegue reales. |
 
 ## Project Report Collaboration Insights
 
@@ -2020,8 +2021,9 @@ A continuación, se detallan los productos de software seleccionados, organizado
 | **Requirements Management** | Miro | SaaS | Cloud | Dinámicas colaborativas visuales de Event Storming (Big Picture y Design-Level), definición de Bounded Contexts y mapeo de historias de usuario. | [Miro Platform](https://miro.com/) |
 | **Product UX/UI Design** | Figma | SaaS / Local | v124+ | Diseño del Design System, wireframes de baja fidelidad, mockups de alta fidelidad, flujos de interacción (*user flows*) y prototipos navegables web y móvil. | [Figma Downloads](https://www.figma.com/downloads/) |
 | **Product UX/UI Design** | UXPressia | SaaS | Cloud | Elaboración y documentación de artefactos de diseño centrado en el usuario: User Personas, User Journey Maps, Empathy Maps e Impact Mapping. | [UXPressia](https://uxpressia.com/) |
-| **Software Development (SDK & Runtime)** | Eclipse Temurin OpenJDK (Java SE) | Local | 21.0.x LTS | Kit de desarrollo oficial de Java para compilar y ejecutar la lógica de negocio, servicios RESTful y algoritmos transaccionales del backend. | [Adoptium Temurin 21](https://adoptium.net/temurin/releases/?version=21) |
+| **Software Development (SDK & Runtime)** | Eclipse Temurin OpenJDK (Java SE) | Local | 27.0.x | Kit de desarrollo oficial de Java para compilar y ejecutar la lógica de negocio, servicios RESTful y algoritmos transaccionales del backend. | [Adoptium Temurin 27](https://adoptium.net/temurin/releases/?version=27) |
 | **Software Development (Build Tool)** | Apache Maven | Local | 3.9.x | Herramienta de gestión de dependencias, automatización de construcción, compilación y empaquetado del backend en archivos ejecutables JAR. | [Apache Maven](https://maven.apache.org/download.cgi) |
+| **Software Development (Containerization)** | Docker Desktop | Local | 4.x | Plataforma de contenedores para construir y probar localmente la imagen Docker de la RESTful API (multi-stage build con Maven y Eclipse Temurin) antes de publicarla en Azure Container Registry. | [Docker Desktop](https://www.docker.com/products/docker-desktop/) |
 | **Software Development (Framework)** | Spring Boot | Framework | 4.1.x | Framework de desarrollo de backend Java para la creación rápida de servicios RESTful empresariales con Spring Data JPA y Spring Security. | [Spring Initializr](https://start.spring.io/) |
 | **Software Development (Runtime)** | Node.js & npm | Local | v24.x LTS (npm v11.x) | Entorno de ejecución de JavaScript y gestor de paquetes para la compilación de la aplicación Angular y la ejecución de la Fake API. El `package.json` del frontend fija `"engines": { "node": "^22.22.3 \|\| ^24.15.0" }`. | [Node.js Downloads](https://nodejs.org/en/download) |
 | **Software Development (Framework/CLI)** | Angular CLI | Framework / CLI | 22.x | Interfaz de línea de comandos para la generación de componentes standalone, servicios y la compilación optimizada de la Single Page Application. | [Angular Docs](https://angular.dev/tools/cli) |
@@ -2033,7 +2035,8 @@ A continuación, se detallan los productos de software seleccionados, organizado
 | **Software Development (VCS Client)** | Git | Local | 2.45+ | Sistema de control de versiones distribuido para la gestión de ramas, confirmaciones locales y sincronización con GitHub. | [Git SCM](https://git-scm.com/downloads) |
 | **Software Development (Database)** | MySQL | Local / Server | 8.x | Sistema de gestión de bases de datos relacional usado por la RESTful API en el perfil `dev` (local) y en producción mediante Azure Database for MySQL. |
 | **Software Development (DB Tool)** | DBeaver Community | Local | 24.x | Cliente universal de administración y consulta de bases de datos relacionales para validación de estructuras y datos en desarrollo. | [DBeaver Download](https://dbeaver.io/download/) |
-| **Software Deployment (Cloud Hosting)** | Microsoft Azure App Service | SaaS | Linux | Hospedaje de la RESTful API en Spring Boot (Java 21, región Central US) y del servicio de pagos json-server (Node 24 LTS, plan F1). |
+| **Software Deployment (Cloud Hosting)** | Microsoft Azure App Service | SaaS | Linux | Hospedaje de la RESTful API en Spring Boot como imagen Docker (JDK 27, región Central US) y del servicio de pagos json-server (Node 24 LTS, plan F1). |
+| **Software Deployment (Container Registry)** | Azure Container Registry | SaaS | Basic | Registro privado de imágenes Docker. Aloja la imagen `maquicontrol-backend` construida localmente y publicada en el App Service mediante despliegue por contenedor (*Publish: Container*). | [Azure Container Registry](https://azure.microsoft.com/products/container-registry) |
 | **Software Deployment (Cloud Database)** | Azure Database for MySQL - Servidor flexible | SaaS | B1ms (Burstable) | Base de datos MySQL 8 de producción de la RESTful API, alojada en la región Chile Central. |
 | **Software Deployment (Frontend Hosting)** | Azure Static Web Apps | SaaS | Plan Free | Hospedaje de la Single Page Application Angular con CDN, HTTPS y despliegue continuo desde la rama `main` mediante GitHub Actions. | [Azure Static Web Apps](https://azure.microsoft.com/products/app-service/static) |
 | **Software Deployment (Landing Hosting)** | GitHub Pages | SaaS | Cloud | Publicación del sitio estático de la Landing Page desde la rama `main` del repositorio `maquicontrol-website`. | [GitHub Pages](https://pages.github.com/) |
@@ -2054,9 +2057,10 @@ Para asegurar que cualquier miembro del equipo de AndesHeavyTech pueda clonar, c
     git config --global user.email "codigo@upc.edu.pe"
     git config --global core.autocrlf input
     ```
-  - Instalar JDK 21 LTS y verificar la variable de entorno `JAVA_HOME` (`java -version`).
+  - Instalar JDK 27 y verificar la variable de entorno `JAVA_HOME` (`java -version`).
   - Instalar Node.js v20 LTS y validar su correcto funcionamiento (`node -v` y `npm -v`).
   - Instalar globalmente Angular CLI mediante el comando `npm install -g @angular/cli`.
+  - Instalar Docker Desktop para construir y ejecutar localmente la imagen de la RESTful API.
 
 2. **Configuración de extensiones en Visual Studio Code:**
   - *Angular Language Service*: soporte de sintaxis, autocompletado y validación de plantillas Angular.
@@ -2066,7 +2070,7 @@ Para asegurar que cualquier miembro del equipo de AndesHeavyTech pueda clonar, c
 
 3. **Configuración de IntelliJ IDEA para el Backend:**
   - Habilitar el procesamiento de anotaciones (*Enable Annotation Processing*) para permitir la generación de código en tiempo de compilación por parte de Project Lombok.
-  - Configurar el SDK del proyecto en Java 21 y sincronizar las dependencias declaradas en el archivo `pom.xml` a través de Maven.
+  - Configurar el SDK del proyecto en Java 27 y sincronizar las dependencias declaradas en el archivo `pom.xml` a través de Maven.
   - Configurar el soporte de Spring Boot para la inspección y ejecución de configuraciones en `application.properties` o `application.yml`.
 
 ### 5.1.2. Source Code Management
@@ -2083,7 +2087,7 @@ Dentro de dicha organización se han estructurado repositorios dedicados e indep
 
 2. **Repositorio de Web Services (RESTful API):**
 - **URL:** [https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend)
-- **Descripción:** Contiene la RESTful API desarrollada con Spring Boot 4 y Java 21, organizada por Bounded Contexts con DDD y CQRS. Expone los endpoints bajo el prefijo `/api/v1`, protegidos con JWT, persiste los datos en MySQL y documenta sus servicios con OpenAPI (Swagger UI).
+- **Descripción:** Contiene la RESTful API desarrollada con Spring Boot 4 y Java 27, organizada por Bounded Contexts con DDD y CQRS. Expone los endpoints bajo el prefijo `/api/v1`, protegidos con JWT, persiste los datos en MySQL y documenta sus servicios con OpenAPI (Swagger UI). Se empaqueta en una imagen Docker (`Dockerfile` multi-stage) para su despliegue en contenedor.
 
 3. **Repositorio del servicio de pagos (Fake API):**
 - **URL:** [https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform)
@@ -2295,8 +2299,8 @@ Feature: Machinery Rental Reservation
 
 ### 5.1.4. Software Deployment Configuration
 
-La estrategia de despliegue de MaquiControl separa el trabajo local del entorno publicado y automatiza cada publicación con GitHub Actions:
-- **Development (Local):** estaciones de los desarrolladores. Aplicación Angular en `http://localhost:4200` y RESTful API en Spring Boot en `http://localhost:8080/api/v1`, con MySQL local (perfil `dev`).
+La estrategia de despliegue de MaquiControl separa el trabajo local del entorno publicado. El Landing Page y la aplicación web automatizan cada publicación con GitHub Actions; la RESTful API, desde que se migró a contenedores, se construye y publica como imagen Docker en Azure Container Registry.
+- **Development (Local):** estaciones de los desarrolladores. Aplicación Angular en `http://localhost:4200` y RESTful API en Spring Boot en `http://localhost:8080/api/v1`, ejecutada con Docker Compose (imagen construida desde el `Dockerfile` del repositorio) y MySQL local (perfil `dev`).
 - **Production:** productos publicados en la nube, vinculados a la rama `main` de cada repositorio y etiquetados con versiones semánticas mediante GitFlow (`release/*` y tags).
 
 Cada producto se despliega de forma independiente:
@@ -2313,14 +2317,18 @@ flowchart LR
     subgraph CI_CD ["GitHub Actions"]
         PagesBuild["GitHub Pages\ndeployment"]
         SwaBuild["Azure Static Web Apps CI/CD\n(ng build)"]
-        BackendBuild["Build and deploy backend\nto Azure Web App (Maven, Java 21)"]
         AppServiceBuild["Build and deploy Node.js app\nto Azure Web App"]
+    end
+
+    subgraph DockerFlow ["Despliegue manual por contenedor"]
+        DockerBuild["docker build / docker push\n(Dockerfile, JDK 27)"]
+        ACR["Azure Container Registry\n(maquicontrolacr)"]
     end
 
     subgraph Cloud ["Producción"]
         Pages["Landing Page\n(GitHub Pages)"]
         Swa["Web Application SPA\n(Azure Static Web Apps - Free)"]
-        Backend["RESTful API Spring Boot\n(Azure App Service - Central US)"]
+        Backend["RESTful API Spring Boot\n(Azure App Service - Container - Central US)"]
         MySQL["Azure Database for MySQL\nFlexible Server (Chile Central)"]
         AppService["Servicio de pagos json-server\n(Azure App Service F1 - Central US)"]
         MercadoPago["Mercado Pago\nCheckout Pro (sandbox)"]
@@ -2328,7 +2336,7 @@ flowchart LR
 
     RepoLanding --> PagesBuild --> Pages
     RepoFrontend --> SwaBuild --> Swa
-    RepoBackend --> BackendBuild --> Backend
+    RepoBackend --> DockerBuild --> ACR --> Backend
     RepoMock --> AppServiceBuild --> AppService
     Pages -->|Enlaces a la plataforma| Swa
     Swa -->|HTTPS REST / JSON + JWT| Backend
@@ -2347,13 +2355,15 @@ flowchart LR
 - **Versión publicada:** `v2.0.0`, con los botones conectados a la aplicación web desplegada.
 - **URL pública de despliegue:** [https://upc-pre-202620-1asi0729-7750-heavytech.github.io/maquicontrol-website/](https://upc-pre-202620-1asi0729-7750-heavytech.github.io/maquicontrol-website/)
 
-#### 2. Despliegue de los Web Services (RESTful API en Azure App Service)
-Desde el Sprint 3 los servicios se exponen mediante la RESTful API construida con Spring Boot 4 y Java 21 en el repositorio `maquicontrol-backend`. La API persiste sus datos en Azure Database for MySQL y documenta sus endpoints con OpenAPI (Swagger UI).
+#### 2. Despliegue de los Web Services (RESTful API en Azure App Service como contenedor)
+Desde el Sprint 3 los servicios se exponen mediante la RESTful API construida con Spring Boot 4 en el repositorio `maquicontrol-backend`. A partir de la migración a contenedores, la API se compila con JDK 27 y se empaqueta en una imagen Docker en lugar de publicarse como archivo `.jar`. La API persiste sus datos en Azure Database for MySQL y documenta sus endpoints con OpenAPI (Swagger UI).
 
 - **Base de datos:** Azure Database for MySQL - Servidor flexible `maquicontrol-mysql` (MySQL 8, nivel *Burstable* B1ms, carga de trabajo *Desarrollo/pruebas*), base de datos `maquicontrol` y autenticación de MySQL. Se creó en la región **Chile Central**, porque la directiva de la suscripción Azure for Students solo permite las regiones `centralus`, `northcentralus`, `brazilsouth`, `chilecentral` y `westus`, y en las demás regiones permitidas no había capacidad para el servidor flexible. Las reglas de red permiten el acceso desde los servicios de Azure.
-- **Plataforma de la API:** Azure App Service `maquicontrol-backend` (Linux, Java 21 SE, región Central US, grupo de recursos `maquicontrol-rg`).
-- **Variables de entorno:** `DATABASE_URL`, `DATABASE_NAME`, `DATABASE_USER`, `DATABASE_PASSWORD`, `JWT_SECRET` y `WEBSITES_PORT=8080`, configuradas únicamente en **Configuración → Variables de entorno** del App Service. Ninguna credencial se guarda en el repositorio; el perfil `prod` de Spring Boot las lee al iniciar.
-- **Integración y despliegue continuo:** el workflow `.github/workflows/deploy-azure.yml` compila el proyecto con Maven y Java 21 y publica el archivo `.jar` en el App Service ante cada push a `main`. La autenticación con Azure usa el perfil de publicación guardado en el secreto `AZURE_WEBAPP_PUBLISH_PROFILE` del repositorio.
+- **Imagen Docker:** el `Dockerfile` del repositorio usa una construcción multi-stage: una etapa `eclipse-temurin:27-jdk` compila el proyecto con el Maven Wrapper (`./mvnw package -DskipTests`) y una etapa final `eclipse-temurin:27-jre` copia únicamente el `.jar` resultante, ejecutándolo con un usuario no root. La imagen se construye y prueba localmente con `docker compose` (perfiles `docker-compose.container-db.yml` con MySQL en contenedor, `docker-compose.host-docker-internal.yml` apuntando al MySQL del host, y `docker-compose.prod.yml` para verificarla contra la base de datos de Azure antes de publicarla).
+- **Registro de contenedores:** Azure Container Registry `maquicontrolacr` (SKU Basic, autenticación con credenciales de administrador, región Central US). La imagen se etiqueta y sube manualmente: `docker build -t maquicontrolacr.azurecr.io/maquicontrol-backend:1.0.0 .` y `docker push maquicontrolacr.azurecr.io/maquicontrol-backend:1.0.0`.
+- **Plataforma de la API:** Azure App Service `maquicontrol-backend` (Linux, modo de publicación *Container*, región Central US, grupo de recursos `maquicontrol-rg`), configurado con `az webapp config container set` para extraer la imagen anterior desde el Container Registry.
+- **Variables de entorno:** `DATABASE_URL`, `DATABASE_PORT`, `DATABASE_NAME`, `DATABASE_USER`, `DATABASE_PASSWORD`, `JWT_SECRET`, `SPRING_PROFILES_ACTIVE=prod`, `PORT=8080` y `WEBSITES_PORT=8080`, configuradas únicamente en **Configuración → Variables de entorno** del App Service. Las variables `DOCKER_REGISTRY_SERVER_URL`, `DOCKER_REGISTRY_SERVER_USERNAME` y `DOCKER_REGISTRY_SERVER_PASSWORD` permiten al App Service autenticarse ante el Container Registry para extraer la imagen. Ninguna credencial se guarda en el repositorio; el perfil `prod` de Spring Boot las lee al iniciar.
+- **Publicación del contenedor:** a diferencia del resto de productos, el backend ya no usa un workflow de GitHub Actions para desplegarse (se eliminó `.github/workflows/deploy-azure.yml`); la construcción y publicación de la imagen se realiza manualmente desde la estación de trabajo mediante Docker y Azure CLI, reiniciando el App Service con `az webapp restart` para aplicar la nueva imagen.
 - **Verificación del despliegue:**
   - Documentación OpenAPI: [https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html)
   - Roles disponibles (endpoint público): `GET https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/api/v1/roles`
