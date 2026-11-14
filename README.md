@@ -2957,10 +2957,9 @@ Tareas: registrarse como contratista, completar el perfil, buscar una maquinaria
 
 | Segmento | Entrevistado | Entrevistador | Fecha | Video | Timing |
 |---|---|---|---|---|---|
-| Empresas de alquiler de maquinaria | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
-| Empresas de alquiler de maquinaria | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
-| Contratistas y responsables de obra | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
-| Contratistas y responsables de obra | Pendiente | Pendiente | Pendiente | Pendiente | Pendiente |
+| Empresas de alquiler de maquinaria | Andrea Lopez | Carlos Gabriel Cespedes Lezcano | 10/11/2026 | [Ver video](https://youtu.be/TXv-QAAzDJs?t=940) | 15:40 - 16:57 |
+| Empresas de alquiler de maquinaria | Alejandro Guerra | Mathias Castillo | 10/11/2026 | [Ver video](https://youtu.be/TXv-QAAzDJs?t=420) | 07:00 - 13:00 |
+| Contratistas y responsables de obra | Daniel Contreras | Wilmer Sebastian Gutierrez Lizarbe | 10/11/2026 | [Ver video](https://youtu.be/TXv-QAAzDJs?t=60) | 01:00 - 06:50 |
 
 ### 5.3.3. Evaluaciones según heurísticas
 
