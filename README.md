@@ -2963,7 +2963,27 @@ Tareas: registrarse como contratista, completar el perfil, buscar una maquinaria
 
 ### 5.3.3. Evaluaciones según heurísticas
 
-Pendiente: se completará con los hallazgos de las entrevistas de validación, evaluados con las heurísticas de usabilidad de Nielsen.
+- **Visibilidad del estado del sistema:** Alejandro Guerra y Andrea López valoraron poder ver en tiempo real las horas acumuladas y el estado operativo de cada máquina, lo que les permite anticipar vencimientos de mantenimiento y evitar sobrecostos.
+
+- **Coincidencia entre el sistema y el mundo real:** los tres entrevistados reconocieron sin dificultad términos propios del rubro como horómetro, mantenimiento preventivo y disponibilidad, lo que indica que el lenguaje de la plataforma coincide con el vocabulario que usan en su operación diaria.
+
+- **Control y libertad del usuario:** Alejandro Guerra tardó en encontrar cómo modificar una reserva ya confirmada, pues no identificó un botón de edición directo y tuvo que entrar primero al detalle de la máquina; Andrea López reportó la misma dificultad.
+
+- **Consistencia y estándares:** Alejandro Guerra señaló que actualizar el estado operativo de una máquina y gestionar el calendario de reservas le parecieron dos flujos separados, cuando esperaba que estuvieran integrados en un mismo lugar.
+
+- **Prevención de errores:** Alejandro Guerra notó que, al registrar una máquina nueva, el formulario no pide el horómetro inicial ni la fecha de vencimiento de pólizas y certificados de operatividad, datos que las empresas grandes exigen antes de aceptar el equipo en obra.
+
+- **Reconocimiento antes que recuerdo:** José (entrevistado por Wilmer) buscó el historial de mantenimientos pasados dentro de la ficha técnica del equipo en vez de encontrarlo en un módulo general de mantenimiento, lo que le tomó más tiempo del esperado.
+
+- **Flexibilidad y eficiencia de uso:** Alejandro Guerra destacó que el registro como empresa y el alta de una máquina fueron rápidos y directos, sin pedir información innecesaria en el primer uso.
+
+- **Diseño estético y minimalista:** José calificó el diseño de la Landing Page como limpio, moderno y profesional desde los primeros segundos.
+
+- **Ayuda a reconocer, diagnosticar y recuperarse de errores:** José intentó explorar el catálogo sin crear una cuenta y el sistema lo bloqueó con un mensaje de error, sin ofrecerle una alternativa para seguir mirando como invitado.
+
+- **Ayuda y documentación:** José y Alejandro Guerra coincidieron en que, antes de confirmar una reserva, les gustaría ver explícitamente las condiciones de garantía, el tiempo mínimo de alquiler y las penalidades por incumplimiento, información que hoy deben inferir o preguntar aparte.
+
+En general, los tres entrevistados calificaron entre 7 y 9 sobre 10 la probabilidad de usar MaquiControl en lugar de sus métodos actuales (llamadas telefónicas, WhatsApp o Excel); las observaciones anteriores se consideran insumos para las siguientes iteraciones del producto.
 
 ## 5.4. Video About-the-Product
 
