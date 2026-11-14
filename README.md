@@ -2995,6 +2995,8 @@ Video de presentación del producto MaquiControl, publicado en YouTube: [https:/
 
 - Finalmente, MaquiControl busca contribuir a la transformación digital del sector de alquiler de maquinaria pesada, proporcionando una herramienta que permita mejorar la coordinación entre proveedores y contratistas, reducir problemas derivados de la falta de información y facilitar una gestión más organizada de las operaciones.
 
+- **Sobre el equipo:** AndesHeavyTech está conformado por Nicolas Tantalean Granda, Wilmer Sebastián Gutiérrez Lizarbe, Mathias Alejandro Castillo Guevara y Carlos Gabriel Cespedes Lezcano. A lo largo de los Sprints el equipo mantuvo una distribución de Bounded Contexts por integrante, lo que permitió avanzar en paralelo en la RESTful API, la aplicación web y el informe sin perder coherencia entre los módulos. La comunicación constante sobre nombres de comandos, queries y eventos de integración facilitó que cada integrante entendiera cómo su Bounded Context se conectaba con los demás. El Video About-the-Team presenta al equipo y su forma de trabajo durante este Sprint.
+
 # Video About-the-Team
 
 Video de presentación del equipo AndesHeavyTech, publicado en YouTube: [https://youtu.be/tptPPrhuSH4](https://youtu.be/tptPPrhuSH4). El enlace también se incluyó en la Landing Page junto con el Video About-the-Product.
