@@ -3052,9 +3052,9 @@ Video de presentación del equipo AndesHeavyTech, publicado en YouTube: [https:/
 | Producto | Repositorio | URL desplegada |
 | :--- | :--- | :--- |
 | Informe del proyecto | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-report](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-report) | No aplica |
-| Landing Page v2.0.0 | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website) | [GitHub Pages](https://upc-pre-202620-1asi0729-7750-heavytech.github.io/maquicontrol-website/) |
-| Frontend Web Application | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp) | [Azure Static Web Apps](https://lemon-pebble-0a946d810.4.azurestaticapps.net) |
-| RESTful API (Web Services) | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend) | [Azure App Service - Swagger UI](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html) |
+| Landing Page v3.0.0 | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website) | [GitHub Pages](https://upc-pre-202620-1asi0729-7750-heavytech.github.io/maquicontrol-website/) |
+| Frontend Web Application v2.0.0 | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp) | [Azure Static Web Apps](https://lemon-pebble-0a946d810.4.azurestaticapps.net) |
+| RESTful API (Web Services) v1.0.0 | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend) | [Azure App Service - Swagger UI](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html) |
 | Fake API (servicio de pagos) | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform) | [Azure App Service](https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/api/v1/health) |
 
 ## Anexo: Videos del Producto y del Equipo
