@@ -2996,6 +2996,10 @@ Video de presentación del producto MaquiControl, publicado en YouTube: [https:/
 
 - Finalmente, MaquiControl busca contribuir a la transformación digital del sector de alquiler de maquinaria pesada, proporcionando una herramienta que permita mejorar la coordinación entre proveedores y contratistas, reducir problemas derivados de la falta de información y facilitar una gestión más organizada de las operaciones.
 
+# Video About-the-Team
+
+Video de presentación del equipo AndesHeavyTech, publicado en YouTube: [https://youtu.be/tptPPrhuSH4](https://youtu.be/tptPPrhuSH4). El enlace también se incluyó en la Landing Page junto con el Video About-the-Product.
+
 # Bibliografía
 - Angular Team. (2024). *Angular coding style guide*. https://angular.dev/style-guide
 - Angular Team. (2026). *Angular Material*. https://material.angular.dev/
