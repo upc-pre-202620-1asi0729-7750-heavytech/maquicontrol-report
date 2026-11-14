@@ -195,7 +195,7 @@
 - [Video About-the-Team](#video-about-the-team)
 - [Bibliografía](#bibliografía)
 - [Anexos](#anexos)
-    - [Anexo: Videos de Exposiciones](#anexo-videos-de-exposiciones)
+    - [Anexo: Videos del Producto y del Equipo](#anexo-videos-del-producto-y-del-equipo)
 
 </div>
 
@@ -2973,15 +2973,15 @@ Tareas: registrarse como contratista, completar el perfil, buscar una maquinaria
 
 - **Prevención de errores:** Alejandro Guerra notó que, al registrar una máquina nueva, el formulario no pide el horómetro inicial ni la fecha de vencimiento de pólizas y certificados de operatividad, datos que las empresas grandes exigen antes de aceptar el equipo en obra.
 
-- **Reconocimiento antes que recuerdo:** José (entrevistado por Wilmer) buscó el historial de mantenimientos pasados dentro de la ficha técnica del equipo en vez de encontrarlo en un módulo general de mantenimiento, lo que le tomó más tiempo del esperado.
+- **Reconocimiento antes que recuerdo:** Daniel Contreras (entrevistado por Wilmer) buscó el historial de mantenimientos pasados dentro de la ficha técnica del equipo en vez de encontrarlo en un módulo general de mantenimiento, lo que le tomó más tiempo del esperado.
 
 - **Flexibilidad y eficiencia de uso:** Alejandro Guerra destacó que el registro como empresa y el alta de una máquina fueron rápidos y directos, sin pedir información innecesaria en el primer uso.
 
-- **Diseño estético y minimalista:** José calificó el diseño de la Landing Page como limpio, moderno y profesional desde los primeros segundos.
+- **Diseño estético y minimalista:** Daniel Contreras calificó el diseño de la Landing Page como limpio, moderno y profesional desde los primeros segundos.
 
-- **Ayuda a reconocer, diagnosticar y recuperarse de errores:** José intentó explorar el catálogo sin crear una cuenta y el sistema lo bloqueó con un mensaje de error, sin ofrecerle una alternativa para seguir mirando como invitado.
+- **Ayuda a reconocer, diagnosticar y recuperarse de errores:** Daniel Contreras intentó explorar el catálogo sin crear una cuenta y el sistema lo bloqueó con un mensaje de error, sin ofrecerle una alternativa para seguir mirando como invitado.
 
-- **Ayuda y documentación:** José y Alejandro Guerra coincidieron en que, antes de confirmar una reserva, les gustaría ver explícitamente las condiciones de garantía, el tiempo mínimo de alquiler y las penalidades por incumplimiento, información que hoy deben inferir o preguntar aparte.
+- **Ayuda y documentación:** Daniel Contreras y Alejandro Guerra coincidieron en que, antes de confirmar una reserva, les gustaría ver explícitamente las condiciones de garantía, el tiempo mínimo de alquiler y las penalidades por incumplimiento, información que hoy deben inferir o preguntar aparte.
 
 En general, los tres entrevistados calificaron entre 7 y 9 sobre 10 la probabilidad de usar MaquiControl en lugar de sus métodos actuales (llamadas telefónicas, WhatsApp o Excel); las observaciones anteriores se consideran insumos para las siguientes iteraciones del producto.
 
@@ -3057,9 +3057,10 @@ Video de presentación del equipo AndesHeavyTech, publicado en YouTube: [https:/
 | RESTful API (Web Services) | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend) | [Azure App Service - Swagger UI](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html) |
 | Fake API (servicio de pagos) | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform) | [Azure App Service](https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/api/v1/health) |
 
-## Anexo: Videos de Exposiciones
+## Anexo: Videos del Producto y del Equipo
 
-| Entrega | Video | Duración |
-| :--- | :--- | :--- |
-| TB1 | Pendiente: enlace de Microsoft Stream de la exposición TB1 | Pendiente |
-| AV2 | Pendiente: enlace de Microsoft Stream del Sprint Review del Sprint 3 | Pendiente |
+| Video | Enlace |
+| :--- | :--- |
+| About-the-Product | [https://youtu.be/OBhNOHt9zh0](https://youtu.be/OBhNOHt9zh0) |
+| About-the-Team | [https://youtu.be/tptPPrhuSH4](https://youtu.be/tptPPrhuSH4) |
+| Entrevistas de validación | [https://youtu.be/TXv-QAAzDJs](https://youtu.be/TXv-QAAzDJs) |
