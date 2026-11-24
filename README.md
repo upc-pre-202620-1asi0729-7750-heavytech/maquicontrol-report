@@ -2462,17 +2462,16 @@ La siguiente matriz identifica a los líderes y colaboradores de los principales
 
 #### 5.2.1.3. Sprint Backlog 1
 
-El Sprint Backlog se reconstruyó a partir de las User Stories seleccionadas y del historial verificable de commits. Las horas mostradas corresponden a una estimación retrospectiva basada en la complejidad de cada tarea, debido a que durante este Sprint no se mantuvo un tablero público con estimaciones formales.
+El Sprint Backlog se reconstruyó a partir de las User Stories seleccionadas y del historial verificable de commits. Cada User Story se descompone en varias engineering tasks estimadas entre 4 y 8 horas. Las horas corresponden a una estimación retrospectiva basada en la complejidad de cada tarea, debido a que durante este Sprint no se mantuvo un tablero público con estimaciones formales. La documentación del informe se registra en su propio repositorio y no forma parte de las engineering tasks.
 
 | Sprint | Story ID | Story Title | Task ID | Task Title | Task Description | Estimation (Hours) | Assigned To | Status |
 |---|---|---|---|---|---|---:|---|---|
-| Sprint 1 | US-013 | Mostrar propuesta de valor | S1-T01 | Crear estructura de la Landing Page | Implementar la estructura semántica inicial y las secciones principales mediante HTML5. | 3 | Carlos Cespedes | Done |
-| Sprint 1 | US-013 | Mostrar propuesta de valor | S1-T02 | Implementar estilos responsive | Desarrollar los estilos base, navegación, hero, beneficios y adaptación a diferentes tamaños de pantalla. | 4 | Carlos Cespedes | Done |
-| Sprint 1 | US-013 | Mostrar propuesta de valor | S1-T03 | Aplicar diseño visual final | Implementar los estilos derivados del mock-up e incorporar la ilustración principal de maquinaria. | 4 | Carlos Cespedes | Done |
-| Sprint 1 | US-014 | Mostrar información por segmento | S1-T04 | Implementar contenido por segmento | Incorporar contenido diferenciado para propietarios, administradores, contratistas y jefes de obra. | 3 | Carlos Cespedes | Done |
-| Sprint 1 | US-014 | Mostrar información por segmento | S1-T05 | Incorporar internacionalización | Implementar textos en inglés y español con cambio dinámico de idioma mediante JavaScript. | 3 | Carlos Cespedes | Done |
-| Sprint 1 | US-013 | Mostrar propuesta de valor | S1-T06 | Incorporar planes comerciales | Agregar los planes Essential y Pro, beneficios, precios y llamados a la acción. | 3 | Carlos Cespedes | Done |
-| Sprint 1 | — | Documentación técnica | S1-T07 | Consolidar documentación AV1 | Completar investigación, requisitos, UX/UI, arquitectura, diseño orientado a objetos y diseño de base de datos. | 12 | Equipo AndesHeavyTech | Done |
+| Sprint 1 | US-013 | Mostrar propuesta de valor | S1-T01 | Crear la estructura de la Landing Page | Implementar con HTML5 semántico el encabezado, el hero, los beneficios, los planes y el pie de página. | 4 | Carlos Cespedes | Done |
+| Sprint 1 | US-013 | Mostrar propuesta de valor | S1-T02 | Implementar los estilos responsive | Desarrollar los estilos de la navegación, el hero y los beneficios, y adaptarlos a móviles, tablets y escritorio. | 6 | Carlos Cespedes | Done |
+| Sprint 1 | US-013 | Mostrar propuesta de valor | S1-T03 | Aplicar el diseño visual del mock-up | Aplicar la paleta, la tipografía y la ilustración principal de maquinaria definidas en el mock-up. | 4 | Carlos Cespedes | Done |
+| Sprint 1 | US-013 | Mostrar propuesta de valor | S1-T04 | Incorporar los planes comerciales | Agregar los planes Essential y Pro con sus beneficios, precios y llamados a la acción. | 4 | Carlos Cespedes | Done |
+| Sprint 1 | US-014 | Mostrar información por segmento | S1-T05 | Implementar el contenido por segmento | Incorporar secciones diferenciadas para propietarios de empresas de alquiler y para contratistas de obras. | 4 | Carlos Cespedes | Done |
+| Sprint 1 | US-014 | Mostrar información por segmento | S1-T06 | Incorporar la internacionalización | Implementar los textos en español e inglés y el cambio de idioma con JavaScript. | 5 | Carlos Cespedes | Done |
 
 Durante el Sprint 1 no se configuró un tablero público de GitHub Projects. La trazabilidad se mantuvo mediante ramas feature, commits y merges registrados en los repositorios públicos. Como mejora de proceso, los siguientes Sprints deberán contar con un tablero público desde el inicio.
 
@@ -2583,34 +2582,54 @@ La matriz se elaboró a partir del historial de commits de los repositorios del 
 
 #### 5.2.2.3. Sprint Backlog 2
 
-Las horas corresponden a una estimación retrospectiva basada en la complejidad de cada tarea.
+Cada User Story del Sprint se descompone en varias engineering tasks estimadas entre 4 y 8 horas. Las horas corresponden a una estimación retrospectiva basada en la complejidad de cada tarea.
 
 | Sprint | Story ID | Story Title | Task ID | Task Title | Task Description | Estimation (Hours) | Assigned To | Status |
 |---|---|---|---|---|---|---:|---|---|
-| Sprint 2 | — | Base de la aplicación | S2-T01 | Configurar el proyecto Angular | Crear el workspace en Angular 22 con Angular Material, el shell de navegación, las clases base de infraestructura y la Fake API local. | 5 | Carlos Cespedes | Done |
-| Sprint 2 | US-026 | Registrar cuenta de usuario | S2-T02 | Implementar el registro | Desarrollar el modelo de cuenta, comandos, assemblers, endpoint y formulario de registro con selección de rol. | 5 | Carlos Cespedes | Done |
-| Sprint 2 | US-027 | Iniciar sesión | S2-T03 | Implementar el inicio de sesión | Desarrollar el puerto de inicio de sesión, el guard de rutas, el interceptor HTTP y la sección de autenticación en la barra superior. | 6 | Carlos Cespedes | Done |
-| Sprint 2 | US-029 | Gestionar roles de usuario | S2-T04 | Restringir rutas por rol | Implementar `roleGuard` para separar las funciones de propietario de flota y contratista. | 3 | Carlos Cespedes | Done |
-| Sprint 2 | US-001 | Registrar maquinaria | S2-T05 | Registrar maquinaria y categorías | Desarrollar el formulario de maquinaria y la gestión de categorías con nombres únicos y protección de categorías en uso. | 6 | Carlos Cespedes | Done |
-| Sprint 2 | US-016 | Editar datos de maquinaria | S2-T06 | Editar maquinaria | Habilitar la ruta de edición y la actualización de datos desde el catálogo. | 2 | Carlos Cespedes | Done |
-| Sprint 2 | US-017 | Dar de baja maquinaria | S2-T07 | Eliminar maquinaria | Agregar la acción de eliminación al catálogo de maquinaria del propietario. | 2 | Carlos Cespedes | Done |
-| Sprint 2 | US-007 | Consultar catálogo de maquinaria | S2-T08 | Mostrar el catálogo | Mostrar el catálogo de maquinaria publicada con su estado y la acción de alquilar. | 3 | Carlos Cespedes | Done |
-| Sprint 2 | US-030 | Actualizar perfil | S2-T09 | Gestionar perfil y organización | Desarrollar el modelo, la infraestructura y las vistas de perfil y organización. | 5 | Carlos Cespedes | Done |
-| Sprint 2 | US-004 | Crear una reserva | S2-T10 | Solicitar alquiler | Desarrollar el modelo de alquiler, periodo y monto, y la página de solicitud con validación de fechas y disponibilidad. | 6 | Carlos Cespedes | Done |
-| Sprint 2 | US-019 | Aprobar o rechazar reservas | S2-T11 | Confirmar reservas | Permitir que el propietario confirme las solicitudes pendientes de sus maquinarias. | 2 | Carlos Cespedes | Done |
-| Sprint 2 | US-006 | Cancelar una reserva | S2-T12 | Cancelar reservas | Permitir la cancelación de reservas con su motivo. | 2 | Carlos Cespedes | Done |
-| Sprint 2 | US-009 | Consultar reservas por obra | S2-T13 | Listar reservas propias | Mostrar solo las reservas en las que el usuario es solicitante o propietario de la maquinaria. | 2 | Carlos Cespedes | Done |
-| Sprint 2 | US-031 | Programar mantenimientos preventivos | S2-T14 | Programar mantenimientos | Desarrollar el modelo, la infraestructura y la página de programación de mantenimientos. | 5 | Carlos Cespedes | Done |
-| Sprint 2 | US-003 | Gestionar mantenimiento | S2-T15 | Actualizar el estado de la maquinaria | Marcar la maquinaria como en mantenimiento al iniciar el trabajo, liberarla al completarlo y bloquear su alquiler mientras tanto. | 3 | Carlos Cespedes | Done |
-| Sprint 2 | US-034 | Reportar avería en obra | S2-T16 | Reportar averías | Desarrollar el formulario de reporte de avería asociado a una maquinaria. | 3 | Carlos Cespedes | Done |
-| Sprint 2 | US-010 | Registrar horas trabajadas | S2-T17 | Registrar horas de operación | Desarrollar el modelo de operación de servicio y el formulario de horas trabajadas. | 5 | Carlos Cespedes | Done |
-| Sprint 2 | US-011 | Validar horas trabajadas | S2-T18 | Validar horas | Permitir que el propietario valide las horas registradas de una operación. | 2 | Carlos Cespedes | Done |
-| Sprint 2 | US-041 | Consultar planes de suscripción | S2-T19 | Crear la página de planes | Implementar la vista de planes Essential y Pro. | 3 | Angiela Fuentes | Done |
-| Sprint 2 | US-042 | Contratar un plan de suscripción | S2-T20 | Integrar Mercado Pago | Crear preferencias de Checkout Pro desde la Fake API, redirigir al pago sandbox y confirmar el resultado del pago. | 6 | Carlos Cespedes | Done |
-| Sprint 2 | — | Internacionalización y accesibilidad | S2-T21 | Traducir y mejorar accesibilidad | Incorporar ngx-translate con diccionarios `en` y `es-419`, etiquetas ARIA y correcciones de contraste. | 6 | Carlos Cespedes | Done |
-| Sprint 2 | US-013 | Mostrar propuesta de valor | S2-T22 | Conectar la Landing Page | Enlazar los botones de la Landing Page con las rutas de la aplicación web. | 3 | Angiela Fuentes | Done |
-| Sprint 2 | US-014 | Mostrar información por segmento | S2-T23 | Separar traducciones de la Landing Page | Mover los textos a `i18n/en.json` e `i18n/es.json` y apuntar los enlaces a la aplicación desplegada. | 2 | Carlos Cespedes | Done |
-| Sprint 2 | — | Despliegue | S2-T24 | Desplegar los productos | Publicar la Fake API en Azure App Service, la aplicación en Azure Static Web Apps y los releases `1.0.0` (frontend) y `v2.0.0` (Landing Page). | 5 | Carlos Cespedes | Done |
+| Sprint 2 | US-026 | Registrar cuenta de usuario | S2-T01 | Configurar el proyecto Angular | Crear el workspace en Angular 22 con Angular Material, el shell de navegación, las clases base de infraestructura y la Fake API local. | 6 | Carlos Cespedes | Done |
+| Sprint 2 | US-026 | Registrar cuenta de usuario | S2-T02 | Implementar el modelo y el endpoint de registro | Desarrollar el modelo de cuenta, los comandos, los assemblers y el endpoint de registro en la Fake API. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-026 | Registrar cuenta de usuario | S2-T03 | Crear el formulario de registro | Implementar el formulario de registro con selección de rol y validaciones de los campos. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-026 | Registrar cuenta de usuario | S2-T04 | Enlazar la Landing Page con la aplicación | Conectar los botones de registro e inicio de sesión de la Landing Page con las rutas de la aplicación web. | 4 | Angiela Fuentes | Done |
+| Sprint 2 | US-027 | Iniciar sesión | S2-T05 | Implementar el inicio de sesión | Desarrollar el puerto de inicio de sesión y el interceptor HTTP que adjunta la sesión a cada solicitud. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-027 | Iniciar sesión | S2-T06 | Proteger las rutas privadas | Implementar el guard de rutas y la sección de autenticación de la barra superior. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-029 | Gestionar roles de usuario | S2-T07 | Restringir rutas por rol | Implementar `roleGuard` para separar las funciones del propietario de flota y del contratista. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-029 | Gestionar roles de usuario | S2-T08 | Adaptar la navegación al rol | Mostrar en el menú lateral solo las opciones que corresponden al rol del usuario. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-001 | Registrar maquinaria | S2-T09 | Crear el formulario de maquinaria | Desarrollar el formulario de registro de maquinaria con sus datos técnicos, tarifa y ubicación. | 5 | Carlos Cespedes | Done |
+| Sprint 2 | US-001 | Registrar maquinaria | S2-T10 | Gestionar las categorías | Implementar la gestión de categorías con nombres únicos y protección de las categorías en uso. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-001 | Registrar maquinaria | S2-T11 | Enlazar la Landing Page con la gestión de flota | Conectar los enlaces de maquinaria y de gestión de flota de la Landing Page con la aplicación web. | 4 | Angiela Fuentes | Done |
+| Sprint 2 | US-016 | Editar datos de maquinaria | S2-T12 | Habilitar la edición de maquinaria | Crear la ruta de edición y cargar los datos actuales de la maquinaria en el formulario. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-016 | Editar datos de maquinaria | S2-T13 | Guardar los cambios de la maquinaria | Actualizar los datos desde el catálogo del propietario y mostrar la confirmación del cambio. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-017 | Dar de baja maquinaria | S2-T14 | Implementar la baja de maquinaria | Agregar la acción de eliminación al catálogo del propietario con un diálogo de confirmación. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-017 | Dar de baja maquinaria | S2-T15 | Actualizar el catálogo tras la baja | Retirar la maquinaria dada de baja del catálogo y mostrar el resultado de la operación. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-007 | Consultar catálogo de maquinaria | S2-T16 | Mostrar el catálogo de maquinaria | Mostrar la maquinaria publicada con su estado, tarifa y la acción de alquilar. | 5 | Carlos Cespedes | Done |
+| Sprint 2 | US-007 | Consultar catálogo de maquinaria | S2-T17 | Traducir la aplicación | Incorporar ngx-translate con los diccionarios `en` y `es-419` en las vistas y la navegación. | 6 | Carlos Cespedes | Done |
+| Sprint 2 | US-007 | Consultar catálogo de maquinaria | S2-T18 | Mejorar la accesibilidad | Agregar etiquetas ARIA y corregir el contraste de los componentes del catálogo y la navegación. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-030 | Actualizar perfil | S2-T19 | Implementar el modelo de perfil | Desarrollar el modelo y la infraestructura de perfil y organización. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-030 | Actualizar perfil | S2-T20 | Crear las vistas de perfil | Implementar las vistas para consultar y actualizar el perfil y la organización. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-004 | Crear una reserva | S2-T21 | Implementar el modelo de alquiler | Desarrollar el modelo de alquiler con su periodo, su monto y su estado. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-004 | Crear una reserva | S2-T22 | Crear la página de solicitud de alquiler | Implementar la solicitud con validación de fechas y de disponibilidad de la maquinaria. | 5 | Carlos Cespedes | Done |
+| Sprint 2 | US-019 | Aprobar o rechazar reservas | S2-T23 | Listar las solicitudes pendientes | Mostrar al propietario las solicitudes pendientes de sus maquinarias. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-019 | Aprobar o rechazar reservas | S2-T24 | Confirmar reservas | Permitir que el propietario confirme una solicitud pendiente y actualizar su estado. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-006 | Cancelar una reserva | S2-T25 | Cancelar reservas | Permitir la cancelación de una reserva registrando su motivo. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-006 | Cancelar una reserva | S2-T26 | Liberar la disponibilidad | Liberar el periodo reservado de la maquinaria cuando la reserva se cancela. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-009 | Consultar reservas por obra | S2-T27 | Filtrar las reservas por participante | Mostrar solo las reservas en las que el usuario es solicitante o propietario de la maquinaria. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-009 | Consultar reservas por obra | S2-T28 | Crear la vista de reservas | Implementar la lista de reservas con su periodo, maquinaria y estado. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-031 | Programar mantenimientos preventivos | S2-T29 | Implementar el modelo de mantenimiento | Desarrollar el modelo y la infraestructura de los mantenimientos programados. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-031 | Programar mantenimientos preventivos | S2-T30 | Crear la página de programación | Implementar la página para programar un mantenimiento preventivo de una maquinaria. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-003 | Gestionar mantenimiento | S2-T31 | Actualizar el estado por mantenimiento | Marcar la maquinaria como en mantenimiento al iniciar el trabajo y liberarla al completarlo. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-003 | Gestionar mantenimiento | S2-T32 | Bloquear el alquiler en mantenimiento | Impedir que se solicite el alquiler de una maquinaria mientras está en mantenimiento. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-034 | Reportar avería en obra | S2-T33 | Crear el formulario de avería | Desarrollar el formulario de reporte de avería asociado a una maquinaria. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-034 | Reportar avería en obra | S2-T34 | Listar las averías reportadas | Mostrar al propietario las averías reportadas de cada maquinaria. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-010 | Registrar horas trabajadas | S2-T35 | Implementar el modelo de operación | Desarrollar el modelo de operación de servicio y sus horas trabajadas. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-010 | Registrar horas trabajadas | S2-T36 | Crear el formulario de horas | Implementar el formulario para registrar las horas trabajadas de una operación. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-011 | Validar horas trabajadas | S2-T37 | Validar las horas registradas | Permitir que el propietario valide las horas registradas de una operación. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-011 | Validar horas trabajadas | S2-T38 | Mostrar el estado de las horas | Indicar en la lista de operaciones si las horas están pendientes o validadas. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-041 | Consultar planes de suscripción | S2-T39 | Crear la página de planes | Implementar la vista de los planes Essential y Pro con sus beneficios y precios. | 4 | Angiela Fuentes | Done |
+| Sprint 2 | US-041 | Consultar planes de suscripción | S2-T40 | Enlazar los planes de la Landing Page | Conectar los botones de planes de la Landing Page con la contratación en la aplicación web. | 4 | Angiela Fuentes | Done |
+| Sprint 2 | US-041 | Consultar planes de suscripción | S2-T41 | Separar las traducciones de la Landing Page | Mover los textos a `i18n/en.json` e `i18n/es.json` y apuntar los enlaces a la aplicación desplegada. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-042 | Contratar un plan de suscripción | S2-T42 | Crear las preferencias de pago | Crear las preferencias de Checkout Pro de Mercado Pago desde la Fake API. | 5 | Carlos Cespedes | Done |
+| Sprint 2 | US-042 | Contratar un plan de suscripción | S2-T43 | Confirmar el pago de la suscripción | Redirigir al pago en modo sandbox y confirmar el resultado del pago en la aplicación. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-042 | Contratar un plan de suscripción | S2-T44 | Desplegar los productos | Publicar la Fake API en Azure App Service, la aplicación en Azure Static Web Apps y los releases `1.0.0` (frontend) y `v2.0.0` (Landing Page). | 6 | Carlos Cespedes | Done |
 
 - [Repositorio de la Frontend Web Application](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp)
 - [Repositorio de la Fake API](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform)
@@ -2764,28 +2783,45 @@ La matriz se elaboró a partir del historial de commits del repositorio `maquico
 
 #### 5.2.3.3. Sprint Backlog 3
 
-Las horas corresponden a una estimación retrospectiva basada en la complejidad de cada tarea.
+Cada User Story del Sprint se descompone en varias engineering tasks estimadas entre 4 y 8 horas. Las horas corresponden a una estimación retrospectiva basada en la complejidad de cada tarea.
 
 | Sprint | Story ID | Story Title | Task ID | Task Title | Task Description | Estimation (Hours) | Assigned To | Status |
 |---|---|---|---|---|---|---:|---|---|
-| Sprint 3 | — | Base de la RESTful API | S3-T01 | Configurar el proyecto Spring Boot | Crear el proyecto con Spring Boot 4 y Java 27, perfiles `dev` y `prod`, estrategia de nombres en snake case, raíz de agregado, `Result`, errores `ProblemDetail`, outbox transaccional y OpenAPI. | 8 | Carlos Cespedes | Done |
-| Sprint 3 | TS-005 | Autenticación basada en JWT | S3-T02 | Implementar el registro y el inicio de sesión | Desarrollar el agregado `UserAccount`, roles, hash de contraseñas con BCrypt, emisión de tokens JWT y seguridad *stateless*. | 8 | Nicolas Tantalean | Done |
-| Sprint 3 | TS-005 | Autenticación basada en JWT | S3-T03 | Proteger los endpoints por rol | Configurar `@PreAuthorize` por rol y resolver el perfil del usuario a partir del token en cada contexto. | 4 | Carlos Cespedes | Done |
-| Sprint 3 | — | Perfiles y organizaciones | S3-T04 | Implementar Profiles Management | Desarrollar el agregado `Profile`, la entidad `Organization`, la ACL hacia IAM y sus endpoints. | 5 | Carlos Cespedes | Done |
-| Sprint 3 | TS-001 | Consultar maquinarias mediante API | S3-T05 | Implementar Fleet Management | Desarrollar los agregados `Machinery` y `Category`, el *seeding* de categorías y los endpoints de maquinaria y categorías. | 6 | Carlos Cespedes | Done |
-| Sprint 3 | TS-004 | Validar datos incorrectos en la API | S3-T06 | Validar reglas de ubicación, contacto y periodo | Cubrir con pruebas unitarias las reglas de ubicación, roles, contacto y periodo de alquiler. | 4 | Wilmer Gutiérrez | Done |
-| Sprint 3 | TS-002 | Registrar reservas mediante API | S3-T07 | Implementar Rental Management | Desarrollar el agregado `Rental`, su periodo, estados y eventos, la ACL hacia Fleet y los endpoints de reservas. | 6 | Carlos Cespedes | Done |
-| Sprint 3 | TS-003 / US-005 | Validar conflictos de reservas / Evitar reservas duplicadas | S3-T08 | Validar disponibilidad | Rechazar reservas que se superpongan con otras confirmadas y exponer la consulta de disponibilidad. | 3 | Carlos Cespedes | Done |
-| Sprint 3 | US-002 | Consultar disponibilidad | S3-T09 | Publicar eventos de alquiler | Actualizar el estado de la maquinaria cuando un alquiler se confirma, inicia o termina, mediante eventos de integración. | 4 | Mathias Castillo | Done |
-| Sprint 3 | — | Mantenimiento | S3-T10 | Implementar Maintenance Management | Desarrollar el agregado `Maintenance`, los reportes de avería, la programación preventiva por horas acumuladas y la actualización del estado de la maquinaria. | 6 | Carlos Cespedes | Done |
-| Sprint 3 | — | Operaciones de servicio | S3-T11 | Implementar Operations Management | Desarrollar el agregado `ServiceOperation`, las horas trabajadas, su validación y los eventos hacia Rental. | 6 | Mathias Castillo | Done |
-| Sprint 3 | US-044 | Consultar estado de la suscripción | S3-T12 | Implementar Subscription Management | Desarrollar los planes, la suscripción, la ACL de Mercado Pago y la confirmación del pago con validación del monto y del pagador. | 6 | Mathias Castillo | Done |
-| Sprint 3 | TS-007 / US-022 / US-023 | Facturación fiscal / Emitir comprobante / Penalidades por mora | S3-T13 | Implementar Billing Management | Desarrollar facturas, penalidades por mora, la ACL hacia SUNAT y sus políticas de emisión. | 6 | Mathias Castillo | Done |
-| Sprint 3 | — | Alineación con el diseño | S3-T14 | Corregir permisos y nombres | Restringir lecturas y acciones a los participantes y renombrar comandos y queries según el Catálogo de comandos. | 5 | Carlos Cespedes | Done |
-| Sprint 3 | US-019 | Aprobar o rechazar reservas | S3-T15 | Consultar los alquileres de la flota | Agregar la query `ViewFleetRentalsQuery` para que el propietario vea todos los alquileres de sus maquinarias. | 2 | Carlos Cespedes | Done |
-| Sprint 3 | — | Despliegue | S3-T16 | Desplegar la RESTful API | Crear el servidor MySQL flexible en Chile Central, el App Service en Central US y el workflow de GitHub Actions. | 5 | Carlos Cespedes | Done |
-| Sprint 3 | — | Integración de la aplicación web | S3-T17 | Conectar la aplicación web con la API | Reemplazar la Fake API y el inicio de sesión simulado por la RESTful API en todos los Bounded Contexts y mostrar los mensajes de error del backend. | 8 | Carlos Cespedes | Done |
-| Sprint 3 | US-004 | Crear una reserva | S3-T18 | Validar el periodo y los estados de la reserva | Validar las fechas del periodo y las transiciones de estado de la reserva en la aplicación web. | 2 | Angiela Fuentes | Done |
+| Sprint 3 | TS-001 | Consultar maquinarias mediante API | S3-T01 | Configurar el proyecto Spring Boot | Crear el proyecto con Spring Boot 4 y Java 27, perfiles `dev` y `prod`, estrategia de nombres en snake case y OpenAPI. | 6 | Carlos Cespedes | Done |
+| Sprint 3 | TS-001 | Consultar maquinarias mediante API | S3-T02 | Implementar la base compartida | Desarrollar la raíz de agregado, `Result`, el manejo de errores con `ProblemDetail` y el outbox transaccional. | 6 | Carlos Cespedes | Done |
+| Sprint 3 | TS-001 | Consultar maquinarias mediante API | S3-T03 | Implementar los agregados de Fleet Management | Desarrollar los agregados `Machinery` y `Category` con sus value objects y reglas. | 6 | Carlos Cespedes | Done |
+| Sprint 3 | TS-001 | Consultar maquinarias mediante API | S3-T04 | Exponer los endpoints de flota | Publicar los endpoints de maquinaria y categorías y el *seeding* de categorías. | 5 | Carlos Cespedes | Done |
+| Sprint 3 | TS-001 | Consultar maquinarias mediante API | S3-T05 | Conectar la flota de la aplicación web | Reemplazar la Fake API por la RESTful API en el catálogo y en la gestión de maquinaria. | 6 | Carlos Cespedes | Done |
+| Sprint 3 | TS-001 | Consultar maquinarias mediante API | S3-T06 | Desplegar la RESTful API | Crear el servidor MySQL flexible en Chile Central y el App Service en Central US, y publicar la imagen Docker de la API. | 6 | Carlos Cespedes | Done |
+| Sprint 3 | TS-002 | Registrar reservas mediante API | S3-T07 | Implementar el agregado Rental | Desarrollar el agregado `Rental` con su periodo, estados y eventos de dominio. | 6 | Carlos Cespedes | Done |
+| Sprint 3 | TS-002 | Registrar reservas mediante API | S3-T08 | Exponer los endpoints de reservas | Publicar los endpoints de reservas y la ACL hacia Fleet Management. | 5 | Carlos Cespedes | Done |
+| Sprint 3 | TS-002 | Registrar reservas mediante API | S3-T09 | Corregir permisos y nombres de reservas | Restringir lecturas y acciones a los participantes y renombrar comandos y queries según el Catálogo de comandos. | 5 | Carlos Cespedes | Done |
+| Sprint 3 | TS-002 | Registrar reservas mediante API | S3-T10 | Consultar los alquileres de la flota | Agregar `ViewFleetRentalsQuery` para que el propietario vea todos los alquileres de sus maquinarias. | 4 | Carlos Cespedes | Done |
+| Sprint 3 | TS-002 | Registrar reservas mediante API | S3-T11 | Conectar los alquileres de la aplicación web | Reemplazar la Fake API por la RESTful API en la solicitud, confirmación y cancelación de reservas. | 5 | Carlos Cespedes | Done |
+| Sprint 3 | TS-003 | Validar conflictos de reservas en la API | S3-T12 | Implementar la regla de no superposición | Rechazar en el agregado `Rental` los periodos que se crucen con reservas confirmadas. | 4 | Carlos Cespedes | Done |
+| Sprint 3 | TS-003 | Validar conflictos de reservas en la API | S3-T13 | Validar el periodo en la aplicación web | Validar las fechas del periodo y las transiciones de estado de la reserva en la aplicación web. | 4 | Angiela Fuentes | Done |
+| Sprint 3 | TS-004 | Validar datos incorrectos en la API | S3-T14 | Probar las reglas de ubicación y periodo | Cubrir con pruebas unitarias las reglas de ubicación de la maquinaria y del periodo de alquiler. | 4 | Wilmer Gutiérrez | Done |
+| Sprint 3 | TS-004 | Validar datos incorrectos en la API | S3-T15 | Probar las reglas de roles y contacto | Cubrir con pruebas unitarias las reglas de roles de usuario y de datos de contacto del perfil. | 4 | Wilmer Gutiérrez | Done |
+| Sprint 3 | TS-005 | Autenticación basada en JWT | S3-T16 | Implementar el registro de cuentas | Desarrollar el agregado `UserAccount`, sus roles y el hash de contraseñas con BCrypt. | 6 | Nicolas Tantalean | Done |
+| Sprint 3 | TS-005 | Autenticación basada en JWT | S3-T17 | Implementar el inicio de sesión con JWT | Emitir tokens JWT y configurar la seguridad *stateless* de la API. | 6 | Nicolas Tantalean | Done |
+| Sprint 3 | TS-005 | Autenticación basada en JWT | S3-T18 | Proteger los endpoints por rol | Configurar `@PreAuthorize` por rol y resolver el perfil del usuario a partir del token en cada contexto. | 4 | Carlos Cespedes | Done |
+| Sprint 3 | TS-005 | Autenticación basada en JWT | S3-T19 | Implementar Profiles Management | Desarrollar el agregado `Profile`, la entidad `Organization`, la ACL hacia IAM y sus endpoints. | 6 | Carlos Cespedes | Done |
+| Sprint 3 | TS-005 | Autenticación basada en JWT | S3-T20 | Conectar la autenticación de la aplicación web | Reemplazar el inicio de sesión simulado por la RESTful API y enviar el JWT como bearer token. | 5 | Carlos Cespedes | Done |
+| Sprint 3 | US-002 | Consultar disponibilidad | S3-T21 | Exponer la consulta de disponibilidad | Publicar la consulta de disponibilidad de una maquinaria para un periodo. | 4 | Carlos Cespedes | Done |
+| Sprint 3 | US-002 | Consultar disponibilidad | S3-T22 | Publicar los eventos de alquiler | Actualizar el estado de la maquinaria cuando un alquiler se confirma, inicia o termina, mediante eventos de integración. | 5 | Mathias Castillo | Done |
+| Sprint 3 | US-002 | Consultar disponibilidad | S3-T23 | Implementar Maintenance Management | Desarrollar el agregado `Maintenance`, los reportes de avería y la programación preventiva por horas acumuladas. | 7 | Carlos Cespedes | Done |
+| Sprint 3 | US-002 | Consultar disponibilidad | S3-T24 | Actualizar la disponibilidad por mantenimiento | Cambiar el estado de la maquinaria al iniciar, completar o cancelar un mantenimiento. | 4 | Carlos Cespedes | Done |
+| Sprint 3 | US-005 | Evitar reservas duplicadas | S3-T25 | Verificar la disponibilidad al confirmar | Comprobar al confirmar una reserva pendiente que no exista otra confirmada en el mismo periodo. | 4 | Carlos Cespedes | Done |
+| Sprint 3 | US-005 | Evitar reservas duplicadas | S3-T26 | Mostrar los conflictos en la aplicación web | Mostrar en la aplicación web los mensajes de error que devuelve la API ante una reserva duplicada. | 4 | Carlos Cespedes | Done |
+| Sprint 3 | US-022 | Emitir comprobante de pago | S3-T27 | Implementar Operations Management | Desarrollar el agregado `ServiceOperation` y el registro de horas trabajadas. | 6 | Mathias Castillo | Done |
+| Sprint 3 | US-022 | Emitir comprobante de pago | S3-T28 | Validar las horas para la facturación | Implementar la validación de horas y los eventos hacia Rental y Billing que originan el comprobante. | 5 | Mathias Castillo | Done |
+| Sprint 3 | US-023 | Aplicar penalizaciones por mora | S3-T29 | Implementar las penalidades por mora | Desarrollar el agregado `LatePenalty` y sus endpoints. | 5 | Mathias Castillo | Done |
+| Sprint 3 | US-023 | Aplicar penalizaciones por mora | S3-T30 | Aplicar la política de mora | Calcular la penalidad cuando un alquiler termina después de la fecha acordada y cubrirla con pruebas de dominio. | 4 | Mathias Castillo | Done |
+| Sprint 3 | TS-007 | Endpoint para facturación fiscal | S3-T31 | Implementar el agregado Invoice | Desarrollar el agregado `Invoice`, su persistencia y sus endpoints. | 6 | Mathias Castillo | Done |
+| Sprint 3 | TS-007 | Endpoint para facturación fiscal | S3-T32 | Integrar la emisión con SUNAT | Implementar la ACL hacia SUNAT y las políticas de emisión de comprobantes. | 5 | Mathias Castillo | Done |
+| Sprint 3 | US-044 | Consultar estado de la suscripción | S3-T33 | Implementar Subscription Management | Desarrollar los planes, la suscripción y sus endpoints. | 6 | Mathias Castillo | Done |
+| Sprint 3 | US-044 | Consultar estado de la suscripción | S3-T34 | Integrar Mercado Pago | Implementar la ACL de Mercado Pago y la confirmación del pago de la suscripción. | 6 | Mathias Castillo | Done |
+| Sprint 3 | US-044 | Consultar estado de la suscripción | S3-T35 | Validar el pago de la suscripción | Validar el monto y el pagador al confirmar el pago y restringir la consulta de la suscripción a su dueño. | 4 | Carlos Cespedes | Done |
 
 - [Repositorio de la RESTful API](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend)
 - [Repositorio de la Frontend Web Application](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp)
