@@ -443,16 +443,16 @@ En el sector de la construcción e infraestructura, las averías no detectadas a
 ### 1.2.2 Lean UX Process
 En esta sección se aplica el proceso Lean UX para analizar la problemática desde una perspectiva centrada en los usuarios y en la validación temprana de supuestos. Se identifican los principales problemas, necesidades y comportamientos de los segmentos objetivo, y a partir de ellos se formulan supuestos y declaraciones de hipótesis que permiten orientar el desarrollo de MaquiControl. El resultado de este proceso se sintetiza en un Lean UX Canvas, que sirve como base para definir qué aspectos de la propuesta deben ser investigados y validados durante el proyecto.
 
-#### 1.2.2.1 Lean UX Problem Statements
-The current state of **heavy machinery rental and fleet management** has focused mainly on **manual rental agreements through messaging apps, paper-based maintenance logs, untracked equipment availability, and delayed manual electronic invoicing processes**.
+#### 1.2.2.1. Lean UX Problem Statements
+El estado actual del **alquiler y la gestión de flotas de maquinaria pesada** se ha enfocado principalmente en **pequeñas empresas de alquiler y contratistas independientes que coordinan los alquileres por WhatsApp y llamadas, registran los mantenimientos en papel u hojas de cálculo, no conocen la disponibilidad real de los equipos y emiten sus comprobantes de forma manual y tardía**.
 
-What existing products/services fail to address is **an all-in-one digital platform that unifies real-time machinery catalog browsing, automated rental contract management, preventive maintenance control, and instant electronic invoicing compliant with local tax regulations**.
+Lo que los productos y servicios existentes no logran resolver es **la falta de una plataforma única que reúna la consulta del catálogo de maquinaria con disponibilidad en tiempo real, la gestión de los contratos de alquiler, el control preventivo del mantenimiento y la emisión de comprobantes electrónicos conforme a la normativa tributaria peruana**.
 
-Our product/service will address this gap by **providing a distributed web platform that integrates real-time machinery availability tracking, service request workflows, automated fleet maintenance scheduling, and an integrated electronic invoicing module via RESTful APIs**.
+Nuestro producto abordará esta brecha mediante **una plataforma web que integra el seguimiento de la disponibilidad de la maquinaria, el flujo de solicitudes de alquiler, la programación del mantenimiento de la flota y un módulo de facturación electrónica, conectados mediante una RESTful API**.
 
-Our initial focus will be **small and medium-sized construction contractors and heavy machinery rental companies in Peru**.
+Nuestro enfoque inicial serán **los propietarios y administradores de pequeñas empresas de alquiler de maquinaria y los contratistas independientes responsables de pequeñas obras de construcción en Lima Metropolitana**.
 
-We'll know we are successful when we see **a 30% increase in rental booking conversions through the platform, a 25% reduction in machinery downtime due to scheduled maintenance alerts, and a 50% decrease in invoicing processing time during the first six months**.
+Sabremos que tenemos éxito cuando veamos **un aumento del 30 % en las reservas concretadas a través de la plataforma, una reducción del 25 % en el tiempo de inactividad de la maquinaria gracias a las alertas de mantenimiento y una disminución del 50 % en el tiempo de emisión de comprobantes durante los primeros seis meses**.
 
 #### 1.2.2.2 Lean UX Assumptions
 
@@ -484,23 +484,41 @@ We'll know we are successful when we see **a 30% increase in rental booking conv
 * **Feature 4:** Módulo de facturación electrónica integrado que genera comprobantes (facturas/boletas) en formato XML y PDF autorizados por SUNAT.
 * **Feature 5:** Dashboard con métricas de rendimiento de flota, ingresos generados y próximos mantenimientos.
 
-#### 1.2.2.3 Lean UX Hypothesis Statements
-* **Declaración de hipótesis 1:**
-  Creemos que lograremos **un aumento del 30 % en los alquileres exitosos de maquinaria** si los **contratistas de construcción** consiguen **identificar y reservar rápidamente los equipos disponibles** mediante **un catálogo interactivo de maquinaria en tiempo real y filtros de búsqueda**.
+#### 1.2.2.3. Lean UX Hypothesis Statements
 
-* **Declaración de hipótesis 2:**
-  Creemos que lograremos **una reducción del 40 % en el tiempo de las transacciones de reserva** si los **administradores de empresas de alquiler** consiguen **agilizar la creación de contratos y automatizar el cálculo de tarifas** mediante **un módulo digital de gestión de contratos de alquiler**.
+Se formula una declaración de hipótesis por cada Feature Assumption, siguiendo la plantilla de Lean UX: *Creemos que lograremos* [resultado de negocio], *si* [User Personas] *obtienen* [beneficio o resultado para el usuario] *con* [funcionalidad o solución]. Los User Personas corresponden a los segmentos objetivo: Luis Herrera (propietarios y administradores de pequeñas empresas de alquiler de maquinaria) y Renzo Huamán (contratistas independientes y responsables de pequeñas obras de construcción).
 
-* **Declaración de hipótesis 3:**
-  Creemos que lograremos **una disminución del 25 % en las averías de maquinaria en obra** si los **responsables del mantenimiento de la flota** consiguen **ejecutar oportunamente las revisiones técnicas** mediante **un sistema automatizado de programación y alertas de mantenimiento**.
+**Declaración de hipótesis 1 (Feature 1):**<br>
+**Creemos que lograremos** un aumento del 30 % en las reservas de maquinaria concretadas a través de la plataforma,<br>
+**si** los contratistas independientes como Renzo Huamán<br>
+**obtienen** la posibilidad de encontrar y reservar en pocos minutos maquinaria disponible con tarifas transparentes,<br>
+**con** un catálogo interactivo de maquinaria pesada con filtros por tipo, ubicación, precio y disponibilidad en tiempo real.
 
-* **Declaración de hipótesis 4:**
-  Creemos que lograremos **una reducción del 50 % en los errores administrativos de facturación** si el **personal contable** consigue **generar de manera inmediata facturas conformes vinculadas con los contratos de alquiler** mediante **un módulo integrado de facturación electrónica**.
+**Declaración de hipótesis 2 (Feature 2):**<br>
+**Creemos que lograremos** una reducción del 40 % en el tiempo que toma cerrar una reserva,<br>
+**si** los propietarios y administradores de empresas de alquiler como Luis Herrera<br>
+**obtienen** contratos de alquiler registrados sin errores y con la tarifa calculada automáticamente,<br>
+**con** un módulo de gestión y reserva de contratos de alquiler con cálculo automático de tarifas por hora o por día.
 
-* **Declaración de hipótesis 5:**
-  Creemos que lograremos **una tasa de satisfacción del 85 % entre los propietarios de empresas de alquiler** si los **administradores de la startup** consiguen **visualizar claramente la productividad de la flota y los ingresos mensuales** mediante **un panel analítico que muestre indicadores clave del negocio en tiempo real**.
+**Declaración de hipótesis 3 (Feature 3):**<br>
+**Creemos que lograremos** una disminución del 25 % en las averías de maquinaria durante las obras,<br>
+**si** los propietarios y administradores de empresas de alquiler como Luis Herrera<br>
+**obtienen** avisos oportunos para realizar las revisiones preventivas de cada equipo,<br>
+**con** un módulo de control de mantenimientos con alertas preventivas e historial técnico de cada maquinaria.
 
-#### 1.2.2.4 Lean UX Canvas
+**Declaración de hipótesis 4 (Feature 4):**<br>
+**Creemos que lograremos** una reducción del 50 % en los errores y en el tiempo de emisión de los comprobantes de pago,<br>
+**si** los propietarios y administradores de empresas de alquiler como Luis Herrera<br>
+**obtienen** comprobantes electrónicos emitidos de inmediato a partir de las horas trabajadas validadas en cada alquiler,<br>
+**con** un módulo de facturación electrónica integrado que genera facturas y boletas autorizadas por SUNAT.
+
+**Declaración de hipótesis 5 (Feature 5):**<br>
+**Creemos que lograremos** una tasa de retención de clientes del 80 % en el segundo trimestre de operación,<br>
+**si** los propietarios de empresas de alquiler como Luis Herrera<br>
+**obtienen** una visión clara de la ocupación de su flota, de sus ingresos y de los próximos mantenimientos,<br>
+**con** un dashboard con métricas de rendimiento de la flota, ingresos generados y mantenimientos programados.
+
+#### 1.2.2.4. Lean UX Canvas
 ![Lean UX Canvas](./assets/lean-ux-canvas.png)
 *Ver el lienzo del Lean UX Canvas en [Canva](https://canva.link/k7s7r8rxw4h0cae).*
 
