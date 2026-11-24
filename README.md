@@ -2746,7 +2746,7 @@ Las horas corresponden a una estimación retrospectiva basada en la complejidad 
 
 | Sprint | Story ID | Story Title | Task ID | Task Title | Task Description | Estimation (Hours) | Assigned To | Status |
 |---|---|---|---|---|---|---:|---|---|
-| Sprint 3 | — | Base de la RESTful API | S3-T01 | Configurar el proyecto Spring Boot | Crear el proyecto con Spring Boot 4 y Java 21, perfiles `dev` y `prod`, estrategia de nombres en snake case, raíz de agregado, `Result`, errores `ProblemDetail`, outbox transaccional y OpenAPI. | 8 | Carlos Cespedes | Done |
+| Sprint 3 | — | Base de la RESTful API | S3-T01 | Configurar el proyecto Spring Boot | Crear el proyecto con Spring Boot 4 y Java 27, perfiles `dev` y `prod`, estrategia de nombres en snake case, raíz de agregado, `Result`, errores `ProblemDetail`, outbox transaccional y OpenAPI. | 8 | Carlos Cespedes | Done |
 | Sprint 3 | TS-005 | Autenticación basada en JWT | S3-T02 | Implementar el registro y el inicio de sesión | Desarrollar el agregado `UserAccount`, roles, hash de contraseñas con BCrypt, emisión de tokens JWT y seguridad *stateless*. | 8 | Nicolas Tantalean | Done |
 | Sprint 3 | TS-005 | Autenticación basada en JWT | S3-T03 | Proteger los endpoints por rol | Configurar `@PreAuthorize` por rol y resolver el perfil del usuario a partir del token en cada contexto. | 4 | Carlos Cespedes | Done |
 | Sprint 3 | — | Perfiles y organizaciones | S3-T04 | Implementar Profiles Management | Desarrollar el agregado `Profile`, la entidad `Organization`, la ACL hacia IAM y sus endpoints. | 5 | Carlos Cespedes | Done |
@@ -2889,7 +2889,7 @@ La RESTful API se desplegó en Azure App Service con su base de datos en Azure D
 
 | Producto desplegado | Plataforma | Repositorio | URL pública | Versión |
 |---|---|---|---|---|
-| RESTful API | Azure App Service (Java 21, Central US) | [maquicontrol-backend](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend) | [Swagger UI](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html) | `0.1.0` |
+| RESTful API | Azure App Service (contenedor Docker, JDK 27, Central US) | [maquicontrol-backend](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend) | [Swagger UI](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html) | `0.1.0` |
 | Base de datos | Azure Database for MySQL - Servidor flexible (B1ms, Chile Central) | — | No pública | MySQL 8 |
 | Frontend Web Application | Azure Static Web Apps (Free) | [maquicontrol-webapp](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp) | [Web Application](https://lemon-pebble-0a946d810.4.azurestaticapps.net) | `1.0.1` |
 | Servicio de pagos | Azure App Service (F1, Central US) | [maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform) | [Health](https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/api/v1/health) | — |
