@@ -147,7 +147,7 @@ Los commits del periodo TB1 se cuentan desde el commit `69f392a`, corte de la en
 
 ### Reporte de colaboración - Avance de la entrega AV2
 
-Para el avance AV2 el equipo trabajó la RESTful API en el nuevo repositorio `maquicontrol-backend`, repartiendo los Bounded Contexts entre los integrantes, y mantuvo GitFlow en el informe para corregir el Capítulo IV según la retroalimentación del TB1 y documentar el Sprint 3. El detalle por repositorio se presenta en el punto 5.2.3.8.
+Para el avance AV2 el equipo trabajó la RESTful API en el nuevo repositorio `maquicontrol-platform`, repartiendo los Bounded Contexts entre los integrantes, y mantuvo GitFlow en el informe para corregir el Capítulo IV según la retroalimentación del TB1 y documentar el Sprint 3. El detalle por repositorio se presenta en el punto 5.2.3.8.
 
 #### Evidencias de commits en `develop`
 
@@ -193,7 +193,7 @@ La Landing Page se construyó en el Sprint 1 y se actualizó en el Sprint 2 con 
 
 ![Commits por semana del repositorio de la Landing Page](assets/insights-website-commits.png)
 
-#### Fake API (`maquicontrol-platform`)
+#### Fake API (`maquicontrol-platform-mock`)
 
 El repositorio de la Fake API se creó en octubre para publicar en Azure App Service los servicios simulados que consume la aplicación web.
 
@@ -201,7 +201,7 @@ El repositorio de la Fake API se creó en octubre para publicar en Azure App Ser
 
 ![Commits por semana del repositorio de la Fake API](assets/insights-platform-commits.png)
 
-#### RESTful API (`maquicontrol-backend`)
+#### RESTful API (`maquicontrol-platform`)
 
 El repositorio de la RESTful API se creó en noviembre, durante el Sprint 3. Es el repositorio con más integrantes participando en el código, porque cada uno desarrolló uno o más Bounded Contexts.
 
@@ -2096,11 +2096,11 @@ Dentro de dicha organización se han estructurado repositorios dedicados e indep
 - **Descripción:** Alberga el código fuente del sitio web público y estático de difusión comercial de MaquiControl (HTML5 semántico, CSS3 adaptable y JavaScript modular), optimizado para SEO, accesibilidad e interfaces responsivas en escritorio y móviles.
 
 2. **Repositorio de Web Services (RESTful API):**
-- **URL:** [https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend)
+- **URL:** [https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform)
 - **Descripción:** Contiene la RESTful API desarrollada con Spring Boot 4 y Java 27, organizada por Bounded Contexts con DDD y CQRS. Expone los endpoints bajo el prefijo `/api/v1`, protegidos con JWT, persiste los datos en MySQL y documenta sus servicios con OpenAPI (Swagger UI). Se empaqueta en una imagen Docker (`Dockerfile` multi-stage) para su despliegue en contenedor.
 
 3. **Repositorio del servicio de pagos (Fake API):**
-- **URL:** [https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform)
+- **URL:** [https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform-mock](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform-mock)
 - **Descripción:** Contiene la Fake API construida con json-server que la aplicación web consumió en el Sprint 2. Desde el Sprint 3 solo se usa como intermediario con Mercado Pago para crear las preferencias de Checkout Pro y consultar los pagos.
 
 4. **Repositorio de Frontend Web Application:**
@@ -2320,8 +2320,8 @@ flowchart LR
     subgraph GitHub ["GitHub - upc-pre-202620-1asi0729-7750-heavytech"]
         RepoLanding["Repo: maquicontrol-website\n(branch: main)"]
         RepoFrontend["Repo: maquicontrol-webapp\n(branch: main)"]
-        RepoBackend["Repo: maquicontrol-backend\n(branch: main)"]
-        RepoMock["Repo: maquicontrol-platform\n(branch: main)"]
+        RepoBackend["Repo: maquicontrol-platform\n(branch: main)"]
+        RepoMock["Repo: maquicontrol-platform-mock\n(branch: main)"]
     end
 
     subgraph CI_CD ["GitHub Actions"]
@@ -2366,7 +2366,7 @@ flowchart LR
 - **URL pública de despliegue:** [https://upc-pre-202620-1asi0729-7750-heavytech.github.io/maquicontrol-website/](https://upc-pre-202620-1asi0729-7750-heavytech.github.io/maquicontrol-website/)
 
 #### 2. Despliegue de los Web Services (RESTful API en Azure App Service como contenedor)
-Desde el Sprint 3 los servicios se exponen mediante la RESTful API construida con Spring Boot 4 en el repositorio `maquicontrol-backend`. A partir de la migración a contenedores, la API se compila con JDK 27 y se empaqueta en una imagen Docker en lugar de publicarse como archivo `.jar`. La API persiste sus datos en Azure Database for MySQL y documenta sus endpoints con OpenAPI (Swagger UI).
+Desde el Sprint 3 los servicios se exponen mediante la RESTful API construida con Spring Boot 4 en el repositorio `maquicontrol-platform`. A partir de la migración a contenedores, la API se compila con JDK 27 y se empaqueta en una imagen Docker en lugar de publicarse como archivo `.jar`. La API persiste sus datos en Azure Database for MySQL y documenta sus endpoints con OpenAPI (Swagger UI).
 
 - **Base de datos:** Azure Database for MySQL - Servidor flexible `maquicontrol-mysql` (MySQL 8, nivel *Burstable* B1ms, carga de trabajo *Desarrollo/pruebas*), base de datos `maquicontrol` y autenticación de MySQL. Se creó en la región **Chile Central**, porque la directiva de la suscripción Azure for Students solo permite las regiones `centralus`, `northcentralus`, `brazilsouth`, `chilecentral` y `westus`, y en las demás regiones permitidas no había capacidad para el servidor flexible. Las reglas de red permiten el acceso desde los servicios de Azure.
 - **Imagen Docker:** el `Dockerfile` del repositorio usa una construcción multi-stage: una etapa `eclipse-temurin:27-jdk` compila el proyecto con el Maven Wrapper (`./mvnw package -DskipTests`) y una etapa final `eclipse-temurin:27-jre` copia únicamente el `.jar` resultante, ejecutándolo con un usuario no root. La imagen se construye y prueba localmente con `docker compose` (perfiles `docker-compose.container-db.yml` con MySQL en contenedor, `docker-compose.host-docker-internal.yml` apuntando al MySQL del host, y `docker-compose.prod.yml` para verificarla contra la base de datos de Azure antes de publicarla).
@@ -2378,7 +2378,7 @@ Desde el Sprint 3 los servicios se exponen mediante la RESTful API construida co
   - Documentación OpenAPI: [https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html)
   - Roles disponibles (endpoint público): `GET https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/api/v1/roles`
 
-**Servicio de pagos (Fake API).** La Fake API del Sprint 2 (`maquicontrol-platform`, Node 24, plan F1) se mantiene únicamente como intermediario con Mercado Pago: crea las preferencias de Checkout Pro y consulta el estado de los pagos con el token `MERCADO_PAGO_ACCESS_TOKEN`, guardado en sus variables de entorno. El resultado del pago se registra después en la RESTful API mediante `POST /api/v1/subscriptions/{subscriptionId}/payments`.
+**Servicio de pagos (Fake API).** La Fake API del Sprint 2 (`maquicontrol-platform-mock`, Node 24, plan F1) se mantiene únicamente como intermediario con Mercado Pago: crea las preferencias de Checkout Pro y consulta el estado de los pagos con el token `MERCADO_PAGO_ACCESS_TOKEN`, guardado en sus variables de entorno. El resultado del pago se registra después en la RESTful API mediante `POST /api/v1/subscriptions/{subscriptionId}/payments`.
 
 #### 3. Despliegue de la Frontend Web Application (Angular SPA)
 - **Plataforma seleccionada:** Azure Static Web Apps (plan Free, región Central US).
@@ -2620,7 +2620,7 @@ Cada User Story del Sprint se descompone en varias engineering tasks estimadas e
 | Sprint 2 | US-042 | Contratar un plan de suscripción | S2-T44 | Desplegar los productos | Publicar la Fake API en Azure App Service, la aplicación en Azure Static Web Apps y los releases `1.0.0` (frontend) y `v2.0.0` (Landing Page). | 6 | Carlos Cespedes | Done |
 
 - [Repositorio de la Frontend Web Application](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp)
-- [Repositorio de la Fake API](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform)
+- [Repositorio de la Fake API](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform-mock)
 - [Repositorio de la Landing Page](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website)
 
 #### 5.2.2.4. Development Evidence for Sprint Review
@@ -2647,8 +2647,8 @@ La tabla presenta los commits principales del Sprint. Los identificadores y mens
 | upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `ea50db1` | `fix(maintenance-management): mark machinery as in maintenance while in progress and remove code comments` | No se registró body adicional. | 07/10/2026 |
 | upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `5230f71` | `feat(shared): add ARIA labels and contrast fixes, and show only the user's own reservations` | No se registró body adicional. | 07/10/2026 |
 | upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `065ac7b` | `chore(release): bump version to 1.0.0 and set node engine for deployment` | No se registró body adicional. | 07/10/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `2a54743` | `chore: add the mock API as its own deployable project` | No se registró body adicional. | 07/10/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `e1bb8fd` | `feat(payments): add Mercado Pago sandbox checkout and payment confirmation endpoints` | No se registró body adicional. | 07/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform-mock | `main` | `2a54743` | `chore: add the mock API as its own deployable project` | No se registró body adicional. | 07/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform-mock | `main` | `e1bb8fd` | `feat(payments): add Mercado Pago sandbox checkout and payment confirmation endpoints` | No se registró body adicional. | 07/10/2026 |
 | upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website | `develop` | `d9654ee` | `feat: connect landing page to platform` | No se registró body adicional. | 06/10/2026 |
 | upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website | `develop` | `5d0961c` | `feat: connect plans buttons` | No se registró body adicional. | 07/10/2026 |
 | upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website | `develop` | `2fa0cd0` | `feat(landing): move translations to i18n files and link to deployed platform` | No se registró body adicional. | 07/10/2026 |
@@ -2712,7 +2712,7 @@ Los tres productos se publicaron con despliegue automático desde la rama `main`
 |---|---|---|---|---|
 | Landing Page | GitHub Pages | [maquicontrol-website](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website) | [Landing Page](https://upc-pre-202620-1asi0729-7750-heavytech.github.io/maquicontrol-website/) | `v2.0.0` |
 | Frontend Web Application | Azure Static Web Apps (Free) | [maquicontrol-webapp](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp) | [Web Application](https://lemon-pebble-0a946d810.4.azurestaticapps.net) | `1.0.0` |
-| Fake API | Azure App Service (F1, Central US) | [maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform) | [Fake API](https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/api/v1/health) | — |
+| Fake API | Azure App Service (F1, Central US) | [maquicontrol-platform-mock](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform-mock) | [Fake API](https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/api/v1/health) | — |
 
 Durante el despliegue se resolvieron dos incidencias: la política de regiones de la suscripción Azure for Students rechazó la región East US 2, por lo que los recursos se crearon en Central US; y se agregó `staticwebapp.config.json` para que las rutas de Angular no devuelvan 404 al recargar la página.
 
@@ -2759,7 +2759,7 @@ El Sprint 3 se enfocó en construir la primera versión de los Web Services de M
 
 #### 5.2.3.2. Aspect Leaders and Collaborators
 
-La matriz se elaboró a partir del historial de commits del repositorio `maquicontrol-backend` y de los demás repositorios del Sprint. Se utiliza `L` para líder y `C` para colaborador.
+La matriz se elaboró a partir del historial de commits del repositorio `maquicontrol-platform` y de los demás repositorios del Sprint. Se utiliza `L` para líder y `C` para colaborador.
 
 | Team Member | GitHub Username / Git Author | IAM & Profiles API | Fleet & Rental API | Maintenance API | Operations, Subscription & Billing API | Web App Integration | SCM & Deployment | Sprint Report |
 |---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -2811,7 +2811,7 @@ Cada User Story del Sprint se descompone en varias engineering tasks estimadas e
 | Sprint 3 | US-044 | Consultar estado de la suscripción | S3-T34 | Integrar Mercado Pago | Implementar la ACL de Mercado Pago y la confirmación del pago de la suscripción. | 6 | Mathias Castillo | Done |
 | Sprint 3 | US-044 | Consultar estado de la suscripción | S3-T35 | Validar el pago de la suscripción | Validar el monto y el pagador al confirmar el pago y restringir la consulta de la suscripción a su dueño. | 4 | Carlos Cespedes | Done |
 
-- [Repositorio de la RESTful API](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend)
+- [Repositorio de la RESTful API](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform)
 - [Repositorio de la Frontend Web Application](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp)
 
 #### 5.2.3.4. Development Evidence for Sprint Review
@@ -2820,25 +2820,25 @@ La tabla presenta los commits principales del Sprint. Los identificadores y mens
 
 | Repository | Branch | Commit ID | Commit Message | Commit Message Body | Committed on |
 |---|---|---|---|---|---|
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `fad5928` | `chore: initial commit.` | No se registró body adicional. | 05/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `4d5fd58` | `feat(shared): add transactional outbox for domain events.` | No se registró body adicional. | 05/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `4447220` | `feat(shared): add problem detail error handling, health endpoint, and message bundles.` | No se registró body adicional. | 05/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `ac367cc` | `test(fleet-rental): cover location and rental period rules.` | No se registró body adicional. | 05/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `c698298` | `feat(iam): add JWT sign-in and stateless security.` | No se registró body adicional. | 06/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `3a652bf` | `feat(iam): add sign up, sign in, roles, and signed-in account endpoints.` | No se registró body adicional. | 07/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `091e02f` | `feat(profiles): add profile and organization endpoints and profiles context facade.` | No se registró body adicional. | 07/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `195a3d6` | `feat(fleet): add persistence adapters, machinery and category endpoints, and fleet context facade.` | No se registró body adicional. | 07/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `1ea7973` | `feat(rental): add persistence adapter, integration events, and rental endpoints.` | No se registró body adicional. | 07/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `8b4670f` | `feat(operations): implement REST resources, assemblers and service operations controller` | No se registró body adicional. | 07/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `fb630e4` | `feat(subscription): implement persistence adapters, REST controllers and unit tests` | No se registró body adicional. | 07/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `9234c85` | `feat(billing): implement persistence adapters, REST controllers and domain unit tests` | No se registró body adicional. | 07/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `e420ad3` | `feat(maintenance): add maintenance endpoints.` | No se registró body adicional. | 08/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `904a2c2` | `fix(subscription): validate payer and amount on checkout and restrict subscription reads to its owner` | No se registró body adicional. | 10/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `b07db37` | `refactor(rental): rename reservation commands and queries as in the design catalog and show a rental only to its participants` | No se registró body adicional. | 10/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `55427c0` | `feat(maintenance): split start and cancel commands, add breakdown reports resource and schedule preventive maintenance by accumulated hours` | No se registró body adicional. | 10/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `0fecf9b` | `chore(build): target Java 21 LTS to match the report and ease cloud deployment` | No se registró body adicional. | 11/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `1539699` | `ci(deploy): add GitHub Actions workflow to deploy the backend to Azure App Service` | No se registró body adicional. | 11/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `bbe4aa1` | `feat(rental): let fleet owners view every rental of their machinery` | No se registró body adicional. | 13/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `fad5928` | `chore: initial commit.` | No se registró body adicional. | 05/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `4d5fd58` | `feat(shared): add transactional outbox for domain events.` | No se registró body adicional. | 05/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `4447220` | `feat(shared): add problem detail error handling, health endpoint, and message bundles.` | No se registró body adicional. | 05/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `ac367cc` | `test(fleet-rental): cover location and rental period rules.` | No se registró body adicional. | 05/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `c698298` | `feat(iam): add JWT sign-in and stateless security.` | No se registró body adicional. | 06/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `3a652bf` | `feat(iam): add sign up, sign in, roles, and signed-in account endpoints.` | No se registró body adicional. | 07/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `091e02f` | `feat(profiles): add profile and organization endpoints and profiles context facade.` | No se registró body adicional. | 07/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `195a3d6` | `feat(fleet): add persistence adapters, machinery and category endpoints, and fleet context facade.` | No se registró body adicional. | 07/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `1ea7973` | `feat(rental): add persistence adapter, integration events, and rental endpoints.` | No se registró body adicional. | 07/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `8b4670f` | `feat(operations): implement REST resources, assemblers and service operations controller` | No se registró body adicional. | 07/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `fb630e4` | `feat(subscription): implement persistence adapters, REST controllers and unit tests` | No se registró body adicional. | 07/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `9234c85` | `feat(billing): implement persistence adapters, REST controllers and domain unit tests` | No se registró body adicional. | 07/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `e420ad3` | `feat(maintenance): add maintenance endpoints.` | No se registró body adicional. | 08/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `904a2c2` | `fix(subscription): validate payer and amount on checkout and restrict subscription reads to its owner` | No se registró body adicional. | 10/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `b07db37` | `refactor(rental): rename reservation commands and queries as in the design catalog and show a rental only to its participants` | No se registró body adicional. | 10/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `55427c0` | `feat(maintenance): split start and cancel commands, add breakdown reports resource and schedule preventive maintenance by accumulated hours` | No se registró body adicional. | 10/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `0fecf9b` | `chore(build): target Java 21 LTS to match the report and ease cloud deployment` | No se registró body adicional. | 11/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `1539699` | `ci(deploy): add GitHub Actions workflow to deploy the backend to Azure App Service` | No se registró body adicional. | 11/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `bbe4aa1` | `feat(rental): let fleet owners view every rental of their machinery` | No se registró body adicional. | 13/11/2026 |
 | upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `546e2e0` | `fix(rental-management): validate rental period dates` | No se registró body adicional. | 13/10/2026 |
 | upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `8a4a7ea` | `fix(rental-management): validate reservation status transitions` | No se registró body adicional. | 13/10/2026 |
 | upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `main` | `4f57791` | `chore: remove the json-server mock now that the app uses the real backend` | No se registró body adicional. | 13/11/2026 |
@@ -2935,10 +2935,10 @@ La RESTful API se desplegó en Azure App Service con su base de datos en Azure D
 
 | Producto desplegado | Plataforma | Repositorio | URL pública | Versión |
 |---|---|---|---|---|
-| RESTful API | Azure App Service (contenedor Docker, JDK 27, Central US) | [maquicontrol-backend](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend) | [Swagger UI](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html) | `0.1.0` |
+| RESTful API | Azure App Service (contenedor Docker, JDK 27, Central US) | [maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform) | [Swagger UI](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html) | `0.1.0` |
 | Base de datos | Azure Database for MySQL - Servidor flexible (B1ms, Chile Central) | — | No pública | MySQL 8 |
 | Frontend Web Application | Azure Static Web Apps (Free) | [maquicontrol-webapp](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp) | [Web Application](https://lemon-pebble-0a946d810.4.azurestaticapps.net) | `1.0.1` |
-| Servicio de pagos | Azure App Service (F1, Central US) | [maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform) | [Health](https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/api/v1/health) | — |
+| Servicio de pagos | Azure App Service (F1, Central US) | [maquicontrol-platform-mock](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform-mock) | [Health](https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/api/v1/health) | — |
 | Landing Page | GitHub Pages | [maquicontrol-website](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website) | [Landing Page](https://upc-pre-202620-1asi0729-7750-heavytech.github.io/maquicontrol-website/) | `v2.0.0` |
 
 Durante el despliegue se resolvieron las siguientes incidencias:
@@ -3104,8 +3104,8 @@ Video de presentación del equipo AndesHeavyTech, publicado en YouTube: [https:/
 | Informe del proyecto | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-report](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-report) | No aplica |
 | Landing Page v3.0.0 | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website) | [GitHub Pages](https://upc-pre-202620-1asi0729-7750-heavytech.github.io/maquicontrol-website/) |
 | Frontend Web Application v2.0.0 | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp) | [Azure Static Web Apps](https://lemon-pebble-0a946d810.4.azurestaticapps.net) |
-| RESTful API (Web Services) v1.0.0 | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend) | [Azure App Service - Swagger UI](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html) |
-| Fake API (servicio de pagos) | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform) | [Azure App Service](https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/api/v1/health) |
+| RESTful API (Web Services) v1.0.0 | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform) | [Azure App Service - Swagger UI](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html) |
+| Fake API (servicio de pagos) | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform-mock](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform-mock) | [Azure App Service](https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/api/v1/health) |
 
 ## Anexo: Usuarios de prueba
 
