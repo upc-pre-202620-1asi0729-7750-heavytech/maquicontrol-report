@@ -3015,33 +3015,28 @@ Tareas: registrarse como contratista, completar el perfil, buscar una maquinaria
 
 | Segmento | Entrevistado | Entrevistador | Fecha | Video | Timing |
 |---|---|---|---|---|---|
-| Empresas de alquiler de maquinaria | Andrea Lopez | Carlos Gabriel Cespedes Lezcano | 10/11/2026 | [Ver video](https://youtu.be/TXv-QAAzDJs?t=940) | 15:40 - 16:57 |
-| Empresas de alquiler de maquinaria | Alejandro Guerra | Mathias Castillo | 10/11/2026 | [Ver video](https://youtu.be/TXv-QAAzDJs?t=420) | 07:00 - 13:00 |
-| Contratistas y responsables de obra | Daniel Contreras | Wilmer Sebastian Gutierrez Lizarbe | 10/11/2026 | [Ver video](https://youtu.be/TXv-QAAzDJs?t=60) | 01:00 - 06:50 |
+| Empresas de alquiler de maquinaria | Andrea López | Carlos Gabriel Cespedes Lezcano | 10/11/2026 | [Ver video](https://youtu.be/TXv-QAAzDJs?t=940) | 15:40 - 16:57 |
+| Empresas de alquiler de maquinaria | Alejandro Guerra | Mathias Alejandro Castillo Guevara | 10/11/2026 | [Ver video](https://youtu.be/TXv-QAAzDJs?t=420) | 07:00 - 13:00 |
+| Contratistas y responsables de obra | Daniel Contreras | Wilmer Sebastián Gutiérrez Lizarbe | 10/11/2026 | [Ver video](https://youtu.be/TXv-QAAzDJs?t=60) | 01:00 - 06:50 |
 
 ### 5.3.3. Evaluaciones según heurísticas
 
-- **Visibilidad del estado del sistema:** Alejandro Guerra y Andrea López valoraron poder ver en tiempo real las horas acumuladas y el estado operativo de cada máquina, lo que les permite anticipar vencimientos de mantenimiento y evitar sobrecostos.
+Las observaciones de las sesiones se clasificaron según las heurísticas de usabilidad de Nielsen. La severidad usa la escala de 0 a 4 (0: no es un problema; 1: cosmético; 2: menor; 3: mayor; 4: catastrófico). Las observaciones positivas se registran con severidad 0.
 
-- **Coincidencia entre el sistema y el mundo real:** los tres entrevistados reconocieron sin dificultad términos propios del rubro como horómetro, mantenimiento preventivo y disponibilidad, lo que indica que el lenguaje de la plataforma coincide con el vocabulario que usan en su operación diaria.
+| # | Sesión (entrevistado) | Observación | Heurística | Severidad | Alternativa de solución |
+|:---:|---|---|---|:---:|---|
+| 1 | Alejandro Guerra y Andrea López | Valoraron ver en tiempo real las horas acumuladas y el estado operativo de cada máquina, lo que les permite anticipar mantenimientos y evitar sobrecostos. | Visibilidad del estado del sistema | 0 | Mantener el estado y las horas acumuladas visibles en la lista de maquinaria. |
+| 2 | Los tres entrevistados | Reconocieron sin dificultad términos del rubro como horómetro, mantenimiento preventivo y disponibilidad. | Coincidencia entre el sistema y el mundo real | 0 | Conservar el vocabulario del rubro en las etiquetas y mensajes. |
+| 3 | Alejandro Guerra y Andrea López | Tardaron en encontrar cómo modificar una reserva ya confirmada, porque no hay un botón de edición directo y deben entrar primero al detalle de la máquina. | Control y libertad del usuario | 3 | Agregar la acción de modificar o cancelar en cada fila de la lista de reservas. |
+| 4 | Alejandro Guerra | Actualizar el estado operativo de una máquina y gestionar su calendario de reservas le parecieron dos flujos separados. | Consistencia y estándares | 2 | Mostrar el estado de la máquina y su calendario de reservas en una misma vista de detalle. |
+| 5 | Alejandro Guerra | El formulario de registro de maquinaria no pide el horómetro inicial ni la fecha de vencimiento de pólizas y certificados de operatividad. | Prevención de errores | 3 | Agregar esos campos al formulario y alertar antes del vencimiento de cada documento. |
+| 6 | Daniel Contreras | Buscó el historial de mantenimientos dentro de la ficha técnica del equipo y no en el módulo general de mantenimiento, lo que le tomó más tiempo. | Reconocimiento antes que recuerdo | 2 | Enlazar el historial de mantenimientos desde la ficha de cada maquinaria. |
+| 7 | Alejandro Guerra | El registro como empresa y el alta de una máquina fueron rápidos y sin información innecesaria. | Flexibilidad y eficiencia de uso | 0 | Mantener el registro en pocos pasos. |
+| 8 | Daniel Contreras | Calificó el diseño de la Landing Page como limpio, moderno y profesional. | Diseño estético y minimalista | 0 | Mantener la línea gráfica en la aplicación web. |
+| 9 | Daniel Contreras | Al explorar el catálogo sin cuenta, el sistema lo bloqueó con un mensaje de error y no le ofreció continuar como invitado. | Ayuda a reconocer, diagnosticar y recuperarse de errores | 3 | Permitir ver el catálogo sin iniciar sesión y pedir la cuenta solo al solicitar un alquiler. |
+| 10 | Daniel Contreras y Alejandro Guerra | Antes de confirmar una reserva quieren ver las condiciones de garantía, el tiempo mínimo de alquiler y las penalidades por incumplimiento. | Ayuda y documentación | 2 | Mostrar las condiciones del alquiler en el resumen previo a la confirmación. |
 
-- **Control y libertad del usuario:** Alejandro Guerra tardó en encontrar cómo modificar una reserva ya confirmada, pues no identificó un botón de edición directo y tuvo que entrar primero al detalle de la máquina; Andrea López reportó la misma dificultad.
-
-- **Consistencia y estándares:** Alejandro Guerra señaló que actualizar el estado operativo de una máquina y gestionar el calendario de reservas le parecieron dos flujos separados, cuando esperaba que estuvieran integrados en un mismo lugar.
-
-- **Prevención de errores:** Alejandro Guerra notó que, al registrar una máquina nueva, el formulario no pide el horómetro inicial ni la fecha de vencimiento de pólizas y certificados de operatividad, datos que las empresas grandes exigen antes de aceptar el equipo en obra.
-
-- **Reconocimiento antes que recuerdo:** Daniel Contreras (entrevistado por Wilmer) buscó el historial de mantenimientos pasados dentro de la ficha técnica del equipo en vez de encontrarlo en un módulo general de mantenimiento, lo que le tomó más tiempo del esperado.
-
-- **Flexibilidad y eficiencia de uso:** Alejandro Guerra destacó que el registro como empresa y el alta de una máquina fueron rápidos y directos, sin pedir información innecesaria en el primer uso.
-
-- **Diseño estético y minimalista:** Daniel Contreras calificó el diseño de la Landing Page como limpio, moderno y profesional desde los primeros segundos.
-
-- **Ayuda a reconocer, diagnosticar y recuperarse de errores:** Daniel Contreras intentó explorar el catálogo sin crear una cuenta y el sistema lo bloqueó con un mensaje de error, sin ofrecerle una alternativa para seguir mirando como invitado.
-
-- **Ayuda y documentación:** Daniel Contreras y Alejandro Guerra coincidieron en que, antes de confirmar una reserva, les gustaría ver explícitamente las condiciones de garantía, el tiempo mínimo de alquiler y las penalidades por incumplimiento, información que hoy deben inferir o preguntar aparte.
-
-En general, los tres entrevistados calificaron entre 7 y 9 sobre 10 la probabilidad de usar MaquiControl en lugar de sus métodos actuales (llamadas telefónicas, WhatsApp o Excel); las observaciones anteriores se consideran insumos para las siguientes iteraciones del producto.
+En general, los tres entrevistados calificaron entre 7 y 9 sobre 10 la probabilidad de usar MaquiControl en lugar de sus métodos actuales (llamadas telefónicas, WhatsApp o Excel). Las observaciones con severidad 2 o mayor se registran como insumos para el Product Backlog de las siguientes iteraciones.
 
 ## 5.4. Video About-the-Product
 
