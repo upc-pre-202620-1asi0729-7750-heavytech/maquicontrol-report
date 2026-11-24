@@ -36,14 +36,18 @@
 
 <p><strong>Integrantes</strong></p>
 
-<p style="font-size: 11pt;">
-  <strong>Código</strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Apellidos y Nombres</strong><br>
-  u202520331&nbsp;&nbsp;&nbsp;&nbsp;Fuentes Alvarez, Angiela Stephany<br>
-  u202410728&nbsp;&nbsp;&nbsp;&nbsp;Tantalean Granda, Nicolas<br>
-  u202412044&nbsp;&nbsp;&nbsp;&nbsp;Gutiérrez Lizarbe, Wilmer Sebastián<br>
-  u202410783&nbsp;&nbsp;&nbsp;&nbsp;Castillo Guevara, Mathias Alejandro<br>
-  u202416147&nbsp;&nbsp;&nbsp;&nbsp;Cespedes Lezcano, Carlos Gabriel
-</p>
+<table align="center" style="font-size: 11pt; margin-left: auto; margin-right: auto;">
+  <thead>
+    <tr><th align="left">Código</th><th align="left">Apellidos y Nombres</th></tr>
+  </thead>
+  <tbody>
+    <tr><td align="left">u202410783</td><td align="left">Castillo Guevara, Mathias Alejandro</td></tr>
+    <tr><td align="left">u202416147</td><td align="left">Cespedes Lezcano, Carlos Gabriel</td></tr>
+    <tr><td align="left">u202520331</td><td align="left">Fuentes Alvarez, Angiela Stephany</td></tr>
+    <tr><td align="left">u202412044</td><td align="left">Gutiérrez Lizarbe, Wilmer Sebastián</td></tr>
+    <tr><td align="left">u202410728</td><td align="left">Tantalean Granda, Nicolas</td></tr>
+  </tbody>
+</table>
 
 <br>
 
