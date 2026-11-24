@@ -61,151 +61,6 @@
 
 <div style="page-break-after: always;"></div>
 
-## Tabla de Contenidos
-
-<details>
-<summary><strong>Capítulo I: Introducción</strong></summary>
-
-- [1.1. Startup Profile](#11-startup-profile)
-  - [1.1.1. Descripción de la Startup](#111-descripción-de-la-startup)
-  - [1.1.2. Perfiles de integrantes del equipo](#112-perfiles-de-integrantes-del-equipo)
-
-- [1.2. Solution Profile](#12-solution-profile)
-  - [1.2.1. Antecedentes y problemática](#121-antecedentes-y-problemática)
-    - [1.2.1.1. What](#1211-what)
-    - [1.2.1.2. Who](#1212-who)
-    - [1.2.1.3. Where](#1213-where)
-    - [1.2.1.4. When](#1214-when)
-    - [1.2.1.5. Why](#1215-why)
-    - [1.2.1.6. How](#1216-how)
-    - [1.2.1.7. How Much](#1217-how-much)
-
-  - [1.2.2. Lean UX Process](#122-lean-ux-process)
-  - [1.2.2.1. Lean UX Problem Statements](#1221-lean-ux-problem-statements)
-  - [1.2.2.2. Lean UX Assumptions](#1222-lean-ux-assumptions)
-  - [1.2.2.3. Lean UX Hypothesis Statements](#1223-lean-ux-hypothesis-statements)
-  - [1.2.2.4. Lean UX Canvas](#1224-lean-ux-canvas)
-- [1.3. Segmentos objetivo](#13-segmentos-objetivo)
-
-</details>
-
-<details>
-<summary><strong>Capítulo II: Requirements Elicitation & Analysis</strong></summary>
-
-- [2.1. Competidores](#21-competidores)
-    - [2.1.1. Análisis competitivo](#211-análisis-competitivo)
-    - [2.1.2. Estrategias y tácticas frente a competidores](#212-estrategias-y-tácticas-frente-a-competidores)
-- [2.2. Entrevistas](#22-entrevistas)
-    - [2.2.1. Diseño de entrevistas](#221-diseño-de-entrevistas)
-    - [2.2.2. Registro de entrevistas](#222-registro-de-entrevistas)
-    - [2.2.3. Análisis de entrevistas](#223-análisis-de-entrevistas)
-- [2.3. Needfinding](#23-needfinding)
-    - [2.3.1. User Personas](#231-user-personas)
-    - [2.3.2. User Task Matrix](#232-user-task-matrix)
-    - [2.3.3. User Journey Mapping](#233-user-journey-mapping)
-    - [2.3.4. Empathy Mapping](#234-empathy-mapping)
-- [2.4. Big Picture Event Storming](#24-big-picture-event-storming)
-- [2.5. Ubiquitous Language](#25-ubiquitous-language)
-
-</details>
-
-<details>
-<summary><strong>Capítulo III: Requirements Specification</strong></summary>
-
-- [3.1. User Stories](#31-user-stories)
-- [3.2. Impact Mapping](#32-impact-mapping)
-- [3.3. Product Backlog](#33-product-backlog)
-
-</details>
-
-<details>
-<summary><strong>Capítulo IV: Product Design</strong></summary>
-
-- [4.1. Style Guidelines](#41-style-guidelines)
-    - [4.1.1. General Style Guidelines](#411-general-style-guidelines)
-    - [4.1.2. Web Style Guidelines](#412-web-style-guidelines)
-- [4.2. Information Architecture](#42-information-architecture)
-    - [4.2.1. Organization Systems](#421-organization-systems)
-    - [4.2.2. Labeling Systems](#422-labeling-systems)
-    - [4.2.3. SEO Tags and Meta Tags](#423-seo-tags-and-meta-tags)
-    - [4.2.4. Searching Systems](#424-searching-systems)
-    - [4.2.5. Navigation Systems](#425-navigation-systems)
-- [4.3. Landing Page UI Design](#43-landing-page-ui-design)
-- [4.3.1. Landing Page Wireframes](#431-landing-page-wireframes)
-- [4.3.2. Landing Page Mock-up](#432-landing-page-mock-up)
-- [4.4. Web Applications UX/UI Design](#44-web-applications-uxui-design)
-    - [4.4.1. Wireframes](#441-web-applications-wireframes)
-    - [4.4.2. Wireflow Diagrams](#442-web-applications-wireflow-diagrams)
-    - [4.4.3. Mock-ups](#443-web-applications-mock-ups)
-    - [4.4.4. User Flow Diagrams](#444-web-applications-user-flow-diagrams)
-- [4.5. Web Applications Prototyping](#45-web-applications-prototyping)
-- [4.6. Domain-Driven Software Architecture](#46-domain-driven-software-architecture)
-    - [4.6.1. Design-Level Event Storming](#461-design-level-event-storming)
-- [4.6.2. Software Architecture Context Diagram](#462-software-architecture-context-diagram)
-- [4.6.3. Software Architecture Container Diagram](#463-software-architecture-container-diagram)
-- [4.6.4. Software Architecture Components Diagrams](#464-software-architecture-components-diagrams)
-- [4.7. Software Object-Oriented Design](#47-software-object-oriented-design)
-    - [4.7.1. Class Diagrams](#471-class-diagrams)
-- [4.8. Database Design](#48-database-design)
-    - [4.8.1. Database Diagrams](#481-database-diagrams)
-
-</details>
-
-<details>
-<summary><strong>Capítulo V: Product Implementation, Validation & Deployment</strong></summary>
-
-- [5.1. Software Configuration Management](#51-software-configuration-management)
-  - [5.1.1. Software Development Environment Configuration](#511-software-development-environment-configuration)
-    - [5.1.2. Source Code Management](#512-source-code-management)
-    - [5.1.3. Source Code Style Guide & Conventions](#513-source-code-style-guide--conventions)
-    - [5.1.4. Software Deployment Configuration](#514-software-deployment-configuration)
-- [5.2. Landing Page, Services & Applications Implementation](#52-landing-page-services-applications-implementation)
-    - [5.2.1. Sprint 1](#521-sprint-1)
-        - [Sprint Planning 1](#5211-sprint-planning-1)
-        - [Aspect Leaders and Collaborators](#5212-aspect-leaders-and-collaborators)
-        - [Sprint Backlog 1](#5213-sprint-backlog-1)
-        - [Development Evidence](#5214-development-evidence-for-sprint-review)
-        - [Execution Evidence](#5215-execution-evidence-for-sprint-review)
-        - [Services Documentation Evidence](#5216-services-documentation-evidence-for-sprint-review)
-        - [Deployment Evidence](#5217-software-deployment-evidence-for-sprint-review)
-        - [Team Collaboration Insights](#5218-team-collaboration-insights-during-sprint)
-    - [5.2.2. Sprint 2](#522-sprint-2)
-        - [Sprint Planning 2](#5221-sprint-planning-2)
-        - [Aspect Leaders and Collaborators](#5222-aspect-leaders-and-collaborators)
-        - [Sprint Backlog 2](#5223-sprint-backlog-2)
-        - [Development Evidence](#5224-development-evidence-for-sprint-review)
-        - [Execution Evidence](#5225-execution-evidence-for-sprint-review)
-        - [Services Documentation Evidence](#5226-services-documentation-evidence-for-sprint-review)
-        - [Deployment Evidence](#5227-software-deployment-evidence-for-sprint-review)
-        - [Team Collaboration Insights](#5228-team-collaboration-insights-during-sprint)
-    - [5.2.3. Sprint 3](#523-sprint-3)
-        - [Sprint Planning 3](#5231-sprint-planning-3)
-        - [Aspect Leaders and Collaborators](#5232-aspect-leaders-and-collaborators)
-        - [Sprint Backlog 3](#5233-sprint-backlog-3)
-        - [Development Evidence](#5234-development-evidence-for-sprint-review)
-        - [Execution Evidence](#5235-execution-evidence-for-sprint-review)
-        - [Services Documentation Evidence](#5236-services-documentation-evidence-for-sprint-review)
-        - [Deployment Evidence](#5237-software-deployment-evidence-for-sprint-review)
-        - [Team Collaboration Insights](#5238-team-collaboration-insights-during-sprint)
-- [5.3. Validation Interviews](#53-validation-interviews)
-    - [5.3.1. Diseño de Entrevistas](#531-diseño-de-entrevistas)
-    - [5.3.2. Registro de Entrevistas](#532-registro-de-entrevistas)
-    - [5.3.3. Evaluaciones según heurísticas](#533-evaluaciones-según-heurísticas)
-- [5.4. Video About-the-Product](#54-video-about-the-product)
-
-</details>
-
-- [Conclusiones y recomendaciones](#conclusiones-y-recomendaciones)
-- [Video About-the-Team](#video-about-the-team)
-- [Bibliografía](#bibliografía)
-- [Anexos](#anexos)
-    - [Anexo: Videos del Producto y del Equipo](#anexo-videos-del-producto-y-del-equipo)
-
-</div>
-
-
-
-
 # MaquiControl
 
 ## Registro de Versiones del Informe
@@ -355,6 +210,139 @@ El repositorio de la RESTful API se creó en noviembre, durante el Sprint 3. Es 
 
 ## Contenido
 
+- [Student Outcome](#student-outcome)
+
+**[Capítulo I: Introducción](#capítulo-i-introducción)**
+
+- [1.1. Startup Profile](#11-startup-profile)
+  - [1.1.1. Descripción de la Startup](#111-descripción-de-la-startup)
+  - [1.1.2. Perfiles de integrantes del equipo](#112-perfiles-de-integrantes-del-equipo)
+- [1.2. Solution Profile](#12-solution-profile)
+  - [1.2.1. Antecedentes y problemática](#121-antecedentes-y-problemática)
+    - [1.2.1.1. What](#1211-what)
+    - [1.2.1.2. Who](#1212-who)
+    - [1.2.1.3. Where](#1213-where)
+    - [1.2.1.4. When](#1214-when)
+    - [1.2.1.5. Why](#1215-why)
+    - [1.2.1.6. How](#1216-how)
+    - [1.2.1.7. How Much](#1217-how-much)
+  - [1.2.2. Lean UX Process](#122-lean-ux-process)
+    - [1.2.2.1. Lean UX Problem Statements](#1221-lean-ux-problem-statements)
+    - [1.2.2.2. Lean UX Assumptions](#1222-lean-ux-assumptions)
+    - [1.2.2.3. Lean UX Hypothesis Statements](#1223-lean-ux-hypothesis-statements)
+    - [1.2.2.4. Lean UX Canvas](#1224-lean-ux-canvas)
+- [1.3. Segmentos objetivo](#13-segmentos-objetivo)
+
+**[Capítulo II: Requirements Elicitation & Analysis](#capítulo-ii-requirements-elicitation--analysis)**
+
+- [2.1. Competidores](#21-competidores)
+  - [2.1.1. Análisis competitivo](#211-análisis-competitivo)
+  - [2.1.2. Estrategias y tácticas frente a competidores](#212-estrategias-y-tácticas-frente-a-competidores)
+- [2.2. Entrevistas](#22-entrevistas)
+  - [2.2.1. Diseño de entrevistas](#221-diseño-de-entrevistas)
+  - [2.2.2. Registro de entrevistas](#222-registro-de-entrevistas)
+  - [2.2.3. Análisis de entrevistas](#223-análisis-de-entrevistas)
+- [2.3. Needfinding](#23-needfinding)
+  - [2.3.1. User Personas](#231-user-personas)
+  - [2.3.2. User Task Matrix](#232-user-task-matrix)
+  - [2.3.3. User Journey Mapping](#233-user-journey-mapping)
+  - [2.3.4. Empathy Mapping](#234-empathy-mapping)
+- [2.4. Big Picture Event Storming](#24-big-picture-event-storming)
+- [2.5. Ubiquitous Language](#25-ubiquitous-language)
+
+**[Capítulo III: Requirements Specification](#capítulo-iii-requirements-specification)**
+
+- [3.1. User Stories](#31-user-stories)
+- [3.2. Impact Mapping](#32-impact-mapping)
+- [3.3. Product Backlog](#33-product-backlog)
+
+**[Capítulo IV: Product Design](#capítulo-iv-product-design)**
+
+- [4.1. Style Guidelines](#41-style-guidelines)
+  - [4.1.1. General Style Guidelines](#411-general-style-guidelines)
+  - [4.1.2. Web Style Guidelines](#412-web-style-guidelines)
+- [4.2. Information Architecture](#42-information-architecture)
+  - [4.2.1. Organization Systems](#421-organization-systems)
+  - [4.2.2. Labeling Systems](#422-labeling-systems)
+  - [4.2.3. SEO Tags and Meta Tags](#423-seo-tags-and-meta-tags)
+  - [4.2.4. Searching Systems](#424-searching-systems)
+  - [4.2.5. Navigation Systems](#425-navigation-systems)
+- [4.3. Landing Page UI Design](#43-landing-page-ui-design)
+  - [4.3.1. Landing Page Wireframes](#431-landing-page-wireframes)
+  - [4.3.2. Landing Page Mock-ups](#432-landing-page-mock-ups)
+- [4.4. Web Applications UX/UI Design](#44-web-applications-uxui-design)
+  - [4.4.1. Web Applications Wireframes](#441-web-applications-wireframes)
+  - [4.4.2. Web Applications Wireflow Diagrams](#442-web-applications-wireflow-diagrams)
+  - [4.4.3. Web Applications Mock-ups](#443-web-applications-mock-ups)
+  - [4.4.4. Web Applications User Flow Diagrams](#444-web-applications-user-flow-diagrams)
+- [4.5. Web Applications Prototyping](#45-web-applications-prototyping)
+- [4.6. Domain-Driven Software Architecture](#46-domain-driven-software-architecture)
+  - [4.6.1. Design-Level Event Storming](#461-design-level-event-storming)
+  - [4.6.2. Software Architecture Context Diagram](#462-software-architecture-context-diagram)
+  - [4.6.3. Software Architecture Container Diagram](#463-software-architecture-container-diagram)
+  - [4.6.4. Software Architecture Components Diagrams](#464-software-architecture-components-diagrams)
+- [4.7. Software Object-Oriented Design](#47-software-object-oriented-design)
+  - [4.7.1. Class Diagrams](#471-class-diagrams)
+- [4.8. Database Design](#48-database-design)
+  - [4.8.1. Database Diagrams](#481-database-diagrams)
+
+**[Capítulo V: Product Implementation, Validation & Deployment](#capítulo-v-product-implementation-validation--deployment)**
+
+- [5.1. Software Configuration Management](#51-software-configuration-management)
+  - [5.1.1. Software Development Environment Configuration](#511-software-development-environment-configuration)
+  - [5.1.2. Source Code Management](#512-source-code-management)
+  - [5.1.3. Source Code Style Guide & Conventions](#513-source-code-style-guide--conventions)
+  - [5.1.4. Software Deployment Configuration](#514-software-deployment-configuration)
+- [5.2. Landing Page, Services & Applications Implementation](#52-landing-page-services--applications-implementation)
+  - [5.2.1. Sprint 1](#521-sprint-1)
+    - [5.2.1.1. Sprint Planning 1](#5211-sprint-planning-1)
+    - [5.2.1.2. Aspect Leaders and Collaborators](#5212-aspect-leaders-and-collaborators)
+    - [5.2.1.3. Sprint Backlog 1](#5213-sprint-backlog-1)
+    - [5.2.1.4. Development Evidence for Sprint Review](#5214-development-evidence-for-sprint-review)
+    - [5.2.1.5. Execution Evidence for Sprint Review](#5215-execution-evidence-for-sprint-review)
+    - [5.2.1.6. Services Documentation Evidence for Sprint Review](#5216-services-documentation-evidence-for-sprint-review)
+    - [5.2.1.7. Software Deployment Evidence for Sprint Review](#5217-software-deployment-evidence-for-sprint-review)
+    - [5.2.1.8. Team Collaboration Insights during Sprint](#5218-team-collaboration-insights-during-sprint)
+  - [5.2.2. Sprint 2](#522-sprint-2)
+    - [5.2.2.1. Sprint Planning 2](#5221-sprint-planning-2)
+    - [5.2.2.2. Aspect Leaders and Collaborators](#5222-aspect-leaders-and-collaborators)
+    - [5.2.2.3. Sprint Backlog 2](#5223-sprint-backlog-2)
+    - [5.2.2.4. Development Evidence for Sprint Review](#5224-development-evidence-for-sprint-review)
+    - [5.2.2.5. Execution Evidence for Sprint Review](#5225-execution-evidence-for-sprint-review)
+    - [5.2.2.6. Services Documentation Evidence for Sprint Review](#5226-services-documentation-evidence-for-sprint-review)
+    - [5.2.2.7. Software Deployment Evidence for Sprint Review](#5227-software-deployment-evidence-for-sprint-review)
+    - [5.2.2.8. Team Collaboration Insights during Sprint](#5228-team-collaboration-insights-during-sprint)
+  - [5.2.3. Sprint 3](#523-sprint-3)
+    - [5.2.3.1. Sprint Planning 3](#5231-sprint-planning-3)
+    - [5.2.3.2. Aspect Leaders and Collaborators](#5232-aspect-leaders-and-collaborators)
+    - [5.2.3.3. Sprint Backlog 3](#5233-sprint-backlog-3)
+    - [5.2.3.4. Development Evidence for Sprint Review](#5234-development-evidence-for-sprint-review)
+    - [5.2.3.5. Execution Evidence for Sprint Review](#5235-execution-evidence-for-sprint-review)
+    - [5.2.3.6. Services Documentation Evidence for Sprint Review](#5236-services-documentation-evidence-for-sprint-review)
+    - [5.2.3.7. Software Deployment Evidence for Sprint Review](#5237-software-deployment-evidence-for-sprint-review)
+    - [5.2.3.8. Team Collaboration Insights during Sprint](#5238-team-collaboration-insights-during-sprint)
+- [5.3. Validation Interviews](#53-validation-interviews)
+  - [5.3.1. Diseño de Entrevistas](#531-diseño-de-entrevistas)
+  - [5.3.2. Registro de Entrevistas](#532-registro-de-entrevistas)
+  - [5.3.3. Evaluaciones según heurísticas](#533-evaluaciones-según-heurísticas)
+- [5.4. Video About-the-Product](#54-video-about-the-product)
+
+**[Conclusiones](#conclusiones)**
+
+- [Conclusiones y recomendaciones](#conclusiones-y-recomendaciones)
+- [Video About-the-Team](#video-about-the-team)
+
+**[Bibliografía](#bibliografía)**
+
+
+**[Anexos](#anexos)**
+
+- [Anexo: Repositorios y productos desplegados](#anexo-repositorios-y-productos-desplegados)
+- [Anexo: Usuarios de prueba](#anexo-usuarios-de-prueba)
+- [Anexo: Videos del Producto y del Equipo](#anexo-videos-del-producto-y-del-equipo)
+
+<div style="page-break-after: always;"></div>
+
 ## Student Outcome
 
 El curso contribuye al cumplimiento del **ABET - EAC - Student Outcome 3: Capacidad de comunicarse efectivamente con un rango de audiencias**.
@@ -368,10 +356,10 @@ El siguiente cuadro presenta las acciones verificables realizadas por los integr
 
 # Capítulo I: Introducción
 
-## 1.1 Startup Profile
+## 1.1. Startup Profile
 Esta sección presenta el perfil de AndesHeavyTech, la startup responsable del desarrollo de MaquiControl. Se describe su propósito, enfoque de negocio y propuesta de valor dentro del sector de alquiler y gestión de maquinaria pesada, así como los perfiles de los integrantes que participan en el desarrollo del proyecto.
 
-### 1.1.1 Descripción de la Startup
+### 1.1.1. Descripción de la Startup
 AndesHeavyTech tiene como objetivo transformar digitalmente la gestión, contratación y supervisión del alquiler de maquinaria pesada en las industrias de la construcción, minería e infraestructura, abarcando actividades desde la reserva de equipos y programación de mantenimientos hasta la emisión automatizada de comprobantes de pago. A través de su plataforma principal, AndesHeavyTech permite a las empresas proveedoras y contratistas organizar de forma centralizada sus solicitudes de alquiler, asignar maquinaria y operadores de manera eficiente, y monitorear el estado operativo y financiero de sus flotas en tiempo real.
 
 La solución busca resolver la falta de trazabilidad, la informalidad en la disponibilidad de equipos y los retrasos en los procesos administrativos en entornos donde las operaciones de obra deben adaptarse a cronogramas exigentes. Para ello, AndesHeavyTech integra funcionalidades de catálogo dinámico con disponibilidad en tiempo real, programación de mantenimientos preventivos y correctivos, alertas automáticas de estado de máquina y emisión instantánea de facturación electrónica integrada a los estándares tributarios de SUNAT.
@@ -392,55 +380,55 @@ Una de las principales fortalezas del sistema es su capacidad para adaptarse a l
 | ![Foto Nicolas](assets/Foto_NicolasTantalean.jpeg) | **Tantalean Granda, Nicolas**<br> **Código: U202410728** \| **Carrera: Ingeniería de Software**<br>*Resumen:* Estudiante de Ingeniería de Software con conocimientos en desarrollo web, incluyendo HTML, CSS y JavaScript, así como en los lenguajes de programación C++ y Python. Aporta al equipo conocimientos relacionados con lenguajes de programación y desarrollo de soluciones de software. |
 | ![Foto Mathias](assets/Foto_MathiasCastillo.jpeg) | **Castillo Guevara, Mathias Alejandro**<br> **Código: U202410783** \| **Carrera: Ingeniería de Software**<br>*Resumen:* Estudiante de Ingeniería de Software con conocimientos en desarrollo web, incluyendo HTML, CSS y JavaScript, además de lenguajes de programación como C++ y Python. Aporta al equipo conocimientos relacionados con tecnologías y desarrollo web, participando en el trabajo colaborativo orientado al desarrollo de la solución. |
 
-### 1.2 Solution Profile
+## 1.2. Solution Profile
 Esta sección describe la problemática que MaquiControl busca resolver y la propuesta de solución planteada por AndesHeavyTech. Se analizan las principales dificultades relacionadas con el alquiler, control y disponibilidad de maquinaria pesada, y se aplica el proceso Lean UX para definir las necesidades, supuestos e hipótesis que orientan el desarrollo del producto.
 
-### 1.2.1 Antecedentes y problemática
+### 1.2.1. Antecedentes y problemática
 En esta sección se presentan los antecedentes del sector de alquiler y gestión de maquinaria pesada, así como las principales dificultades que enfrentan los actores involucrados en este proceso. Se analizan problemas relacionados con la disponibilidad de equipos, la coordinación de alquileres, el seguimiento de mantenimientos, la comunicación entre proveedores y clientes, y la falta de información centralizada. A partir de estas limitaciones se establece la problemática que MaquiControl busca abordar mediante una solución digital orientada a mejorar la organización, trazabilidad y eficiencia de las operaciones.
 
-##### 1.2.1.1. What
+#### 1.2.1.1. What
 
 **¿Cuál es el problema?**
 
 El problema se define como la ausencia de un recurso tecnológico centralizado capaz de organizar, planificar y supervisar el proceso de gestión, alquiler y mantenimiento de maquinaria pesada, así como la emisión de comprobantes de pago. Actualmente, la falta de un sistema digital unificado provoca **descoordinación**, **errores en la disponibilidad de equipos**, **pérdidas de tiempo por paradas no programadas**, **retrasos en la facturación electrónica** y **aumento de costos operativos** tanto para los proveedores de maquinaria como para las empresas contratistas. Esto genera impactos negativos en la eficiencia, la productividad de las obras y la liquidez de las PYMEs del sector.
 
-##### 1.2.1.2. Who
+#### 1.2.1.2. Who
 
 **¿Quiénes están involucrados en el problema?**
 
 Este problema involucra principalmente a **proveedores y gestores de flota de maquinaria pesada**, encargados de administrar el inventario, programar mantenimientos y asignar equipos; a **contratistas y jefes de obra**, responsables de la ejecución de proyectos de construcción o minería que requieren alquileres garantizados; a **técnicos de mantenimiento**, quienes registran las revisiones operativas de los equipos; y al **personal administrativo y contable**, que exige información exacta para la liquidación de horas máquina y la emisión de facturas electrónicas conformes a SUNAT. La falta de integración entre estos actores genera cuellos de botella que afectan directamente la continuidad de los proyectos.
 
-##### 1.2.1.3. Where
+#### 1.2.1.3. Where
 
 **¿Dónde surge el problema?**
 
 El problema surge en **obras de construcción, proyectos mineros, frentes de infraestructura y canteras** en todo el país, donde la ejecución de tareas requiere maquinaria en óptimas condiciones operativas. También se presenta en las **oficinas de control y centros administrativos de los proveedores**, donde la falta de visibilidad en tiempo real sobre la ubicación, estado técnico y disponibilidad de la flota limita la capacidad de respuesta ante imprevistos o solicitudes urgentes.
 
-##### 1.2.1.4. When
+#### 1.2.1.4. When
 
 **¿Cuándo se presenta el problema?**
 
 El problema inicia desde la **búsqueda y reserva inicial de maquinaria**, cuando los contratistas no cuentan con información actualizada sobre la disponibilidad de equipos. Se intensifica durante la **ejecución en obra**, cuando ocurren averías imprevistas debido al descontrol en el historial de mantenimientos preventivos, y persiste hasta la etapa de **cierre del servicio y facturación**, donde se generan discrepancias en la liquidación de horas trabajadas y demoras en la emisión de comprobantes de pago.
 
-##### 1.2.1.5. Why
+#### 1.2.1.5. Why
 
 **¿Por qué surge el problema?**
 
 El problema se origina principalmente por la alta informalidad del sector y la continua dependencia de procesos manuales, tales como el registro de mantenimientos en papel, la coordinación de alquileres mediante mensajería informal y el cálculo manual de tarifas de alquiler. La ausencia de una solución SaaS integrada dificulta la comunicación fluida entre el personal operativo de obra y el área administrativa.
 
-##### 1.2.1.6. How
+#### 1.2.1.6. How
 
 **¿Cómo se utilizará el producto?**
 
 La plataforma operará bajo un modelo distribuido accesible desde entornos web y móviles. Los clientes o contratistas navegarán por un catálogo interactivo con filtros por categoría, ubicación y precio para realizar reservas de maquinaria. Los proveedores gestionarán sus flotas, recibirán alertas automáticas para programar mantenimientos preventivos y monitorearán el estado de los contratos. Al finalizar el periodo de alquiler, la plataforma calculará automáticamente el monto correspondiente y generará la facturación electrónica integrada en cumplimiento con las normativas locales.
 
-##### 1.2.1.7. How Much
+#### 1.2.1.7. How Much
 
 **¿Cuál es la magnitud del problema?**
 
 En el sector de la construcción e infraestructura, las averías no detectadas a tiempo por falta de mantenimiento representan pérdidas operativas de hasta un 25% en el tiempo de ejecución de una obra. Asimismo, las demoras administrativas y la falta de digitalización en el cobro y facturación electrónica afectan directamente la liquidez de más del 40% de las pequeñas y medianas empresas proveedoras de equipos.
 
-### 1.2.2 Lean UX Process
+### 1.2.2. Lean UX Process
 En esta sección se aplica el proceso Lean UX para analizar la problemática desde una perspectiva centrada en los usuarios y en la validación temprana de supuestos. Se identifican los principales problemas, necesidades y comportamientos de los segmentos objetivo, y a partir de ellos se formulan supuestos y declaraciones de hipótesis que permiten orientar el desarrollo de MaquiControl. El resultado de este proceso se sintetiza en un Lean UX Canvas, que sirve como base para definir qué aspectos de la propuesta deben ser investigados y validados durante el proyecto.
 
 #### 1.2.2.1. Lean UX Problem Statements
@@ -454,7 +442,7 @@ Nuestro enfoque inicial serán **los propietarios y administradores de pequeñas
 
 Sabremos que tenemos éxito cuando veamos **un aumento del 30 % en las reservas concretadas a través de la plataforma, una reducción del 25 % en el tiempo de inactividad de la maquinaria gracias a las alertas de mantenimiento y una disminución del 50 % en el tiempo de emisión de comprobantes durante los primeros seis meses**.
 
-#### 1.2.2.2 Lean UX Assumptions
+#### 1.2.2.2. Lean UX Assumptions
 
 **1. Business Assumptions:**
 * Creemos que los proveedores de maquinaria pesada necesitan una plataforma digital centralizada para gestionar sus flotas y contratos, eliminando los registros manuales.
@@ -522,7 +510,7 @@ Se formula una declaración de hipótesis por cada Feature Assumption, siguiendo
 ![Lean UX Canvas](./assets/lean-ux-canvas.png)
 *Ver el lienzo del Lean UX Canvas en [Canva](https://canva.link/k7s7r8rxw4h0cae).*
 
-### 1.3 Segmentos objetivo
+## 1.3. Segmentos objetivo
 
 Para el desarrollo y validación de MaquiControl se han definido dos segmentos objetivo relacionados directamente con la contratación y gestión de maquinaria pesada. La selección considera tanto su relación con la problemática identificada como la posibilidad de acceder a representantes reales durante las etapas de investigación y validación del producto.
 
@@ -547,12 +535,12 @@ Para el desarrollo y validación de MaquiControl se han definido dos segmentos o
 - **Necesidades principales:** Encontrar maquinaria disponible rápidamente, conocer precios y características, coordinar fechas de alquiler y contar con información clara sobre el estado de su solicitud.
 # Capítulo II: Requirements Elicitation & Analysis
 
-## 2.1 Competidores
+## 2.1. Competidores
 En esta sección se identifican y describen los principales competidores de MaquiControl, considerando soluciones digitales que ofrecen funcionalidades relacionadas con la gestión, alquiler y control de maquinaria. El análisis permite conocer sus principales características, fortalezas y debilidades, con el fin de identificar oportunidades de diferenciación para nuestra propuesta de valor.
 
-### 2.1.1 Análisis competitivo
+### 2.1.1. Análisis competitivo
 
-### Competitive Analysis Landscape
+#### Competitive Analysis Landscape
 
 **¿Por qué llevar a cabo este análisis?**  
 *¿De qué manera MaquiControl puede diferenciarse de las soluciones de alquiler de maquinaria pesada locales e internacionales mediante una plataforma SaaS integral que unifique la gestión operativa de flota, la programación preventiva de mantenimientos y la facturación electrónica instantánea compatible con SUNAT?*
@@ -573,7 +561,7 @@ En esta sección se identifican y describen los principales competidores de Maqu
 
 ---
 
-### 2.1.2 Estrategias y tácticas frente a competidores
+### 2.1.2. Estrategias y tácticas frente a competidores
 A partir del análisis FODA cruzado, MaquiControl aplicará las siguientes estrategias y tácticas preliminares:
 
 1. **Estrategia de Penetración de Mercado vs. Gestión Manual (Excel/WhatsApp):**
@@ -585,13 +573,13 @@ A partir del análisis FODA cruzado, MaquiControl aplicará las siguientes estra
 4. **Estrategia de Mitigación de Amenazas Operativas:**
     * *Táctica:* Implementar un módulo de **Historial Técnico Certificado** que otorgue un "Sello de Mantenimiento al Día" a las máquinas registradas, incrementando la confianza de los contratistas y justificando tarifas de alquiler más competitivas.
 
-## 2.2 Entrevistas
+## 2.2. Entrevistas
 En esta sección se desarrolla el proceso de recolección de información mediante entrevistas dirigidas a representantes de los segmentos objetivo definidos para MaquiControl. El propósito es conocer sus experiencias, necesidades, problemas y comportamientos relacionados con el alquiler y gestión de maquinaria, de modo que los hallazgos obtenidos sirvan como base para el análisis de requerimientos y la posterior construcción de los User Personas y demás artefactos de Needfinding.
 
-### 2.2.1 Diseño de entrevistas
+### 2.2.1. Diseño de entrevistas
 Para la recolección de requerimientos se diseñaron guías de entrevista breves y estructuradas de 8 preguntas clave por segmento objetivo. Estas combinan datos demográficos/tecnológicos para el perfilamiento de arquetipos (*User Personas*) con preguntas profundas sobre la problemática operativa y de negocio.
 
-### Segmento 1: Propietarios y administradores de empresas de alquiler de maquinaria
+#### Segmento 1: Propietarios y administradores de empresas de alquiler de maquinaria
 
 1. **¿Cuál es su nombre, edad, cargo, dispositivos y aplicaciones que utiliza a diario para administrar su negocio?** *(Complementaria)*
 2. **¿Qué marcas o proveedores prefiere y qué fuentes consulta antes de tomar decisiones operativas?** *(Complementaria)*
@@ -602,7 +590,7 @@ Para la recolección de requerimientos se diseñaron guías de entrevista breves
 7. **¿Qué situaciones relacionadas con el alquiler o gestión de maquinaria le generan mayor frustración? (Complementaria)**
 8. **¿Qué aplicaciones, páginas web o herramientas digitales utiliza con mayor frecuencia para trabajar y comunicarse? (Complementaria)**
 
-### Segmento 2: Contratistas independientes y responsables de obras de construcción
+#### Segmento 2: Contratistas independientes y responsables de obras de construcción
 
 1. **¿Cuál es su nombre, edad, cargo, nivel educativo y qué dispositivos/navegadores utiliza en obra?** *(Complementaria)*
 2. **¿A través de qué canales o influencias del sector busca y contrata proveedores de maquinaria?** *(Complementaria)*
@@ -613,7 +601,7 @@ Para la recolección de requerimientos se diseñaron guías de entrevista breves
 7. **¿Qué situaciones relacionadas con el alquiler o gestión de maquinaria le generan mayor frustración? (Complementaria)**
 8. **¿Qué aplicaciones, páginas web o herramientas digitales utiliza con mayor frecuencia para trabajar y comunicarse? (Complementaria)**
 
-### 2.2.2 Registro de entrevistas
+### 2.2.2. Registro de entrevistas
 
 En esta sección se presentan las entrevistas realizadas a representantes de los segmentos objetivo de MaquiControl. Cada entrevista permite recopilar información sobre sus experiencias, necesidades, problemas y hábitos relacionados con la gestión y alquiler de maquinaria. Los resultados obtenidos servirán como base para el análisis de entrevistas y la construcción de los artefactos de Needfinding.
 
@@ -756,7 +744,7 @@ El entrevistado considera útil una plataforma que centralice la disponibilidad,
 
 **Video consolidado de las entrevistas:** [Ver entrevistas completas](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202416147_upc_edu_pe/IQCtDKm3Mx7YSICszqpbHVACAZ5fOdZ3xGF08nsq6eXrey4?e=WBrQyq&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
 
-### 2.2.3 Análisis de entrevistas
+### 2.2.3. Análisis de entrevistas
 
 A partir de las seis entrevistas realizadas, tres por cada segmento objetivo, se identificaron necesidades, problemas y expectativas relacionadas con la gestión y el alquiler de maquinaria. Los resultados permitieron comprender tanto la perspectiva de quienes administran la oferta de equipos como la de quienes necesitan utilizarlos en proyectos de construcción.
 
@@ -791,11 +779,11 @@ Los dos segmentos presentan problemas relacionados con la fragmentación y desac
 
 MaquiControl puede conectar ambas necesidades mediante una plataforma centralizada que permita gestionar la disponibilidad, las reservas, los costos, los mantenimientos y las horas trabajadas. La solución debe priorizar la facilidad de uso, el acceso desde dispositivos móviles, la transparencia de la información y la confirmación formal de las operaciones.
 
-## 2.3 Needfinding
+## 2.3. Needfinding
 
 En esta sección se presentan los principales artefactos obtenidos a partir del análisis de la información recolectada durante las entrevistas y el estudio de los segmentos objetivo. El proceso de Needfinding permite identificar las necesidades, comportamientos, objetivos y dificultades de los usuarios, sirviendo como base para la elaboración de los User Personas, User Task Matrix, User Journey Maps y Empathy Maps.
 
-### 2.3.1 User Personas
+### 2.3.1. User Personas
 
 Los User Personas representan arquetipos construidos a partir de la información recopilada durante las entrevistas y el análisis de los segmentos objetivo. Estos perfiles permiten sintetizar características, necesidades, objetivos, motivaciones y frustraciones comunes de los usuarios, sirviendo como base para los siguientes artefactos del proceso de Needfinding.
 
@@ -819,7 +807,7 @@ Renzo Huamán representa al contratista independiente que supervisa varias obras
 
 ![User Persona - Renzo Huamán](assets/user-persona-renzo-huaman.png)
 
-### 2.3.2 User Task Matrix
+### 2.3.2. User Task Matrix
 
 
 | Tarea (Task) | Luis Herrera — Frecuencia | Luis Herrera — Importancia | Renzo Huamán — Frecuencia | Renzo Huamán — Importancia |
@@ -835,7 +823,7 @@ Renzo Huamán representa al contratista independiente que supervisa varias obras
 
 **Análisis:** la tarea con mayor frecuencia e importancia compartida por ambos User Persona es **verificar la disponibilidad real de la maquinaria**, lo cual confirma que la disponibilidad poco confiable es el dolor central identificado en ambos segmentos. Luis Herrera, al administrar la flota, prioriza con mayor frecuencia e importancia el control del mantenimiento, tarea que para Renzo Huamán es secundaria, pues él consume el servicio en vez de administrarlo. En cambio, Renzo le da mayor peso a cotizar y comparar precios y a buscar recomendaciones, dado que su rol implica seleccionar proveedores para cada nueva obra. Ambos coinciden en la relevancia alta de gestionar imprevistos por fallas mecánicas, reflejando que este riesgo operativo afecta a toda la cadena, tanto a quien alquila como a quien administra la flota.
 
-### 2.3.3 User Journey Mapping
+### 2.3.3. User Journey Mapping
 
 
 El siguiente User Journey Map representa el proceso actual seguido por el User Persona Luis Herrera para gestionar el alquiler de maquinaria, desde la recepción de una solicitud hasta el cierre del servicio. El recorrido muestra sus principales acciones, canales utilizados, problemas, emociones y oportunidades de mejora en el contexto actual, sin considerar todavía la solución MaquiControl.
@@ -877,7 +865,7 @@ A continuación se presenta el Empathy Map elaborado en **UXPressia** para el Us
 
 ![Empathy Map - Renzo Huamán](assets/empathy-map-renzo-huaman.png)
 
-## 2.4 Big Picture Event Storming
+## 2.4. Big Picture Event Storming
 
 El Big Picture Event Storming de MaquiControl fue elaborado con el objetivo de representar de manera visual los principales procesos, eventos, actores, sistemas externos y problemas identificados dentro del dominio de alquiler y gestión de maquinaria pesada. El análisis toma como base la problemática definida en el proyecto, las entrevistas realizadas, los User Personas, el User Task Matrix y los principales hallazgos del proceso de Needfinding.
 
@@ -890,7 +878,7 @@ Asimismo, se identificaron hotspots relevantes como las reservas duplicadas, inf
 ![Big Picture Event Storming - MaquiControl](assets/big-picture-event-storming.png)
 A partir del mapa se reconocen áreas de dominio candidatas como Discovery and Availability, Rental and Reservation Management, Fleet and Maintenance Management, Service Execution and Hour Control, Subscription Management, Billing and SUNAT Compliance, Operational Notifications y Dashboard and Analytics. Estas áreas todavía no representan Bounded Contexts definitivos, ya que su refinamiento se realizará posteriormente mediante Design-Level Event Storming.
 
-## 2.5 Ubiquitous Language
+## 2.5. Ubiquitous Language
 
 El Ubiquitous Language de MaquiControl reúne los principales términos utilizados dentro del dominio de alquiler y gestión de maquinaria. Su propósito es establecer un vocabulario común entre los miembros del equipo y los stakeholders, evitando ambigüedades durante el análisis, diseño y desarrollo de la solución.
 
@@ -937,7 +925,7 @@ El Ubiquitous Language de MaquiControl reúne los principales términos utilizad
 
 # Capítulo III: Requirements Specification
 
-## 3.1 User Stories
+## 3.1. User Stories
 
 | Epic / Story ID | Tipo | Título | User Story | Criterios de aceptación | Relacionado con |
 |---|---|---|---|---|---|
@@ -1006,7 +994,7 @@ El Ubiquitous Language de MaquiControl reúne los principales términos utilizad
 | US-044 | User Story | Consultar estado de la suscripción | Como propietario, quiero consultar el estado y el historial de pagos de mi suscripción, para verificar mi situación con la plataforma. | **Given:** el propietario tiene una suscripción registrada.<br>**When:** consulta su panel de cuenta.<br>**Then:** el sistema muestra el plan activo, la fecha de vencimiento y los pagos realizados. | EP-11 |
 | US-045 | User Story | Bloquear registro de maquinaria al superar el límite del plan | Como sistema, quiero impedir que un propietario registre más maquinarias que las permitidas por su plan, para hacer cumplir los límites comerciales de la suscripción. | **Given:** el propietario alcanzó el límite de maquinarias de su plan.<br>**When:** intenta registrar una maquinaria adicional.<br>**Then:** el sistema rechaza el registro e indica que debe actualizar su plan. | EP-11 |
 
-## 3.2 Impact Mapping
+## 3.2. Impact Mapping
 
 El Impact Mapping de MaquiControl permite relacionar los objetivos de negocio con los comportamientos esperados de los User Personas, los entregables necesarios para provocar dichos impactos y las User Stories asociadas.
 
@@ -1016,8 +1004,7 @@ Los principales actores considerados son Luis Herrera, representante del segment
 
 ![Impact Mapping - MaquiControl](assets/impact-mapping-maquicontrol.png)
 
-## 3.3 Product Backlog
-## 3.3 Product Backlog
+## 3.3. Product Backlog
 
 El Product Backlog reúne y prioriza las 45 User Stories y las 8 Technical Stories definidas en la sección 3.1. Los identificadores, títulos y descripciones mantienen trazabilidad directa con las historias y sus criterios de aceptación.
 
@@ -1292,7 +1279,7 @@ La navegación también se complementa con diferentes Call to Action distribuido
 
 Estas acciones permiten dirigir al usuario hacia la experiencia correspondiente según su perfil.
 
-### 4.3. Landing Page UI Design
+## 4.3. Landing Page UI Design
 
 En esta sección se presenta el diseño de la Landing Page de MaquiControl, desarrollado a partir de los lineamientos visuales definidos previamente y de las necesidades de los segmentos objetivo.
 
@@ -1449,7 +1436,7 @@ Cada flujo documenta el camino exitoso y también las decisiones, validaciones, 
 
 ![User Flow para liquidar un servicio](assets/uf-06-settle-service.png)
 
-## 4.5 Web Applications Prototyping
+## 4.5. Web Applications Prototyping
 En esta sección se presenta el prototipo interactivo de la Web Application de MaquiControl, desarrollado a partir de los mock-ups y User Flow Diagrams definidos previamente.
 
 El prototipo permite simular la navegación entre las principales vistas de la aplicación y validar la secuencia de interacción que siguen los usuarios para completar sus tareas principales. Las conexiones entre pantallas fueron definidas considerando los recorridos planteados en los User Flows y el sistema de navegación establecido para la aplicación.
@@ -1856,7 +1843,7 @@ Muestra las capas y packages del Bounded Context de Billing Management:
 
 ![Billing Management Component Diagram](assets/c4-billing-management-component-diagram.png)
 
-## 4.7 Software Object-Oriented Design
+## 4.7. Software Object-Oriented Design
 
 El diseño orientado a objetos de MaquiControl representa las principales clases, interfaces, enumeraciones, atributos, operaciones y relaciones que conforman cada Bounded Context. Los modelos mantienen los límites definidos mediante Domain-Driven Design y evitan los tipos de datos primitivos en los atributos y parámetros del dominio. Cada identificador se modela como un Value Object propio (`MachineryId`, `RentalId`, `ProfileId`, entre otros), de modo que un agregado de otro contexto se referencia por su identificador tipado y no por un número sin significado, evitando el acoplamiento directo entre contextos. Los conceptos del dominio que antes se representaban como texto o números también se modelan como Value Objects que validan su propio formato, por ejemplo `EmailAddress`, `PhoneNumber`, `PersonName`, `DocumentNumber`, `TaxId`, `MachinerySpecification`, `HoursWorked`, `WorkShift`, `InvoiceNumber` y `MachineryLimit`. Los valores monetarios se modelan mediante el Value Object `Money`, que encapsula el importe y su moneda. Los tipos primitivos solo aparecen dentro de los Value Objects, que son los responsables de validarlos. Los identificadores de cada contexto se agrupan en el paquete `Identifiers` de su diagrama.
 
@@ -1864,7 +1851,7 @@ La capa de aplicación de cada contexto se divide en un `CommandService` y un `Q
 
 Para reducir la complejidad, cada Bounded Context tiene primero un diagrama general con todas sus clases y, cuando tiene más de un agregado, un diagrama por cada agregado. El agregado es el límite de consistencia transaccional y también la unidad en que se programa, por lo que cada diagrama de agregado agrupa solo su raíz, sus entidades, sus Value Objects, los comandos y queries que lo usan y su repositorio. Los Bounded Contexts con un solo agregado (Rental, Maintenance, Operations, Profiles e Identity & Access Management) se presentan con su diagrama general, que corresponde a ese único agregado.
 
-### 4.7.1 Class Diagrams
+### 4.7.1. Class Diagrams
 
 #### Fleet Management Bounded Context Class Diagram
 
@@ -1950,7 +1937,7 @@ El diagrama de Identity & Access Management representa el agregado `UserAccount`
 
 ![Identity and Access Management Class Diagram](assets/identity-access-management-class-diagram.png)
 
-## 4.8 Database Design
+## 4.8. Database Design
 
 El diseño de base de datos de MaquiControl se organiza según los límites definidos para cada Bounded Context. Cada modelo especifica las tablas, columnas, tipos de datos, claves primarias, claves foráneas, restricciones y cardinalidades necesarias para persistir la información de sus agregados y entidades.
 
@@ -1958,7 +1945,7 @@ Para conservar la independencia entre Bounded Contexts, las asociaciones interna
 
 Las entidades utilizan claves primarias numéricas `BIGINT` generadas por la base de datos, en lugar de UUID. Los valores monetarios se persisten como pares de columnas de importe y código de moneda, manteniendo en la base de datos la semántica definida por el patrón `Money` del modelo de dominio.
 
-### 4.8.1 Database Diagrams
+### 4.8.1. Database Diagrams
 
 #### Fleet Management Bounded Context Database Diagram
 
@@ -2367,7 +2354,7 @@ flowchart LR
     AppService --> MercadoPago
 ```
 
-#### 1. Despliegue del Landing Page
+#### 1. Despliegue de la Landing Page
 - **Plataforma seleccionada:** GitHub Pages.
 - **Tipo de producto:** sitio web estático (HTML5, CSS3, JavaScript y diccionarios de traducción `i18n/en.json` e `i18n/es.json`).
 - **Procedimiento de despliegue:**
@@ -3042,7 +3029,9 @@ En general, los tres entrevistados calificaron entre 7 y 9 sobre 10 la probabili
 
 Video de presentación del producto MaquiControl, publicado en YouTube: [https://youtu.be/OBhNOHt9zh0](https://youtu.be/OBhNOHt9zh0). El enlace también se incluyó en la Landing Page junto con el Video About-the-Team.
 
-## Conclusiones
+# Conclusiones
+
+## Conclusiones y recomendaciones
 
 - El análisis realizado permitió identificar que la gestión y alquiler de maquinaria pesada presenta dificultades relacionadas con la disponibilidad de equipos, coordinación de reservas, seguimiento de mantenimientos y procesos administrativos, debido principalmente al uso de herramientas manuales y a la falta de información centralizada.
 
@@ -3050,9 +3039,9 @@ Video de presentación del producto MaquiControl, publicado en YouTube: [https:/
 
 - La identificación de los principales actores involucrados, como proveedores, gestores de flota, contratistas, jefes de obra, técnicos de mantenimiento y personal administrativo, permitió establecer las necesidades de los diferentes usuarios que interactúan con el proceso de alquiler y gestión de maquinaria.
 
-- La aplicación del enfoque Lean UX permitió estructurar la problemática mediante las preguntas What, Who, Where, When, Why, How y How Much, facilitando la identificación del problema, sus causas, los usuarios involucrados y el contexto en el que se presenta.
+- El análisis de la problemática mediante las preguntas What, Who, Where, When, Why, How y How Much, junto con el proceso Lean UX, facilitó la identificación del problema, sus causas, los usuarios involucrados y el contexto en el que se presenta.
 
-- La propuesta de valor de AndesHeavyTech busca mejorar la trazabilidad y eficiencia de las operaciones mediante una plataforma accesible desde entornos web y móviles, incorporando funcionalidades como catálogo de maquinaria, consulta de disponibilidad, reservas, alertas de mantenimiento y facturación electrónica.
+- La propuesta de valor de AndesHeavyTech busca mejorar la trazabilidad y eficiencia de las operaciones mediante una plataforma web adaptable a computadoras y dispositivos móviles, incorporando funcionalidades como catálogo de maquinaria, consulta de disponibilidad, reservas, alertas de mantenimiento y facturación electrónica.
 
 - Durante el Sprint 2 el equipo implementó y desplegó la primera versión de la aplicación web en Angular, junto con una Fake API en json-server. Esto permitió validar los flujos principales de flota, alquileres, mantenimiento, operaciones y suscripciones antes de construir el backend definitivo.
 
@@ -3068,9 +3057,16 @@ Video de presentación del producto MaquiControl, publicado en YouTube: [https:/
 
 - Finalmente, MaquiControl busca contribuir a la transformación digital del sector de alquiler de maquinaria pesada, proporcionando una herramienta que permita mejorar la coordinación entre proveedores y contratistas, reducir problemas derivados de la falta de información y facilitar una gestión más organizada de las operaciones.
 
-- **Sobre el equipo:** AndesHeavyTech está conformado por Nicolas Tantalean Granda, Wilmer Sebastián Gutiérrez Lizarbe, Mathias Alejandro Castillo Guevara y Carlos Gabriel Cespedes Lezcano. A lo largo de los Sprints el equipo mantuvo una distribución de Bounded Contexts por integrante, lo que permitió avanzar en paralelo en la RESTful API, la aplicación web y el informe sin perder coherencia entre los módulos. La comunicación constante sobre nombres de comandos, queries y eventos de integración facilitó que cada integrante entendiera cómo su Bounded Context se conectaba con los demás. El Video About-the-Team presenta al equipo y su forma de trabajo durante este Sprint.
+- **Sobre el equipo:** AndesHeavyTech está conformado por Mathias Alejandro Castillo Guevara, Carlos Gabriel Cespedes Lezcano, Angiela Stephany Fuentes Alvarez, Wilmer Sebastián Gutiérrez Lizarbe y Nicolas Tantalean Granda. A lo largo de los Sprints el equipo mantuvo una distribución de Bounded Contexts por integrante, lo que permitió avanzar en paralelo en la RESTful API, la aplicación web y el informe sin perder coherencia entre los módulos. La comunicación constante sobre nombres de comandos, queries y eventos de integración facilitó que cada integrante entendiera cómo su Bounded Context se conectaba con los demás. El Video About-the-Team presenta al equipo y su forma de trabajo durante este Sprint.
 
-# Video About-the-Team
+**Recomendaciones**
+
+- Registrar las engineering tasks y sus estimaciones en el tablero de GitHub Projects desde el Sprint Planning, para que el Sprint Backlog no tenga que reconstruirse al final del Sprint.
+- Repartir el trabajo de cada Sprint de modo que todos los integrantes realicen commits en los repositorios de código y en el informe, usando ramas `feature` y pull requests revisados por otro integrante.
+- Validar con usuarios reales de ambos segmentos cada incremento desplegado usando las cuentas del Anexo de usuarios de prueba, y registrar sus observaciones como nuevas User Stories o ajustes del Product Backlog.
+- Revisar la ortografía, la gramática y la coherencia entre capítulos antes de cada entrega, contrastando el informe con la retroalimentación recibida en las entregas anteriores.
+
+## Video About-the-Team
 
 Video de presentación del equipo AndesHeavyTech, publicado en YouTube: [https://youtu.be/tptPPrhuSH4](https://youtu.be/tptPPrhuSH4). El enlace también se incluyó en la Landing Page junto con el Video About-the-Product.
 
