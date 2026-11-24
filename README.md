@@ -3115,6 +3115,19 @@ Video de presentación del equipo AndesHeavyTech, publicado en YouTube: [https:/
 | RESTful API (Web Services) v1.0.0 | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend) | [Azure App Service - Swagger UI](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html) |
 | Fake API (servicio de pagos) | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform) | [Azure App Service](https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/api/v1/health) |
 
+## Anexo: Usuarios de prueba
+
+Para que el docente y los usuarios entrevistados puedan recorrer la [aplicación web desplegada](https://lemon-pebble-0a946d810.4.azurestaticapps.net) sin registrarse, se crearon las siguientes cuentas de prueba, una por cada rol de los dos segmentos objetivo. Todas usan la misma contraseña: `Prueba2026!`.
+
+| Segmento | User Persona | Rol en MaquiControl | Correo | Qué puede probar |
+| :--- | :--- | :--- | :--- | :--- |
+| Segmento 1: Propietarios y administradores de pequeñas empresas de alquiler de maquinaria | Luis Herrera | Propietario de flota (`FLEET_OWNER`) | `propietario.prueba@maquicontrol.com` | Registrar y editar maquinaria y categorías, confirmar o rechazar solicitudes de alquiler, validar horas trabajadas, programar mantenimientos y contratar un plan de suscripción. |
+| Segmento 1: Propietarios y administradores de pequeñas empresas de alquiler de maquinaria | Luis Herrera | Administrador de flota (`FLEET_ADMINISTRATOR`) | `administrador.prueba@maquicontrol.com` | Consultar la flota, revisar las solicitudes de alquiler y hacer seguimiento a los mantenimientos. |
+| Segmento 2: Contratistas independientes y responsables de pequeñas obras de construcción | Renzo Huamán | Contratista (`CONTRACTOR`) | `contratista.prueba@maquicontrol.com` | Consultar el catálogo, solicitar y cancelar alquileres, consultar sus reservas y reportar averías. |
+| Segmento 2: Contratistas independientes y responsables de pequeñas obras de construcción | Renzo Huamán | Operador (`OPERATOR`) | `operador.prueba@maquicontrol.com` | Iniciar y completar operaciones de servicio y registrar las horas trabajadas de la maquinaria alquilada. |
+
+Las cuentas solo contienen datos ficticios y no deben usarse para pagos reales; el pago de suscripciones funciona en el modo sandbox de Mercado Pago.
+
 ## Anexo: Videos del Producto y del Equipo
 
 | Video | Enlace |
