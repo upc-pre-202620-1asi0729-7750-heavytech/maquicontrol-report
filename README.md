@@ -2090,7 +2090,7 @@ El código fuente de todos los artefactos de software producidos para MaquiContr
 
 Dentro de dicha organización se han estructurado repositorios dedicados e independientes para cada producto de la solución, garantizando un ciclo de vida desacoplado y una trazabilidad estricta:
 
-1. **Repositorio del Landing Page:**
+1. **Repositorio de la Landing Page:**
 - **URL:** [https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website)
 - **Descripción:** Alberga el código fuente del sitio web público y estático de difusión comercial de MaquiControl (HTML5 semántico, CSS3 adaptable y JavaScript modular), optimizado para SEO, accesibilidad e interfaces responsivas en escritorio y móviles.
 
@@ -2308,7 +2308,7 @@ Feature: Machinery Rental Reservation
 
 ### 5.1.4. Software Deployment Configuration
 
-La estrategia de despliegue de MaquiControl separa el trabajo local del entorno publicado. El Landing Page y la aplicación web automatizan cada publicación con GitHub Actions; la RESTful API, desde que se migró a contenedores, se construye y publica como imagen Docker en Azure Container Registry.
+La estrategia de despliegue de MaquiControl separa el trabajo local del entorno publicado. La Landing Page y la aplicación web automatizan cada publicación con GitHub Actions; la RESTful API, desde que se migró a contenedores, se construye y publica como imagen Docker en Azure Container Registry.
 - **Development (Local):** estaciones de los desarrolladores. Aplicación Angular en `http://localhost:4200` y RESTful API en Spring Boot en `http://localhost:8080/api/v1`, ejecutada con Docker Compose (imagen construida desde el `Dockerfile` del repositorio) y MySQL local (perfil `dev`).
 - **Production:** productos publicados en la nube, vinculados a la rama `main` de cada repositorio y etiquetados con versiones semánticas mediante GitFlow (`release/*` y tags).
 
