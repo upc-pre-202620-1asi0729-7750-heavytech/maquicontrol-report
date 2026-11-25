@@ -2002,7 +2002,7 @@ El presente capítulo describe y evidencia el proceso de implementación, compro
 
 La solución se compone de tres productos digitales interconectados que aplican prácticas de desarrollo web adaptativo (*Responsive Web Design*):
 1. **Landing Page:** Sitio web estático de alta conversión y presentación institucional del modelo de negocio de AndesHeavyTech, con puntos de contacto (*call-to-action*) diferenciados por segmento objetivo.
-2. **RESTful Web Services (Backend API):** Servicio backend desarrollado en Java con Spring Boot 3, fundamentado en una arquitectura hexagonal guiada por el dominio (*Domain-Driven Design* - DDD), que expone recursos mediante endpoints RESTful seguros y gestiona la persistencia transaccional con una base de datos relacional.
+2. **RESTful Web Services (Backend API):** Servicio backend desarrollado en Java con Spring Boot 4, fundamentado en una arquitectura hexagonal guiada por el dominio (*Domain-Driven Design* - DDD), que expone recursos mediante endpoints RESTful seguros y gestiona la persistencia transaccional con una base de datos relacional.
 3. **Frontend Web Application:** Aplicación web de página única (*Single Page Application* - SPA) construida con Angular, que consume los servicios de la RESTful API y proporciona una interfaz enriquecida, accesible y adaptable a dispositivos de escritorio y móviles.
 
 A continuación, se establecen las decisiones, políticas y directrices de Gestión de Configuración de Software (SCM) que garantizan la consistencia, integridad, reproducibilidad y calidad en todo el ciclo de desarrollo.
