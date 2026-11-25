@@ -3109,16 +3109,14 @@ Video de presentación del equipo AndesHeavyTech, publicado en YouTube: [https:/
 
 ## Anexo: Usuarios de prueba
 
-Para que el docente y los usuarios entrevistados puedan recorrer la [aplicación web desplegada](https://lemon-pebble-0a946d810.4.azurestaticapps.net) sin registrarse, se crearon las siguientes cuentas de prueba, una por cada rol de los dos segmentos objetivo. Todas usan la misma contraseña: `Prueba2026!`.
+Para que el docente y los usuarios entrevistados puedan recorrer la [aplicación web desplegada](https://lemon-pebble-0a946d810.4.azurestaticapps.net) sin registrarse, se crearon las siguientes cuentas de prueba, una por cada segmento objetivo. Ambas usan la misma contraseña: `Prueba2026!`.
 
 | Segmento | User Persona | Rol en MaquiControl | Correo | Qué puede probar |
 | :--- | :--- | :--- | :--- | :--- |
 | Segmento 1: Propietarios y administradores de pequeñas empresas de alquiler de maquinaria | Luis Herrera | Propietario de flota (`FLEET_OWNER`) | `propietario.prueba@maquicontrol.com` | Registrar y editar maquinaria y categorías, confirmar o rechazar solicitudes de alquiler, validar horas trabajadas, programar mantenimientos y contratar un plan de suscripción. |
-| Segmento 1: Propietarios y administradores de pequeñas empresas de alquiler de maquinaria | Luis Herrera | Administrador de flota (`FLEET_ADMINISTRATOR`) | `administrador.prueba@maquicontrol.com` | Consultar la flota, revisar las solicitudes de alquiler y hacer seguimiento a los mantenimientos. |
 | Segmento 2: Contratistas independientes y responsables de pequeñas obras de construcción | Renzo Huamán | Contratista (`CONTRACTOR`) | `contratista.prueba@maquicontrol.com` | Consultar el catálogo, solicitar y cancelar alquileres, consultar sus reservas y reportar averías. |
-| Segmento 2: Contratistas independientes y responsables de pequeñas obras de construcción | Renzo Huamán | Operador (`OPERATOR`) | `operador.prueba@maquicontrol.com` | Iniciar y completar operaciones de servicio y registrar las horas trabajadas de la maquinaria alquilada. |
 
-Las cuentas solo contienen datos ficticios y no deben usarse para pagos reales; el pago de suscripciones funciona en el modo sandbox de Mercado Pago.
+Los roles `FLEET_ADMINISTRATOR` y `OPERATOR` no se ofrecen en el registro público porque son roles internos que el propietario de la flota asigna al personal de su organización. Las cuentas solo contienen datos ficticios y no deben usarse para pagos reales; el pago de suscripciones funciona en el modo sandbox de Mercado Pago.
 
 ## Anexo: Videos del Producto y del Equipo
 
