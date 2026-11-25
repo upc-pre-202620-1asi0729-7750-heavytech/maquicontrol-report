@@ -2149,8 +2149,6 @@ gitGraph
 
 Las ramas y sus políticas de operación se definen a continuación:
 
-Las ramas y sus políticas de operación se definen a continuación:
-
 - **Ramas de larga duración (*Long-lived branches*):**
   - `main`: Representa el estado de producción oficial del software. Solo contiene código probado, auditado y listo para despliegue. Está estrictamente prohibido realizar confirmaciones directas (*direct push*); las integraciones se efectúan exclusivamente mediante fusiones (*merges*) provenientes de ramas `release/*` o `hotfix/*`. Cada integración en `main` se etiqueta formalmente con un Git Tag siguiendo la especificación de Versionado Semántico.
   - `develop`: Constituye la rama principal de integración continua para el desarrollo activo. Refleja las últimas características completadas que formarán parte de la siguiente versión. Es la rama base desde la cual se originan todas las ramas de tipo `feature/*` y hacia la cual estas se fusionan una vez validadas.
