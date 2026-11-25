@@ -2933,7 +2933,7 @@ La RESTful API se desplegó en Azure App Service con su base de datos en Azure D
 
 | Producto desplegado | Plataforma | Repositorio | URL pública | Versión |
 |---|---|---|---|---|
-| RESTful API | Azure App Service (contenedor Docker, JDK 27, Central US) | [maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform) | [Swagger UI](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html) | `0.1.0` |
+| RESTful API | Azure App Service (contenedor Docker, JDK 27, Central US) | [maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform) | [Swagger UI](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html) | `v1.0.0` |
 | Base de datos | Azure Database for MySQL - Servidor flexible (B1ms, Chile Central) | — | No pública | MySQL 8 |
 | Frontend Web Application | Azure Static Web Apps (Free) | [maquicontrol-webapp](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp) | [Web Application](https://lemon-pebble-0a946d810.4.azurestaticapps.net) | `1.0.1` |
 | Servicio de pagos | Azure App Service (F1, Central US) | [maquicontrol-platform-mock](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform-mock) | [Health](https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/api/v1/health) | — |
