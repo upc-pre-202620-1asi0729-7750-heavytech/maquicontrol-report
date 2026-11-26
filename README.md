@@ -45,6 +45,7 @@
     <tr><td align="left">u202416147</td><td align="left">Cespedes Lezcano, Carlos Gabriel</td></tr>
     <tr><td align="left">u202520331</td><td align="left">Fuentes Alvarez, Angiela Stephany</td></tr>
     <tr><td align="left">u202412044</td><td align="left">Gutiérrez Lizarbe, Wilmer Sebastián</td></tr>
+    <tr><td align="left">u202417747</td><td align="left">Salazar Marquina, Kevin Junior</td></tr>
     <tr><td align="left">u202410728</td><td align="left">Tantalean Granda, Nicolas</td></tr>
   </tbody>
 </table>
