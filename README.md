@@ -81,6 +81,7 @@
 | 0.19 | 26/11/2026 | Kevin Junior Salazar Marquina | Documentación del incremento de catálogo del Sprint 4: objetivo de negocio, tareas de US-020 y US-021, commits, pruebas, ejecución con ambos roles, capturas antes y después, integración mediante el PR #3 y aporte escrito al Student Outcome 3. |
 | 0.20 | 26/11/2026 | Carlos Gabriel Cespedes Lezcano | Cierre de la entrega TB2: carátula con los tres integrantes del equipo desde el Sprint 4, incorporación de US-033 Consultar historial mecánico al punto 5.2.4 Sprint 4 con sus engineering tasks, commits, pruebas, resultados de ejecución, endpoint y despliegue; actualización del Sprint Planning, de la matriz de Aspect Leaders and Collaborators, del reporte de colaboración y del aporte al Student Outcome 3 del Sprint 4; y actualización de Conclusiones y recomendaciones. |
 | 0.21 | 26/11/2026 | Carlos Gabriel Cespedes Lezcano | Unificación de la sección Student Outcome en un solo cuadro acumulativo: incorporación de las acciones de la entrega TB2 de Castillo Guevara, Cespedes Lezcano y Salazar Marquina en los criterios de comunicación oral y escrita, actualización de las celdas de Conclusiones con el avance TB2 y eliminación del cuadro separado del Sprint 4. |
+| 0.22 | 26/11/2026 | Carlos Gabriel Cespedes Lezcano | Actualización del punto 5.4 Video About-the-Product con la versión final del video: descripción, cuadro representativo, duración, pauta de secuencias y enlaces de Microsoft Stream y YouTube; actualización del anexo de videos. |
 
 ## Project Report Collaboration Insights
 
@@ -3215,7 +3216,30 @@ En general, los tres entrevistados calificaron entre 7 y 9 sobre 10 la probabili
 
 ## 5.4. Video About-the-Product
 
-Video de presentación del producto MaquiControl, publicado en YouTube: [https://youtu.be/OBhNOHt9zh0](https://youtu.be/OBhNOHt9zh0). El enlace también se incluyó en la Landing Page junto con el Video About-the-Team.
+El Video About-the-Product presenta MaquiControl a los visitantes de la Landing Page y a los usuarios de la aplicación web. Con un tono promocional, resume el problema que enfrentan las pequeñas empresas de alquiler de maquinaria y los contratistas independientes, la propuesta de valor de la plataforma y sus principales funcionalidades, mostradas sobre la aplicación desplegada con las cuentas de prueba de cada segmento. Cierra con la opinión de un representante de cada segmento objetivo: Andrea López, del segmento de empresas de alquiler de maquinaria y participante de las entrevistas de validación, y Renzo Huamán, contratista independiente.
+
+[![Video About-the-Product](assets/about-the-product-tb2.png)](https://youtu.be/ivCzd64wIjQ)
+
+| Dato | Valor |
+| :--- | :--- |
+| Duración | 00:02:02 |
+| Microsoft Stream | [Ver video en Microsoft Stream](https://upcedupe-my.sharepoint.com/personal/u202416147_upc_edu_pe/_layouts/15/stream.aspx?uniqueId=fd0aebf2-1556-4a42-a341-c713b4f1dda2) |
+| YouTube | [https://youtu.be/ivCzd64wIjQ](https://youtu.be/ivCzd64wIjQ) |
+
+**Pauta de secuencias**
+
+| Inicio | Sección |
+| :--- | :--- |
+| 00:00:00 | Problema del alquiler de maquinaria y presentación de la Landing Page |
+| 00:00:13 | Propuesta de valor de MaquiControl |
+| 00:00:26 | Funcionalidades para el propietario de flota: catálogo, reservas y mantenimiento |
+| 00:00:41 | Funcionalidades para el contratista: catálogo y solicitudes de alquiler |
+| 00:00:55 | Planes de suscripción y pago con Mercado Pago |
+| 00:01:04 | Cierre |
+| 00:01:11 | Testimonio de Andrea López (Segmento 1: empresas de alquiler de maquinaria) |
+| 00:01:41 | Testimonio de Renzo Huamán (Segmento 2: contratistas independientes) |
+
+El video de YouTube se incluyó en la Landing Page junto con el Video About-the-Team.
 
 # Conclusiones
 
@@ -3315,6 +3339,6 @@ Los roles `FLEET_ADMINISTRATOR` y `OPERATOR` no se ofrecen en el registro públi
 
 | Video | Enlace |
 | :--- | :--- |
-| About-the-Product | [https://youtu.be/OBhNOHt9zh0](https://youtu.be/OBhNOHt9zh0) |
+| About-the-Product | [YouTube](https://youtu.be/ivCzd64wIjQ) · [Microsoft Stream](https://upcedupe-my.sharepoint.com/personal/u202416147_upc_edu_pe/_layouts/15/stream.aspx?uniqueId=fd0aebf2-1556-4a42-a341-c713b4f1dda2) |
 | About-the-Team | [https://youtu.be/tptPPrhuSH4](https://youtu.be/tptPPrhuSH4) |
 | Entrevistas de validación | [https://youtu.be/TXv-QAAzDJs](https://youtu.be/TXv-QAAzDJs) |
