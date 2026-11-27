@@ -86,6 +86,7 @@
 | 0.16 | 13/11/2026 | Carlos Gabriel Cespedes Lezcano | Avance AV2: desarrollo del punto 5.2.3 Sprint 3 con la RESTful API en Spring Boot, su documentación OpenAPI, el despliegue en Azure App Service con Azure Database for MySQL y la integración de la aplicación web; actualización del punto 5.1.4 con la configuración de despliegue de la API; incorporación de View Fleet Rentals a las queries de Rental Management; diseño de las entrevistas de validación (5.3); actualización de Project Report Collaboration Insights, Student Outcome, Conclusiones, Bibliografía y Anexos. |
 | 0.17 | 13/11/2026 | Carlos Gabriel Cespedes Lezcano | Migración del despliegue de la RESTful API de Azure App Service (Publish: Code, Java 21) a despliegue por contenedor (Publish: Container, JDK 27): nuevo `Dockerfile` multi-stage, archivos `docker-compose` para desarrollo local y verificación previa a producción, Azure Container Registry `maquicontrolacr`, y reconfiguración del App Service existente para extraer la imagen; actualización de los puntos 5.1.1 y 5.1.4 con las herramientas y la configuración de despliegue reales. |
 | 0.18 | 24/11/2026 | Carlos Gabriel Cespedes Lezcano | Corrección del informe según la retroalimentación del AV2: carátula con la relación de integrantes alineada, Problem Statement y Hypothesis Statements en español con la plantilla de Lean UX, Sprint Goals en español enfocados en el negocio, descomposición de cada User Story en engineering tasks de 4 a 8 horas, anexo de usuarios de prueba por segmento, JDK 27 en la RESTful API, tabla de hallazgos con heurística y severidad en las entrevistas de validación, corrección de niveles de títulos, tabla de contenidos, sección de Conclusiones y recomendaciones, y revisión de ortografía. |
+| 0.19 | 26/11/2026 | Kevin Junior Salazar Marquina | Documentación del incremento de catálogo del Sprint 4: objetivo de negocio, tareas de US-020 y US-021, commits, pruebas, ejecución con ambos roles, capturas antes y después, integración mediante el PR #3 y aporte escrito al Student Outcome 3. |
 
 ## Project Report Collaboration Insights
 
@@ -165,6 +166,12 @@ Para el avance AV2 el equipo trabajó la RESTful API en el nuevo repositorio `ma
 | Angiela Stephany Fuentes Alvarez | 0 | 0 | 2 |
 
 Los commits del periodo AV2 se cuentan desde el commit `dc3a8ea`, corte de la entrega TB1, y no incluyen merge commits.
+
+### Reporte de colaboración - Sprint 4
+
+Kevin Junior Salazar Marquina se incorporó al desarrollo del incremento de catálogo del Sprint 4. Implementó los filtros de US-020 y US-021 y sus traducciones, agregó 11 pruebas del componente y verificó el comportamiento con las cuentas de propietario y contratista conectadas al backend publicado. Los cambios se registraron en dos commits de `maquicontrol-webapp` y se integraron en `develop` mediante el [PR #3](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/pull/3).
+
+La [sección 5.2.4](#524-sprint-4) relaciona las tareas con los commits, las comprobaciones y las capturas del incremento. Los registros de las entregas anteriores conservan las contribuciones realizadas por el equipo en cada periodo.
 
 ### Gráficos de GitHub Insights
 
@@ -323,6 +330,15 @@ El repositorio de la RESTful API se creó en noviembre, durante el Sprint 3. Es 
     - [5.2.3.6. Services Documentation Evidence for Sprint Review](#5236-services-documentation-evidence-for-sprint-review)
     - [5.2.3.7. Software Deployment Evidence for Sprint Review](#5237-software-deployment-evidence-for-sprint-review)
     - [5.2.3.8. Team Collaboration Insights during Sprint](#5238-team-collaboration-insights-during-sprint)
+  - [5.2.4. Sprint 4](#524-sprint-4)
+    - [5.2.4.1. Sprint Planning 4](#5241-sprint-planning-4)
+    - [5.2.4.2. Aspect Leaders and Collaborators](#5242-aspect-leaders-and-collaborators)
+    - [5.2.4.3. Sprint Backlog 4](#5243-sprint-backlog-4)
+    - [5.2.4.4. Development Evidence for Sprint Review](#5244-development-evidence-for-sprint-review)
+    - [5.2.4.5. Execution Evidence for Sprint Review](#5245-execution-evidence-for-sprint-review)
+    - [5.2.4.6. Services Documentation Evidence for Sprint Review](#5246-services-documentation-evidence-for-sprint-review)
+    - [5.2.4.7. Software Deployment Evidence for Sprint Review](#5247-software-deployment-evidence-for-sprint-review)
+    - [5.2.4.8. Team Collaboration Insights during Sprint](#5248-team-collaboration-insights-during-sprint)
 - [5.3. Validation Interviews](#53-validation-interviews)
   - [5.3.1. Diseño de Entrevistas](#531-diseño-de-entrevistas)
   - [5.3.2. Registro de Entrevistas](#532-registro-de-entrevistas)
@@ -355,6 +371,14 @@ El siguiente cuadro presenta las acciones verificables realizadas por los integr
 | :--- | :--- | :--- |
 | **Comunica oralmente con efectividad a diferentes rangos de audiencia.** | **Fuentes Alvarez, Angiela Stephany**<br>**AV1:** Realizó la entrevista a Piero Reaño, representante del segmento de contratistas independientes y responsables de obra. Adaptó las preguntas al contexto del entrevistado para recopilar información sobre disponibilidad, costos, mantenimiento y gestión de maquinaria. El registro, resumen, captura y evidencia audiovisual de la entrevista fueron incorporados en la sección 2.2.2.<br>**TB1:** Expondrá en el Stage Review la Landing Page v2.0.0 y su integración con la aplicación web desplegada.<br>**AV2:** Expondrá en el Sprint Review las validaciones de periodo y estado de reservas que incorporó en la aplicación web.<br><br>**Tantalean Granda, Nicolas**<br>**AV1:** Evidencia oral pendiente. Sustentará los resultados del análisis competitivo, la investigación de usuarios y la especificación de requisitos antes del cierre de la entrega.<br>**TB1:** Expondrá en el Stage Review la planificación del Sprint 2, el Sprint Backlog y las User Stories atendidas.<br>**AV2:** Expondrá en el Sprint Review el registro, el inicio de sesión con JWT y la seguridad por roles de la RESTful API.<br><br>**Gutiérrez Lizarbe, Wilmer Sebastián**<br>**AV1:** Realizó la entrevista a Harold Angello, representante del segmento de contratistas y responsables de obra. Adaptó las preguntas al contexto del entrevistado para recopilar información sobre sus necesidades, experiencias y problemas relacionados con el alquiler de maquinaria.<br>**TB1:** Expondrá en el Stage Review el Event Storming y los diagramas Design-Level elaborados en PlantUML.<br>**AV2:** Expondrá en el Sprint Review las reglas de negocio de Fleet, Rental, IAM y Profiles cubiertas con pruebas unitarias.<br><br>**Castillo Guevara, Mathias Alejandro**<br>**AV1:** Realizó la entrevista a Renzo Huamán, representante del segmento de contratistas independientes. La información obtenida fue empleada posteriormente en la elaboración de artefactos de Needfinding.<br>**TB1:** Expondrá en el Stage Review la arquitectura de software y los diagramas C4 de contenedores y componentes.<br>**AV2:** Expondrá en el Sprint Review los endpoints de Operations, Subscription y Billing y sus eventos de integración.<br><br>**Cespedes Lezcano, Carlos Gabriel**<br>**AV1:** Realizó las entrevistas a José Ramírez, Carlos Stephano Mendoza y Andrea López, representantes relacionados con la administración y el alquiler de maquinaria. Recopiló información sobre disponibilidad, tarifas, mantenimiento, coordinación y control operativo.<br>**TB1:** Presentará la demostración en vivo de la aplicación web desplegada en Azure Static Web Apps, la Fake API en Azure App Service y el flujo de suscripción con Mercado Pago en modo sandbox. <br>**AV2:** Presentará la demostración en vivo de la aplicación web conectada a la RESTful API desplegada en Azure App Service, su documentación en Swagger UI y la base de datos en Azure Database for MySQL.|**Avance AV1:** Las entrevistas permitieron establecer comunicación directa con representantes de ambos segmentos objetivo y adaptar las preguntas al contexto de cada participante. Carlos, Mathias, Wilmer y Angiela realizaron entrevistas y documentaron sus resultados en el informe. Nicolas incorporará su evidencia de comunicación oral mediante la exposición de los resultados del análisis competitivo, la investigación de usuarios y la especificación de requisitos durante la sustentación de AV1.<br><br>**Avance TB1:** Para el Stage Review cada integrante expone las secciones y productos que lideró en el Sprint 2. La demostración en vivo de la aplicación web y la Landing Page permite explicar las funcionalidades a una audiencia técnica y no técnica.<br><br>**Avance AV2:** Cada integrante expone en el Sprint Review el Bounded Context o producto que lideró en el Sprint 3, apoyándose en la aplicación desplegada y en Swagger UI para explicar el funcionamiento a una audiencia técnica y no técnica. |
 | **Comunica por escrito con efectividad a diferentes rangos de audiencia.** | **Fuentes Alvarez, Angiela Stephany**<br>**AV1:** Documentó Student Outcome y desarrolló contenido del Capítulo IV: Product Design, incluyendo Style Guidelines, Information Architecture y Landing Page UI Design.<br>**TB1:** Desarrolló cambios de la Landing Page integrados en la versión v2.0.0, incluyendo los enlaces hacia la aplicación web desplegada.<br>**AV2:** Implementó en la aplicación web la validación de las fechas del periodo de alquiler y de las transiciones de estado de las reservas.<br><br>**Tantalean Granda, Nicolas**<br>**AV1:** Documentó el análisis competitivo, el diseño de entrevistas, User Stories y Product Backlog, organizando los requisitos identificados para los segmentos objetivo.<br>**TB1:** Estructuró el punto 5.2.2 Sprint 2, incluyendo Sprint Planning, Aspect Leaders and Collaborators y Sprint Backlog.<br>**AV2:** Desarrolló el Bounded Context Identity & Access Management de la RESTful API: agregado de cuenta de usuario, registro con hash de contraseñas, inicio de sesión con JWT y comandos de roles.<br><br>**Gutiérrez Lizarbe, Wilmer Sebastián**<br>**AV1:** Documentó los resultados de la entrevista a Harold Angello y desarrolló artefactos de Needfinding, incluyendo User Persona, User Journey Mapping y Empathy Mapping.<br>**TB1:** Elaboró los diagramas PlantUML de Big Picture Event Storming y Design-Level Event Storming.<br>**AV2:** Desarrolló la primera versión de Fleet, Rental, IAM y Profiles en la RESTful API y las pruebas unitarias de reglas de ubicación, periodo de alquiler, roles y contacto.<br><br>**Castillo Guevara, Mathias Alejandro**<br>**AV1:** Documentó la entrevista a Renzo Huamán y elaboró artefactos de Needfinding relacionados con User Personas, User Task Matrix, User Journey Mapping y Empathy Mapping.<br>**TB1:** Actualizó las descripciones de componentes y los diagramas de arquitectura de software del punto 4.6.<br>**AV2:** Desarrolló los Bounded Contexts Operations, Subscription y Billing de la RESTful API, con sus servicios CQRS, ACL hacia Mercado Pago y SUNAT, persistencia, controladores y pruebas de dominio.<br><br>**Cespedes Lezcano, Carlos Gabriel**<br>**AV1:** Participó en la estructuración y corrección del informe; documentó entrevistas, Needfinding, Big Picture Event Storming, Ubiquitous Language, Impact Mapping, Web Application UX/UI Design y la arquitectura de software basada en DDD.<br>**TB1:** Documentó los Bounded Contexts Category, Subscription y Billing, actualizó el Capítulo V con la configuración real de herramientas y despliegue, completó el punto 5.2.2 Sprint 2 con evidencias de la aplicación web y la Fake API, y alineó los diagramas C4 con el código implementado. <br>**AV2:** Desarrolló la base compartida y los contextos Profiles, Fleet, Rental y Maintenance de la RESTful API, la desplegó en Azure, conectó la aplicación web con ella y documentó el punto 5.2.3 Sprint 3 y la configuración de despliegue del punto 5.1.4.| **Avance AV1:** Los integrantes han documentado los resultados de investigación, requisitos, decisiones de diseño y arquitectura mediante contenido escrito y artefactos visuales. El uso de una estructura común, lenguaje técnico y control de versiones permite comunicar el avance del proyecto de forma organizada y trazable.<br><br>**Avance TB1:** El equipo documentó la implementación del Sprint 2, la configuración de despliegue y la arquitectura actualizada. Los diagramas y descripciones reflejan el código implementado, lo que facilita que docentes, usuarios y desarrolladores comprendan el estado real del producto.<br><br>**Avance AV2:** El equipo documentó la RESTful API con OpenAPI, su despliegue y el Sprint 3. Los mensajes de commit siguen Conventional Commits y los endpoints usan los mismos nombres del Catálogo de comandos, lo que permite seguir cada funcionalidad desde el informe hasta el código. |
+
+### Aporte al Student Outcome 3 durante el Sprint 4
+
+| Criterio específico | Acciones realizadas | Conclusiones |
+|---|---|---|
+| Comunica por escrito con efectividad a diferentes rangos de audiencia. | **Salazar Marquina, Kevin Junior:** describió el incremento de búsqueda por categoría y ubicación, sus criterios de revisión y su relación con las historias US-020 y US-021. Registró la implementación y las pruebas en commits separados, explicó el alcance en el PR #3 y documentó en la sección 5.2.4 la planificación, las tareas, las capturas y los resultados de ejecución. | La descripción funcional permite al usuario comprender cómo acotar el catálogo; los enlaces a código, pruebas e integración permiten al equipo y al docente revisar el mismo incremento desde una perspectiva técnica. |
+
+Para la comunicación oral del Sprint Review se utilizarán las capturas y la demostración de los filtros con ambas cuentas. La explicación presentará el problema de búsqueda, los criterios disponibles y los resultados obtenidos al combinar o limpiar los filtros.
 
 # Capítulo I: Introducción
 
@@ -2965,6 +2989,154 @@ Para el conteo se consideraron los commits desde el corte de TB1 (commit `dc3a8e
 Las cantidades representan la actividad registrada en los repositorios y no miden por sí solas la calidad o complejidad de cada aporte.
 
 ![Sprint 3 Backend Commits](assets/sprint-3-backend-commits.png)
+
+### 5.2.4. Sprint 4
+
+El incremento de catálogo del Sprint 4 facilita que los contratistas encuentren maquinaria por categoría y ubicación, y permite que los propietarios consulten el mismo catálogo con esos criterios. Comprende US-020 y US-021, implementadas en la aplicación web y verificadas con las cuentas de ambos segmentos conectadas a la RESTful API existente.
+
+#### 5.2.4.1. Sprint Planning 4
+
+| Campo | Detalle |
+|---|---|
+| **Sprint #** | Sprint 4 |
+| **Sprint Planning Background** | |
+| Date | 2026-11-24, inicio del cronograma estimado. |
+| Fecha de registro del incremento | 2026-11-26 |
+| Fecha límite de entrega | 2026-11-27, 07:00, hora de Lima. |
+| Prepared By | Salazar Marquina, Kevin Junior |
+| Product Owner | — |
+| Scrum Master | — |
+| Sprint 3 Review Summary | El incremento anterior incorporó la RESTful API y su integración con la aplicación web. El catálogo permite consultar maquinaria con su categoría, ubicación, tarifa y estado. |
+| Sprint 3 Retrospective Summary | La retroalimentación del AV2 solicitó expresar los objetivos en términos de negocio, descomponer las historias en varias tareas y proporcionar cuentas de prueba por segmento. Estas correcciones orientan el registro del nuevo incremento. |
+| **Sprint Goal & User Stories** | |
+| Sprint 4 Goal | *Nuestro enfoque está en* que los contratistas encuentren equipos de la categoría y ubicación que necesitan, y que los propietarios puedan consultar el catálogo con los mismos criterios.<br>*Creemos que esto brinda* una búsqueda más directa y una mejor comprensión de las opciones disponibles *a* los contratistas y a los propietarios de maquinaria.<br>*Esto se confirmará cuando* ambos roles puedan combinar una categoría con un distrito o departamento, reconocer cuántos equipos coinciden y recuperar el catálogo completo al limpiar los filtros. |
+| User Stories del incremento | US-020: Filtrar maquinaria por categoría.<br>US-021: Buscar maquinaria por ubicación. |
+| Sum of Story Points | 3, según las estimaciones del Product Backlog: US-020 = 1 y US-021 = 2. |
+
+Para este incremento, la búsqueda de US-021 corresponde al texto del distrito o departamento registrado en cada maquinaria. La categoría y la ubicación se combinan, y el cambio de un criterio actualiza los resultados inmediatamente.
+
+Las cuatro tareas del incremento suman **16 horas estimadas**. El cronograma las distribuye entre el martes 24 y el jueves 26 de noviembre, con bloques de cuatro horas. El cierre estimado es el jueves a las 18:00, dejando 13 horas de margen hasta la entrega del viernes a las 07:00. Este cronograma representa una distribución de las estimaciones; las fechas de ejecución e integración se sustentan en los commits y las evidencias del 26/11/2026.
+
+| Fecha | Bloque estimado (hora de Lima) | Tarea | Horas estimadas |
+|---|---|---|---:|
+| 24/11/2026 | 09:00–13:00 | S4-T01: selector de categorías. | 4 |
+| 25/11/2026 | 09:00–13:00 | S4-T02: verificación de categoría y combinación de criterios. | 4 |
+| 26/11/2026 | 09:00–13:00 | S4-T03: búsqueda por distrito o departamento. | 4 |
+| 26/11/2026 | 14:00–18:00 | S4-T04: contador, limpieza, mensajes, traducciones y verificación. | 4 |
+| **Total** | | | **16** |
+
+#### 5.2.4.2. Aspect Leaders and Collaborators
+
+El equipo acordó separar el trabajo en una rama de funcionalidad, revisarlo antes de su integración a `develop` y mantener la integración final a `main` a cargo del líder. La siguiente matriz corresponde al incremento de catálogo documentado en esta sección. Se utiliza `L` para responsable del aspecto.
+
+| Team Member | GitHub Username / Git Author | Catalog Filters | Verification | Sprint Report |
+|---|---|:---:|:---:|:---:|
+| Salazar Marquina, Kevin Junior | `AresSalamar` / `kevin` | L | L | L |
+
+#### 5.2.4.3. Sprint Backlog 4
+
+Cada historia se descompone en tareas de implementación y verificación. Las estimaciones se documentan para el cierre del incremento; son estimaciones de esfuerzo y no un registro de horas efectivamente trabajadas. El estado `Done` corresponde a la implementación verificada e integrada en `develop` del frontend.
+
+| Sprint | Story ID | Story Title | Task ID | Task Title | Task Description | Estimation (Hours) | Assigned To | Status |
+|---|---|---|---|---|---|---:|---|---|
+| Sprint 4 | US-020 | Filtrar maquinaria por categoría | S4-T01 | Incorporar el selector de categorías | Cargar las categorías existentes en el selector y actualizar el listado al elegir una categoría o la opción de todas las categorías. | 4 | Kevin Salazar | Done |
+| Sprint 4 | US-020 | Filtrar maquinaria por categoría | S4-T02 | Verificar la selección y la combinación de criterios | Cubrir la selección por identificador de categoría, su combinación con ubicación y la conservación de las acciones de cada rol mediante pruebas del componente y revisión con ambas cuentas. | 4 | Kevin Salazar | Done |
+| Sprint 4 | US-021 | Buscar maquinaria por ubicación | S4-T03 | Implementar la búsqueda por distrito o departamento | Filtrar por coincidencias parciales en la ubicación, ignorando mayúsculas, tildes y espacios al inicio o al final del texto. | 4 | Kevin Salazar | Done |
+| Sprint 4 | US-021 | Buscar maquinaria por ubicación | S4-T04 | Incorporar y verificar la respuesta de la búsqueda | Agregar el contador de resultados, la acción de limpiar y el mensaje sin coincidencias; traducir los controles a español e inglés y verificar la actualización del catálogo, el teclado y la adaptación de los filtros a pantallas pequeñas. | 4 | Kevin Salazar | Done |
+
+La trazabilidad de estas tareas se apoya en los [commits de la rama de funcionalidad](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/compare/7a7cbbc093684b8905dd85c0831d7a8164f5e3d9...1a0338a174b66ef4e98001bee810a638f8837c84) y en el [pull request #3](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/pull/3), integrado en `develop` el 26/11/2026.
+
+#### 5.2.4.4. Development Evidence for Sprint Review
+
+Los cambios se desarrollaron en `feature/sprint-4-catalog-filters`, creada desde `develop`. El incremento modifica el componente de catálogo, su plantilla, sus estilos y los diccionarios `en` y `es-419`, e incorpora un archivo de pruebas del componente. Las tarjetas conservan su estructura y sus acciones por rol.
+
+| Repository | Branch | Commit ID | Commit Message | Committed on |
+|---|---|---|---|---|
+| `maquicontrol-webapp` | `feature/sprint-4-catalog-filters` | [`d6f88eb`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/d6f88eb) | `feat(fleet): I filter the machinery catalog by category and location` | 26/11/2026 |
+| `maquicontrol-webapp` | `feature/sprint-4-catalog-filters` | [`1a0338a`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/1a0338a) | `test(fleet): I verify catalog filters and preserve existing catalog states` | 26/11/2026 |
+| `maquicontrol-webapp` | `develop` | [`bed98fa`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/bed98fa) | `Merge pull request #3 from upc-pre-202620-1asi0729-7750-heavytech/feature/sprint-4-catalog-filters` | 26/11/2026 |
+
+La verificación se ejecutó localmente sobre la versión de la rama de funcionalidad:
+
+| Comprobación | Resultado |
+|---|---|
+| `npm test -- --watch=false` | 22 pruebas aprobadas en 4 archivos; 11 pruebas nuevas corresponden a los filtros del catálogo. |
+| `npm run build` | Compilación de producción completada. Se registraron avisos de tamaño del bundle inicial y de estilos de componentes. |
+| Diferencia entre el incremento verificado y `develop` después del merge | Sin diferencias en el contenido de los archivos del incremento. |
+
+Las pruebas nuevas cubren categoría, coincidencias parciales de distrito, normalización del departamento, combinación de criterios, limpieza, ausencia de coincidencias y actualización del catálogo. También comprueban la conservación de los estados de carga, error y catálogo vacío, y de la restricción de alquiler para equipos reservados.
+
+#### 5.2.4.5. Execution Evidence for Sprint Review
+
+La revisión funcional del incremento se realizó con el frontend ejecutado localmente y conectado a la RESTful API publicada en Azure. Se utilizaron las cuentas de propietario y contratista incluidas en el Anexo de usuarios de prueba. El catálogo consultado contenía la maquinaria **Camion Rex**, de la categoría **camiones**, ubicada en **SJL, Lima**.
+
+**Catálogo anterior al incremento:** listado de maquinaria en la aplicación pública consultada el 26/11/2026.
+
+![Catálogo de maquinaria antes de incorporar los filtros del Sprint 4](assets/sprint-4-catalog-before.jpg)
+
+**Catálogo con los filtros del Sprint 4:** ejecución local de la rama integrada en `develop`, conectada al mismo backend y revisada con la misma cuenta de contratista.
+
+![Catálogo de maquinaria con filtros por categoría y ubicación del Sprint 4](assets/sprint-4-catalog-after.jpg)
+
+| Caso | Resultado observado |
+|---|---|
+| Categoría `camiones` y departamento `Lima` | Se muestra Camion Rex y el contador indica una coincidencia. |
+| Departamento escrito como `  lIMA  ` | Se obtiene la misma coincidencia al ignorar mayúsculas y espacios exteriores. |
+| Distrito escrito como `sjl` | Se muestra el equipo ubicado en SJL. |
+| Categoría `Excavadoras` o ubicación `Cusco` | Se muestran cero coincidencias, el mensaje correspondiente y los controles para cambiar o limpiar los criterios. |
+| Limpiar filtros | Se vacían ambos controles y se recupera el catálogo completo. |
+| Cambiar entre español e inglés | Los controles, el contador y el mensaje sin coincidencias se muestran en el idioma seleccionado. |
+| Ingresar como contratista o propietario | Ambos pueden filtrar. Se conservan las opciones de alquilar para el contratista y de publicar maquinaria y gestionar categorías para el propietario. |
+| Navegar con teclado y revisar los filtros a 390 px de ancho | Los controles mantienen etiquetas, foco visible y una distribución adaptable. |
+
+La revisión con datos reales se complementó con las pruebas del componente, que utilizan un catálogo de prueba con varias categorías y ubicaciones para comprobar combinaciones y cambios en la fuente de datos.
+
+#### 5.2.4.6. Services Documentation Evidence for Sprint Review
+
+Los filtros utilizan los recursos que ya consume el catálogo. El frontend obtiene las maquinarias y las categorías, y aplica los criterios sobre la lista cargada mediante señales y valores calculados de Angular.
+
+| Request | Uso en el incremento |
+|---|---|
+| `GET /api/v1/machinery` | Obtiene la maquinaria con `categoryId`, estado y ubicación. La búsqueda utiliza `location.district` y `location.department`. |
+| `GET /api/v1/categories` | Obtiene los identificadores y nombres que se muestran en el selector de categorías. |
+
+**URL base:** `https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/api/v1`.
+
+**Documentación de los servicios existentes:** [Swagger UI](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html).
+
+Seleccionar una categoría, escribir una ubicación o limpiar los criterios actualiza la vista sin efectuar nuevas solicitudes al servidor por cada cambio. Este incremento conserva los contratos de la API y la estructura de la información almacenada.
+
+#### 5.2.4.7. Software Deployment Evidence for Sprint Review
+
+El incremento quedó integrado en `develop` del frontend mediante el merge `bed98fa`. Para revisar el código con el backend publicado se ejecutó el siguiente comando:
+
+```bash
+npm start -- --configuration production --host 127.0.0.1 --port 4200
+```
+
+Esta configuración ejecuta el frontend en el equipo local y utiliza las URLs de Azure definidas en el entorno de producción. La configuración del entorno permanece igual que en el repositorio del equipo.
+
+| Producto | Referencia del incremento | Estado al corte del 26/11/2026 |
+|---|---|---|
+| Frontend con filtros | [`develop`, commit `bed98fa`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/tree/bed98fa) | Integrado; ejecución local en `http://127.0.0.1:4200/fleet/machinery` conectada al backend publicado. |
+| RESTful API | [Swagger UI en Azure](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html) | Servicio existente utilizado para la revisión con ambos roles. |
+| Frontend público | [Azure Static Web Apps](https://lemon-pebble-0a946d810.4.azurestaticapps.net) | La publicación del incremento seguirá la integración de `develop` a `main` a cargo del líder. |
+
+#### 5.2.4.8. Team Collaboration Insights during Sprint
+
+El equipo distribuyó las mejoras del catálogo y acordó el flujo `feature` → `develop` → `main`. Kevin Salazar implementó los filtros de categoría y ubicación en una rama independiente, registró el código y las pruebas en commits separados y abrió el pull request hacia `develop`. El PR #3 quedó integrado el 26/11/2026 a las 18:38, hora de Lima.
+
+| Integrante / Identidad Git | Aporte documentado | Evidencia |
+|---|---|---|
+| Salazar Marquina, Kevin Junior (`AresSalamar` / `kevin`) | Implementación y traducción de los filtros del catálogo; pruebas del componente; revisión con las cuentas de ambos segmentos; documentación del incremento. | Commits `d6f88eb` y `1a0338a`, [PR #3 integrado](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/pull/3) y sección 5.2.4 del informe. |
+
+El incremento conserva las tarjetas del catálogo y concentra los cambios en los controles de búsqueda y su respuesta. La separación de la implementación, las pruebas y la integración permite relacionar cada cambio con las historias US-020 y US-021.
+
+| Aspecto de revisión del incremento | Resultado |
+|---|---|
+| Objetivo de negocio | Ambos segmentos pueden acotar el catálogo por categoría y ubicación, reconocer la cantidad de coincidencias y recuperar la lista completa. |
+| Verificación técnica | Las pruebas del componente y la revisión con el backend publicado cubren los criterios de búsqueda y las opciones de cada rol. |
+| Continuidad de la integración | El incremento permanece en `develop` hasta la integración a `main` a cargo del líder. |
 
 ## 5.3. Validation Interviews
 
