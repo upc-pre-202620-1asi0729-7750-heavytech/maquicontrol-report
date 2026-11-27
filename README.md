@@ -36,16 +36,11 @@
 
 <p><strong>Integrantes</strong></p>
 
-<table align="center" style="font-size: 11pt; margin-left: auto; margin-right: auto;">
-  <thead>
-    <tr><th align="left">Código</th><th align="left">Apellidos y Nombres</th></tr>
-  </thead>
-  <tbody>
-    <tr><td align="left">u202410783</td><td align="left">Castillo Guevara, Mathias Alejandro</td></tr>
-    <tr><td align="left">u202416147</td><td align="left">Cespedes Lezcano, Carlos Gabriel</td></tr>
-    <tr><td align="left">u202417747</td><td align="left">Salazar Marquina, Kevin Junior</td></tr>
-  </tbody>
-</table>
+<p>u202410783 &nbsp;&nbsp; Castillo Guevara, Mathias Alejandro</p>
+
+<p>u202416147 &nbsp;&nbsp; Cespedes Lezcano, Carlos Gabriel</p>
+
+<p>u202417747 &nbsp;&nbsp; Salazar Marquina, Kevin Junior</p>
 
 <br>
 
