@@ -3023,7 +3023,7 @@ Las tareas del incremento web en `maquicontrol-webapp` suman **35 horas estimada
 
 #### 5.2.4.2. Aspect Leaders and Collaborators
 
-El equipo acordó separar el trabajo en una rama de funcionalidad, revisarlo antes de su integración a `develop` y mantener la integración final a `main` a cargo del líder. La siguiente matriz corresponde al incremento de catálogo documentado en esta sección. Se utiliza `L` para responsable del aspecto.
+El equipo acordó separar el trabajo en ramas de funcionalidad, revisarlo antes de su integración a `develop` y mantener la integración final a `main` a cargo del líder. La siguiente matriz corresponde al incremento documentado en esta sección. Se utiliza `L` para responsable del aspecto y `C` para colaborador.
 
 | Team Member | GitHub Username / Git Author | Catalog Filters | Mechanical History | Verification | Report Corrections | SCM & Release | Sprint Report |
 |---|---|:---:|:---:|:---:|:---:|:---:|:---:|
