@@ -3057,7 +3057,10 @@ La trazabilidad de estas tareas en `maquicontrol-webapp` se apoya en los [commit
 
 #### 5.2.4.4. Development Evidence for Sprint Review
 
-Los cambios se desarrollaron en `feature/sprint-4-catalog-filters`, creada desde `develop`. El incremento modifica el componente de catálogo, su plantilla, sus estilos y los diccionarios `en` y `es-419`, e incorpora un archivo de pruebas del componente. Las tarjetas conservan su estructura y sus acciones por rol.
+Los cambios del incremento web se desarrollaron en dos ramas creadas desde `develop`:
+
+- **`feature/sprint-4-catalog-filters` (US-020 y US-021):** modifica el componente de catálogo (`machinery-list.ts`), su plantilla, sus estilos y los diccionarios `en.json` y `es-419.json`, e incorpora las pruebas de filtros en `machinery-list.spec.ts`. Las tarjetas conservan su estructura y sus acciones por rol.
+- **`feature/sprint-4-mechanical-history` (US-033):** modifica 9 archivos (`maintenance-api-endpoint.ts`, `maintenance-management-api.ts`, `maintenance-management-store.ts`, `machinery-list.ts`, `machinery-list.html`, `machinery-list.scss`, `es-419.json`, `en.json` y `machinery-list.spec.ts`), incorporando 375 líneas nuevas para consultar `GET /api/v1/maintenances/history?machineryId={id}`, gestionar las señales reactivas del historial en el store, renderizar el botón **Ver historial mecánico** y el diálogo modal accesible (`role="dialog" aria-modal="true"`) con estados de carga, error/reintento, vacío y listado de mantenimientos, traducir los textos y cubrir el flujo con prueba unitaria.
 
 | Repository | Branch | Commit ID | Commit Message | Committed on |
 |---|---|---|---|---|
