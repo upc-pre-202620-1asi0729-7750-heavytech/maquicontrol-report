@@ -3121,19 +3121,19 @@ La revisión con datos reales se complementó con las pruebas del componente, qu
 
 #### 5.2.4.6. Services Documentation Evidence for Sprint Review
 
-Los filtros utilizan los recursos que ya consume el catálogo. El frontend obtiene las maquinarias y las categorías, y aplica los criterios sobre la lista cargada mediante señales y valores calculados de Angular.
+Los filtros utilizan los recursos que ya consume el catálogo, mientras que el historial mecánico consulta bajo demanda el endpoint de historial de mantenimientos al abrir el diálogo de cada maquinaria. El frontend obtiene las maquinarias y las categorías para aplicar los filtros localmente mediante señales y valores calculados de Angular, y solicita el historial mediante `MaintenanceApiEndpoint.getHistory(machineryId)` y `MaintenanceManagementApi.getMaintenanceHistory(machineryId)`.
 
 | Request | Uso en el incremento |
 |---|---|
 | `GET /api/v1/machinery` | Obtiene la maquinaria con `categoryId`, estado y ubicación. La búsqueda utiliza `location.district` y `location.department`. |
 | `GET /api/v1/categories` | Obtiene los identificadores y nombres que se muestran en el selector de categorías. |
-| `GET /api/v1/maintenances/history?machineryId={id}` | Obtiene el historial de mantenimientos de una maquinaria para el diálogo de historial mecánico. A diferencia del resto de Maintenance Management, está disponible para cualquier usuario autenticado. |
+| `GET /api/v1/maintenances/history?machineryId={id}` | Obtiene el historial de mantenimientos de una maquinaria para el diálogo de historial mecánico (`MaintenanceApiEndpoint.getHistory`). A diferencia del resto de Maintenance Management, está disponible para cualquier usuario autenticado. |
 
 **URL base:** `https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/api/v1`.
 
 **Documentación de los servicios existentes:** [Swagger UI](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html).
 
-Seleccionar una categoría, escribir una ubicación o limpiar los criterios actualiza la vista sin efectuar nuevas solicitudes al servidor por cada cambio. Este incremento conserva los contratos de la API y la estructura de la información almacenada.
+Seleccionar una categoría, escribir una ubicación o limpiar los criterios actualiza la vista sin efectuar nuevas solicitudes al servidor por cada cambio; por su parte, pulsar **Ver historial mecánico** ejecuta una consulta `GET` puntual por `machineryId`, controlando la respuesta vigente en `MaintenanceManagementStore` para evitar condiciones de carrera si el usuario cambia de maquinaria o cierra sesión. Este incremento conserva los contratos de la API y la estructura de la información almacenada.
 
 #### 5.2.4.7. Software Deployment Evidence for Sprint Review
 
