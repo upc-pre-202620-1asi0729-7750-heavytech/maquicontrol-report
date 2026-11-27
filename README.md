@@ -3008,15 +3008,18 @@ El incremento de catálogo del Sprint 4 facilita que los contratistas encuentren
 
 Para este incremento, la búsqueda de US-021 corresponde al texto del distrito o departamento registrado en cada maquinaria; la categoría y la ubicación se combinan, y el cambio de un criterio actualiza los resultados inmediatamente. Por su parte, US-033 incorpora un botón por tarjeta del catálogo que abre un diálogo modal con el historial de mantenimientos consultado bajo demanda a `GET /api/v1/maintenances/history?machineryId={id}`, mostrando tipo, estado, fecha y descripción de cada mantenimiento o los estados de carga, error con reintento y ausencia de registros.
 
-Las cuatro tareas del incremento suman **16 horas estimadas**. El cronograma las distribuye entre el martes 24 y el jueves 26 de noviembre, con bloques de cuatro horas. El cierre estimado es el jueves a las 18:00, dejando 13 horas de margen hasta la entrega del viernes a las 07:00. Este cronograma representa una distribución de las estimaciones; las fechas de ejecución e integración se sustentan en los commits y las evidencias del 26/11/2026.
+Las tareas del incremento web en `maquicontrol-webapp` suman **35 horas estimadas** (**16 horas** para los filtros de US-020/US-021 y **19 horas** para el historial mecánico de US-033), distribuidas entre el martes 24 y el jueves 26 de noviembre antes del cierre previo a la entrega del viernes a las 07:00. Este cronograma representa una distribución de las estimaciones; las fechas y horas reales de ejecución e integración se sustentan en los commits del 26/11/2026 (`18:38` en `bed98fa` y `19:45`–`20:31` en `2578ddd`).
 
 | Fecha | Bloque estimado (hora de Lima) | Tarea | Horas estimadas |
 |---|---|---|---:|
 | 24/11/2026 | 09:00–13:00 | S4-T01: selector de categorías. | 4 |
 | 25/11/2026 | 09:00–13:00 | S4-T02: verificación de categoría y combinación de criterios. | 4 |
 | 26/11/2026 | 09:00–13:00 | S4-T03: búsqueda por distrito o departamento. | 4 |
-| 26/11/2026 | 14:00–18:00 | S4-T04: contador, limpieza, mensajes, traducciones y verificación. | 4 |
-| **Total** | | | **16** |
+| 26/11/2026 | 14:00–18:00 | S4-T04: contador, limpieza, mensajes, traducciones y verificación de filtros. | 4 |
+| 26/11/2026 | 09:00–14:00 | S4-T05: consumo de `GET /maintenances/history` en `MaintenanceApiEndpoint` y `MaintenanceManagementApi`. | 5 |
+| 26/11/2026 | 14:00–18:00 | S4-T06: gestión de señales y estado del historial en `MaintenanceManagementStore`. | 4 |
+| 26/11/2026 | 18:00–20:00 (2 bloques) | S4-T07 y S4-T08: botón y diálogo modal en `MachineryList`, estilos, traducciones (`es-419` / `en`) y prueba unitaria. | 10 |
+| **Total** | | | **35** |
 
 #### 5.2.4.2. Aspect Leaders and Collaborators
 
