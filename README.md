@@ -3081,15 +3081,15 @@ Los cambios del incremento web se desarrollaron en dos ramas creadas desde `deve
 | `maquicontrol-report` | `develop` | `b69e2eb` … `ac4cedc` | Trece commits de las correcciones del AV2, integrados desde `feature/av2-feedback-corrections`. | 24/11/2026 |
 | `maquicontrol-report` | `develop` | `d63e9c5` … `b909111` | Cuatro commits de unificación de terminología y de versiones. | 25/11/2026 |
 
-La verificación se ejecutó localmente sobre la versión de la rama de funcionalidad:
+La verificación se ejecutó localmente sobre las ramas de funcionalidad y tras su integración en `develop`:
 
 | Comprobación | Resultado |
 |---|---|
-| `npm test -- --watch=false` | 22 pruebas aprobadas en 4 archivos; 11 pruebas nuevas corresponden a los filtros del catálogo. |
+| `npm test -- --watch=false` | 23 pruebas aprobadas en 4 archivos (`app.spec.ts`: 2, `rental-management-store.spec.ts`: 3, `rental-period.value-object.spec.ts`: 6 y `machinery-list.spec.ts`: 12); las 12 pruebas nuevas en `machinery-list.spec.ts` corresponden 11 a los filtros del catálogo y 1 al historial mecánico. |
 | `npm run build` | Compilación de producción completada. Se registraron avisos de tamaño del bundle inicial y de estilos de componentes. |
-| Diferencia entre el incremento verificado y `develop` después del merge | Sin diferencias en el contenido de los archivos del incremento. |
+| Diferencia entre los incrementos verificados y `develop` después del merge | Sin diferencias en el contenido de los archivos de ambos incrementos (`bed98fa` y `2578ddd`). |
 
-Las pruebas nuevas cubren categoría, coincidencias parciales de distrito, normalización del departamento, combinación de criterios, limpieza, ausencia de coincidencias y actualización del catálogo. También comprueban la conservación de los estados de carga, error y catálogo vacío, y de la restricción de alquiler para equipos reservados.
+Las pruebas de `machinery-list.spec.ts` cubren categoría, coincidencias parciales de distrito, normalización del departamento, combinación de criterios, limpieza, ausencia de coincidencias, actualización del catálogo, conservación de los estados de carga, error y catálogo vacío y restricción de alquiler para equipos reservados. Adicionalmente, la prueba del historial mecánico verifica la presencia del botón `.history-action` en las cuatro tarjetas, la invocación a `loadMaintenanceHistory(101)` al abrirlo, el renderizado del diálogo modal `.history-dialog` con el nombre de la maquinaria, el tipo, el estado, la fecha formateada (`dd/MM/yyyy`) y la descripción del mantenimiento, y el llamado a `clearMaintenanceHistory()` al cerrar el diálogo.
 
 #### 5.2.4.5. Execution Evidence for Sprint Review
 
