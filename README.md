@@ -43,10 +43,7 @@
   <tbody>
     <tr><td align="left">u202410783</td><td align="left">Castillo Guevara, Mathias Alejandro</td></tr>
     <tr><td align="left">u202416147</td><td align="left">Cespedes Lezcano, Carlos Gabriel</td></tr>
-    <tr><td align="left">u202520331</td><td align="left">Fuentes Alvarez, Angiela Stephany</td></tr>
-    <tr><td align="left">u202412044</td><td align="left">Gutiérrez Lizarbe, Wilmer Sebastián</td></tr>
     <tr><td align="left">u202417747</td><td align="left">Salazar Marquina, Kevin Junior</td></tr>
-    <tr><td align="left">u202410728</td><td align="left">Tantalean Granda, Nicolas</td></tr>
   </tbody>
 </table>
 
@@ -87,6 +84,7 @@
 | 0.17 | 13/11/2026 | Carlos Gabriel Cespedes Lezcano | Migración del despliegue de la RESTful API de Azure App Service (Publish: Code, Java 21) a despliegue por contenedor (Publish: Container, JDK 27): nuevo `Dockerfile` multi-stage, archivos `docker-compose` para desarrollo local y verificación previa a producción, Azure Container Registry `maquicontrolacr`, y reconfiguración del App Service existente para extraer la imagen; actualización de los puntos 5.1.1 y 5.1.4 con las herramientas y la configuración de despliegue reales. |
 | 0.18 | 24/11/2026 | Carlos Gabriel Cespedes Lezcano | Corrección del informe según la retroalimentación del AV2: carátula con la relación de integrantes alineada, Problem Statement y Hypothesis Statements en español con la plantilla de Lean UX, Sprint Goals en español enfocados en el negocio, descomposición de cada User Story en engineering tasks de 4 a 8 horas, anexo de usuarios de prueba por segmento, JDK 27 en la RESTful API, tabla de hallazgos con heurística y severidad en las entrevistas de validación, corrección de niveles de títulos, tabla de contenidos, sección de Conclusiones y recomendaciones, y revisión de ortografía. |
 | 0.19 | 26/11/2026 | Kevin Junior Salazar Marquina | Documentación del incremento de catálogo del Sprint 4: objetivo de negocio, tareas de US-020 y US-021, commits, pruebas, ejecución con ambos roles, capturas antes y después, integración mediante el PR #3 y aporte escrito al Student Outcome 3. |
+| 0.20 | 26/11/2026 | Carlos Gabriel Cespedes Lezcano | Cierre de la entrega TB2: carátula con los tres integrantes del equipo desde el Sprint 4, incorporación de US-033 Consultar historial mecánico al punto 5.2.4 Sprint 4 con sus engineering tasks, commits, pruebas, resultados de ejecución, endpoint y despliegue; actualización del Sprint Planning, de la matriz de Aspect Leaders and Collaborators, del reporte de colaboración y del aporte al Student Outcome 3 del Sprint 4; y actualización de Conclusiones y recomendaciones. |
 
 ## Project Report Collaboration Insights
 
@@ -170,6 +168,12 @@ Los commits del periodo AV2 se cuentan desde el commit `dc3a8ea`, corte de la en
 ### Reporte de colaboración - Sprint 4
 
 Kevin Junior Salazar Marquina se incorporó al desarrollo del incremento de catálogo del Sprint 4. Implementó los filtros de US-020 y US-021 y sus traducciones, agregó 11 pruebas del componente y verificó el comportamiento con las cuentas de propietario y contratista conectadas al backend publicado. Los cambios se registraron en dos commits de `maquicontrol-webapp` y se integraron en `develop` mediante el [PR #3](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/pull/3).
+
+Mathias Alejandro Castillo Guevara desarrolló la consulta del historial mecánico de US-033 en la aplicación web. Agregó el método `getHistory` al endpoint de mantenimiento, las señales de historial en el store de Maintenance Management, el panel desplegable por maquinaria en el catálogo de flota y sus traducciones en español e inglés, junto con las pruebas del componente. Los cambios se registraron en la rama `feature/sprint-4-mechanical-history` de `maquicontrol-webapp`, desde el commit `d84f109` hasta `e6d58fe`, y se integraron en `develop`.
+
+Carlos Gabriel Cespedes Lezcano aplicó las correcciones del informe indicadas en la retroalimentación del AV2, verificó el incremento del Sprint 4 contra la RESTful API publicada en Azure, alineó el repositorio de la API con su nuevo nombre `maquicontrol-platform` y el JDK 27 del despliegue por contenedor, documentó el punto 5.2.4 Sprint 4 y preparó la integración y el release de la entrega.
+
+Desde el Sprint 4 el equipo de MaquiControl está conformado por tres integrantes: Mathias Alejandro Castillo Guevara, Carlos Gabriel Cespedes Lezcano y Kevin Junior Salazar Marquina. Los registros de las entregas AV1, TB1 y AV2 conservan las contribuciones de los integrantes que participaron en esos periodos.
 
 La [sección 5.2.4](#524-sprint-4) relaciona las tareas con los commits, las comprobaciones y las capturas del incremento. Los registros de las entregas anteriores conservan las contribuciones realizadas por el equipo en cada periodo.
 
@@ -377,8 +381,10 @@ El siguiente cuadro presenta las acciones verificables realizadas por los integr
 | Criterio específico | Acciones realizadas | Conclusiones |
 |---|---|---|
 | Comunica por escrito con efectividad a diferentes rangos de audiencia. | **Salazar Marquina, Kevin Junior:** describió el incremento de búsqueda por categoría y ubicación, sus criterios de revisión y su relación con las historias US-020 y US-021. Registró la implementación y las pruebas en commits separados, explicó el alcance en el PR #3 y documentó en la sección 5.2.4 la planificación, las tareas, las capturas y los resultados de ejecución. | La descripción funcional permite al usuario comprender cómo acotar el catálogo; los enlaces a código, pruebas e integración permiten al equipo y al docente revisar el mismo incremento desde una perspectiva técnica. |
+| Comunica por escrito con efectividad a diferentes rangos de audiencia. | **Castillo Guevara, Mathias Alejandro:** documentó el incremento del historial mecánico de US-033 explicando, para el usuario propietario de flota, qué información del historial se muestra en el catálogo y, para el equipo, el consumo del endpoint `GET /api/v1/maintenances/history`, las señales del store y las pruebas del componente. Registró el alcance en los mensajes de commit de la rama `feature/sprint-4-mechanical-history` siguiendo Conventional Commits. | El mismo incremento queda explicado en lenguaje funcional para el usuario y en lenguaje técnico para el equipo y el docente, lo que permite revisar la funcionalidad y su implementación por separado. |
+| Comunica por escrito con efectividad a diferentes rangos de audiencia. | **Cespedes Lezcano, Carlos Gabriel:** redactó el punto 5.2.4 Sprint 4 y aplicó las correcciones del informe señaladas en la retroalimentación del AV2, reescribiendo los Sprint Goals y los Hypothesis Statements en un lenguaje orientado al negocio y detallando las engineering tasks para una audiencia técnica. Documentó además el anexo de usuarios de prueba para que el docente pueda verificar el producto desplegado. | La corrección del informe muestra la capacidad de ajustar el mismo contenido a lo que requiere cada audiencia: objetivos de negocio para el lector no técnico y tareas, commits y endpoints para el lector técnico. |
 
-Para la comunicación oral del Sprint Review se utilizarán las capturas y la demostración de los filtros con ambas cuentas. La explicación presentará el problema de búsqueda, los criterios disponibles y los resultados obtenidos al combinar o limpiar los filtros.
+Para la comunicación oral del Sprint Review se utilizarán las capturas y la demostración de los filtros y del historial mecánico con ambas cuentas. La explicación presentará el problema de búsqueda, los criterios disponibles y los resultados obtenidos al combinar o limpiar los filtros.
 
 # Capítulo I: Introducción
 
@@ -2992,7 +2998,7 @@ Las cantidades representan la actividad registrada en los repositorios y no mide
 
 ### 5.2.4. Sprint 4
 
-El incremento de catálogo del Sprint 4 facilita que los contratistas encuentren maquinaria por categoría y ubicación, y permite que los propietarios consulten el mismo catálogo con esos criterios. Comprende US-020 y US-021, implementadas en la aplicación web y verificadas con las cuentas de ambos segmentos conectadas a la RESTful API existente.
+El incremento de catálogo del Sprint 4 facilita que los contratistas encuentren maquinaria por categoría y ubicación, y permite que los propietarios consulten el mismo catálogo con esos criterios. Comprende US-020, US-021 y US-033, implementadas en la aplicación web y verificadas con las cuentas de ambos segmentos conectadas a la RESTful API existente. El Sprint incluye además las correcciones del informe derivadas de la retroalimentación del AV2 y la alineación de los repositorios y de la versión de Java declarada por la plataforma.
 
 #### 5.2.4.1. Sprint Planning 4
 
@@ -3010,8 +3016,8 @@ El incremento de catálogo del Sprint 4 facilita que los contratistas encuentren
 | Sprint 3 Retrospective Summary | La retroalimentación del AV2 solicitó expresar los objetivos en términos de negocio, descomponer las historias en varias tareas y proporcionar cuentas de prueba por segmento. Estas correcciones orientan el registro del nuevo incremento. |
 | **Sprint Goal & User Stories** | |
 | Sprint 4 Goal | *Nuestro enfoque está en* que los contratistas encuentren equipos de la categoría y ubicación que necesitan, y que los propietarios puedan consultar el catálogo con los mismos criterios.<br>*Creemos que esto brinda* una búsqueda más directa y una mejor comprensión de las opciones disponibles *a* los contratistas y a los propietarios de maquinaria.<br>*Esto se confirmará cuando* ambos roles puedan combinar una categoría con un distrito o departamento, reconocer cuántos equipos coinciden y recuperar el catálogo completo al limpiar los filtros. |
-| User Stories del incremento | US-020: Filtrar maquinaria por categoría.<br>US-021: Buscar maquinaria por ubicación. |
-| Sum of Story Points | 3, según las estimaciones del Product Backlog: US-020 = 1 y US-021 = 2. |
+| User Stories del incremento | US-020: Filtrar maquinaria por categoría.<br>US-021: Buscar maquinaria por ubicación.<br>US-033: Consultar historial mecánico. |
+| Sum of Story Points | 5, según las estimaciones del Product Backlog: US-020 = 1, US-021 = 2 y US-033 = 2. |
 
 Para este incremento, la búsqueda de US-021 corresponde al texto del distrito o departamento registrado en cada maquinaria. La categoría y la ubicación se combinan, y el cambio de un criterio actualiza los resultados inmediatamente.
 
@@ -3029,9 +3035,11 @@ Las cuatro tareas del incremento suman **16 horas estimadas**. El cronograma las
 
 El equipo acordó separar el trabajo en una rama de funcionalidad, revisarlo antes de su integración a `develop` y mantener la integración final a `main` a cargo del líder. La siguiente matriz corresponde al incremento de catálogo documentado en esta sección. Se utiliza `L` para responsable del aspecto.
 
-| Team Member | GitHub Username / Git Author | Catalog Filters | Verification | Sprint Report |
-|---|---|:---:|:---:|:---:|
-| Salazar Marquina, Kevin Junior | `AresSalamar` / `kevin` | L | L | L |
+| Team Member | GitHub Username / Git Author | Catalog Filters | Mechanical History | Verification | Report Corrections | SCM & Release | Sprint Report |
+|---|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| Salazar Marquina, Kevin Junior | `AresSalamar` / `kevin` | L |  | L |  |  | L |
+| Castillo Guevara, Mathias Alejandro | `mathias9939` |  | L | C | C |  | C |
+| Cespedes Lezcano, Carlos Gabriel | `Leikop` / `leikop` |  |  | C | L | L | C |
 
 #### 5.2.4.3. Sprint Backlog 4
 
@@ -3044,6 +3052,17 @@ Cada historia se descompone en tareas de implementación y verificación. Las es
 | Sprint 4 | US-021 | Buscar maquinaria por ubicación | S4-T03 | Implementar la búsqueda por distrito o departamento | Filtrar por coincidencias parciales en la ubicación, ignorando mayúsculas, tildes y espacios al inicio o al final del texto. | 4 | Kevin Salazar | Done |
 | Sprint 4 | US-021 | Buscar maquinaria por ubicación | S4-T04 | Incorporar y verificar la respuesta de la búsqueda | Agregar el contador de resultados, la acción de limpiar y el mensaje sin coincidencias; traducir los controles a español e inglés y verificar la actualización del catálogo, el teclado y la adaptación de los filtros a pantallas pequeñas. | 4 | Kevin Salazar | Done |
 
+| Sprint 4 | US-033 | Consultar historial mecánico | S4-T05 | Consumir el historial de mantenimientos | Incorporar la consulta `GET /maintenances/history` al endpoint y al API de Maintenance Management, con su manejo de errores. | 5 | Mathias Castillo | Done |
+| Sprint 4 | US-033 | Consultar historial mecánico | S4-T06 | Gestionar el estado del historial | Desarrollar en el store las señales de carga, error y contenido del historial de la maquinaria seleccionada. | 4 | Mathias Castillo | Done |
+| Sprint 4 | US-033 | Consultar historial mecánico | S4-T07 | Presentar el historial en el catálogo | Incorporar la acción y el diálogo modal que muestran cada mantenimiento con su tipo, estado, fecha y descripción, con sus estilos y traducciones. | 6 | Mathias Castillo | Done |
+| Sprint 4 | US-033 | Consultar historial mecánico | S4-T08 | Verificar el historial | Cubrir con pruebas del componente la apertura del historial, sus estados de carga y error y el caso sin mantenimientos registrados. | 4 | Mathias Castillo | Done |
+| Sprint 4 | — | Corrección del informe según la retroalimentación del AV2 | S4-T09 | Corregir la carátula y los artefactos de Lean UX | Alinear la relación de integrantes en una tabla y reescribir el Problem Statement y los Hypothesis Statements en español con la plantilla del curso. | 5 | Carlos Cespedes | Done |
+| Sprint 4 | — | Corrección del informe según la retroalimentación del AV2 | S4-T10 | Corregir los Sprint Goals y los Sprint Backlogs | Reescribir los Sprint Goals en español orientados al negocio y descomponer cada User Story de los Sprints 1 a 3 en engineering tasks de 4 a 8 horas. | 7 | Carlos Cespedes | Done |
+| Sprint 4 | — | Corrección del informe según la retroalimentación del AV2 | S4-T11 | Completar anexos y entrevistas de validación | Incorporar el anexo de usuarios de prueba por segmento y registrar los hallazgos de las entrevistas con su heurística, severidad y alternativa de solución. | 5 | Carlos Cespedes | Done |
+| Sprint 4 | — | Corrección del informe según la retroalimentación del AV2 | S4-T12 | Corregir la estructura y la redacción | Normalizar los niveles de títulos, reconstruir la tabla de contenidos, completar las conclusiones y recomendaciones y revisar la ortografía. | 6 | Carlos Cespedes | Done |
+| Sprint 4 | — | Corrección del informe según la retroalimentación del AV2 | S4-T13 | Unificar la terminología y las versiones | Reemplazar *requerimientos* por *requisitos* según el Anexo E, corregir la versión de Spring Boot del Capítulo V y alinear la versión del despliegue de la RESTful API. | 4 | Mathias Castillo | Done |
+| Sprint 4 | — | Alineación de los repositorios y de la plataforma | S4-T14 | Renombrar los repositorios de GitHub | Renombrar el repositorio de la Fake API a `maquicontrol-platform-mock` y el de la RESTful API a `maquicontrol-platform`, y actualizar las referencias del informe. | 4 | Carlos Cespedes | Done |
+| Sprint 4 | — | Alineación de los repositorios y de la plataforma | S4-T15 | Declarar JDK 27 en la plataforma | Unificar el nombre del proyecto y la versión de Java en el `pom.xml`, el `Dockerfile` y la documentación de la RESTful API y del curso de Java. | 4 | Carlos Cespedes | Done |
 La trazabilidad de estas tareas se apoya en los [commits de la rama de funcionalidad](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/compare/7a7cbbc093684b8905dd85c0831d7a8164f5e3d9...1a0338a174b66ef4e98001bee810a638f8837c84) y en el [pull request #3](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/pull/3), integrado en `develop` el 26/11/2026.
 
 #### 5.2.4.4. Development Evidence for Sprint Review
@@ -3055,6 +3074,10 @@ Los cambios se desarrollaron en `feature/sprint-4-catalog-filters`, creada desde
 | `maquicontrol-webapp` | `feature/sprint-4-catalog-filters` | [`d6f88eb`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/d6f88eb) | `feat(fleet): I filter the machinery catalog by category and location` | 26/11/2026 |
 | `maquicontrol-webapp` | `feature/sprint-4-catalog-filters` | [`1a0338a`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/1a0338a) | `test(fleet): I verify catalog filters and preserve existing catalog states` | 26/11/2026 |
 | `maquicontrol-webapp` | `develop` | [`bed98fa`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/bed98fa) | `Merge pull request #3 from upc-pre-202620-1asi0729-7750-heavytech/feature/sprint-4-catalog-filters` | 26/11/2026 |
+| `maquicontrol-webapp` | `feature/sprint-4-mechanical-history` | `d84f109` … `e6d58fe` | Nueve commits del historial mecánico: consulta en el endpoint y en el API, estado en el store, acción y diálogo en el catálogo, estilos, traducciones y pruebas del componente. | 26/11/2026 |
+| `maquicontrol-platform` | `develop` | [`2c06684`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform/commit/2c06684) | `chore: rename the project to maquicontrol-platform` | 24/11/2026 |
+| `maquicontrol-report` | `develop` | `b69e2eb` … `ac4cedc` | Trece commits de las correcciones del AV2, integrados desde `feature/av2-feedback-corrections`. | 24/11/2026 |
+| `maquicontrol-report` | `develop` | `d63e9c5` … `b909111` | Cuatro commits de unificación de terminología y de versiones. | 25/11/2026 |
 
 La verificación se ejecutó localmente sobre la versión de la rama de funcionalidad:
 
@@ -3088,6 +3111,8 @@ La revisión funcional del incremento se realizó con el frontend ejecutado loca
 | Cambiar entre español e inglés | Los controles, el contador y el mensaje sin coincidencias se muestran en el idioma seleccionado. |
 | Ingresar como contratista o propietario | Ambos pueden filtrar. Se conservan las opciones de alquilar para el contratista y de publicar maquinaria y gestionar categorías para el propietario. |
 | Navegar con teclado y revisar los filtros a 390 px de ancho | Los controles mantienen etiquetas, foco visible y una distribución adaptable. |
+| Abrir el historial mecánico de Camion Rex como contratista | Se muestra el diálogo con los mantenimientos del equipo, cada uno con su tipo, estado, fecha y descripción. |
+| Abrir el historial de una maquinaria sin mantenimientos | Se informa explícitamente que el equipo no registra mantenimientos, en lugar de un diálogo vacío. |
 
 La revisión con datos reales se complementó con las pruebas del componente, que utilizan un catálogo de prueba con varias categorías y ubicaciones para comprobar combinaciones y cambios en la fuente de datos.
 
@@ -3099,6 +3124,7 @@ Los filtros utilizan los recursos que ya consume el catálogo. El frontend obtie
 |---|---|
 | `GET /api/v1/machinery` | Obtiene la maquinaria con `categoryId`, estado y ubicación. La búsqueda utiliza `location.district` y `location.department`. |
 | `GET /api/v1/categories` | Obtiene los identificadores y nombres que se muestran en el selector de categorías. |
+| `GET /api/v1/maintenances/history?machineryId={id}` | Obtiene el historial de mantenimientos de una maquinaria para el diálogo de historial mecánico. A diferencia del resto de Maintenance Management, está disponible para cualquier usuario autenticado. |
 
 **URL base:** `https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/api/v1`.
 
@@ -3119,6 +3145,8 @@ Esta configuración ejecuta el frontend en el equipo local y utiliza las URLs de
 | Producto | Referencia del incremento | Estado al corte del 26/11/2026 |
 |---|---|---|
 | Frontend con filtros | [`develop`, commit `bed98fa`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/tree/bed98fa) | Integrado; ejecución local en `http://127.0.0.1:4200/fleet/machinery` conectada al backend publicado. |
+| Frontend con historial mecánico | `feature/sprint-4-mechanical-history`, commits `d84f109` … `e6d58fe` | Integrado en `develop` tras verificar la compilación y las pruebas del componente. |
+| RESTful API renombrada | [`maquicontrol-platform`, commit `2c06684`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform/commit/2c06684) | Repositorio renombrado y JDK 27 declarado en el `pom.xml`, el `Dockerfile` y la documentación. El App Service en Azure mantiene la imagen publicada. |
 | RESTful API | [Swagger UI en Azure](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html) | Servicio existente utilizado para la revisión con ambos roles. |
 | Frontend público | [Azure Static Web Apps](https://lemon-pebble-0a946d810.4.azurestaticapps.net) | La publicación del incremento seguirá la integración de `develop` a `main` a cargo del líder. |
 
@@ -3129,6 +3157,8 @@ El equipo distribuyó las mejoras del catálogo y acordó el flujo `feature` →
 | Integrante / Identidad Git | Aporte documentado | Evidencia |
 |---|---|---|
 | Salazar Marquina, Kevin Junior (`AresSalamar` / `kevin`) | Implementación y traducción de los filtros del catálogo; pruebas del componente; revisión con las cuentas de ambos segmentos; documentación del incremento. | Commits `d6f88eb` y `1a0338a`, [PR #3 integrado](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/pull/3) y sección 5.2.4 del informe. |
+| Castillo Guevara, Mathias Alejandro (`mathias9939`) | Consulta y presentación del historial mecánico en el catálogo, con sus estilos, traducciones y pruebas del componente; unificación de terminología y de versiones en el informe. | Nueve commits de `feature/sprint-4-mechanical-history` y cuatro commits del informe del 25/11/2026. |
+| Cespedes Lezcano, Carlos Gabriel (`Leikop` / `leikop`) | Correcciones del informe según la retroalimentación del AV2, renombrado de los repositorios de la organización, unificación de JDK 27 en la plataforma y registro de las cuentas de prueba en la aplicación desplegada. | Trece commits del informe del 24/11/2026 y el commit `2c06684` de la RESTful API. |
 
 El incremento conserva las tarjetas del catálogo y concentra los cambios en los controles de búsqueda y su respuesta. La separación de la implementación, las pruebas y la integración permite relacionar cada cambio con las historias US-020 y US-021.
 
@@ -3227,9 +3257,15 @@ Video de presentación del producto MaquiControl, publicado en YouTube: [https:/
 
 - El despliegue de la API en Azure exigió adaptarse a las restricciones de la suscripción de estudiante (regiones permitidas y costo de la base de datos) y a separar las credenciales del código mediante variables de entorno y secretos de GitHub.
 
+- En el Sprint 4 el equipo completó el catálogo con los criterios de búsqueda por categoría y ubicación y con la consulta del historial mecánico de cada maquinaria. Al estar ya disponibles los endpoints en la RESTful API, el incremento se resolvió en la aplicación web, lo que confirma que separar el backend por Bounded Contexts permite agregar funcionalidad al producto sin modificar el servidor ni la base de datos.
+
+- Atender la retroalimentación del AV2 mostró que el informe debe escribirse pensando en quién lo lee: los Sprint Goals y los Hypothesis Statements se reescribieron en términos de negocio, mientras que las engineering tasks, los commits y los endpoints se mantuvieron como la evidencia técnica de cada incremento.
+
+- La reducción del equipo durante el ciclo obligó a redistribuir el trabajo del Sprint 4 entre tres integrantes. Mantener el flujo GitFlow con ramas `feature` y pull requests revisados permitió que la integración siguiera siendo ordenada y trazable a pesar del cambio.
+
 - Finalmente, MaquiControl busca contribuir a la transformación digital del sector de alquiler de maquinaria pesada, proporcionando una herramienta que permita mejorar la coordinación entre proveedores y contratistas, reducir problemas derivados de la falta de información y facilitar una gestión más organizada de las operaciones.
 
-- **Sobre el equipo:** AndesHeavyTech está conformado por Mathias Alejandro Castillo Guevara, Carlos Gabriel Cespedes Lezcano, Angiela Stephany Fuentes Alvarez, Wilmer Sebastián Gutiérrez Lizarbe y Nicolas Tantalean Granda. A lo largo de los Sprints el equipo mantuvo una distribución de Bounded Contexts por integrante, lo que permitió avanzar en paralelo en la RESTful API, la aplicación web y el informe sin perder coherencia entre los módulos. La comunicación constante sobre nombres de comandos, queries y eventos de integración facilitó que cada integrante entendiera cómo su Bounded Context se conectaba con los demás. El Video About-the-Team presenta al equipo y su forma de trabajo durante este Sprint.
+- **Sobre el equipo:** AndesHeavyTech está conformado por Mathias Alejandro Castillo Guevara, Carlos Gabriel Cespedes Lezcano y Kevin Junior Salazar Marquina. A lo largo de los Sprints el equipo mantuvo una distribución de Bounded Contexts por integrante, lo que permitió avanzar en paralelo en la RESTful API, la aplicación web y el informe sin perder coherencia entre los módulos. La comunicación constante sobre nombres de comandos, queries y eventos de integración facilitó que cada integrante entendiera cómo su Bounded Context se conectaba con los demás. El Video About-the-Team presenta al equipo y su forma de trabajo durante este Sprint.
 
 **Recomendaciones**
 
