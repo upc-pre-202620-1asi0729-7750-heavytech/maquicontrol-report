@@ -2985,7 +2985,7 @@ Las cantidades representan la actividad registrada en los repositorios y no mide
 
 ### 5.2.4. Sprint 4
 
-El incremento de catálogo del Sprint 4 facilita que los contratistas encuentren maquinaria por categoría y ubicación, y permite que los propietarios consulten el mismo catálogo con esos criterios. Comprende US-020, US-021 y US-033, implementadas en la aplicación web y verificadas con las cuentas de ambos segmentos conectadas a la RESTful API existente. El Sprint incluye además las correcciones del informe derivadas de la retroalimentación del AV2 y la alineación de los repositorios y de la versión de Java declarada por la plataforma.
+El incremento de catálogo del Sprint 4 facilita que los contratistas encuentren maquinaria por categoría y ubicación, revisen el historial mecánico de cada equipo antes de alquilarlo, y permite que los propietarios consulten el mismo catálogo con esos criterios. Comprende US-020, US-021 y US-033, implementadas en la aplicación web y verificadas con las cuentas de ambos segmentos conectadas a la RESTful API existente. El Sprint incluye además las correcciones del informe derivadas de la retroalimentación del AV2 y la alineación de los repositorios y de la versión de Java declarada por la plataforma.
 
 #### 5.2.4.1. Sprint Planning 4
 
