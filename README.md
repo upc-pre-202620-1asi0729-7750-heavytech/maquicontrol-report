@@ -3110,13 +3110,14 @@ La revisión funcional del incremento se realizó con el frontend ejecutado loca
 | Distrito escrito como `sjl` | Se muestra el equipo ubicado en SJL. |
 | Categoría `Excavadoras` o ubicación `Cusco` | Se muestran cero coincidencias, el mensaje correspondiente y los controles para cambiar o limpiar los criterios. |
 | Limpiar filtros | Se vacían ambos controles y se recupera el catálogo completo. |
-| Cambiar entre español e inglés | Los controles, el contador y el mensaje sin coincidencias se muestran en el idioma seleccionado. |
-| Ingresar como contratista o propietario | Ambos pueden filtrar. Se conservan las opciones de alquilar para el contratista y de publicar maquinaria y gestionar categorías para el propietario. |
+| Cambiar entre español e inglés | Los controles, el contador, las etiquetas del diálogo modal y los textos del historial mecánico (`es-419` / `en`) se muestran en el idioma seleccionado. |
+| Ingresar como contratista o propietario | Ambos pueden filtrar y consultar el historial mecánico. Se conservan las opciones de alquilar para el contratista y de publicar maquinaria, editar/eliminar y gestionar categorías para el propietario. |
 | Navegar con teclado y revisar los filtros a 390 px de ancho | Los controles mantienen etiquetas, foco visible y una distribución adaptable. |
-| Abrir el historial mecánico de Camion Rex como contratista | Se muestra el diálogo con los mantenimientos del equipo, cada uno con su tipo, estado, fecha y descripción. |
-| Abrir el historial de una maquinaria sin mantenimientos | Se informa explícitamente que el equipo no registra mantenimientos, en lugar de un diálogo vacío. |
+| Abrir el historial mecánico de Camion Rex como contratista | Se muestra el diálogo modal con los mantenimientos del equipo, cada uno con su tipo, estado, fecha (`completedAt` o `scheduledDate`) y descripción. |
+| Abrir el historial de una maquinaria sin mantenimientos | Se informa explícitamente que la maquinaria aún no tiene mantenimientos completados registrados, en lugar de un diálogo vacío. |
+| Cerrar el diálogo de historial mecánico o reintentar ante error | El diálogo se cierra con el botón **Cerrar**, clic en el fondo o tecla `Escape` limpiando el estado del store; ante error de red se muestra el mensaje y el botón de reintento. |
 
-La revisión con datos reales se complementó con las pruebas del componente, que utilizan un catálogo de prueba con varias categorías y ubicaciones para comprobar combinaciones y cambios en la fuente de datos.
+La revisión con datos reales se complementó con las pruebas del componente, que utilizan un catálogo de prueba con varias categorías, ubicaciones y registros de mantenimiento para comprobar combinaciones, cambios en la fuente de datos y apertura/cierre del diálogo de historial.
 
 #### 5.2.4.6. Services Documentation Evidence for Sprint Review
 
