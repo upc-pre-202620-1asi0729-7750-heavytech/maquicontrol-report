@@ -3137,7 +3137,7 @@ Seleccionar una categoría, escribir una ubicación o limpiar los criterios actu
 
 #### 5.2.4.7. Software Deployment Evidence for Sprint Review
 
-El incremento quedó integrado en `develop` del frontend mediante el merge `bed98fa`. Para revisar el código con el backend publicado se ejecutó el siguiente comando:
+Los dos incrementos del Sprint 4 quedaron integrados en `develop` del frontend mediante los merges [`bed98fa`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/bed98fa) (filtros) y [`2578ddd`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/2578ddd) (historial mecánico). Para revisar el código con el backend publicado se ejecutó el siguiente comando:
 
 ```bash
 npm start -- --configuration production --host 127.0.0.1 --port 4200
@@ -3147,8 +3147,8 @@ Esta configuración ejecuta el frontend en el equipo local y utiliza las URLs de
 
 | Producto | Referencia del incremento | Estado al corte del 26/11/2026 |
 |---|---|---|
-| Frontend con filtros | [`develop`, commit `bed98fa`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/tree/bed98fa) | Integrado; ejecución local en `http://127.0.0.1:4200/fleet/machinery` conectada al backend publicado. |
-| Frontend con historial mecánico | `feature/sprint-4-mechanical-history`, commits `d84f109` … `e6d58fe` | Integrado en `develop` tras verificar la compilación y las pruebas del componente. |
+| Frontend con filtros | [`develop`, commit `bed98fa`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/tree/bed98fa) | Integrado en `develop`; ejecución local en `http://127.0.0.1:4200/fleet/machinery` conectada al backend publicado. |
+| Frontend con historial mecánico | [`develop`, commit `2578ddd`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/tree/2578ddd) (`feature/sprint-4-mechanical-history`, [`d84f109`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/d84f109)…[`e6d58fe`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/e6d58fe)) | Integrado en `develop` el 26/11/2026 tras verificar la compilación y las 23 pruebas unitarias. |
 | RESTful API renombrada | [`maquicontrol-platform`, commit `2c06684`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform/commit/2c06684) | Repositorio renombrado y JDK 27 declarado en el `pom.xml`, el `Dockerfile` y la documentación. El App Service en Azure mantiene la imagen publicada. |
 | RESTful API | [Swagger UI en Azure](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html) | Servicio existente utilizado para la revisión con ambos roles. |
 | Frontend público | [Azure Static Web Apps](https://lemon-pebble-0a946d810.4.azurestaticapps.net) | La publicación del incremento seguirá la integración de `develop` a `main` a cargo del líder. |
