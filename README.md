@@ -84,6 +84,7 @@
 | 0.22 | 26/11/2026 | Carlos Gabriel Cespedes Lezcano | Actualización del punto 5.4 Video About-the-Product con la versión final del video: descripción, cuadro representativo, duración, pauta de secuencias y enlaces de Microsoft Stream y YouTube; actualización del anexo de videos. |
 | 0.23 | 27/11/2026 | Mathias Alejandro Castillo Guevara | Ampliación y precisión del incremento de historial mecánico (US-033) en el Reporte de colaboración - Sprint 4 y la sección 5.2.4 Sprint 4: detalle técnico de los 9 commits individuales (`d84f109`–`e6d58fe`) y el merge `2578ddd` en `develop` de `maquicontrol-webapp`, actualización del cronograma y la tabla del Sprint Backlog 4, recuento exacto de pruebas unitarias (23 pruebas en 4 archivos), consumo de `GET /api/v1/maintenances/history` y trazabilidad de integración. |
 | 0.24 | 28/11/2026 | Carlos Gabriel Cespedes Lezcano | Actualización de la sección Video About-the-Team con la versión final del video: resumen, cuadro representativo, duración, pauta de secuencias y enlaces de Microsoft Stream y YouTube; actualización del anexo de videos. |
+| 0.25 | 28/11/2026 | Carlos Gabriel Cespedes Lezcano | Incorporación de la captura del diálogo de historial mecánico (US-033) en el punto 5.2.4.5 Execution Evidence for Sprint Review. |
 
 ## Project Report Collaboration Insights
 
@@ -3118,6 +3119,10 @@ La revisión funcional del incremento se realizó con el frontend ejecutado loca
 | Abrir el historial mecánico de Camion Rex como contratista | Se muestra el diálogo modal con los mantenimientos del equipo, cada uno con su tipo, estado, fecha (`completedAt` o `scheduledDate`) y descripción. |
 | Abrir el historial de una maquinaria sin mantenimientos | Se informa explícitamente que la maquinaria aún no tiene mantenimientos completados registrados, en lugar de un diálogo vacío. |
 | Cerrar el diálogo de historial mecánico o reintentar ante error | El diálogo se cierra con el botón **Cerrar**, clic en el fondo o tecla `Escape` limpiando el estado del store; ante error de red se muestra el mensaje y el botón de reintento. |
+
+**Historial mecánico (US-033):** ejecución local de `develop` con el merge `2578ddd`, conectada a la RESTful API publicada en Azure e iniciando sesión con la cuenta de contratista del Anexo de usuarios de prueba. Al pulsar **Ver historial mecánico** en la tarjeta de Camion Rex se abre el diálogo modal con sus mantenimientos preventivos completados, cada uno con su tipo, estado, descripción y fecha.
+
+![Diálogo de historial mecánico de Camion Rex en el catálogo de maquinaria](assets/sprint-4-mechanical-history.jpg)
 
 La revisión con datos reales se complementó con las pruebas del componente, que utilizan un catálogo de prueba con varias categorías, ubicaciones y registros de mantenimiento para comprobar combinaciones, cambios en la fuente de datos y apertura/cierre del diálogo de historial.
 
