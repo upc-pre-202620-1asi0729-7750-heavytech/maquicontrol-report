@@ -82,6 +82,7 @@
 | 0.20 | 26/11/2026 | Carlos Gabriel Cespedes Lezcano | Cierre de la entrega TB2: carátula con los tres integrantes del equipo desde el Sprint 4, incorporación de US-033 Consultar historial mecánico al punto 5.2.4 Sprint 4 con sus engineering tasks, commits, pruebas, resultados de ejecución, endpoint y despliegue; actualización del Sprint Planning, de la matriz de Aspect Leaders and Collaborators, del reporte de colaboración y del aporte al Student Outcome 3 del Sprint 4; y actualización de Conclusiones y recomendaciones. |
 | 0.21 | 26/11/2026 | Carlos Gabriel Cespedes Lezcano | Unificación de la sección Student Outcome en un solo cuadro acumulativo: incorporación de las acciones de la entrega TB2 de Castillo Guevara, Cespedes Lezcano y Salazar Marquina en los criterios de comunicación oral y escrita, actualización de las celdas de Conclusiones con el avance TB2 y eliminación del cuadro separado del Sprint 4. |
 | 0.22 | 26/11/2026 | Carlos Gabriel Cespedes Lezcano | Actualización del punto 5.4 Video About-the-Product con la versión final del video: descripción, cuadro representativo, duración, pauta de secuencias y enlaces de Microsoft Stream y YouTube; actualización del anexo de videos. |
+| 0.23 | 28/11/2026 | Carlos Gabriel Cespedes Lezcano | Actualización de la sección Video About-the-Team con la versión final del video: resumen, cuadro representativo, duración, pauta de secuencias y enlaces de Microsoft Stream y YouTube; actualización del anexo de videos. |
 
 ## Project Report Collaboration Insights
 
@@ -3275,7 +3276,7 @@ El video de YouTube se incluyó en la Landing Page junto con el Video About-the-
 
 - Finalmente, MaquiControl busca contribuir a la transformación digital del sector de alquiler de maquinaria pesada, proporcionando una herramienta que permita mejorar la coordinación entre proveedores y contratistas, reducir problemas derivados de la falta de información y facilitar una gestión más organizada de las operaciones.
 
-- **Sobre el equipo:** AndesHeavyTech está conformado por Mathias Alejandro Castillo Guevara, Carlos Gabriel Cespedes Lezcano y Kevin Junior Salazar Marquina. A lo largo de los Sprints el equipo mantuvo una distribución de Bounded Contexts por integrante, lo que permitió avanzar en paralelo en la RESTful API, la aplicación web y el informe sin perder coherencia entre los módulos. La comunicación constante sobre nombres de comandos, queries y eventos de integración facilitó que cada integrante entendiera cómo su Bounded Context se conectaba con los demás. El Video About-the-Team presenta al equipo y su forma de trabajo durante este Sprint.
+- **Sobre el equipo:** AndesHeavyTech está conformado por Mathias Alejandro Castillo Guevara, Carlos Gabriel Cespedes Lezcano y Kevin Junior Salazar Marquina. A lo largo de los Sprints el equipo mantuvo una distribución de Bounded Contexts por integrante, lo que permitió avanzar en paralelo en la RESTful API, la aplicación web y el informe sin perder coherencia entre los módulos. La comunicación constante sobre nombres de comandos, queries y eventos de integración facilitó que cada integrante entendiera cómo su Bounded Context se conectaba con los demás. El Video About-the-Team presenta al equipo y su forma de trabajo durante los cuatro Sprints.
 
 **Recomendaciones**
 
@@ -3286,7 +3287,32 @@ El video de YouTube se incluyó en la Landing Page junto con el Video About-the-
 
 ## Video About-the-Team
 
-Video de presentación del equipo AndesHeavyTech, publicado en YouTube: [https://youtu.be/tptPPrhuSH4](https://youtu.be/tptPPrhuSH4). El enlace también se incluyó en la Landing Page junto con el Video About-the-Product.
+El video About-the-Team resume el proceso de trabajo de AndesHeavyTech durante los cuatro Sprints del proyecto. La primera parte es una retrospectiva grupal narrada en voz en off sobre imágenes de sesiones de trabajo reales del equipo y capturas del producto: presenta a los integrantes, el problema del sector de alquiler de maquinaria pesada que dio origen a MaquiControl, el trabajo con Scrum y GitFlow a lo largo de los Sprints y las dificultades superadas. La segunda parte reúne el testimonio ante cámara de cada integrante, quien describe las actividades que realizó, el logro del outcome y las competencias que desarrolló.
+
+[![Video About-the-Team](assets/about-the-team-tb2.png)](https://youtu.be/UaqWhwljreY)
+
+| Dato | Valor |
+| :--- | :--- |
+| Duración | 00:06:51 |
+| Microsoft Stream | [Ver video en Microsoft Stream](https://upcedupe-my.sharepoint.com/personal/u202416147_upc_edu_pe/_layouts/15/stream.aspx?id=%2Fpersonal%2Fu202416147%5Fupc%5Fedu%5Fpe%2FDocuments%2Fupc%2Dpre%2D202620%2D1asi0729%2D7750%2Dandesheavytech%2Dabout%2Dthe%2Dteam%2Dsprint%2D4%2Emp4) |
+| YouTube | [https://youtu.be/UaqWhwljreY](https://youtu.be/UaqWhwljreY) |
+
+**Pauta de secuencias**
+
+| Inicio | Sección |
+| :--- | :--- |
+| 00:00:00 | Presentación del equipo AndesHeavyTech |
+| 00:00:09 | Integrantes del equipo |
+| 00:00:28 | Problema del sector y origen de MaquiControl |
+| 00:00:45 | Proceso de trabajo: Scrum en cuatro Sprints y GitFlow |
+| 00:01:18 | Retrospectiva: dificultades superadas como equipo |
+| 00:01:33 | Cierre de la retrospectiva |
+| 00:01:41 | Testimonio de Cespedes Lezcano, Carlos Gabriel |
+| 00:03:11 | Testimonio de Castillo Guevara, Mathias Alejandro |
+| 00:04:56 | Testimonio de Salazar Marquina, Kevin Junior |
+| 00:06:46 | Cierre |
+
+El video de YouTube se incluyó en la Landing Page junto con el Video About-the-Product.
 
 # Bibliografía
 - Angular Team. (2024). *Angular coding style guide*. https://angular.dev/style-guide
@@ -3340,5 +3366,5 @@ Los roles `FLEET_ADMINISTRATOR` y `OPERATOR` no se ofrecen en el registro públi
 | Video | Enlace |
 | :--- | :--- |
 | About-the-Product | [YouTube](https://youtu.be/ivCzd64wIjQ) · [Microsoft Stream](https://upcedupe-my.sharepoint.com/personal/u202416147_upc_edu_pe/_layouts/15/stream.aspx?uniqueId=fd0aebf2-1556-4a42-a341-c713b4f1dda2) |
-| About-the-Team | [https://youtu.be/tptPPrhuSH4](https://youtu.be/tptPPrhuSH4) |
+| About-the-Team | [YouTube](https://youtu.be/UaqWhwljreY) · [Microsoft Stream](https://upcedupe-my.sharepoint.com/personal/u202416147_upc_edu_pe/_layouts/15/stream.aspx?id=%2Fpersonal%2Fu202416147%5Fupc%5Fedu%5Fpe%2FDocuments%2Fupc%2Dpre%2D202620%2D1asi0729%2D7750%2Dandesheavytech%2Dabout%2Dthe%2Dteam%2Dsprint%2D4%2Emp4) |
 | Entrevistas de validación | [https://youtu.be/TXv-QAAzDJs](https://youtu.be/TXv-QAAzDJs) |
