@@ -85,6 +85,7 @@
 | 0.23 | 27/11/2026 | Mathias Alejandro Castillo Guevara | Ampliación y precisión del incremento de historial mecánico (US-033) en el Reporte de colaboración - Sprint 4 y la sección 5.2.4 Sprint 4: detalle técnico de los 9 commits individuales (`d84f109`–`e6d58fe`) y el merge `2578ddd` en `develop` de `maquicontrol-webapp`, actualización del cronograma y la tabla del Sprint Backlog 4, recuento exacto de pruebas unitarias (23 pruebas en 4 archivos), consumo de `GET /api/v1/maintenances/history` y trazabilidad de integración. |
 | 0.24 | 28/11/2026 | Carlos Gabriel Cespedes Lezcano | Actualización de la sección Video About-the-Team con la versión final del video: resumen, cuadro representativo, duración, pauta de secuencias y enlaces de Microsoft Stream y YouTube; actualización del anexo de videos. |
 | 0.25 | 28/11/2026 | Carlos Gabriel Cespedes Lezcano | Incorporación de la captura del diálogo de historial mecánico (US-033) en el punto 5.2.4.5 Execution Evidence for Sprint Review. |
+| 0.26 | 28/11/2026 | Carlos Gabriel Cespedes Lezcano | Registro en el punto 5.2.4.4 del enlace a los Términos del servicio, con protección de datos personales y compromiso ético, agregado al footer del Landing Page. |
 
 ## Project Report Collaboration Insights
 
@@ -3093,6 +3094,8 @@ La verificación se ejecutó localmente sobre las ramas de funcionalidad y tras 
 | Diferencia entre los incrementos verificados y `develop` después del merge | Sin diferencias en el contenido de los archivos de ambos incrementos (`bed98fa` y `2578ddd`). |
 
 Las pruebas de `machinery-list.spec.ts` cubren categoría, coincidencias parciales de distrito, normalización del departamento, combinación de criterios, limpieza, ausencia de coincidencias, actualización del catálogo, conservación de los estados de carga, error y catálogo vacío y restricción de alquiler para equipos reservados. Adicionalmente, la prueba del historial mecánico verifica la presencia del botón `.history-action` en las cuatro tarjetas, la invocación a `loadMaintenanceHistory(101)` al abrirlo, el renderizado del diálogo modal `.history-dialog` con el nombre de la maquinaria, el tipo, el estado, la fecha formateada (`dd/MM/yyyy`) y la descripción del mantenimiento, y el llamado a `clearMaintenanceHistory()` al cerrar el diálogo.
+
+**Términos del servicio y protección de datos:** en el cierre del Sprint 4 se agregó al footer del Landing Page el enlace **Terms of service / Términos del servicio** (claves i18n `footerTerms` en `en.json` y `es.json`), que abre la página pública `/terms` de la aplicación web. Así ambos productos exponen desde su footer los mismos términos, que incluyen las responsabilidades de dueños de flota y contratistas, las tarifas y pagos, el tratamiento de datos personales según la Ley N.° 29733, Ley de Protección de Datos Personales, y el compromiso con el Código de Ética de Ingeniería de Software de ACM/IEEE y el Código de Ética del CIP.
 
 #### 5.2.4.5. Execution Evidence for Sprint Review
 
