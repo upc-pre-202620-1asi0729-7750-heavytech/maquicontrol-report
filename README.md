@@ -36,14 +36,11 @@
 
 <p><strong>Integrantes</strong></p>
 
-<p style="font-size: 11pt;">
-  <strong>Código</strong>&nbsp;&nbsp;&nbsp;&nbsp;<strong>Apellidos y Nombres</strong><br>
-  u202520331&nbsp;&nbsp;&nbsp;&nbsp;Fuentes Alvarez, Angiela Stephany<br>
-  u202410728&nbsp;&nbsp;&nbsp;&nbsp;Tantalean Granda, Nicolas<br>
-  u202412044&nbsp;&nbsp;&nbsp;&nbsp;Gutiérrez Lizarbe, Wilmer Sebastián<br>
-  u202410783&nbsp;&nbsp;&nbsp;&nbsp;Castillo Guevara, Mathias Alejandro<br>
-  u202416147&nbsp;&nbsp;&nbsp;&nbsp;Cespedes Lezcano, Carlos Gabriel
-</p>
+<p>u202410783 &nbsp;&nbsp; Castillo Guevara, Mathias Alejandro</p>
+
+<p>u202416147 &nbsp;&nbsp; Cespedes Lezcano, Carlos Gabriel</p>
+
+<p>u202417747 &nbsp;&nbsp; Salazar Marquina, Kevin Junior</p>
 
 <br>
 
@@ -56,151 +53,6 @@
 </div>
 
 <div style="page-break-after: always;"></div>
-
-## Tabla de Contenidos
-
-<details>
-<summary><strong>Capítulo I: Introducción</strong></summary>
-
-- [1.1. Startup Profile](#11-startup-profile)
-  - [1.1.1. Descripción de la Startup](#111-descripción-de-la-startup)
-  - [1.1.2. Perfiles de integrantes del equipo](#112-perfiles-de-integrantes-del-equipo)
-
-- [1.2. Solution Profile](#12-solution-profile)
-  - [1.2.1. Antecedentes y problemática](#121-antecedentes-y-problemática)
-    - [1.2.1.1. What](#1211-what)
-    - [1.2.1.2. Who](#1212-who)
-    - [1.2.1.3. Where](#1213-where)
-    - [1.2.1.4. When](#1214-when)
-    - [1.2.1.5. Why](#1215-why)
-    - [1.2.1.6. How](#1216-how)
-    - [1.2.1.7. How Much](#1217-how-much)
-
-  - [1.2.2. Lean UX Process](#122-lean-ux-process)
-  - [1.2.2.1. Lean UX Problem Statements](#1221-lean-ux-problem-statements)
-  - [1.2.2.2. Lean UX Assumptions](#1222-lean-ux-assumptions)
-  - [1.2.2.3. Lean UX Hypothesis Statements](#1223-lean-ux-hypothesis-statements)
-  - [1.2.2.4. Lean UX Canvas](#1224-lean-ux-canvas)
-- [1.3. Segmentos objetivo](#13-segmentos-objetivo)
-
-</details>
-
-<details>
-<summary><strong>Capítulo II: Requirements Elicitation & Analysis</strong></summary>
-
-- [2.1. Competidores](#21-competidores)
-    - [2.1.1. Análisis competitivo](#211-análisis-competitivo)
-    - [2.1.2. Estrategias y tácticas frente a competidores](#212-estrategias-y-tácticas-frente-a-competidores)
-- [2.2. Entrevistas](#22-entrevistas)
-    - [2.2.1. Diseño de entrevistas](#221-diseño-de-entrevistas)
-    - [2.2.2. Registro de entrevistas](#222-registro-de-entrevistas)
-    - [2.2.3. Análisis de entrevistas](#223-análisis-de-entrevistas)
-- [2.3. Needfinding](#23-needfinding)
-    - [2.3.1. User Personas](#231-user-personas)
-    - [2.3.2. User Task Matrix](#232-user-task-matrix)
-    - [2.3.3. User Journey Mapping](#233-user-journey-mapping)
-    - [2.3.4. Empathy Mapping](#234-empathy-mapping)
-- [2.4. Big Picture Event Storming](#24-big-picture-event-storming)
-- [2.5. Ubiquitous Language](#25-ubiquitous-language)
-
-</details>
-
-<details>
-<summary><strong>Capítulo III: Requirements Specification</strong></summary>
-
-- [3.1. User Stories](#31-user-stories)
-- [3.2. Impact Mapping](#32-impact-mapping)
-- [3.3. Product Backlog](#33-product-backlog)
-
-</details>
-
-<details>
-<summary><strong>Capítulo IV: Product Design</strong></summary>
-
-- [4.1. Style Guidelines](#41-style-guidelines)
-    - [4.1.1. General Style Guidelines](#411-general-style-guidelines)
-    - [4.1.2. Web Style Guidelines](#412-web-style-guidelines)
-- [4.2. Information Architecture](#42-information-architecture)
-    - [4.2.1. Organization Systems](#421-organization-systems)
-    - [4.2.2. Labeling Systems](#422-labeling-systems)
-    - [4.2.3. SEO Tags and Meta Tags](#423-seo-tags-and-meta-tags)
-    - [4.2.4. Searching Systems](#424-searching-systems)
-    - [4.2.5. Navigation Systems](#425-navigation-systems)
-- [4.3. Landing Page UI Design](#43-landing-page-ui-design)
-- [4.3.1. Landing Page Wireframes](#431-landing-page-wireframes)
-- [4.3.2. Landing Page Mock-up](#432-landing-page-mock-up)
-- [4.4. Web Applications UX/UI Design](#44-web-applications-uxui-design)
-    - [4.4.1. Wireframes](#441-web-applications-wireframes)
-    - [4.4.2. Wireflow Diagrams](#442-web-applications-wireflow-diagrams)
-    - [4.4.3. Mock-ups](#443-web-applications-mock-ups)
-    - [4.4.4. User Flow Diagrams](#444-web-applications-user-flow-diagrams)
-- [4.5. Web Applications Prototyping](#45-web-applications-prototyping)
-- [4.6. Domain-Driven Software Architecture](#46-domain-driven-software-architecture)
-    - [4.6.1. Design-Level Event Storming](#461-design-level-event-storming)
-- [4.6.2. Software Architecture Context Diagram](#462-software-architecture-context-diagram)
-- [4.6.3. Software Architecture Container Diagram](#463-software-architecture-container-diagram)
-- [4.6.4. Software Architecture Components Diagrams](#464-software-architecture-components-diagrams)
-- [4.7. Software Object-Oriented Design](#47-software-object-oriented-design)
-    - [4.7.1. Class Diagrams](#471-class-diagrams)
-- [4.8. Database Design](#48-database-design)
-    - [4.8.1. Database Diagrams](#481-database-diagrams)
-
-</details>
-
-<details>
-<summary><strong>Capítulo V: Product Implementation, Validation & Deployment</strong></summary>
-
-- [5.1. Software Configuration Management](#51-software-configuration-management)
-  - [5.1.1. Software Development Environment Configuration](#511-software-development-environment-configuration)
-    - [5.1.2. Source Code Management](#512-source-code-management)
-    - [5.1.3. Source Code Style Guide & Conventions](#513-source-code-style-guide--conventions)
-    - [5.1.4. Software Deployment Configuration](#514-software-deployment-configuration)
-- [5.2. Landing Page, Services & Applications Implementation](#52-landing-page-services-applications-implementation)
-    - [5.2.1. Sprint 1](#521-sprint-1)
-        - [Sprint Planning 1](#5211-sprint-planning-1)
-        - [Aspect Leaders and Collaborators](#5212-aspect-leaders-and-collaborators)
-        - [Sprint Backlog 1](#5213-sprint-backlog-1)
-        - [Development Evidence](#5214-development-evidence-for-sprint-review)
-        - [Execution Evidence](#5215-execution-evidence-for-sprint-review)
-        - [Services Documentation Evidence](#5216-services-documentation-evidence-for-sprint-review)
-        - [Deployment Evidence](#5217-software-deployment-evidence-for-sprint-review)
-        - [Team Collaboration Insights](#5218-team-collaboration-insights-during-sprint)
-    - [5.2.2. Sprint 2](#522-sprint-2)
-        - [Sprint Planning 2](#5221-sprint-planning-2)
-        - [Aspect Leaders and Collaborators](#5222-aspect-leaders-and-collaborators)
-        - [Sprint Backlog 2](#5223-sprint-backlog-2)
-        - [Development Evidence](#5224-development-evidence-for-sprint-review)
-        - [Execution Evidence](#5225-execution-evidence-for-sprint-review)
-        - [Services Documentation Evidence](#5226-services-documentation-evidence-for-sprint-review)
-        - [Deployment Evidence](#5227-software-deployment-evidence-for-sprint-review)
-        - [Team Collaboration Insights](#5228-team-collaboration-insights-during-sprint)
-    - [5.2.3. Sprint 3](#523-sprint-3)
-        - [Sprint Planning 3](#5231-sprint-planning-3)
-        - [Aspect Leaders and Collaborators](#5232-aspect-leaders-and-collaborators)
-        - [Sprint Backlog 3](#5233-sprint-backlog-3)
-        - [Development Evidence](#5234-development-evidence-for-sprint-review)
-        - [Execution Evidence](#5235-execution-evidence-for-sprint-review)
-        - [Services Documentation Evidence](#5236-services-documentation-evidence-for-sprint-review)
-        - [Deployment Evidence](#5237-software-deployment-evidence-for-sprint-review)
-        - [Team Collaboration Insights](#5238-team-collaboration-insights-during-sprint)
-- [5.3. Validation Interviews](#53-validation-interviews)
-    - [5.3.1. Diseño de Entrevistas](#531-diseño-de-entrevistas)
-    - [5.3.2. Registro de Entrevistas](#532-registro-de-entrevistas)
-    - [5.3.3. Evaluaciones según heurísticas](#533-evaluaciones-según-heurísticas)
-- [5.4. Video About-the-Product](#54-video-about-the-product)
-
-</details>
-
-- [Conclusiones y recomendaciones](#conclusiones-y-recomendaciones)
-- [Video About-the-Team](#video-about-the-team)
-- [Bibliografía](#bibliografía)
-- [Anexos](#anexos)
-    - [Anexo: Videos del Producto y del Equipo](#anexo-videos-del-producto-y-del-equipo)
-
-</div>
-
-
-
 
 # MaquiControl
 
@@ -225,6 +77,14 @@
 | 0.15 | 09/11/2026 | Carlos Gabriel Cespedes Lezcano | Corrección del Big Picture y del Design-Level Event Storming según la retroalimentación del profesor: diagramas en horizontal como línea de tiempo, actor debajo de cada comando, cadenas Command → Aggregate → Domain Event → Policy → Command y cierre de cada flujo en Command → Aggregate sin evento final; actualización del Catálogo de comandos. Diagramas de componentes por Bounded Context con capas y packages en lugar de clases, y diagramas de clases divididos en un diagrama general y uno por agregado. |
 | 0.16 | 13/11/2026 | Carlos Gabriel Cespedes Lezcano | Avance AV2: desarrollo del punto 5.2.3 Sprint 3 con la RESTful API en Spring Boot, su documentación OpenAPI, el despliegue en Azure App Service con Azure Database for MySQL y la integración de la aplicación web; actualización del punto 5.1.4 con la configuración de despliegue de la API; incorporación de View Fleet Rentals a las queries de Rental Management; diseño de las entrevistas de validación (5.3); actualización de Project Report Collaboration Insights, Student Outcome, Conclusiones, Bibliografía y Anexos. |
 | 0.17 | 13/11/2026 | Carlos Gabriel Cespedes Lezcano | Migración del despliegue de la RESTful API de Azure App Service (Publish: Code, Java 21) a despliegue por contenedor (Publish: Container, JDK 27): nuevo `Dockerfile` multi-stage, archivos `docker-compose` para desarrollo local y verificación previa a producción, Azure Container Registry `maquicontrolacr`, y reconfiguración del App Service existente para extraer la imagen; actualización de los puntos 5.1.1 y 5.1.4 con las herramientas y la configuración de despliegue reales. |
+| 0.18 | 24/11/2026 | Carlos Gabriel Cespedes Lezcano | Corrección del informe según la retroalimentación del AV2: carátula con la relación de integrantes alineada, Problem Statement y Hypothesis Statements en español con la plantilla de Lean UX, Sprint Goals en español enfocados en el negocio, descomposición de cada User Story en engineering tasks de 4 a 8 horas, anexo de usuarios de prueba por segmento, JDK 27 en la RESTful API, tabla de hallazgos con heurística y severidad en las entrevistas de validación, corrección de niveles de títulos, tabla de contenidos, sección de Conclusiones y recomendaciones, y revisión de ortografía. |
+| 0.19 | 26/11/2026 | Kevin Junior Salazar Marquina | Documentación del incremento de catálogo del Sprint 4: objetivo de negocio, tareas de US-020 y US-021, commits, pruebas, ejecución con ambos roles, capturas antes y después, integración mediante el PR #3 y aporte escrito al Student Outcome 3. |
+| 0.20 | 26/11/2026 | Carlos Gabriel Cespedes Lezcano | Cierre de la entrega TB2: carátula con los tres integrantes del equipo desde el Sprint 4, incorporación de US-033 Consultar historial mecánico al punto 5.2.4 Sprint 4 con sus engineering tasks, commits, pruebas, resultados de ejecución, endpoint y despliegue; actualización del Sprint Planning, de la matriz de Aspect Leaders and Collaborators, del reporte de colaboración y del aporte al Student Outcome 3 del Sprint 4; y actualización de Conclusiones y recomendaciones. |
+| 0.21 | 26/11/2026 | Carlos Gabriel Cespedes Lezcano | Unificación de la sección Student Outcome en un solo cuadro acumulativo: incorporación de las acciones de la entrega TB2 de Castillo Guevara, Cespedes Lezcano y Salazar Marquina en los criterios de comunicación oral y escrita, actualización de las celdas de Conclusiones con el avance TB2 y eliminación del cuadro separado del Sprint 4. |
+| 0.22 | 26/11/2026 | Carlos Gabriel Cespedes Lezcano | Actualización del punto 5.4 Video About-the-Product con la versión final del video: descripción, cuadro representativo, duración, pauta de secuencias y enlaces de Microsoft Stream y YouTube; actualización del anexo de videos. |
+| 0.23 | 27/11/2026 | Mathias Alejandro Castillo Guevara | Ampliación y precisión del incremento de historial mecánico (US-033) en el Reporte de colaboración - Sprint 4 y la sección 5.2.4 Sprint 4: detalle técnico de los 9 commits individuales (`d84f109`–`e6d58fe`) y el merge `2578ddd` en `develop` de `maquicontrol-webapp`, actualización del cronograma y la tabla del Sprint Backlog 4, recuento exacto de pruebas unitarias (23 pruebas en 4 archivos), consumo de `GET /api/v1/maintenances/history` y trazabilidad de integración. |
+| 0.24 | 28/11/2026 | Carlos Gabriel Cespedes Lezcano | Actualización de la sección Video About-the-Team con la versión final del video: resumen, cuadro representativo, duración, pauta de secuencias y enlaces de Microsoft Stream y YouTube; actualización del anexo de videos. |
+| 0.25 | 28/11/2026 | Carlos Gabriel Cespedes Lezcano | Incorporación de la captura del diálogo de historial mecánico (US-033) en el punto 5.2.4.5 Execution Evidence for Sprint Review. |
 
 ## Project Report Collaboration Insights
 
@@ -287,7 +147,7 @@ Los commits del periodo TB1 se cuentan desde el commit `69f392a`, corte de la en
 
 ### Reporte de colaboración - Avance de la entrega AV2
 
-Para el avance AV2 el equipo trabajó la RESTful API en el nuevo repositorio `maquicontrol-backend`, repartiendo los Bounded Contexts entre los integrantes, y mantuvo GitFlow en el informe para corregir el Capítulo IV según la retroalimentación del TB1 y documentar el Sprint 3. El detalle por repositorio se presenta en el punto 5.2.3.8.
+Para el avance AV2 el equipo trabajó la RESTful API en el nuevo repositorio `maquicontrol-platform`, repartiendo los Bounded Contexts entre los integrantes, y mantuvo GitFlow en el informe para corregir el Capítulo IV según la retroalimentación del TB1 y documentar el Sprint 3. El detalle por repositorio se presenta en el punto 5.2.3.8.
 
 #### Evidencias de commits en `develop`
 
@@ -304,6 +164,18 @@ Para el avance AV2 el equipo trabajó la RESTful API en el nuevo repositorio `ma
 | Angiela Stephany Fuentes Alvarez | 0 | 0 | 2 |
 
 Los commits del periodo AV2 se cuentan desde el commit `dc3a8ea`, corte de la entrega TB1, y no incluyen merge commits.
+
+### Reporte de colaboración - Sprint 4
+
+Kevin Junior Salazar Marquina se incorporó al desarrollo del incremento de catálogo del Sprint 4. Implementó los filtros de US-020 y US-021 y sus traducciones, agregó 11 pruebas del componente y verificó el comportamiento con las cuentas de propietario y contratista conectadas al backend publicado. Los cambios se registraron en dos commits de `maquicontrol-webapp` y se integraron en `develop` mediante el [PR #3](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/pull/3).
+
+Mathias Alejandro Castillo Guevara desarrolló la consulta del historial mecánico de US-033 en la aplicación web. Implementó `getHistory` en `MaintenanceApiEndpoint` y `getMaintenanceHistory` en `MaintenanceManagementApi`, las señales y acciones de historial (`history`, `historyMachineryId`, `historyLoading`, `historyError`, `loadMaintenanceHistory` y `clearMaintenanceHistory`) en `MaintenanceManagementStore`, los manejadores, botón por tarjeta y diálogo modal en `MachineryList` con sus estilos, las traducciones en `es-419.json` y `en.json`, y la prueba unitaria en `machinery-list.spec.ts`. Los cambios se registraron en 9 commits en la rama `feature/sprint-4-mechanical-history` de `maquicontrol-webapp` ([`d84f109`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/d84f109) hasta [`e6d58fe`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/e6d58fe)) y se integraron en `develop` mediante el merge [`2578ddd`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/2578ddd) ([comparación `bed98fa...2578ddd`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/compare/bed98fa...2578ddd)).
+
+Carlos Gabriel Cespedes Lezcano aplicó las correcciones del informe indicadas en la retroalimentación del AV2, verificó el incremento del Sprint 4 contra la RESTful API publicada en Azure, alineó el repositorio de la API con su nuevo nombre `maquicontrol-platform` y el JDK 27 del despliegue por contenedor, documentó el punto 5.2.4 Sprint 4 y preparó la integración y el release de la entrega.
+
+Desde el Sprint 4 el equipo de MaquiControl está conformado por tres integrantes: Mathias Alejandro Castillo Guevara, Carlos Gabriel Cespedes Lezcano y Kevin Junior Salazar Marquina. Los registros de las entregas AV1, TB1 y AV2 conservan las contribuciones de los integrantes que participaron en esos periodos.
+
+La [sección 5.2.4](#524-sprint-4) relaciona las tareas con los commits, las comprobaciones y las capturas del incremento. Los registros de las entregas anteriores conservan las contribuciones realizadas por el equipo en cada periodo.
 
 ### Gráficos de GitHub Insights
 
@@ -333,7 +205,7 @@ La Landing Page se construyó en el Sprint 1 y se actualizó en el Sprint 2 con 
 
 ![Commits por semana del repositorio de la Landing Page](assets/insights-website-commits.png)
 
-#### Fake API (`maquicontrol-platform`)
+#### Fake API (`maquicontrol-platform-mock`)
 
 El repositorio de la Fake API se creó en octubre para publicar en Azure App Service los servicios simulados que consume la aplicación web.
 
@@ -341,7 +213,7 @@ El repositorio de la Fake API se creó en octubre para publicar en Azure App Ser
 
 ![Commits por semana del repositorio de la Fake API](assets/insights-platform-commits.png)
 
-#### RESTful API (`maquicontrol-backend`)
+#### RESTful API (`maquicontrol-platform`)
 
 El repositorio de la RESTful API se creó en noviembre, durante el Sprint 3. Es el repositorio con más integrantes participando en el código, porque cada uno desarrolló uno o más Bounded Contexts.
 
@@ -351,23 +223,165 @@ El repositorio de la RESTful API se creó en noviembre, durante el Sprint 3. Es 
 
 ## Contenido
 
+- [Student Outcome](#student-outcome)
+
+**[Capítulo I: Introducción](#capítulo-i-introducción)**
+
+- [1.1. Startup Profile](#11-startup-profile)
+  - [1.1.1. Descripción de la Startup](#111-descripción-de-la-startup)
+  - [1.1.2. Perfiles de integrantes del equipo](#112-perfiles-de-integrantes-del-equipo)
+- [1.2. Solution Profile](#12-solution-profile)
+  - [1.2.1. Antecedentes y problemática](#121-antecedentes-y-problemática)
+    - [1.2.1.1. What](#1211-what)
+    - [1.2.1.2. Who](#1212-who)
+    - [1.2.1.3. Where](#1213-where)
+    - [1.2.1.4. When](#1214-when)
+    - [1.2.1.5. Why](#1215-why)
+    - [1.2.1.6. How](#1216-how)
+    - [1.2.1.7. How Much](#1217-how-much)
+  - [1.2.2. Lean UX Process](#122-lean-ux-process)
+    - [1.2.2.1. Lean UX Problem Statements](#1221-lean-ux-problem-statements)
+    - [1.2.2.2. Lean UX Assumptions](#1222-lean-ux-assumptions)
+    - [1.2.2.3. Lean UX Hypothesis Statements](#1223-lean-ux-hypothesis-statements)
+    - [1.2.2.4. Lean UX Canvas](#1224-lean-ux-canvas)
+- [1.3. Segmentos objetivo](#13-segmentos-objetivo)
+
+**[Capítulo II: Requirements Elicitation & Analysis](#capítulo-ii-requirements-elicitation--analysis)**
+
+- [2.1. Competidores](#21-competidores)
+  - [2.1.1. Análisis competitivo](#211-análisis-competitivo)
+  - [2.1.2. Estrategias y tácticas frente a competidores](#212-estrategias-y-tácticas-frente-a-competidores)
+- [2.2. Entrevistas](#22-entrevistas)
+  - [2.2.1. Diseño de entrevistas](#221-diseño-de-entrevistas)
+  - [2.2.2. Registro de entrevistas](#222-registro-de-entrevistas)
+  - [2.2.3. Análisis de entrevistas](#223-análisis-de-entrevistas)
+- [2.3. Needfinding](#23-needfinding)
+  - [2.3.1. User Personas](#231-user-personas)
+  - [2.3.2. User Task Matrix](#232-user-task-matrix)
+  - [2.3.3. User Journey Mapping](#233-user-journey-mapping)
+  - [2.3.4. Empathy Mapping](#234-empathy-mapping)
+- [2.4. Big Picture Event Storming](#24-big-picture-event-storming)
+- [2.5. Ubiquitous Language](#25-ubiquitous-language)
+
+**[Capítulo III: Requirements Specification](#capítulo-iii-requirements-specification)**
+
+- [3.1. User Stories](#31-user-stories)
+- [3.2. Impact Mapping](#32-impact-mapping)
+- [3.3. Product Backlog](#33-product-backlog)
+
+**[Capítulo IV: Product Design](#capítulo-iv-product-design)**
+
+- [4.1. Style Guidelines](#41-style-guidelines)
+  - [4.1.1. General Style Guidelines](#411-general-style-guidelines)
+  - [4.1.2. Web Style Guidelines](#412-web-style-guidelines)
+- [4.2. Information Architecture](#42-information-architecture)
+  - [4.2.1. Organization Systems](#421-organization-systems)
+  - [4.2.2. Labeling Systems](#422-labeling-systems)
+  - [4.2.3. SEO Tags and Meta Tags](#423-seo-tags-and-meta-tags)
+  - [4.2.4. Searching Systems](#424-searching-systems)
+  - [4.2.5. Navigation Systems](#425-navigation-systems)
+- [4.3. Landing Page UI Design](#43-landing-page-ui-design)
+  - [4.3.1. Landing Page Wireframes](#431-landing-page-wireframes)
+  - [4.3.2. Landing Page Mock-ups](#432-landing-page-mock-ups)
+- [4.4. Web Applications UX/UI Design](#44-web-applications-uxui-design)
+  - [4.4.1. Web Applications Wireframes](#441-web-applications-wireframes)
+  - [4.4.2. Web Applications Wireflow Diagrams](#442-web-applications-wireflow-diagrams)
+  - [4.4.3. Web Applications Mock-ups](#443-web-applications-mock-ups)
+  - [4.4.4. Web Applications User Flow Diagrams](#444-web-applications-user-flow-diagrams)
+- [4.5. Web Applications Prototyping](#45-web-applications-prototyping)
+- [4.6. Domain-Driven Software Architecture](#46-domain-driven-software-architecture)
+  - [4.6.1. Design-Level Event Storming](#461-design-level-event-storming)
+  - [4.6.2. Software Architecture Context Diagram](#462-software-architecture-context-diagram)
+  - [4.6.3. Software Architecture Container Diagram](#463-software-architecture-container-diagram)
+  - [4.6.4. Software Architecture Components Diagrams](#464-software-architecture-components-diagrams)
+- [4.7. Software Object-Oriented Design](#47-software-object-oriented-design)
+  - [4.7.1. Class Diagrams](#471-class-diagrams)
+- [4.8. Database Design](#48-database-design)
+  - [4.8.1. Database Diagrams](#481-database-diagrams)
+
+**[Capítulo V: Product Implementation, Validation & Deployment](#capítulo-v-product-implementation-validation--deployment)**
+
+- [5.1. Software Configuration Management](#51-software-configuration-management)
+  - [5.1.1. Software Development Environment Configuration](#511-software-development-environment-configuration)
+  - [5.1.2. Source Code Management](#512-source-code-management)
+  - [5.1.3. Source Code Style Guide & Conventions](#513-source-code-style-guide--conventions)
+  - [5.1.4. Software Deployment Configuration](#514-software-deployment-configuration)
+- [5.2. Landing Page, Services & Applications Implementation](#52-landing-page-services--applications-implementation)
+  - [5.2.1. Sprint 1](#521-sprint-1)
+    - [5.2.1.1. Sprint Planning 1](#5211-sprint-planning-1)
+    - [5.2.1.2. Aspect Leaders and Collaborators](#5212-aspect-leaders-and-collaborators)
+    - [5.2.1.3. Sprint Backlog 1](#5213-sprint-backlog-1)
+    - [5.2.1.4. Development Evidence for Sprint Review](#5214-development-evidence-for-sprint-review)
+    - [5.2.1.5. Execution Evidence for Sprint Review](#5215-execution-evidence-for-sprint-review)
+    - [5.2.1.6. Services Documentation Evidence for Sprint Review](#5216-services-documentation-evidence-for-sprint-review)
+    - [5.2.1.7. Software Deployment Evidence for Sprint Review](#5217-software-deployment-evidence-for-sprint-review)
+    - [5.2.1.8. Team Collaboration Insights during Sprint](#5218-team-collaboration-insights-during-sprint)
+  - [5.2.2. Sprint 2](#522-sprint-2)
+    - [5.2.2.1. Sprint Planning 2](#5221-sprint-planning-2)
+    - [5.2.2.2. Aspect Leaders and Collaborators](#5222-aspect-leaders-and-collaborators)
+    - [5.2.2.3. Sprint Backlog 2](#5223-sprint-backlog-2)
+    - [5.2.2.4. Development Evidence for Sprint Review](#5224-development-evidence-for-sprint-review)
+    - [5.2.2.5. Execution Evidence for Sprint Review](#5225-execution-evidence-for-sprint-review)
+    - [5.2.2.6. Services Documentation Evidence for Sprint Review](#5226-services-documentation-evidence-for-sprint-review)
+    - [5.2.2.7. Software Deployment Evidence for Sprint Review](#5227-software-deployment-evidence-for-sprint-review)
+    - [5.2.2.8. Team Collaboration Insights during Sprint](#5228-team-collaboration-insights-during-sprint)
+  - [5.2.3. Sprint 3](#523-sprint-3)
+    - [5.2.3.1. Sprint Planning 3](#5231-sprint-planning-3)
+    - [5.2.3.2. Aspect Leaders and Collaborators](#5232-aspect-leaders-and-collaborators)
+    - [5.2.3.3. Sprint Backlog 3](#5233-sprint-backlog-3)
+    - [5.2.3.4. Development Evidence for Sprint Review](#5234-development-evidence-for-sprint-review)
+    - [5.2.3.5. Execution Evidence for Sprint Review](#5235-execution-evidence-for-sprint-review)
+    - [5.2.3.6. Services Documentation Evidence for Sprint Review](#5236-services-documentation-evidence-for-sprint-review)
+    - [5.2.3.7. Software Deployment Evidence for Sprint Review](#5237-software-deployment-evidence-for-sprint-review)
+    - [5.2.3.8. Team Collaboration Insights during Sprint](#5238-team-collaboration-insights-during-sprint)
+  - [5.2.4. Sprint 4](#524-sprint-4)
+    - [5.2.4.1. Sprint Planning 4](#5241-sprint-planning-4)
+    - [5.2.4.2. Aspect Leaders and Collaborators](#5242-aspect-leaders-and-collaborators)
+    - [5.2.4.3. Sprint Backlog 4](#5243-sprint-backlog-4)
+    - [5.2.4.4. Development Evidence for Sprint Review](#5244-development-evidence-for-sprint-review)
+    - [5.2.4.5. Execution Evidence for Sprint Review](#5245-execution-evidence-for-sprint-review)
+    - [5.2.4.6. Services Documentation Evidence for Sprint Review](#5246-services-documentation-evidence-for-sprint-review)
+    - [5.2.4.7. Software Deployment Evidence for Sprint Review](#5247-software-deployment-evidence-for-sprint-review)
+    - [5.2.4.8. Team Collaboration Insights during Sprint](#5248-team-collaboration-insights-during-sprint)
+- [5.3. Validation Interviews](#53-validation-interviews)
+  - [5.3.1. Diseño de Entrevistas](#531-diseño-de-entrevistas)
+  - [5.3.2. Registro de Entrevistas](#532-registro-de-entrevistas)
+  - [5.3.3. Evaluaciones según heurísticas](#533-evaluaciones-según-heurísticas)
+- [5.4. Video About-the-Product](#54-video-about-the-product)
+
+**[Conclusiones](#conclusiones)**
+
+- [Conclusiones y recomendaciones](#conclusiones-y-recomendaciones)
+- [Video About-the-Team](#video-about-the-team)
+
+**[Bibliografía](#bibliografía)**
+
+
+**[Anexos](#anexos)**
+
+- [Anexo: Repositorios y productos desplegados](#anexo-repositorios-y-productos-desplegados)
+- [Anexo: Usuarios de prueba](#anexo-usuarios-de-prueba)
+- [Anexo: Videos del Producto y del Equipo](#anexo-videos-del-producto-y-del-equipo)
+
+<div style="page-break-after: always;"></div>
+
 ## Student Outcome
 
 El curso contribuye al cumplimiento del **ABET - EAC - Student Outcome 3: Capacidad de comunicarse efectivamente con un rango de audiencias**.
 
-El siguiente cuadro presenta las acciones verificables realizadas por los integrantes durante las entregas AV1, TB1 y el avance AV2 y su relación con las dimensiones de comunicación oral y escrita del Student Outcome 3.
+El siguiente cuadro presenta las acciones verificables realizadas por los integrantes durante las entregas AV1, TB1, el avance AV2 y la entrega TB2, y su relación con las dimensiones de comunicación oral y escrita del Student Outcome 3.
 
 | **Criterio específico** | **Acciones realizadas** | **Conclusiones** |
 | :--- | :--- | :--- |
-| **Comunica oralmente con efectividad a diferentes rangos de audiencia.** | **Fuentes Alvarez, Angiela Stephany**<br>**AV1:** Realizó la entrevista a Piero Reaño, representante del segmento de contratistas independientes y responsables de obra. Adaptó las preguntas al contexto del entrevistado para recopilar información sobre disponibilidad, costos, mantenimiento y gestión de maquinaria. El registro, resumen, captura y evidencia audiovisual de la entrevista fueron incorporados en la sección 2.2.2.<br>**TB1:** Expondrá en el Stage Review la Landing Page v2.0.0 y su integración con la aplicación web desplegada.<br>**AV2:** Expondrá en el Sprint Review las validaciones de periodo y estado de reservas que incorporó en la aplicación web.<br><br>**Tantalean Granda, Nicolas**<br>**AV1:** Evidencia oral pendiente. Sustentará los resultados del análisis competitivo, la investigación de usuarios y la especificación de requerimientos antes del cierre de la entrega.<br>**TB1:** Expondrá en el Stage Review la planificación del Sprint 2, el Sprint Backlog y las User Stories atendidas.<br>**AV2:** Expondrá en el Sprint Review el registro, el inicio de sesión con JWT y la seguridad por roles de la RESTful API.<br><br>**Gutiérrez Lizarbe, Wilmer Sebastián**<br>**AV1:** Realizó la entrevista a Harold Angello, representante del segmento de contratistas y responsables de obra. Adaptó las preguntas al contexto del entrevistado para recopilar información sobre sus necesidades, experiencias y problemas relacionados con el alquiler de maquinaria.<br>**TB1:** Expondrá en el Stage Review el Event Storming y los diagramas Design-Level elaborados en PlantUML.<br>**AV2:** Expondrá en el Sprint Review las reglas de negocio de Fleet, Rental, IAM y Profiles cubiertas con pruebas unitarias.<br><br>**Castillo Guevara, Mathias Alejandro**<br>**AV1:** Realizó la entrevista a Renzo Huamán, representante del segmento de contratistas independientes. La información obtenida fue empleada posteriormente en la elaboración de artefactos de Needfinding.<br>**TB1:** Expondrá en el Stage Review la arquitectura de software y los diagramas C4 de contenedores y componentes.<br>**AV2:** Expondrá en el Sprint Review los endpoints de Operations, Subscription y Billing y sus eventos de integración.<br><br>**Cespedes Lezcano, Carlos Gabriel**<br>**AV1:** Realizó las entrevistas a José Ramírez, Carlos Stephano Mendoza y Andrea López, representantes relacionados con la administración y el alquiler de maquinaria. Recopiló información sobre disponibilidad, tarifas, mantenimiento, coordinación y control operativo.<br>**TB1:** Presentará la demostración en vivo de la aplicación web desplegada en Azure Static Web Apps, la Fake API en Azure App Service y el flujo de suscripción con Mercado Pago en modo sandbox. <br>**AV2:** Presentará la demostración en vivo de la aplicación web conectada a la RESTful API desplegada en Azure App Service, su documentación en Swagger UI y la base de datos en Azure Database for MySQL.|**Avance AV1:** Las entrevistas permitieron establecer comunicación directa con representantes de ambos segmentos objetivo y adaptar las preguntas al contexto de cada participante. Carlos, Mathias, Wilmer y Angiela realizaron entrevistas y documentaron sus resultados en el informe. Nicolas incorporará su evidencia de comunicación oral mediante la exposición de los resultados del análisis competitivo, la investigación de usuarios y la especificación de requerimientos durante la sustentación de AV1.<br><br>**Avance TB1:** Para el Stage Review cada integrante expone las secciones y productos que lideró en el Sprint 2. La demostración en vivo de la aplicación web y la Landing Page permite explicar las funcionalidades a una audiencia técnica y no técnica.<br><br>**Avance AV2:** Cada integrante expone en el Sprint Review el Bounded Context o producto que lideró en el Sprint 3, apoyándose en la aplicación desplegada y en Swagger UI para explicar el funcionamiento a una audiencia técnica y no técnica. |
-| **Comunica por escrito con efectividad a diferentes rangos de audiencia.** | **Fuentes Alvarez, Angiela Stephany**<br>**AV1:** Documentó Student Outcome y desarrolló contenido del Capítulo IV: Product Design, incluyendo Style Guidelines, Information Architecture y Landing Page UI Design.<br>**TB1:** Desarrolló cambios de la Landing Page integrados en la versión v2.0.0, incluyendo los enlaces hacia la aplicación web desplegada.<br>**AV2:** Implementó en la aplicación web la validación de las fechas del periodo de alquiler y de las transiciones de estado de las reservas.<br><br>**Tantalean Granda, Nicolas**<br>**AV1:** Documentó el análisis competitivo, el diseño de entrevistas, User Stories y Product Backlog, organizando los requerimientos identificados para los segmentos objetivo.<br>**TB1:** Estructuró el punto 5.2.2 Sprint 2, incluyendo Sprint Planning, Aspect Leaders and Collaborators y Sprint Backlog.<br>**AV2:** Desarrolló el Bounded Context Identity & Access Management de la RESTful API: agregado de cuenta de usuario, registro con hash de contraseñas, inicio de sesión con JWT y comandos de roles.<br><br>**Gutiérrez Lizarbe, Wilmer Sebastián**<br>**AV1:** Documentó los resultados de la entrevista a Harold Angello y desarrolló artefactos de Needfinding, incluyendo User Persona, User Journey Mapping y Empathy Mapping.<br>**TB1:** Elaboró los diagramas PlantUML de Big Picture Event Storming y Design-Level Event Storming.<br>**AV2:** Desarrolló la primera versión de Fleet, Rental, IAM y Profiles en la RESTful API y las pruebas unitarias de reglas de ubicación, periodo de alquiler, roles y contacto.<br><br>**Castillo Guevara, Mathias Alejandro**<br>**AV1:** Documentó la entrevista a Renzo Huamán y elaboró artefactos de Needfinding relacionados con User Personas, User Task Matrix, User Journey Mapping y Empathy Mapping.<br>**TB1:** Actualizó las descripciones de componentes y los diagramas de arquitectura de software del punto 4.6.<br>**AV2:** Desarrolló los Bounded Contexts Operations, Subscription y Billing de la RESTful API, con sus servicios CQRS, ACL hacia Mercado Pago y SUNAT, persistencia, controladores y pruebas de dominio.<br><br>**Cespedes Lezcano, Carlos Gabriel**<br>**AV1:** Participó en la estructuración y corrección del informe; documentó entrevistas, Needfinding, Big Picture Event Storming, Ubiquitous Language, Impact Mapping, Web Application UX/UI Design y la arquitectura de software basada en DDD.<br>**TB1:** Documentó los Bounded Contexts Category, Subscription y Billing, actualizó el Capítulo V con la configuración real de herramientas y despliegue, completó el punto 5.2.2 Sprint 2 con evidencias de la aplicación web y la Fake API, y alineó los diagramas C4 con el código implementado. <br>**AV2:** Desarrolló la base compartida y los contextos Profiles, Fleet, Rental y Maintenance de la RESTful API, la desplegó en Azure, conectó la aplicación web con ella y documentó el punto 5.2.3 Sprint 3 y la configuración de despliegue del punto 5.1.4.| **Avance AV1:** Los integrantes han documentado los resultados de investigación, requisitos, decisiones de diseño y arquitectura mediante contenido escrito y artefactos visuales. El uso de una estructura común, lenguaje técnico y control de versiones permite comunicar el avance del proyecto de forma organizada y trazable.<br><br>**Avance TB1:** El equipo documentó la implementación del Sprint 2, la configuración de despliegue y la arquitectura actualizada. Los diagramas y descripciones reflejan el código implementado, lo que facilita que docentes, usuarios y desarrolladores comprendan el estado real del producto.<br><br>**Avance AV2:** El equipo documentó la RESTful API con OpenAPI, su despliegue y el Sprint 3. Los mensajes de commit siguen Conventional Commits y los endpoints usan los mismos nombres del Catálogo de comandos, lo que permite seguir cada funcionalidad desde el informe hasta el código. |
+| **Comunica oralmente con efectividad a diferentes rangos de audiencia.** | **Fuentes Alvarez, Angiela Stephany**<br>**AV1:** Realizó la entrevista a Piero Reaño, representante del segmento de contratistas independientes y responsables de obra. Adaptó las preguntas al contexto del entrevistado para recopilar información sobre disponibilidad, costos, mantenimiento y gestión de maquinaria. El registro, resumen, captura y evidencia audiovisual de la entrevista fueron incorporados en la sección 2.2.2.<br>**TB1:** Expondrá en el Stage Review la Landing Page v2.0.0 y su integración con la aplicación web desplegada.<br>**AV2:** Expondrá en el Sprint Review las validaciones de periodo y estado de reservas que incorporó en la aplicación web.<br><br>**Tantalean Granda, Nicolas**<br>**AV1:** Evidencia oral pendiente. Sustentará los resultados del análisis competitivo, la investigación de usuarios y la especificación de requisitos antes del cierre de la entrega.<br>**TB1:** Expondrá en el Stage Review la planificación del Sprint 2, el Sprint Backlog y las User Stories atendidas.<br>**AV2:** Expondrá en el Sprint Review el registro, el inicio de sesión con JWT y la seguridad por roles de la RESTful API.<br><br>**Gutiérrez Lizarbe, Wilmer Sebastián**<br>**AV1:** Realizó la entrevista a Harold Angello, representante del segmento de contratistas y responsables de obra. Adaptó las preguntas al contexto del entrevistado para recopilar información sobre sus necesidades, experiencias y problemas relacionados con el alquiler de maquinaria.<br>**TB1:** Expondrá en el Stage Review el Event Storming y los diagramas Design-Level elaborados en PlantUML.<br>**AV2:** Expondrá en el Sprint Review las reglas de negocio de Fleet, Rental, IAM y Profiles cubiertas con pruebas unitarias.<br><br>**Castillo Guevara, Mathias Alejandro**<br>**AV1:** Realizó la entrevista a Renzo Huamán, representante del segmento de contratistas independientes. La información obtenida fue empleada posteriormente en la elaboración de artefactos de Needfinding.<br>**TB1:** Expondrá en el Stage Review la arquitectura de software y los diagramas C4 de contenedores y componentes.<br>**AV2:** Expondrá en el Sprint Review los endpoints de Operations, Subscription y Billing y sus eventos de integración.<br>**TB2:** Expondrá en el Sprint Review la consulta del historial mecánico incorporada al catálogo y presentará su testimonio ante cámara en el Video About-the-Team, describiendo las actividades realizadas y las competencias desarrolladas durante los cuatro Sprints.<br><br>**Cespedes Lezcano, Carlos Gabriel**<br>**AV1:** Realizó las entrevistas a José Ramírez, Carlos Stephano Mendoza y Andrea López, representantes relacionados con la administración y el alquiler de maquinaria. Recopiló información sobre disponibilidad, tarifas, mantenimiento, coordinación y control operativo.<br>**TB1:** Presentará la demostración en vivo de la aplicación web desplegada en Azure Static Web Apps, la Fake API en Azure App Service y el flujo de suscripción con Mercado Pago en modo sandbox. <br>**AV2:** Presentará la demostración en vivo de la aplicación web conectada a la RESTful API desplegada en Azure App Service, su documentación en Swagger UI y la base de datos en Azure Database for MySQL.<br>**TB2:** Presentará la demostración en vivo del producto final desplegado y narrará la retrospectiva del equipo en el Video About-the-Team, además de exponer su testimonio ante cámara.<br><br>**Salazar Marquina, Kevin Junior**<br>**TB2:** Se incorporó al equipo en el Sprint 4. Expondrá en el Sprint Review la búsqueda por categoría y ubicación del catálogo y presentará su testimonio ante cámara en el Video About-the-Team, explicando cómo se integró a un proyecto en curso.|**Avance AV1:** Las entrevistas permitieron establecer comunicación directa con representantes de ambos segmentos objetivo y adaptar las preguntas al contexto de cada participante. Carlos, Mathias, Wilmer y Angiela realizaron entrevistas y documentaron sus resultados en el informe. Nicolas incorporará su evidencia de comunicación oral mediante la exposición de los resultados del análisis competitivo, la investigación de usuarios y la especificación de requisitos durante la sustentación de AV1.<br><br>**Avance TB1:** Para el Stage Review cada integrante expone las secciones y productos que lideró en el Sprint 2. La demostración en vivo de la aplicación web y la Landing Page permite explicar las funcionalidades a una audiencia técnica y no técnica.<br><br>**Avance AV2:** Cada integrante expone en el Sprint Review el Bounded Context o producto que lideró en el Sprint 3, apoyándose en la aplicación desplegada y en Swagger UI para explicar el funcionamiento a una audiencia técnica y no técnica.<br><br>**Entrega TB2:** El equipo, reducido a tres integrantes desde el Sprint 4, presenta el producto final en el Sprint Review y registra en el Video About-the-Team el testimonio ante cámara de cada participante, describiendo sus actividades, el logro del outcome y las competencias desarrolladas. La narración en voz en off de la retrospectiva permite comunicar el proceso completo a una audiencia que no siguió el proyecto. |
+| **Comunica por escrito con efectividad a diferentes rangos de audiencia.** | **Fuentes Alvarez, Angiela Stephany**<br>**AV1:** Documentó Student Outcome y desarrolló contenido del Capítulo IV: Product Design, incluyendo Style Guidelines, Information Architecture y Landing Page UI Design.<br>**TB1:** Desarrolló cambios de la Landing Page integrados en la versión v2.0.0, incluyendo los enlaces hacia la aplicación web desplegada.<br>**AV2:** Implementó en la aplicación web la validación de las fechas del periodo de alquiler y de las transiciones de estado de las reservas.<br><br>**Tantalean Granda, Nicolas**<br>**AV1:** Documentó el análisis competitivo, el diseño de entrevistas, User Stories y Product Backlog, organizando los requisitos identificados para los segmentos objetivo.<br>**TB1:** Estructuró el punto 5.2.2 Sprint 2, incluyendo Sprint Planning, Aspect Leaders and Collaborators y Sprint Backlog.<br>**AV2:** Desarrolló el Bounded Context Identity & Access Management de la RESTful API: agregado de cuenta de usuario, registro con hash de contraseñas, inicio de sesión con JWT y comandos de roles.<br><br>**Gutiérrez Lizarbe, Wilmer Sebastián**<br>**AV1:** Documentó los resultados de la entrevista a Harold Angello y desarrolló artefactos de Needfinding, incluyendo User Persona, User Journey Mapping y Empathy Mapping.<br>**TB1:** Elaboró los diagramas PlantUML de Big Picture Event Storming y Design-Level Event Storming.<br>**AV2:** Desarrolló la primera versión de Fleet, Rental, IAM y Profiles en la RESTful API y las pruebas unitarias de reglas de ubicación, periodo de alquiler, roles y contacto.<br><br>**Castillo Guevara, Mathias Alejandro**<br>**AV1:** Documentó la entrevista a Renzo Huamán y elaboró artefactos de Needfinding relacionados con User Personas, User Task Matrix, User Journey Mapping y Empathy Mapping.<br>**TB1:** Actualizó las descripciones de componentes y los diagramas de arquitectura de software del punto 4.6.<br>**AV2:** Desarrolló los Bounded Contexts Operations, Subscription y Billing de la RESTful API, con sus servicios CQRS, ACL hacia Mercado Pago y SUNAT, persistencia, controladores y pruebas de dominio.<br>**TB2:** Documentó el incremento del historial mecánico de US-033 explicando, para el usuario propietario de flota, qué información se muestra en el catálogo y, para el equipo, el consumo del endpoint `GET /api/v1/maintenances/history`, las señales del store y las pruebas del componente, registrando el alcance en los mensajes de commit según Conventional Commits.<br><br>**Cespedes Lezcano, Carlos Gabriel**<br>**AV1:** Participó en la estructuración y corrección del informe; documentó entrevistas, Needfinding, Big Picture Event Storming, Ubiquitous Language, Impact Mapping, Web Application UX/UI Design y la arquitectura de software basada en DDD.<br>**TB1:** Documentó los Bounded Contexts Category, Subscription y Billing, actualizó el Capítulo V con la configuración real de herramientas y despliegue, completó el punto 5.2.2 Sprint 2 con evidencias de la aplicación web y la Fake API, y alineó los diagramas C4 con el código implementado. <br>**AV2:** Desarrolló la base compartida y los contextos Profiles, Fleet, Rental y Maintenance de la RESTful API, la desplegó en Azure, conectó la aplicación web con ella y documentó el punto 5.2.3 Sprint 3 y la configuración de despliegue del punto 5.1.4.<br>**TB2:** Redactó el punto 5.2.4 Sprint 4 y aplicó las correcciones señaladas en la retroalimentación del AV2, reescribiendo los Sprint Goals y los Hypothesis Statements en lenguaje de negocio y detallando las engineering tasks, los commits y los endpoints para la audiencia técnica. Documentó además el anexo de usuarios de prueba para que el docente pueda verificar el producto desplegado.<br><br>**Salazar Marquina, Kevin Junior**<br>**TB2:** Describió el incremento de búsqueda por categoría y ubicación, sus criterios de revisión y su relación con las historias US-020 y US-021. Registró la implementación y las pruebas en commits separados, explicó el alcance en el PR #3 y documentó en la sección 5.2.4 la planificación, las tareas, las capturas y los resultados de ejecución.| **Avance AV1:** Los integrantes han documentado los resultados de investigación, requisitos, decisiones de diseño y arquitectura mediante contenido escrito y artefactos visuales. El uso de una estructura común, lenguaje técnico y control de versiones permite comunicar el avance del proyecto de forma organizada y trazable.<br><br>**Avance TB1:** El equipo documentó la implementación del Sprint 2, la configuración de despliegue y la arquitectura actualizada. Los diagramas y descripciones reflejan el código implementado, lo que facilita que docentes, usuarios y desarrolladores comprendan el estado real del producto.<br><br>**Avance AV2:** El equipo documentó la RESTful API con OpenAPI, su despliegue y el Sprint 3. Los mensajes de commit siguen Conventional Commits y los endpoints usan los mismos nombres del Catálogo de comandos, lo que permite seguir cada funcionalidad desde el informe hasta el código.<br><br>**Entrega TB2:** El equipo documentó el Sprint 4 y corrigió el informe según la retroalimentación del AV2, separando con claridad el lenguaje de negocio del lenguaje técnico: los Sprint Goals y las hipótesis se dirigen al lector no técnico, mientras que las engineering tasks, los commits, los endpoints y las pruebas permiten al docente y al equipo verificar cada incremento. El mismo criterio se aplicó al incorporar a un integrante nuevo en el Sprint 4, que pudo ubicarse en el proyecto leyendo la documentación existente. |
 
 # Capítulo I: Introducción
 
-## 1.1 Startup Profile
+## 1.1. Startup Profile
 Esta sección presenta el perfil de AndesHeavyTech, la startup responsable del desarrollo de MaquiControl. Se describe su propósito, enfoque de negocio y propuesta de valor dentro del sector de alquiler y gestión de maquinaria pesada, así como los perfiles de los integrantes que participan en el desarrollo del proyecto.
 
-### 1.1.1 Descripción de la Startup
+### 1.1.1. Descripción de la Startup
 AndesHeavyTech tiene como objetivo transformar digitalmente la gestión, contratación y supervisión del alquiler de maquinaria pesada en las industrias de la construcción, minería e infraestructura, abarcando actividades desde la reserva de equipos y programación de mantenimientos hasta la emisión automatizada de comprobantes de pago. A través de su plataforma principal, AndesHeavyTech permite a las empresas proveedoras y contratistas organizar de forma centralizada sus solicitudes de alquiler, asignar maquinaria y operadores de manera eficiente, y monitorear el estado operativo y financiero de sus flotas en tiempo real.
 
 La solución busca resolver la falta de trazabilidad, la informalidad en la disponibilidad de equipos y los retrasos en los procesos administrativos en entornos donde las operaciones de obra deben adaptarse a cronogramas exigentes. Para ello, AndesHeavyTech integra funcionalidades de catálogo dinámico con disponibilidad en tiempo real, programación de mantenimientos preventivos y correctivos, alertas automáticas de estado de máquina y emisión instantánea de facturación electrónica integrada a los estándares tributarios de SUNAT.
@@ -382,75 +396,75 @@ Una de las principales fortalezas del sistema es su capacidad para adaptarse a l
 
 | Foto | Apellido y Nombre |
 | --- | --- |
-| ![Foto Angiela](assets/Foto_AngielaFuentes.jpeg) | **Fuentes Alvarez, Angiela Stephany**<br> **Código: U202520331** \| **Carrera: Ingeniería de Software**<br>*Resumen:* Estudiante de Ingeniería de Software con interés en el análisis de requerimientos, diseño de soluciones tecnológicas y experiencia de usuario. Cuenta con conocimientos en desarrollo de software y herramientas de colaboración para proyectos tecnológicos. Se caracteriza por ser una persona organizada, responsable y comprometida con el trabajo en equipo, con disposición para aprender nuevas tecnologías y adaptarse a diferentes herramientas y procesos de desarrollo. |
+| ![Foto Angiela](assets/Foto_AngielaFuentes.jpeg) | **Fuentes Alvarez, Angiela Stephany**<br> **Código: U202520331** \| **Carrera: Ingeniería de Software**<br>*Resumen:* Estudiante de Ingeniería de Software con interés en el análisis de requisitos, diseño de soluciones tecnológicas y experiencia de usuario. Cuenta con conocimientos en desarrollo de software y herramientas de colaboración para proyectos tecnológicos. Se caracteriza por ser una persona organizada, responsable y comprometida con el trabajo en equipo, con disposición para aprender nuevas tecnologías y adaptarse a diferentes herramientas y procesos de desarrollo. |
 | ![Foto Sebastián](assets/Foto_SebastianGutierrez.jpeg) | **Gutiérrez Lizarbe, Wilmer Sebastián**<br> **Código: U202412044** \| **Carrera: Ingeniería de Software**<br>*Resumen:* Estudiante de Ingeniería de Software con conocimientos en desarrollo web (HTML5, CSS3, JavaScript/TypeScript, Angular), arquitectura backend (Java, Spring Boot) y gestión de bases de datos relacionales y no relacionales. Aporta al equipo capacidad analítica para el diseño de arquitecturas distribuidas, integración de APIs RESTful y lógica de negocio orientada a procesos industriales. |
 | ![Foto Carlos](assets/Foto_CarlosCespedes.jpeg) | **Cespedes Lezcano, Carlos Gabriel**<br> **Código: U202416147** \| **Carrera: Ingeniería de Software**<br>*Resumen:* Estudiante de Ingeniería de Software con conocimientos en desarrollo web, incluyendo HTML, CSS y JavaScript, así como en los lenguajes de programación C++ y Python. Cuenta con nociones básicas sobre el consumo de APIs y el manejo de bases de datos relacionales y no relacionales. |
 | ![Foto Nicolas](assets/Foto_NicolasTantalean.jpeg) | **Tantalean Granda, Nicolas**<br> **Código: U202410728** \| **Carrera: Ingeniería de Software**<br>*Resumen:* Estudiante de Ingeniería de Software con conocimientos en desarrollo web, incluyendo HTML, CSS y JavaScript, así como en los lenguajes de programación C++ y Python. Aporta al equipo conocimientos relacionados con lenguajes de programación y desarrollo de soluciones de software. |
 | ![Foto Mathias](assets/Foto_MathiasCastillo.jpeg) | **Castillo Guevara, Mathias Alejandro**<br> **Código: U202410783** \| **Carrera: Ingeniería de Software**<br>*Resumen:* Estudiante de Ingeniería de Software con conocimientos en desarrollo web, incluyendo HTML, CSS y JavaScript, además de lenguajes de programación como C++ y Python. Aporta al equipo conocimientos relacionados con tecnologías y desarrollo web, participando en el trabajo colaborativo orientado al desarrollo de la solución. |
 
-### 1.2 Solution Profile
+## 1.2. Solution Profile
 Esta sección describe la problemática que MaquiControl busca resolver y la propuesta de solución planteada por AndesHeavyTech. Se analizan las principales dificultades relacionadas con el alquiler, control y disponibilidad de maquinaria pesada, y se aplica el proceso Lean UX para definir las necesidades, supuestos e hipótesis que orientan el desarrollo del producto.
 
-### 1.2.1 Antecedentes y problemática
+### 1.2.1. Antecedentes y problemática
 En esta sección se presentan los antecedentes del sector de alquiler y gestión de maquinaria pesada, así como las principales dificultades que enfrentan los actores involucrados en este proceso. Se analizan problemas relacionados con la disponibilidad de equipos, la coordinación de alquileres, el seguimiento de mantenimientos, la comunicación entre proveedores y clientes, y la falta de información centralizada. A partir de estas limitaciones se establece la problemática que MaquiControl busca abordar mediante una solución digital orientada a mejorar la organización, trazabilidad y eficiencia de las operaciones.
 
-##### 1.2.1.1. What
+#### 1.2.1.1. What
 
 **¿Cuál es el problema?**
 
 El problema se define como la ausencia de un recurso tecnológico centralizado capaz de organizar, planificar y supervisar el proceso de gestión, alquiler y mantenimiento de maquinaria pesada, así como la emisión de comprobantes de pago. Actualmente, la falta de un sistema digital unificado provoca **descoordinación**, **errores en la disponibilidad de equipos**, **pérdidas de tiempo por paradas no programadas**, **retrasos en la facturación electrónica** y **aumento de costos operativos** tanto para los proveedores de maquinaria como para las empresas contratistas. Esto genera impactos negativos en la eficiencia, la productividad de las obras y la liquidez de las PYMEs del sector.
 
-##### 1.2.1.2. Who
+#### 1.2.1.2. Who
 
 **¿Quiénes están involucrados en el problema?**
 
 Este problema involucra principalmente a **proveedores y gestores de flota de maquinaria pesada**, encargados de administrar el inventario, programar mantenimientos y asignar equipos; a **contratistas y jefes de obra**, responsables de la ejecución de proyectos de construcción o minería que requieren alquileres garantizados; a **técnicos de mantenimiento**, quienes registran las revisiones operativas de los equipos; y al **personal administrativo y contable**, que exige información exacta para la liquidación de horas máquina y la emisión de facturas electrónicas conformes a SUNAT. La falta de integración entre estos actores genera cuellos de botella que afectan directamente la continuidad de los proyectos.
 
-##### 1.2.1.3. Where
+#### 1.2.1.3. Where
 
 **¿Dónde surge el problema?**
 
 El problema surge en **obras de construcción, proyectos mineros, frentes de infraestructura y canteras** en todo el país, donde la ejecución de tareas requiere maquinaria en óptimas condiciones operativas. También se presenta en las **oficinas de control y centros administrativos de los proveedores**, donde la falta de visibilidad en tiempo real sobre la ubicación, estado técnico y disponibilidad de la flota limita la capacidad de respuesta ante imprevistos o solicitudes urgentes.
 
-##### 1.2.1.4. When
+#### 1.2.1.4. When
 
 **¿Cuándo se presenta el problema?**
 
 El problema inicia desde la **búsqueda y reserva inicial de maquinaria**, cuando los contratistas no cuentan con información actualizada sobre la disponibilidad de equipos. Se intensifica durante la **ejecución en obra**, cuando ocurren averías imprevistas debido al descontrol en el historial de mantenimientos preventivos, y persiste hasta la etapa de **cierre del servicio y facturación**, donde se generan discrepancias en la liquidación de horas trabajadas y demoras en la emisión de comprobantes de pago.
 
-##### 1.2.1.5. Why
+#### 1.2.1.5. Why
 
 **¿Por qué surge el problema?**
 
 El problema se origina principalmente por la alta informalidad del sector y la continua dependencia de procesos manuales, tales como el registro de mantenimientos en papel, la coordinación de alquileres mediante mensajería informal y el cálculo manual de tarifas de alquiler. La ausencia de una solución SaaS integrada dificulta la comunicación fluida entre el personal operativo de obra y el área administrativa.
 
-##### 1.2.1.6. How
+#### 1.2.1.6. How
 
 **¿Cómo se utilizará el producto?**
 
 La plataforma operará bajo un modelo distribuido accesible desde entornos web y móviles. Los clientes o contratistas navegarán por un catálogo interactivo con filtros por categoría, ubicación y precio para realizar reservas de maquinaria. Los proveedores gestionarán sus flotas, recibirán alertas automáticas para programar mantenimientos preventivos y monitorearán el estado de los contratos. Al finalizar el periodo de alquiler, la plataforma calculará automáticamente el monto correspondiente y generará la facturación electrónica integrada en cumplimiento con las normativas locales.
 
-##### 1.2.1.7. How Much
+#### 1.2.1.7. How Much
 
 **¿Cuál es la magnitud del problema?**
 
 En el sector de la construcción e infraestructura, las averías no detectadas a tiempo por falta de mantenimiento representan pérdidas operativas de hasta un 25% en el tiempo de ejecución de una obra. Asimismo, las demoras administrativas y la falta de digitalización en el cobro y facturación electrónica afectan directamente la liquidez de más del 40% de las pequeñas y medianas empresas proveedoras de equipos.
 
-### 1.2.2 Lean UX Process
+### 1.2.2. Lean UX Process
 En esta sección se aplica el proceso Lean UX para analizar la problemática desde una perspectiva centrada en los usuarios y en la validación temprana de supuestos. Se identifican los principales problemas, necesidades y comportamientos de los segmentos objetivo, y a partir de ellos se formulan supuestos y declaraciones de hipótesis que permiten orientar el desarrollo de MaquiControl. El resultado de este proceso se sintetiza en un Lean UX Canvas, que sirve como base para definir qué aspectos de la propuesta deben ser investigados y validados durante el proyecto.
 
-#### 1.2.2.1 Lean UX Problem Statements
-The current state of **heavy machinery rental and fleet management** has focused mainly on **manual rental agreements through messaging apps, paper-based maintenance logs, untracked equipment availability, and delayed manual electronic invoicing processes**.
+#### 1.2.2.1. Lean UX Problem Statements
+El estado actual del **alquiler y la gestión de flotas de maquinaria pesada** se ha enfocado principalmente en **pequeñas empresas de alquiler y contratistas independientes que coordinan los alquileres por WhatsApp y llamadas, registran los mantenimientos en papel u hojas de cálculo, no conocen la disponibilidad real de los equipos y emiten sus comprobantes de forma manual y tardía**.
 
-What existing products/services fail to address is **an all-in-one digital platform that unifies real-time machinery catalog browsing, automated rental contract management, preventive maintenance control, and instant electronic invoicing compliant with local tax regulations**.
+Lo que los productos y servicios existentes no logran resolver es **la falta de una plataforma única que reúna la consulta del catálogo de maquinaria con disponibilidad en tiempo real, la gestión de los contratos de alquiler, el control preventivo del mantenimiento y la emisión de comprobantes electrónicos conforme a la normativa tributaria peruana**.
 
-Our product/service will address this gap by **providing a distributed web platform that integrates real-time machinery availability tracking, service request workflows, automated fleet maintenance scheduling, and an integrated electronic invoicing module via RESTful APIs**.
+Nuestro producto abordará esta brecha mediante **una plataforma web que integra el seguimiento de la disponibilidad de la maquinaria, el flujo de solicitudes de alquiler, la programación del mantenimiento de la flota y un módulo de facturación electrónica, conectados mediante una RESTful API**.
 
-Our initial focus will be **small and medium-sized construction contractors and heavy machinery rental companies in Peru**.
+Nuestro enfoque inicial serán **los propietarios y administradores de pequeñas empresas de alquiler de maquinaria y los contratistas independientes responsables de pequeñas obras de construcción en Lima Metropolitana**.
 
-We'll know we are successful when we see **a 30% increase in rental booking conversions through the platform, a 25% reduction in machinery downtime due to scheduled maintenance alerts, and a 50% decrease in invoicing processing time during the first six months**.
+Sabremos que tenemos éxito cuando veamos **un aumento del 30 % en las reservas concretadas a través de la plataforma, una reducción del 25 % en el tiempo de inactividad de la maquinaria gracias a las alertas de mantenimiento y una disminución del 50 % en el tiempo de emisión de comprobantes durante los primeros seis meses**.
 
-#### 1.2.2.2 Lean UX Assumptions
+#### 1.2.2.2. Lean UX Assumptions
 
 **1. Business Assumptions:**
 * Creemos que los proveedores de maquinaria pesada necesitan una plataforma digital centralizada para gestionar sus flotas y contratos, eliminando los registros manuales.
@@ -480,27 +494,45 @@ We'll know we are successful when we see **a 30% increase in rental booking conv
 * **Feature 4:** Módulo de facturación electrónica integrado que genera comprobantes (facturas/boletas) en formato XML y PDF autorizados por SUNAT.
 * **Feature 5:** Dashboard con métricas de rendimiento de flota, ingresos generados y próximos mantenimientos.
 
-#### 1.2.2.3 Lean UX Hypothesis Statements
-* **Declaración de hipótesis 1:**
-  Creemos que lograremos **un aumento del 30 % en los alquileres exitosos de maquinaria** si los **contratistas de construcción** consiguen **identificar y reservar rápidamente los equipos disponibles** mediante **un catálogo interactivo de maquinaria en tiempo real y filtros de búsqueda**.
+#### 1.2.2.3. Lean UX Hypothesis Statements
 
-* **Declaración de hipótesis 2:**
-  Creemos que lograremos **una reducción del 40 % en el tiempo de las transacciones de reserva** si los **administradores de empresas de alquiler** consiguen **agilizar la creación de contratos y automatizar el cálculo de tarifas** mediante **un módulo digital de gestión de contratos de alquiler**.
+Se formula una declaración de hipótesis por cada Feature Assumption, siguiendo la plantilla de Lean UX: *Creemos que lograremos* [resultado de negocio], *si* [User Personas] *obtienen* [beneficio o resultado para el usuario] *con* [funcionalidad o solución]. Los User Personas corresponden a los segmentos objetivo: Luis Herrera (propietarios y administradores de pequeñas empresas de alquiler de maquinaria) y Renzo Huamán (contratistas independientes y responsables de pequeñas obras de construcción).
 
-* **Declaración de hipótesis 3:**
-  Creemos que lograremos **una disminución del 25 % en las averías de maquinaria en obra** si los **responsables del mantenimiento de la flota** consiguen **ejecutar oportunamente las revisiones técnicas** mediante **un sistema automatizado de programación y alertas de mantenimiento**.
+**Declaración de hipótesis 1 (Feature 1):**<br>
+**Creemos que lograremos** un aumento del 30 % en las reservas de maquinaria concretadas a través de la plataforma,<br>
+**si** los contratistas independientes como Renzo Huamán<br>
+**obtienen** la posibilidad de encontrar y reservar en pocos minutos maquinaria disponible con tarifas transparentes,<br>
+**con** un catálogo interactivo de maquinaria pesada con filtros por tipo, ubicación, precio y disponibilidad en tiempo real.
 
-* **Declaración de hipótesis 4:**
-  Creemos que lograremos **una reducción del 50 % en los errores administrativos de facturación** si el **personal contable** consigue **generar de manera inmediata facturas conformes vinculadas con los contratos de alquiler** mediante **un módulo integrado de facturación electrónica**.
+**Declaración de hipótesis 2 (Feature 2):**<br>
+**Creemos que lograremos** una reducción del 40 % en el tiempo que toma cerrar una reserva,<br>
+**si** los propietarios y administradores de empresas de alquiler como Luis Herrera<br>
+**obtienen** contratos de alquiler registrados sin errores y con la tarifa calculada automáticamente,<br>
+**con** un módulo de gestión y reserva de contratos de alquiler con cálculo automático de tarifas por hora o por día.
 
-* **Declaración de hipótesis 5:**
-  Creemos que lograremos **una tasa de satisfacción del 85 % entre los propietarios de empresas de alquiler** si los **administradores de la startup** consiguen **visualizar claramente la productividad de la flota y los ingresos mensuales** mediante **un panel analítico que muestre indicadores clave del negocio en tiempo real**.
+**Declaración de hipótesis 3 (Feature 3):**<br>
+**Creemos que lograremos** una disminución del 25 % en las averías de maquinaria durante las obras,<br>
+**si** los propietarios y administradores de empresas de alquiler como Luis Herrera<br>
+**obtienen** avisos oportunos para realizar las revisiones preventivas de cada equipo,<br>
+**con** un módulo de control de mantenimientos con alertas preventivas e historial técnico de cada maquinaria.
 
-#### 1.2.2.4 Lean UX Canvas
+**Declaración de hipótesis 4 (Feature 4):**<br>
+**Creemos que lograremos** una reducción del 50 % en los errores y en el tiempo de emisión de los comprobantes de pago,<br>
+**si** los propietarios y administradores de empresas de alquiler como Luis Herrera<br>
+**obtienen** comprobantes electrónicos emitidos de inmediato a partir de las horas trabajadas validadas en cada alquiler,<br>
+**con** un módulo de facturación electrónica integrado que genera facturas y boletas autorizadas por SUNAT.
+
+**Declaración de hipótesis 5 (Feature 5):**<br>
+**Creemos que lograremos** una tasa de retención de clientes del 80 % en el segundo trimestre de operación,<br>
+**si** los propietarios de empresas de alquiler como Luis Herrera<br>
+**obtienen** una visión clara de la ocupación de su flota, de sus ingresos y de los próximos mantenimientos,<br>
+**con** un dashboard con métricas de rendimiento de la flota, ingresos generados y mantenimientos programados.
+
+#### 1.2.2.4. Lean UX Canvas
 ![Lean UX Canvas](./assets/lean-ux-canvas.png)
 *Ver el lienzo del Lean UX Canvas en [Canva](https://canva.link/k7s7r8rxw4h0cae).*
 
-### 1.3 Segmentos objetivo
+## 1.3. Segmentos objetivo
 
 Para el desarrollo y validación de MaquiControl se han definido dos segmentos objetivo relacionados directamente con la contratación y gestión de maquinaria pesada. La selección considera tanto su relación con la problemática identificada como la posibilidad de acceder a representantes reales durante las etapas de investigación y validación del producto.
 
@@ -525,12 +557,12 @@ Para el desarrollo y validación de MaquiControl se han definido dos segmentos o
 - **Necesidades principales:** Encontrar maquinaria disponible rápidamente, conocer precios y características, coordinar fechas de alquiler y contar con información clara sobre el estado de su solicitud.
 # Capítulo II: Requirements Elicitation & Analysis
 
-## 2.1 Competidores
+## 2.1. Competidores
 En esta sección se identifican y describen los principales competidores de MaquiControl, considerando soluciones digitales que ofrecen funcionalidades relacionadas con la gestión, alquiler y control de maquinaria. El análisis permite conocer sus principales características, fortalezas y debilidades, con el fin de identificar oportunidades de diferenciación para nuestra propuesta de valor.
 
-### 2.1.1 Análisis competitivo
+### 2.1.1. Análisis competitivo
 
-### Competitive Analysis Landscape
+#### Competitive Analysis Landscape
 
 **¿Por qué llevar a cabo este análisis?**  
 *¿De qué manera MaquiControl puede diferenciarse de las soluciones de alquiler de maquinaria pesada locales e internacionales mediante una plataforma SaaS integral que unifique la gestión operativa de flota, la programación preventiva de mantenimientos y la facturación electrónica instantánea compatible con SUNAT?*
@@ -551,7 +583,7 @@ En esta sección se identifican y describen los principales competidores de Maqu
 
 ---
 
-### 2.1.2 Estrategias y tácticas frente a competidores
+### 2.1.2. Estrategias y tácticas frente a competidores
 A partir del análisis FODA cruzado, MaquiControl aplicará las siguientes estrategias y tácticas preliminares:
 
 1. **Estrategia de Penetración de Mercado vs. Gestión Manual (Excel/WhatsApp):**
@@ -563,13 +595,13 @@ A partir del análisis FODA cruzado, MaquiControl aplicará las siguientes estra
 4. **Estrategia de Mitigación de Amenazas Operativas:**
     * *Táctica:* Implementar un módulo de **Historial Técnico Certificado** que otorgue un "Sello de Mantenimiento al Día" a las máquinas registradas, incrementando la confianza de los contratistas y justificando tarifas de alquiler más competitivas.
 
-## 2.2 Entrevistas
-En esta sección se desarrolla el proceso de recolección de información mediante entrevistas dirigidas a representantes de los segmentos objetivo definidos para MaquiControl. El propósito es conocer sus experiencias, necesidades, problemas y comportamientos relacionados con el alquiler y gestión de maquinaria, de modo que los hallazgos obtenidos sirvan como base para el análisis de requerimientos y la posterior construcción de los User Personas y demás artefactos de Needfinding.
+## 2.2. Entrevistas
+En esta sección se desarrolla el proceso de recolección de información mediante entrevistas dirigidas a representantes de los segmentos objetivo definidos para MaquiControl. El propósito es conocer sus experiencias, necesidades, problemas y comportamientos relacionados con el alquiler y gestión de maquinaria, de modo que los hallazgos obtenidos sirvan como base para el análisis de requisitos y la posterior construcción de los User Personas y demás artefactos de Needfinding.
 
-### 2.2.1 Diseño de entrevistas
-Para la recolección de requerimientos se diseñaron guías de entrevista breves y estructuradas de 8 preguntas clave por segmento objetivo. Estas combinan datos demográficos/tecnológicos para el perfilamiento de arquetipos (*User Personas*) con preguntas profundas sobre la problemática operativa y de negocio.
+### 2.2.1. Diseño de entrevistas
+Para la recolección de requisitos se diseñaron guías de entrevista breves y estructuradas de 8 preguntas clave por segmento objetivo. Estas combinan datos demográficos/tecnológicos para el perfilamiento de arquetipos (*User Personas*) con preguntas profundas sobre la problemática operativa y de negocio.
 
-### Segmento 1: Propietarios y administradores de empresas de alquiler de maquinaria
+#### Segmento 1: Propietarios y administradores de empresas de alquiler de maquinaria
 
 1. **¿Cuál es su nombre, edad, cargo, dispositivos y aplicaciones que utiliza a diario para administrar su negocio?** *(Complementaria)*
 2. **¿Qué marcas o proveedores prefiere y qué fuentes consulta antes de tomar decisiones operativas?** *(Complementaria)*
@@ -580,7 +612,7 @@ Para la recolección de requerimientos se diseñaron guías de entrevista breves
 7. **¿Qué situaciones relacionadas con el alquiler o gestión de maquinaria le generan mayor frustración? (Complementaria)**
 8. **¿Qué aplicaciones, páginas web o herramientas digitales utiliza con mayor frecuencia para trabajar y comunicarse? (Complementaria)**
 
-### Segmento 2: Contratistas independientes y responsables de obras de construcción
+#### Segmento 2: Contratistas independientes y responsables de obras de construcción
 
 1. **¿Cuál es su nombre, edad, cargo, nivel educativo y qué dispositivos/navegadores utiliza en obra?** *(Complementaria)*
 2. **¿A través de qué canales o influencias del sector busca y contrata proveedores de maquinaria?** *(Complementaria)*
@@ -591,7 +623,7 @@ Para la recolección de requerimientos se diseñaron guías de entrevista breves
 7. **¿Qué situaciones relacionadas con el alquiler o gestión de maquinaria le generan mayor frustración? (Complementaria)**
 8. **¿Qué aplicaciones, páginas web o herramientas digitales utiliza con mayor frecuencia para trabajar y comunicarse? (Complementaria)**
 
-### 2.2.2 Registro de entrevistas
+### 2.2.2. Registro de entrevistas
 
 En esta sección se presentan las entrevistas realizadas a representantes de los segmentos objetivo de MaquiControl. Cada entrevista permite recopilar información sobre sus experiencias, necesidades, problemas y hábitos relacionados con la gestión y alquiler de maquinaria. Los resultados obtenidos servirán como base para el análisis de entrevistas y la construcción de los artefactos de Needfinding.
 
@@ -734,7 +766,7 @@ El entrevistado considera útil una plataforma que centralice la disponibilidad,
 
 **Video consolidado de las entrevistas:** [Ver entrevistas completas](https://upcedupe-my.sharepoint.com/:v:/g/personal/u202416147_upc_edu_pe/IQCtDKm3Mx7YSICszqpbHVACAZ5fOdZ3xGF08nsq6eXrey4?e=WBrQyq&nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJTdHJlYW1XZWJBcHAiLCJyZWZlcnJhbFZpZXciOiJTaGFyZURpYWxvZy1MaW5rIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXcifX0%3D)
 
-### 2.2.3 Análisis de entrevistas
+### 2.2.3. Análisis de entrevistas
 
 A partir de las seis entrevistas realizadas, tres por cada segmento objetivo, se identificaron necesidades, problemas y expectativas relacionadas con la gestión y el alquiler de maquinaria. Los resultados permitieron comprender tanto la perspectiva de quienes administran la oferta de equipos como la de quienes necesitan utilizarlos en proyectos de construcción.
 
@@ -769,11 +801,11 @@ Los dos segmentos presentan problemas relacionados con la fragmentación y desac
 
 MaquiControl puede conectar ambas necesidades mediante una plataforma centralizada que permita gestionar la disponibilidad, las reservas, los costos, los mantenimientos y las horas trabajadas. La solución debe priorizar la facilidad de uso, el acceso desde dispositivos móviles, la transparencia de la información y la confirmación formal de las operaciones.
 
-## 2.3 Needfinding
+## 2.3. Needfinding
 
 En esta sección se presentan los principales artefactos obtenidos a partir del análisis de la información recolectada durante las entrevistas y el estudio de los segmentos objetivo. El proceso de Needfinding permite identificar las necesidades, comportamientos, objetivos y dificultades de los usuarios, sirviendo como base para la elaboración de los User Personas, User Task Matrix, User Journey Maps y Empathy Maps.
 
-### 2.3.1 User Personas
+### 2.3.1. User Personas
 
 Los User Personas representan arquetipos construidos a partir de la información recopilada durante las entrevistas y el análisis de los segmentos objetivo. Estos perfiles permiten sintetizar características, necesidades, objetivos, motivaciones y frustraciones comunes de los usuarios, sirviendo como base para los siguientes artefactos del proceso de Needfinding.
 
@@ -797,7 +829,7 @@ Renzo Huamán representa al contratista independiente que supervisa varias obras
 
 ![User Persona - Renzo Huamán](assets/user-persona-renzo-huaman.png)
 
-### 2.3.2 User Task Matrix
+### 2.3.2. User Task Matrix
 
 
 | Tarea (Task) | Luis Herrera — Frecuencia | Luis Herrera — Importancia | Renzo Huamán — Frecuencia | Renzo Huamán — Importancia |
@@ -813,7 +845,7 @@ Renzo Huamán representa al contratista independiente que supervisa varias obras
 
 **Análisis:** la tarea con mayor frecuencia e importancia compartida por ambos User Persona es **verificar la disponibilidad real de la maquinaria**, lo cual confirma que la disponibilidad poco confiable es el dolor central identificado en ambos segmentos. Luis Herrera, al administrar la flota, prioriza con mayor frecuencia e importancia el control del mantenimiento, tarea que para Renzo Huamán es secundaria, pues él consume el servicio en vez de administrarlo. En cambio, Renzo le da mayor peso a cotizar y comparar precios y a buscar recomendaciones, dado que su rol implica seleccionar proveedores para cada nueva obra. Ambos coinciden en la relevancia alta de gestionar imprevistos por fallas mecánicas, reflejando que este riesgo operativo afecta a toda la cadena, tanto a quien alquila como a quien administra la flota.
 
-### 2.3.3 User Journey Mapping
+### 2.3.3. User Journey Mapping
 
 
 El siguiente User Journey Map representa el proceso actual seguido por el User Persona Luis Herrera para gestionar el alquiler de maquinaria, desde la recepción de una solicitud hasta el cierre del servicio. El recorrido muestra sus principales acciones, canales utilizados, problemas, emociones y oportunidades de mejora en el contexto actual, sin considerar todavía la solución MaquiControl.
@@ -855,7 +887,7 @@ A continuación se presenta el Empathy Map elaborado en **UXPressia** para el Us
 
 ![Empathy Map - Renzo Huamán](assets/empathy-map-renzo-huaman.png)
 
-## 2.4 Big Picture Event Storming
+## 2.4. Big Picture Event Storming
 
 El Big Picture Event Storming de MaquiControl fue elaborado con el objetivo de representar de manera visual los principales procesos, eventos, actores, sistemas externos y problemas identificados dentro del dominio de alquiler y gestión de maquinaria pesada. El análisis toma como base la problemática definida en el proyecto, las entrevistas realizadas, los User Personas, el User Task Matrix y los principales hallazgos del proceso de Needfinding.
 
@@ -868,7 +900,7 @@ Asimismo, se identificaron hotspots relevantes como las reservas duplicadas, inf
 ![Big Picture Event Storming - MaquiControl](assets/big-picture-event-storming.png)
 A partir del mapa se reconocen áreas de dominio candidatas como Discovery and Availability, Rental and Reservation Management, Fleet and Maintenance Management, Service Execution and Hour Control, Subscription Management, Billing and SUNAT Compliance, Operational Notifications y Dashboard and Analytics. Estas áreas todavía no representan Bounded Contexts definitivos, ya que su refinamiento se realizará posteriormente mediante Design-Level Event Storming.
 
-## 2.5 Ubiquitous Language
+## 2.5. Ubiquitous Language
 
 El Ubiquitous Language de MaquiControl reúne los principales términos utilizados dentro del dominio de alquiler y gestión de maquinaria. Su propósito es establecer un vocabulario común entre los miembros del equipo y los stakeholders, evitando ambigüedades durante el análisis, diseño y desarrollo de la solución.
 
@@ -915,7 +947,7 @@ El Ubiquitous Language de MaquiControl reúne los principales términos utilizad
 
 # Capítulo III: Requirements Specification
 
-## 3.1 User Stories
+## 3.1. User Stories
 
 | Epic / Story ID | Tipo | Título | User Story | Criterios de aceptación | Relacionado con |
 |---|---|---|---|---|---|
@@ -941,7 +973,7 @@ El Ubiquitous Language de MaquiControl reúne los principales términos utilizad
 | US-010 | User Story | Registrar horas trabajadas | Como administrador, quiero registrar las horas trabajadas por cada maquinaria, para calcular correctamente el costo del servicio. | **Given:** existe una reserva activa o finalizada.<br>**When:** el administrador registra las horas trabajadas.<br>**Then:** el sistema guarda las horas y calcula el importe correspondiente. | EP-04 |
 | US-011 | User Story | Validar horas trabajadas | Como propietario, quiero validar las horas registradas, para asegurar que los cobros se basen en información correcta. | **Given:** existen horas registradas para una reserva.<br>**When:** el propietario revisa los datos.<br>**Then:** el sistema permite aprobarlas o indicar que requieren corrección. | EP-04 |
 | US-012 | User Story | Generar resumen de facturación | Como propietario, quiero obtener un resumen de facturación, para controlar los ingresos generados por los alquileres. | **Given:** existen reservas finalizadas y horas validadas.<br>**When:** el propietario solicita el resumen.<br>**Then:** el sistema muestra el cliente, la maquinaria, las horas y el importe total. | EP-04 |
-| US-022 | User Story | Emitir comprobante de pago | Como propietario, quiero generar comprobantes electrónicos, para cumplir con los requerimientos fiscales. | **Given:** las horas trabajadas están validadas.<br>**When:** el propietario presiona emitir comprobante.<br>**Then:** el sistema genera la factura con los datos del contrato. | EP-04 |
+| US-022 | User Story | Emitir comprobante de pago | Como propietario, quiero generar comprobantes electrónicos, para cumplir con los requisitos fiscales. | **Given:** las horas trabajadas están validadas.<br>**When:** el propietario presiona emitir comprobante.<br>**Then:** el sistema genera la factura con los datos del contrato. | EP-04 |
 | US-023 | User Story | Aplicar penalizaciones por mora | Como propietario, quiero aplicar cargos por entrega tardía, para compensar retrasos no acordados. | **Given:** el equipo es devuelto fuera del tiempo pactado.<br>**When:** se liquida la reserva.<br>**Then:** el sistema añade el recargo por mora al importe final. | EP-04 |
 | EP-05 | Epic | Landing Page de MaquiControl | Presentar la propuesta de valor y los servicios de MaquiControl a visitantes interesados. | El sitio debe mostrar información clara para empresas de alquiler y contratistas. | — |
 | US-013 | User Story | Mostrar propuesta de valor | Como visitante, quiero conocer la propuesta de valor de MaquiControl, para identificar cómo puede ayudar a mi empresa. | **Given:** el visitante accede a la Landing Page.<br>**When:** consulta el contenido principal.<br>**Then:** el sitio presenta los beneficios y servicios de MaquiControl. | EP-05 |
@@ -984,7 +1016,7 @@ El Ubiquitous Language de MaquiControl reúne los principales términos utilizad
 | US-044 | User Story | Consultar estado de la suscripción | Como propietario, quiero consultar el estado y el historial de pagos de mi suscripción, para verificar mi situación con la plataforma. | **Given:** el propietario tiene una suscripción registrada.<br>**When:** consulta su panel de cuenta.<br>**Then:** el sistema muestra el plan activo, la fecha de vencimiento y los pagos realizados. | EP-11 |
 | US-045 | User Story | Bloquear registro de maquinaria al superar el límite del plan | Como sistema, quiero impedir que un propietario registre más maquinarias que las permitidas por su plan, para hacer cumplir los límites comerciales de la suscripción. | **Given:** el propietario alcanzó el límite de maquinarias de su plan.<br>**When:** intenta registrar una maquinaria adicional.<br>**Then:** el sistema rechaza el registro e indica que debe actualizar su plan. | EP-11 |
 
-## 3.2 Impact Mapping
+## 3.2. Impact Mapping
 
 El Impact Mapping de MaquiControl permite relacionar los objetivos de negocio con los comportamientos esperados de los User Personas, los entregables necesarios para provocar dichos impactos y las User Stories asociadas.
 
@@ -994,8 +1026,7 @@ Los principales actores considerados son Luis Herrera, representante del segment
 
 ![Impact Mapping - MaquiControl](assets/impact-mapping-maquicontrol.png)
 
-## 3.3 Product Backlog
-## 3.3 Product Backlog
+## 3.3. Product Backlog
 
 El Product Backlog reúne y prioriza las 45 User Stories y las 8 Technical Stories definidas en la sección 3.1. Los identificadores, títulos y descripciones mantienen trazabilidad directa con las historias y sus criterios de aceptación.
 
@@ -1022,7 +1053,7 @@ El Product Backlog reúne y prioriza las 45 User Stories y las 8 Technical Stori
 | 19 | **US-019** | Aprobar o rechazar reservas | Como administrador, quiero revisar las solicitudes pendientes de alquiler, para confirmar o rechazar contratos. | 2 |
 | 20 | **US-020** | Filtrar maquinaria por categoría | Como contratista, quiero filtrar equipos por tipo de máquina, para agilizar la búsqueda de equipos específicos. | 1 |
 | 21 | **US-021** | Buscar maquinaria por ubicación | Como contratista, quiero buscar equipos según su ubicación, para reducir costos de flete. | 2 |
-| 22 | **US-022** | Emitir comprobante de pago | Como propietario, quiero generar comprobantes electrónicos, para cumplir con los requerimientos fiscales. | 3 |
+| 22 | **US-022** | Emitir comprobante de pago | Como propietario, quiero generar comprobantes electrónicos, para cumplir con los requisitos fiscales. | 3 |
 | 23 | **US-023** | Aplicar penalizaciones por mora | Como propietario, quiero aplicar cargos por entrega tardía, para compensar retrasos no acordados. | 2 |
 | 24 | **US-024** | Calculadora de ahorro / ROI | Como visitante, quiero simular mi ahorro operativo según el tamaño de mi flota, para evaluar la compra del SaaS. | 2 |
 | 25 | **US-025** | Chat de soporte comercial | Como visitante, quiero enviar preguntas directas en la Landing Page, para resolver dudas antes de registrarme. | 2 |
@@ -1270,7 +1301,7 @@ La navegación también se complementa con diferentes Call to Action distribuido
 
 Estas acciones permiten dirigir al usuario hacia la experiencia correspondiente según su perfil.
 
-### 4.3. Landing Page UI Design
+## 4.3. Landing Page UI Design
 
 En esta sección se presenta el diseño de la Landing Page de MaquiControl, desarrollado a partir de los lineamientos visuales definidos previamente y de las necesidades de los segmentos objetivo.
 
@@ -1427,7 +1458,7 @@ Cada flujo documenta el camino exitoso y también las decisiones, validaciones, 
 
 ![User Flow para liquidar un servicio](assets/uf-06-settle-service.png)
 
-## 4.5 Web Applications Prototyping
+## 4.5. Web Applications Prototyping
 En esta sección se presenta el prototipo interactivo de la Web Application de MaquiControl, desarrollado a partir de los mock-ups y User Flow Diagrams definidos previamente.
 
 El prototipo permite simular la navegación entre las principales vistas de la aplicación y validar la secuencia de interacción que siguen los usuarios para completar sus tareas principales. Las conexiones entre pantallas fueron definidas considerando los recorridos planteados en los User Flows y el sistema de navegación establecido para la aplicación.
@@ -1442,7 +1473,7 @@ A continuación, se presenta una captura del prototipo en funcionamiento y el en
 
 En esta sección se presenta la arquitectura de software de MaquiControl desde una perspectiva orientada al dominio.
 
-La propuesta arquitectónica toma como referencia los procesos de negocio identificados previamente, el Ubiquitous Language, el Big Picture Event Storming y los principales requerimientos funcionales de la plataforma.
+La propuesta arquitectónica toma como referencia los procesos de negocio identificados previamente, el Ubiquitous Language, el Big Picture Event Storming y los principales requisitos funcionales de la plataforma.
 
 A partir de estos elementos se identifican los principales límites del dominio, las responsabilidades del sistema y las relaciones entre los diferentes componentes que conforman la solución.
 
@@ -1834,7 +1865,7 @@ Muestra las capas y packages del Bounded Context de Billing Management:
 
 ![Billing Management Component Diagram](assets/c4-billing-management-component-diagram.png)
 
-## 4.7 Software Object-Oriented Design
+## 4.7. Software Object-Oriented Design
 
 El diseño orientado a objetos de MaquiControl representa las principales clases, interfaces, enumeraciones, atributos, operaciones y relaciones que conforman cada Bounded Context. Los modelos mantienen los límites definidos mediante Domain-Driven Design y evitan los tipos de datos primitivos en los atributos y parámetros del dominio. Cada identificador se modela como un Value Object propio (`MachineryId`, `RentalId`, `ProfileId`, entre otros), de modo que un agregado de otro contexto se referencia por su identificador tipado y no por un número sin significado, evitando el acoplamiento directo entre contextos. Los conceptos del dominio que antes se representaban como texto o números también se modelan como Value Objects que validan su propio formato, por ejemplo `EmailAddress`, `PhoneNumber`, `PersonName`, `DocumentNumber`, `TaxId`, `MachinerySpecification`, `HoursWorked`, `WorkShift`, `InvoiceNumber` y `MachineryLimit`. Los valores monetarios se modelan mediante el Value Object `Money`, que encapsula el importe y su moneda. Los tipos primitivos solo aparecen dentro de los Value Objects, que son los responsables de validarlos. Los identificadores de cada contexto se agrupan en el paquete `Identifiers` de su diagrama.
 
@@ -1842,7 +1873,7 @@ La capa de aplicación de cada contexto se divide en un `CommandService` y un `Q
 
 Para reducir la complejidad, cada Bounded Context tiene primero un diagrama general con todas sus clases y, cuando tiene más de un agregado, un diagrama por cada agregado. El agregado es el límite de consistencia transaccional y también la unidad en que se programa, por lo que cada diagrama de agregado agrupa solo su raíz, sus entidades, sus Value Objects, los comandos y queries que lo usan y su repositorio. Los Bounded Contexts con un solo agregado (Rental, Maintenance, Operations, Profiles e Identity & Access Management) se presentan con su diagrama general, que corresponde a ese único agregado.
 
-### 4.7.1 Class Diagrams
+### 4.7.1. Class Diagrams
 
 #### Fleet Management Bounded Context Class Diagram
 
@@ -1928,7 +1959,7 @@ El diagrama de Identity & Access Management representa el agregado `UserAccount`
 
 ![Identity and Access Management Class Diagram](assets/identity-access-management-class-diagram.png)
 
-## 4.8 Database Design
+## 4.8. Database Design
 
 El diseño de base de datos de MaquiControl se organiza según los límites definidos para cada Bounded Context. Cada modelo especifica las tablas, columnas, tipos de datos, claves primarias, claves foráneas, restricciones y cardinalidades necesarias para persistir la información de sus agregados y entidades.
 
@@ -1936,7 +1967,7 @@ Para conservar la independencia entre Bounded Contexts, las asociaciones interna
 
 Las entidades utilizan claves primarias numéricas `BIGINT` generadas por la base de datos, en lugar de UUID. Los valores monetarios se persisten como pares de columnas de importe y código de moneda, manteniendo en la base de datos la semántica definida por el patrón `Money` del modelo de dominio.
 
-### 4.8.1 Database Diagrams
+### 4.8.1. Database Diagrams
 
 #### Fleet Management Bounded Context Database Diagram
 
@@ -1992,7 +2023,7 @@ El presente capítulo describe y evidencia el proceso de implementación, compro
 
 La solución se compone de tres productos digitales interconectados que aplican prácticas de desarrollo web adaptativo (*Responsive Web Design*):
 1. **Landing Page:** Sitio web estático de alta conversión y presentación institucional del modelo de negocio de AndesHeavyTech, con puntos de contacto (*call-to-action*) diferenciados por segmento objetivo.
-2. **RESTful Web Services (Backend API):** Servicio backend desarrollado en Java con Spring Boot 3, fundamentado en una arquitectura hexagonal guiada por el dominio (*Domain-Driven Design* - DDD), que expone recursos mediante endpoints RESTful seguros y gestiona la persistencia transaccional con una base de datos relacional.
+2. **RESTful Web Services (Backend API):** Servicio backend desarrollado en Java con Spring Boot 4, fundamentado en una arquitectura hexagonal guiada por el dominio (*Domain-Driven Design* - DDD), que expone recursos mediante endpoints RESTful seguros y gestiona la persistencia transaccional con una base de datos relacional.
 3. **Frontend Web Application:** Aplicación web de página única (*Single Page Application* - SPA) construida con Angular, que consume los servicios de la RESTful API y proporciona una interfaz enriquecida, accesible y adaptable a dispositivos de escritorio y móviles.
 
 A continuación, se establecen las decisiones, políticas y directrices de Gestión de Configuración de Software (SCM) que garantizan la consistencia, integridad, reproducibilidad y calidad en todo el ciclo de desarrollo.
@@ -2081,16 +2112,16 @@ El código fuente de todos los artefactos de software producidos para MaquiContr
 
 Dentro de dicha organización se han estructurado repositorios dedicados e independientes para cada producto de la solución, garantizando un ciclo de vida desacoplado y una trazabilidad estricta:
 
-1. **Repositorio del Landing Page:**
+1. **Repositorio de la Landing Page:**
 - **URL:** [https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website)
 - **Descripción:** Alberga el código fuente del sitio web público y estático de difusión comercial de MaquiControl (HTML5 semántico, CSS3 adaptable y JavaScript modular), optimizado para SEO, accesibilidad e interfaces responsivas en escritorio y móviles.
 
 2. **Repositorio de Web Services (RESTful API):**
-- **URL:** [https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend)
+- **URL:** [https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform)
 - **Descripción:** Contiene la RESTful API desarrollada con Spring Boot 4 y Java 27, organizada por Bounded Contexts con DDD y CQRS. Expone los endpoints bajo el prefijo `/api/v1`, protegidos con JWT, persiste los datos en MySQL y documenta sus servicios con OpenAPI (Swagger UI). Se empaqueta en una imagen Docker (`Dockerfile` multi-stage) para su despliegue en contenedor.
 
 3. **Repositorio del servicio de pagos (Fake API):**
-- **URL:** [https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform)
+- **URL:** [https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform-mock](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform-mock)
 - **Descripción:** Contiene la Fake API construida con json-server que la aplicación web consumió en el Sprint 2. Desde el Sprint 3 solo se usa como intermediario con Mercado Pago para crear las preferencias de Checkout Pro y consultar los pagos.
 
 4. **Repositorio de Frontend Web Application:**
@@ -2136,8 +2167,6 @@ gitGraph
    checkout develop
    merge hotfix/v1.0.1 id: "Sync hotfix to develop"
 ```
-
-Las ramas y sus políticas de operación se definen a continuación:
 
 Las ramas y sus políticas de operación se definen a continuación:
 
@@ -2299,7 +2328,7 @@ Feature: Machinery Rental Reservation
 
 ### 5.1.4. Software Deployment Configuration
 
-La estrategia de despliegue de MaquiControl separa el trabajo local del entorno publicado. El Landing Page y la aplicación web automatizan cada publicación con GitHub Actions; la RESTful API, desde que se migró a contenedores, se construye y publica como imagen Docker en Azure Container Registry.
+La estrategia de despliegue de MaquiControl separa el trabajo local del entorno publicado. La Landing Page y la aplicación web automatizan cada publicación con GitHub Actions; la RESTful API, desde que se migró a contenedores, se construye y publica como imagen Docker en Azure Container Registry.
 - **Development (Local):** estaciones de los desarrolladores. Aplicación Angular en `http://localhost:4200` y RESTful API en Spring Boot en `http://localhost:8080/api/v1`, ejecutada con Docker Compose (imagen construida desde el `Dockerfile` del repositorio) y MySQL local (perfil `dev`).
 - **Production:** productos publicados en la nube, vinculados a la rama `main` de cada repositorio y etiquetados con versiones semánticas mediante GitFlow (`release/*` y tags).
 
@@ -2310,8 +2339,8 @@ flowchart LR
     subgraph GitHub ["GitHub - upc-pre-202620-1asi0729-7750-heavytech"]
         RepoLanding["Repo: maquicontrol-website\n(branch: main)"]
         RepoFrontend["Repo: maquicontrol-webapp\n(branch: main)"]
-        RepoBackend["Repo: maquicontrol-backend\n(branch: main)"]
-        RepoMock["Repo: maquicontrol-platform\n(branch: main)"]
+        RepoBackend["Repo: maquicontrol-platform\n(branch: main)"]
+        RepoMock["Repo: maquicontrol-platform-mock\n(branch: main)"]
     end
 
     subgraph CI_CD ["GitHub Actions"]
@@ -2345,7 +2374,7 @@ flowchart LR
     AppService --> MercadoPago
 ```
 
-#### 1. Despliegue del Landing Page
+#### 1. Despliegue de la Landing Page
 - **Plataforma seleccionada:** GitHub Pages.
 - **Tipo de producto:** sitio web estático (HTML5, CSS3, JavaScript y diccionarios de traducción `i18n/en.json` e `i18n/es.json`).
 - **Procedimiento de despliegue:**
@@ -2356,7 +2385,7 @@ flowchart LR
 - **URL pública de despliegue:** [https://upc-pre-202620-1asi0729-7750-heavytech.github.io/maquicontrol-website/](https://upc-pre-202620-1asi0729-7750-heavytech.github.io/maquicontrol-website/)
 
 #### 2. Despliegue de los Web Services (RESTful API en Azure App Service como contenedor)
-Desde el Sprint 3 los servicios se exponen mediante la RESTful API construida con Spring Boot 4 en el repositorio `maquicontrol-backend`. A partir de la migración a contenedores, la API se compila con JDK 27 y se empaqueta en una imagen Docker en lugar de publicarse como archivo `.jar`. La API persiste sus datos en Azure Database for MySQL y documenta sus endpoints con OpenAPI (Swagger UI).
+Desde el Sprint 3 los servicios se exponen mediante la RESTful API construida con Spring Boot 4 en el repositorio `maquicontrol-platform`. A partir de la migración a contenedores, la API se compila con JDK 27 y se empaqueta en una imagen Docker en lugar de publicarse como archivo `.jar`. La API persiste sus datos en Azure Database for MySQL y documenta sus endpoints con OpenAPI (Swagger UI).
 
 - **Base de datos:** Azure Database for MySQL - Servidor flexible `maquicontrol-mysql` (MySQL 8, nivel *Burstable* B1ms, carga de trabajo *Desarrollo/pruebas*), base de datos `maquicontrol` y autenticación de MySQL. Se creó en la región **Chile Central**, porque la directiva de la suscripción Azure for Students solo permite las regiones `centralus`, `northcentralus`, `brazilsouth`, `chilecentral` y `westus`, y en las demás regiones permitidas no había capacidad para el servidor flexible. Las reglas de red permiten el acceso desde los servicios de Azure.
 - **Imagen Docker:** el `Dockerfile` del repositorio usa una construcción multi-stage: una etapa `eclipse-temurin:27-jdk` compila el proyecto con el Maven Wrapper (`./mvnw package -DskipTests`) y una etapa final `eclipse-temurin:27-jre` copia únicamente el `.jar` resultante, ejecutándolo con un usuario no root. La imagen se construye y prueba localmente con `docker compose` (perfiles `docker-compose.container-db.yml` con MySQL en contenedor, `docker-compose.host-docker-internal.yml` apuntando al MySQL del host, y `docker-compose.prod.yml` para verificarla contra la base de datos de Azure antes de publicarla).
@@ -2368,7 +2397,7 @@ Desde el Sprint 3 los servicios se exponen mediante la RESTful API construida co
   - Documentación OpenAPI: [https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html)
   - Roles disponibles (endpoint público): `GET https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/api/v1/roles`
 
-**Servicio de pagos (Fake API).** La Fake API del Sprint 2 (`maquicontrol-platform`, Node 24, plan F1) se mantiene únicamente como intermediario con Mercado Pago: crea las preferencias de Checkout Pro y consulta el estado de los pagos con el token `MERCADO_PAGO_ACCESS_TOKEN`, guardado en sus variables de entorno. El resultado del pago se registra después en la RESTful API mediante `POST /api/v1/subscriptions/{subscriptionId}/payments`.
+**Servicio de pagos (Fake API).** La Fake API del Sprint 2 (`maquicontrol-platform-mock`, Node 24, plan F1) se mantiene únicamente como intermediario con Mercado Pago: crea las preferencias de Checkout Pro y consulta el estado de los pagos con el token `MERCADO_PAGO_ACCESS_TOKEN`, guardado en sus variables de entorno. El resultado del pago se registra después en la RESTful API mediante `POST /api/v1/subscriptions/{subscriptionId}/payments`.
 
 #### 3. Despliegue de la Frontend Web Application (Angular SPA)
 - **Plataforma seleccionada:** Azure Static Web Apps (plan Free, región Central US).
@@ -2421,7 +2450,7 @@ El Sprint 1 comprendió el periodo del 8 al 19 de septiembre de 2026. Su objetiv
 | Sprint 0 Review Summary | No aplica, es el primer Sprint del proyecto. |
 | Sprint 0 Retrospective Summary | No aplica, es el primer Sprint del proyecto. |
 | **Sprint Goal & User Stories** | |
-| Sprint 1 Goal | *Our focus is on* publishing a responsive and bilingual Landing Page that presents the MaquiControl value proposition.<br>*We believe it delivers* a clear understanding of how MaquiControl helps them control and rent heavy machinery *to* machinery rental companies and construction contractors.<br>*This will be confirmed when* visitors from both segments open the Landing Page published on GitHub Pages, read the content for their segment in Spanish or English and reach the subscription plans section. |
+| Sprint 1 Goal | *Nuestro enfoque está en* que los visitantes conozcan la propuesta de valor de MaquiControl y encuentren la información que corresponde a su tipo de negocio, en español o en inglés.<br>*Creemos que esto brinda* una comprensión clara de cómo MaquiControl les ayuda a controlar y alquilar maquinaria pesada *a* los propietarios de pequeñas empresas de alquiler de maquinaria y a los contratistas de obras.<br>*Esto se confirmará cuando* visitantes de ambos segmentos ingresen a la Landing Page publicada, lean el contenido dirigido a su segmento y lleguen a la sección de planes de suscripción. |
 | User Stories | US-013 Mostrar propuesta de valor y US-014 Mostrar información por segmento. |
 | Sprint 1 Velocity | 2 |
 | Sum of Story Points | 2 |
@@ -2440,17 +2469,16 @@ La siguiente matriz identifica a los líderes y colaboradores de los principales
 
 #### 5.2.1.3. Sprint Backlog 1
 
-El Sprint Backlog se reconstruyó a partir de las User Stories seleccionadas y del historial verificable de commits. Las horas mostradas corresponden a una estimación retrospectiva basada en la complejidad de cada tarea, debido a que durante este Sprint no se mantuvo un tablero público con estimaciones formales.
+El Sprint Backlog se reconstruyó a partir de las User Stories seleccionadas y del historial verificable de commits. Cada User Story se descompone en varias engineering tasks estimadas entre 4 y 8 horas. Las horas corresponden a una estimación retrospectiva basada en la complejidad de cada tarea, debido a que durante este Sprint no se mantuvo un tablero público con estimaciones formales. La documentación del informe se registra en su propio repositorio y no forma parte de las engineering tasks.
 
 | Sprint | Story ID | Story Title | Task ID | Task Title | Task Description | Estimation (Hours) | Assigned To | Status |
 |---|---|---|---|---|---|---:|---|---|
-| Sprint 1 | US-013 | Mostrar propuesta de valor | S1-T01 | Crear estructura de la Landing Page | Implementar la estructura semántica inicial y las secciones principales mediante HTML5. | 3 | Carlos Cespedes | Done |
-| Sprint 1 | US-013 | Mostrar propuesta de valor | S1-T02 | Implementar estilos responsive | Desarrollar los estilos base, navegación, hero, beneficios y adaptación a diferentes tamaños de pantalla. | 4 | Carlos Cespedes | Done |
-| Sprint 1 | US-013 | Mostrar propuesta de valor | S1-T03 | Aplicar diseño visual final | Implementar los estilos derivados del mock-up e incorporar la ilustración principal de maquinaria. | 4 | Carlos Cespedes | Done |
-| Sprint 1 | US-014 | Mostrar información por segmento | S1-T04 | Implementar contenido por segmento | Incorporar contenido diferenciado para propietarios, administradores, contratistas y jefes de obra. | 3 | Carlos Cespedes | Done |
-| Sprint 1 | US-014 | Mostrar información por segmento | S1-T05 | Incorporar internacionalización | Implementar textos en inglés y español con cambio dinámico de idioma mediante JavaScript. | 3 | Carlos Cespedes | Done |
-| Sprint 1 | US-013 | Mostrar propuesta de valor | S1-T06 | Incorporar planes comerciales | Agregar los planes Essential y Pro, beneficios, precios y llamados a la acción. | 3 | Carlos Cespedes | Done |
-| Sprint 1 | — | Documentación técnica | S1-T07 | Consolidar documentación AV1 | Completar investigación, requisitos, UX/UI, arquitectura, diseño orientado a objetos y diseño de base de datos. | 12 | Equipo AndesHeavyTech | Done |
+| Sprint 1 | US-013 | Mostrar propuesta de valor | S1-T01 | Crear la estructura de la Landing Page | Implementar con HTML5 semántico el encabezado, el hero, los beneficios, los planes y el pie de página. | 4 | Carlos Cespedes | Done |
+| Sprint 1 | US-013 | Mostrar propuesta de valor | S1-T02 | Implementar los estilos responsive | Desarrollar los estilos de la navegación, el hero y los beneficios, y adaptarlos a móviles, tablets y escritorio. | 6 | Carlos Cespedes | Done |
+| Sprint 1 | US-013 | Mostrar propuesta de valor | S1-T03 | Aplicar el diseño visual del mock-up | Aplicar la paleta, la tipografía y la ilustración principal de maquinaria definidas en el mock-up. | 4 | Carlos Cespedes | Done |
+| Sprint 1 | US-013 | Mostrar propuesta de valor | S1-T04 | Incorporar los planes comerciales | Agregar los planes Essential y Pro con sus beneficios, precios y llamados a la acción. | 4 | Carlos Cespedes | Done |
+| Sprint 1 | US-014 | Mostrar información por segmento | S1-T05 | Implementar el contenido por segmento | Incorporar secciones diferenciadas para propietarios de empresas de alquiler y para contratistas de obras. | 4 | Carlos Cespedes | Done |
+| Sprint 1 | US-014 | Mostrar información por segmento | S1-T06 | Incorporar la internacionalización | Implementar los textos en español e inglés y el cambio de idioma con JavaScript. | 5 | Carlos Cespedes | Done |
 
 Durante el Sprint 1 no se configuró un tablero público de GitHub Projects. La trazabilidad se mantuvo mediante ramas feature, commits y merges registrados en los repositorios públicos. Como mejora de proceso, los siguientes Sprints deberán contar con un tablero público desde el inicio.
 
@@ -2542,7 +2570,7 @@ El Sprint 2 se enfocó en construir la primera versión funcional de la aplicaci
 | Sprint 1 Review Summary | Se publicó en GitHub Pages la Landing Page responsive y bilingüe (versión `1.1.0`), con contenido por segmento y planes comerciales. |
 | Sprint 1 Retrospective Summary | Se acordó mantener GitFlow y Conventional Commits, y se identificó como mejora contar con un tablero público desde el inicio del Sprint. |
 | **Sprint Goal & User Stories** | |
-| Sprint 2 Goal | *Our focus is on* letting fleet owners and contractors manage machinery, rentals, operations and subscriptions in the MaquiControl web application.<br>*We believe it delivers* centralized and up-to-date control of machinery availability, rental requests and worked hours *to* machinery rental companies and construction contractors.<br>*This will be confirmed when* a fleet owner registers a machine and a contractor requests its rental in the web application deployed on Azure, and a subscription payment is completed with Mercado Pago in sandbox mode. |
+| Sprint 2 Goal | *Nuestro enfoque está en* que los propietarios de flota publiquen su maquinaria y atiendan las solicitudes de alquiler, y que los contratistas encuentren, reserven y registren las horas trabajadas de los equipos que necesitan.<br>*Creemos que esto brinda* un control centralizado y actualizado de la disponibilidad de la maquinaria, de los alquileres y de las horas trabajadas *a* las pequeñas empresas de alquiler de maquinaria y a los contratistas de obras.<br>*Esto se confirmará cuando* un propietario publique una maquinaria, un contratista solicite su alquiler y el propietario lo confirme en la aplicación web publicada, y un propietario contrate un plan de suscripción. |
 | User Stories | US-001, US-003, US-004, US-006, US-007, US-009, US-010, US-011, US-016, US-017, US-019, US-026, US-027, US-029, US-030, US-031, US-034, US-041 y US-042. |
 | Sprint 2 Velocity | 40 |
 | Sum of Story Points | 40 |
@@ -2561,37 +2589,57 @@ La matriz se elaboró a partir del historial de commits de los repositorios del 
 
 #### 5.2.2.3. Sprint Backlog 2
 
-Las horas corresponden a una estimación retrospectiva basada en la complejidad de cada tarea.
+Cada User Story del Sprint se descompone en varias engineering tasks estimadas entre 4 y 8 horas. Las horas corresponden a una estimación retrospectiva basada en la complejidad de cada tarea.
 
 | Sprint | Story ID | Story Title | Task ID | Task Title | Task Description | Estimation (Hours) | Assigned To | Status |
 |---|---|---|---|---|---|---:|---|---|
-| Sprint 2 | — | Base de la aplicación | S2-T01 | Configurar el proyecto Angular | Crear el workspace en Angular 22 con Angular Material, el shell de navegación, las clases base de infraestructura y la Fake API local. | 5 | Carlos Cespedes | Done |
-| Sprint 2 | US-026 | Registrar cuenta de usuario | S2-T02 | Implementar el registro | Desarrollar el modelo de cuenta, comandos, assemblers, endpoint y formulario de registro con selección de rol. | 5 | Carlos Cespedes | Done |
-| Sprint 2 | US-027 | Iniciar sesión | S2-T03 | Implementar el inicio de sesión | Desarrollar el puerto de inicio de sesión, el guard de rutas, el interceptor HTTP y la sección de autenticación en la barra superior. | 6 | Carlos Cespedes | Done |
-| Sprint 2 | US-029 | Gestionar roles de usuario | S2-T04 | Restringir rutas por rol | Implementar `roleGuard` para separar las funciones de propietario de flota y contratista. | 3 | Carlos Cespedes | Done |
-| Sprint 2 | US-001 | Registrar maquinaria | S2-T05 | Registrar maquinaria y categorías | Desarrollar el formulario de maquinaria y la gestión de categorías con nombres únicos y protección de categorías en uso. | 6 | Carlos Cespedes | Done |
-| Sprint 2 | US-016 | Editar datos de maquinaria | S2-T06 | Editar maquinaria | Habilitar la ruta de edición y la actualización de datos desde el catálogo. | 2 | Carlos Cespedes | Done |
-| Sprint 2 | US-017 | Dar de baja maquinaria | S2-T07 | Eliminar maquinaria | Agregar la acción de eliminación al catálogo de maquinaria del propietario. | 2 | Carlos Cespedes | Done |
-| Sprint 2 | US-007 | Consultar catálogo de maquinaria | S2-T08 | Mostrar el catálogo | Mostrar el catálogo de maquinaria publicada con su estado y la acción de alquilar. | 3 | Carlos Cespedes | Done |
-| Sprint 2 | US-030 | Actualizar perfil | S2-T09 | Gestionar perfil y organización | Desarrollar el modelo, la infraestructura y las vistas de perfil y organización. | 5 | Carlos Cespedes | Done |
-| Sprint 2 | US-004 | Crear una reserva | S2-T10 | Solicitar alquiler | Desarrollar el modelo de alquiler, periodo y monto, y la página de solicitud con validación de fechas y disponibilidad. | 6 | Carlos Cespedes | Done |
-| Sprint 2 | US-019 | Aprobar o rechazar reservas | S2-T11 | Confirmar reservas | Permitir que el propietario confirme las solicitudes pendientes de sus maquinarias. | 2 | Carlos Cespedes | Done |
-| Sprint 2 | US-006 | Cancelar una reserva | S2-T12 | Cancelar reservas | Permitir la cancelación de reservas con su motivo. | 2 | Carlos Cespedes | Done |
-| Sprint 2 | US-009 | Consultar reservas por obra | S2-T13 | Listar reservas propias | Mostrar solo las reservas en las que el usuario es solicitante o propietario de la maquinaria. | 2 | Carlos Cespedes | Done |
-| Sprint 2 | US-031 | Programar mantenimientos preventivos | S2-T14 | Programar mantenimientos | Desarrollar el modelo, la infraestructura y la página de programación de mantenimientos. | 5 | Carlos Cespedes | Done |
-| Sprint 2 | US-003 | Gestionar mantenimiento | S2-T15 | Actualizar el estado de la maquinaria | Marcar la maquinaria como en mantenimiento al iniciar el trabajo, liberarla al completarlo y bloquear su alquiler mientras tanto. | 3 | Carlos Cespedes | Done |
-| Sprint 2 | US-034 | Reportar avería en obra | S2-T16 | Reportar averías | Desarrollar el formulario de reporte de avería asociado a una maquinaria. | 3 | Carlos Cespedes | Done |
-| Sprint 2 | US-010 | Registrar horas trabajadas | S2-T17 | Registrar horas de operación | Desarrollar el modelo de operación de servicio y el formulario de horas trabajadas. | 5 | Carlos Cespedes | Done |
-| Sprint 2 | US-011 | Validar horas trabajadas | S2-T18 | Validar horas | Permitir que el propietario valide las horas registradas de una operación. | 2 | Carlos Cespedes | Done |
-| Sprint 2 | US-041 | Consultar planes de suscripción | S2-T19 | Crear la página de planes | Implementar la vista de planes Essential y Pro. | 3 | Angiela Fuentes | Done |
-| Sprint 2 | US-042 | Contratar un plan de suscripción | S2-T20 | Integrar Mercado Pago | Crear preferencias de Checkout Pro desde la Fake API, redirigir al pago sandbox y confirmar el resultado del pago. | 6 | Carlos Cespedes | Done |
-| Sprint 2 | — | Internacionalización y accesibilidad | S2-T21 | Traducir y mejorar accesibilidad | Incorporar ngx-translate con diccionarios `en` y `es-419`, etiquetas ARIA y correcciones de contraste. | 6 | Carlos Cespedes | Done |
-| Sprint 2 | US-013 | Mostrar propuesta de valor | S2-T22 | Conectar la Landing Page | Enlazar los botones de la Landing Page con las rutas de la aplicación web. | 3 | Angiela Fuentes | Done |
-| Sprint 2 | US-014 | Mostrar información por segmento | S2-T23 | Separar traducciones de la Landing Page | Mover los textos a `i18n/en.json` e `i18n/es.json` y apuntar los enlaces a la aplicación desplegada. | 2 | Carlos Cespedes | Done |
-| Sprint 2 | — | Despliegue | S2-T24 | Desplegar los productos | Publicar la Fake API en Azure App Service, la aplicación en Azure Static Web Apps y los releases `1.0.0` (frontend) y `v2.0.0` (Landing Page). | 5 | Carlos Cespedes | Done |
+| Sprint 2 | US-026 | Registrar cuenta de usuario | S2-T01 | Configurar el proyecto Angular | Crear el workspace en Angular 22 con Angular Material, el shell de navegación, las clases base de infraestructura y la Fake API local. | 6 | Carlos Cespedes | Done |
+| Sprint 2 | US-026 | Registrar cuenta de usuario | S2-T02 | Implementar el modelo y el endpoint de registro | Desarrollar el modelo de cuenta, los comandos, los assemblers y el endpoint de registro en la Fake API. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-026 | Registrar cuenta de usuario | S2-T03 | Crear el formulario de registro | Implementar el formulario de registro con selección de rol y validaciones de los campos. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-026 | Registrar cuenta de usuario | S2-T04 | Enlazar la Landing Page con la aplicación | Conectar los botones de registro e inicio de sesión de la Landing Page con las rutas de la aplicación web. | 4 | Angiela Fuentes | Done |
+| Sprint 2 | US-027 | Iniciar sesión | S2-T05 | Implementar el inicio de sesión | Desarrollar el puerto de inicio de sesión y el interceptor HTTP que adjunta la sesión a cada solicitud. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-027 | Iniciar sesión | S2-T06 | Proteger las rutas privadas | Implementar el guard de rutas y la sección de autenticación de la barra superior. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-029 | Gestionar roles de usuario | S2-T07 | Restringir rutas por rol | Implementar `roleGuard` para separar las funciones del propietario de flota y del contratista. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-029 | Gestionar roles de usuario | S2-T08 | Adaptar la navegación al rol | Mostrar en el menú lateral solo las opciones que corresponden al rol del usuario. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-001 | Registrar maquinaria | S2-T09 | Crear el formulario de maquinaria | Desarrollar el formulario de registro de maquinaria con sus datos técnicos, tarifa y ubicación. | 5 | Carlos Cespedes | Done |
+| Sprint 2 | US-001 | Registrar maquinaria | S2-T10 | Gestionar las categorías | Implementar la gestión de categorías con nombres únicos y protección de las categorías en uso. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-001 | Registrar maquinaria | S2-T11 | Enlazar la Landing Page con la gestión de flota | Conectar los enlaces de maquinaria y de gestión de flota de la Landing Page con la aplicación web. | 4 | Angiela Fuentes | Done |
+| Sprint 2 | US-016 | Editar datos de maquinaria | S2-T12 | Habilitar la edición de maquinaria | Crear la ruta de edición y cargar los datos actuales de la maquinaria en el formulario. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-016 | Editar datos de maquinaria | S2-T13 | Guardar los cambios de la maquinaria | Actualizar los datos desde el catálogo del propietario y mostrar la confirmación del cambio. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-017 | Dar de baja maquinaria | S2-T14 | Implementar la baja de maquinaria | Agregar la acción de eliminación al catálogo del propietario con un diálogo de confirmación. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-017 | Dar de baja maquinaria | S2-T15 | Actualizar el catálogo tras la baja | Retirar la maquinaria dada de baja del catálogo y mostrar el resultado de la operación. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-007 | Consultar catálogo de maquinaria | S2-T16 | Mostrar el catálogo de maquinaria | Mostrar la maquinaria publicada con su estado, tarifa y la acción de alquilar. | 5 | Carlos Cespedes | Done |
+| Sprint 2 | US-007 | Consultar catálogo de maquinaria | S2-T17 | Traducir la aplicación | Incorporar ngx-translate con los diccionarios `en` y `es-419` en las vistas y la navegación. | 6 | Carlos Cespedes | Done |
+| Sprint 2 | US-007 | Consultar catálogo de maquinaria | S2-T18 | Mejorar la accesibilidad | Agregar etiquetas ARIA y corregir el contraste de los componentes del catálogo y la navegación. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-030 | Actualizar perfil | S2-T19 | Implementar el modelo de perfil | Desarrollar el modelo y la infraestructura de perfil y organización. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-030 | Actualizar perfil | S2-T20 | Crear las vistas de perfil | Implementar las vistas para consultar y actualizar el perfil y la organización. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-004 | Crear una reserva | S2-T21 | Implementar el modelo de alquiler | Desarrollar el modelo de alquiler con su periodo, su monto y su estado. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-004 | Crear una reserva | S2-T22 | Crear la página de solicitud de alquiler | Implementar la solicitud con validación de fechas y de disponibilidad de la maquinaria. | 5 | Carlos Cespedes | Done |
+| Sprint 2 | US-019 | Aprobar o rechazar reservas | S2-T23 | Listar las solicitudes pendientes | Mostrar al propietario las solicitudes pendientes de sus maquinarias. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-019 | Aprobar o rechazar reservas | S2-T24 | Confirmar reservas | Permitir que el propietario confirme una solicitud pendiente y actualizar su estado. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-006 | Cancelar una reserva | S2-T25 | Cancelar reservas | Permitir la cancelación de una reserva registrando su motivo. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-006 | Cancelar una reserva | S2-T26 | Liberar la disponibilidad | Liberar el periodo reservado de la maquinaria cuando la reserva se cancela. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-009 | Consultar reservas por obra | S2-T27 | Filtrar las reservas por participante | Mostrar solo las reservas en las que el usuario es solicitante o propietario de la maquinaria. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-009 | Consultar reservas por obra | S2-T28 | Crear la vista de reservas | Implementar la lista de reservas con su periodo, maquinaria y estado. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-031 | Programar mantenimientos preventivos | S2-T29 | Implementar el modelo de mantenimiento | Desarrollar el modelo y la infraestructura de los mantenimientos programados. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-031 | Programar mantenimientos preventivos | S2-T30 | Crear la página de programación | Implementar la página para programar un mantenimiento preventivo de una maquinaria. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-003 | Gestionar mantenimiento | S2-T31 | Actualizar el estado por mantenimiento | Marcar la maquinaria como en mantenimiento al iniciar el trabajo y liberarla al completarlo. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-003 | Gestionar mantenimiento | S2-T32 | Bloquear el alquiler en mantenimiento | Impedir que se solicite el alquiler de una maquinaria mientras está en mantenimiento. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-034 | Reportar avería en obra | S2-T33 | Crear el formulario de avería | Desarrollar el formulario de reporte de avería asociado a una maquinaria. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-034 | Reportar avería en obra | S2-T34 | Listar las averías reportadas | Mostrar al propietario las averías reportadas de cada maquinaria. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-010 | Registrar horas trabajadas | S2-T35 | Implementar el modelo de operación | Desarrollar el modelo de operación de servicio y sus horas trabajadas. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-010 | Registrar horas trabajadas | S2-T36 | Crear el formulario de horas | Implementar el formulario para registrar las horas trabajadas de una operación. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-011 | Validar horas trabajadas | S2-T37 | Validar las horas registradas | Permitir que el propietario valide las horas registradas de una operación. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-011 | Validar horas trabajadas | S2-T38 | Mostrar el estado de las horas | Indicar en la lista de operaciones si las horas están pendientes o validadas. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-041 | Consultar planes de suscripción | S2-T39 | Crear la página de planes | Implementar la vista de los planes Essential y Pro con sus beneficios y precios. | 4 | Angiela Fuentes | Done |
+| Sprint 2 | US-041 | Consultar planes de suscripción | S2-T40 | Enlazar los planes de la Landing Page | Conectar los botones de planes de la Landing Page con la contratación en la aplicación web. | 4 | Angiela Fuentes | Done |
+| Sprint 2 | US-041 | Consultar planes de suscripción | S2-T41 | Separar las traducciones de la Landing Page | Mover los textos a `i18n/en.json` e `i18n/es.json` y apuntar los enlaces a la aplicación desplegada. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-042 | Contratar un plan de suscripción | S2-T42 | Crear las preferencias de pago | Crear las preferencias de Checkout Pro de Mercado Pago desde la Fake API. | 5 | Carlos Cespedes | Done |
+| Sprint 2 | US-042 | Contratar un plan de suscripción | S2-T43 | Confirmar el pago de la suscripción | Redirigir al pago en modo sandbox y confirmar el resultado del pago en la aplicación. | 4 | Carlos Cespedes | Done |
+| Sprint 2 | US-042 | Contratar un plan de suscripción | S2-T44 | Desplegar los productos | Publicar la Fake API en Azure App Service, la aplicación en Azure Static Web Apps y los releases `1.0.0` (frontend) y `v2.0.0` (Landing Page). | 6 | Carlos Cespedes | Done |
 
 - [Repositorio de la Frontend Web Application](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp)
-- [Repositorio de la Fake API](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform)
+- [Repositorio de la Fake API](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform-mock)
 - [Repositorio de la Landing Page](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website)
 
 #### 5.2.2.4. Development Evidence for Sprint Review
@@ -2618,8 +2666,8 @@ La tabla presenta los commits principales del Sprint. Los identificadores y mens
 | upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `ea50db1` | `fix(maintenance-management): mark machinery as in maintenance while in progress and remove code comments` | No se registró body adicional. | 07/10/2026 |
 | upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `5230f71` | `feat(shared): add ARIA labels and contrast fixes, and show only the user's own reservations` | No se registró body adicional. | 07/10/2026 |
 | upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `065ac7b` | `chore(release): bump version to 1.0.0 and set node engine for deployment` | No se registró body adicional. | 07/10/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `2a54743` | `chore: add the mock API as its own deployable project` | No se registró body adicional. | 07/10/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `e1bb8fd` | `feat(payments): add Mercado Pago sandbox checkout and payment confirmation endpoints` | No se registró body adicional. | 07/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform-mock | `main` | `2a54743` | `chore: add the mock API as its own deployable project` | No se registró body adicional. | 07/10/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform-mock | `main` | `e1bb8fd` | `feat(payments): add Mercado Pago sandbox checkout and payment confirmation endpoints` | No se registró body adicional. | 07/10/2026 |
 | upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website | `develop` | `d9654ee` | `feat: connect landing page to platform` | No se registró body adicional. | 06/10/2026 |
 | upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website | `develop` | `5d0961c` | `feat: connect plans buttons` | No se registró body adicional. | 07/10/2026 |
 | upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website | `develop` | `2fa0cd0` | `feat(landing): move translations to i18n files and link to deployed platform` | No se registró body adicional. | 07/10/2026 |
@@ -2683,7 +2731,7 @@ Los tres productos se publicaron con despliegue automático desde la rama `main`
 |---|---|---|---|---|
 | Landing Page | GitHub Pages | [maquicontrol-website](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website) | [Landing Page](https://upc-pre-202620-1asi0729-7750-heavytech.github.io/maquicontrol-website/) | `v2.0.0` |
 | Frontend Web Application | Azure Static Web Apps (Free) | [maquicontrol-webapp](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp) | [Web Application](https://lemon-pebble-0a946d810.4.azurestaticapps.net) | `1.0.0` |
-| Fake API | Azure App Service (F1, Central US) | [maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform) | [Fake API](https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/api/v1/health) | — |
+| Fake API | Azure App Service (F1, Central US) | [maquicontrol-platform-mock](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform-mock) | [Fake API](https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/api/v1/health) | — |
 
 Durante el despliegue se resolvieron dos incidencias: la política de regiones de la suscripción Azure for Students rechazó la región East US 2, por lo que los recursos se crearon en Central US; y se agregó `staticwebapp.config.json` para que las rutas de Angular no devuelvan 404 al recargar la página.
 
@@ -2723,14 +2771,14 @@ El Sprint 3 se enfocó en construir la primera versión de los Web Services de M
 | Sprint 2 Review Summary | Se publicaron la aplicación web `1.0.0` en Azure Static Web Apps, la Fake API en Azure App Service y la Landing Page `v2.0.0`. Los flujos de flota, alquileres, mantenimiento, operaciones y suscripciones funcionaron con datos simulados y pagos de Mercado Pago en modo sandbox. |
 | Sprint 2 Retrospective Summary | La Fake API no validaba reglas de negocio ni permisos: cualquier usuario podía modificar datos ajenos y el inicio de sesión era simulado. Se acordó implementar las reglas en el backend, repartir los Bounded Contexts entre los integrantes y alinear primero los nombres de comandos del Capítulo IV con el código. |
 | **Sprint Goal & User Stories** | |
-| Sprint 3 Goal | *Our focus is on* delivering the first version of the MaquiControl RESTful Web Services with real authentication, business rules and persistence, and connecting the web application to them.<br>*We believe it delivers* secure and consistent machinery, rental, maintenance, operation and subscription data *to* machinery rental companies and construction contractors.<br>*This will be confirmed when* a fleet owner and a contractor complete the rental flow in the deployed web application, and every request is answered by the Spring Boot API deployed on Azure App Service with its data stored in Azure Database for MySQL. |
+| Sprint 3 Goal | *Nuestro enfoque está en* que propietarios y contratistas completen todo el ciclo de alquiler con su propia cuenta, viendo solo sus alquileres, sin reservas que se crucen en las mismas fechas y con el estado de cada maquinaria actualizado cuando se alquila o entra a mantenimiento.<br>*Creemos que esto brinda* confianza en que la información de su flota, de sus alquileres y de sus pagos es correcta y está protegida *a* las pequeñas empresas de alquiler de maquinaria y a los contratistas de obras.<br>*Esto se confirmará cuando* un propietario y un contratista, cada uno con su cuenta, completen en la aplicación publicada la solicitud, la confirmación y el registro de horas de un alquiler, y al volver a ingresar encuentren la misma información. |
 | User Stories | TS-001, TS-002, TS-003, TS-004, TS-005, TS-007, US-002, US-005, US-022, US-023 y US-044. |
 | Sprint 3 Velocity | 28 |
 | Sum of Story Points | 28 |
 
 #### 5.2.3.2. Aspect Leaders and Collaborators
 
-La matriz se elaboró a partir del historial de commits del repositorio `maquicontrol-backend` y de los demás repositorios del Sprint. Se utiliza `L` para líder y `C` para colaborador.
+La matriz se elaboró a partir del historial de commits del repositorio `maquicontrol-platform` y de los demás repositorios del Sprint. Se utiliza `L` para líder y `C` para colaborador.
 
 | Team Member | GitHub Username / Git Author | IAM & Profiles API | Fleet & Rental API | Maintenance API | Operations, Subscription & Billing API | Web App Integration | SCM & Deployment | Sprint Report |
 |---|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
@@ -2742,30 +2790,47 @@ La matriz se elaboró a partir del historial de commits del repositorio `maquico
 
 #### 5.2.3.3. Sprint Backlog 3
 
-Las horas corresponden a una estimación retrospectiva basada en la complejidad de cada tarea.
+Cada User Story del Sprint se descompone en varias engineering tasks estimadas entre 4 y 8 horas. Las horas corresponden a una estimación retrospectiva basada en la complejidad de cada tarea.
 
 | Sprint | Story ID | Story Title | Task ID | Task Title | Task Description | Estimation (Hours) | Assigned To | Status |
 |---|---|---|---|---|---|---:|---|---|
-| Sprint 3 | — | Base de la RESTful API | S3-T01 | Configurar el proyecto Spring Boot | Crear el proyecto con Spring Boot 4 y Java 21, perfiles `dev` y `prod`, estrategia de nombres en snake case, raíz de agregado, `Result`, errores `ProblemDetail`, outbox transaccional y OpenAPI. | 8 | Carlos Cespedes | Done |
-| Sprint 3 | TS-005 | Autenticación basada en JWT | S3-T02 | Implementar el registro y el inicio de sesión | Desarrollar el agregado `UserAccount`, roles, hash de contraseñas con BCrypt, emisión de tokens JWT y seguridad *stateless*. | 8 | Nicolas Tantalean | Done |
-| Sprint 3 | TS-005 | Autenticación basada en JWT | S3-T03 | Proteger los endpoints por rol | Configurar `@PreAuthorize` por rol y resolver el perfil del usuario a partir del token en cada contexto. | 4 | Carlos Cespedes | Done |
-| Sprint 3 | — | Perfiles y organizaciones | S3-T04 | Implementar Profiles Management | Desarrollar el agregado `Profile`, la entidad `Organization`, la ACL hacia IAM y sus endpoints. | 5 | Carlos Cespedes | Done |
-| Sprint 3 | TS-001 | Consultar maquinarias mediante API | S3-T05 | Implementar Fleet Management | Desarrollar los agregados `Machinery` y `Category`, el *seeding* de categorías y los endpoints de maquinaria y categorías. | 6 | Carlos Cespedes | Done |
-| Sprint 3 | TS-004 | Validar datos incorrectos en la API | S3-T06 | Validar reglas de ubicación, contacto y periodo | Cubrir con pruebas unitarias las reglas de ubicación, roles, contacto y periodo de alquiler. | 4 | Wilmer Gutiérrez | Done |
-| Sprint 3 | TS-002 | Registrar reservas mediante API | S3-T07 | Implementar Rental Management | Desarrollar el agregado `Rental`, su periodo, estados y eventos, la ACL hacia Fleet y los endpoints de reservas. | 6 | Carlos Cespedes | Done |
-| Sprint 3 | TS-003 / US-005 | Validar conflictos de reservas / Evitar reservas duplicadas | S3-T08 | Validar disponibilidad | Rechazar reservas que se superpongan con otras confirmadas y exponer la consulta de disponibilidad. | 3 | Carlos Cespedes | Done |
-| Sprint 3 | US-002 | Consultar disponibilidad | S3-T09 | Publicar eventos de alquiler | Actualizar el estado de la maquinaria cuando un alquiler se confirma, inicia o termina, mediante eventos de integración. | 4 | Mathias Castillo | Done |
-| Sprint 3 | — | Mantenimiento | S3-T10 | Implementar Maintenance Management | Desarrollar el agregado `Maintenance`, los reportes de avería, la programación preventiva por horas acumuladas y la actualización del estado de la maquinaria. | 6 | Carlos Cespedes | Done |
-| Sprint 3 | — | Operaciones de servicio | S3-T11 | Implementar Operations Management | Desarrollar el agregado `ServiceOperation`, las horas trabajadas, su validación y los eventos hacia Rental. | 6 | Mathias Castillo | Done |
-| Sprint 3 | US-044 | Consultar estado de la suscripción | S3-T12 | Implementar Subscription Management | Desarrollar los planes, la suscripción, la ACL de Mercado Pago y la confirmación del pago con validación del monto y del pagador. | 6 | Mathias Castillo | Done |
-| Sprint 3 | TS-007 / US-022 / US-023 | Facturación fiscal / Emitir comprobante / Penalidades por mora | S3-T13 | Implementar Billing Management | Desarrollar facturas, penalidades por mora, la ACL hacia SUNAT y sus políticas de emisión. | 6 | Mathias Castillo | Done |
-| Sprint 3 | — | Alineación con el diseño | S3-T14 | Corregir permisos y nombres | Restringir lecturas y acciones a los participantes y renombrar comandos y queries según el Catálogo de comandos. | 5 | Carlos Cespedes | Done |
-| Sprint 3 | US-019 | Aprobar o rechazar reservas | S3-T15 | Consultar los alquileres de la flota | Agregar la query `ViewFleetRentalsQuery` para que el propietario vea todos los alquileres de sus maquinarias. | 2 | Carlos Cespedes | Done |
-| Sprint 3 | — | Despliegue | S3-T16 | Desplegar la RESTful API | Crear el servidor MySQL flexible en Chile Central, el App Service en Central US y el workflow de GitHub Actions. | 5 | Carlos Cespedes | Done |
-| Sprint 3 | — | Integración de la aplicación web | S3-T17 | Conectar la aplicación web con la API | Reemplazar la Fake API y el inicio de sesión simulado por la RESTful API en todos los Bounded Contexts y mostrar los mensajes de error del backend. | 8 | Carlos Cespedes | Done |
-| Sprint 3 | US-004 | Crear una reserva | S3-T18 | Validar el periodo y los estados de la reserva | Validar las fechas del periodo y las transiciones de estado de la reserva en la aplicación web. | 2 | Angiela Fuentes | Done |
+| Sprint 3 | TS-001 | Consultar maquinarias mediante API | S3-T01 | Configurar el proyecto Spring Boot | Crear el proyecto con Spring Boot 4 y Java 27, perfiles `dev` y `prod`, estrategia de nombres en snake case y OpenAPI. | 6 | Carlos Cespedes | Done |
+| Sprint 3 | TS-001 | Consultar maquinarias mediante API | S3-T02 | Implementar la base compartida | Desarrollar la raíz de agregado, `Result`, el manejo de errores con `ProblemDetail` y el outbox transaccional. | 6 | Carlos Cespedes | Done |
+| Sprint 3 | TS-001 | Consultar maquinarias mediante API | S3-T03 | Implementar los agregados de Fleet Management | Desarrollar los agregados `Machinery` y `Category` con sus value objects y reglas. | 6 | Carlos Cespedes | Done |
+| Sprint 3 | TS-001 | Consultar maquinarias mediante API | S3-T04 | Exponer los endpoints de flota | Publicar los endpoints de maquinaria y categorías y el *seeding* de categorías. | 5 | Carlos Cespedes | Done |
+| Sprint 3 | TS-001 | Consultar maquinarias mediante API | S3-T05 | Conectar la flota de la aplicación web | Reemplazar la Fake API por la RESTful API en el catálogo y en la gestión de maquinaria. | 6 | Carlos Cespedes | Done |
+| Sprint 3 | TS-001 | Consultar maquinarias mediante API | S3-T06 | Desplegar la RESTful API | Crear el servidor MySQL flexible en Chile Central y el App Service en Central US, y publicar la imagen Docker de la API. | 6 | Carlos Cespedes | Done |
+| Sprint 3 | TS-002 | Registrar reservas mediante API | S3-T07 | Implementar el agregado Rental | Desarrollar el agregado `Rental` con su periodo, estados y eventos de dominio. | 6 | Carlos Cespedes | Done |
+| Sprint 3 | TS-002 | Registrar reservas mediante API | S3-T08 | Exponer los endpoints de reservas | Publicar los endpoints de reservas y la ACL hacia Fleet Management. | 5 | Carlos Cespedes | Done |
+| Sprint 3 | TS-002 | Registrar reservas mediante API | S3-T09 | Corregir permisos y nombres de reservas | Restringir lecturas y acciones a los participantes y renombrar comandos y queries según el Catálogo de comandos. | 5 | Carlos Cespedes | Done |
+| Sprint 3 | TS-002 | Registrar reservas mediante API | S3-T10 | Consultar los alquileres de la flota | Agregar `ViewFleetRentalsQuery` para que el propietario vea todos los alquileres de sus maquinarias. | 4 | Carlos Cespedes | Done |
+| Sprint 3 | TS-002 | Registrar reservas mediante API | S3-T11 | Conectar los alquileres de la aplicación web | Reemplazar la Fake API por la RESTful API en la solicitud, confirmación y cancelación de reservas. | 5 | Carlos Cespedes | Done |
+| Sprint 3 | TS-003 | Validar conflictos de reservas en la API | S3-T12 | Implementar la regla de no superposición | Rechazar en el agregado `Rental` los periodos que se crucen con reservas confirmadas. | 4 | Carlos Cespedes | Done |
+| Sprint 3 | TS-003 | Validar conflictos de reservas en la API | S3-T13 | Validar el periodo en la aplicación web | Validar las fechas del periodo y las transiciones de estado de la reserva en la aplicación web. | 4 | Angiela Fuentes | Done |
+| Sprint 3 | TS-004 | Validar datos incorrectos en la API | S3-T14 | Probar las reglas de ubicación y periodo | Cubrir con pruebas unitarias las reglas de ubicación de la maquinaria y del periodo de alquiler. | 4 | Wilmer Gutiérrez | Done |
+| Sprint 3 | TS-004 | Validar datos incorrectos en la API | S3-T15 | Probar las reglas de roles y contacto | Cubrir con pruebas unitarias las reglas de roles de usuario y de datos de contacto del perfil. | 4 | Wilmer Gutiérrez | Done |
+| Sprint 3 | TS-005 | Autenticación basada en JWT | S3-T16 | Implementar el registro de cuentas | Desarrollar el agregado `UserAccount`, sus roles y el hash de contraseñas con BCrypt. | 6 | Nicolas Tantalean | Done |
+| Sprint 3 | TS-005 | Autenticación basada en JWT | S3-T17 | Implementar el inicio de sesión con JWT | Emitir tokens JWT y configurar la seguridad *stateless* de la API. | 6 | Nicolas Tantalean | Done |
+| Sprint 3 | TS-005 | Autenticación basada en JWT | S3-T18 | Proteger los endpoints por rol | Configurar `@PreAuthorize` por rol y resolver el perfil del usuario a partir del token en cada contexto. | 4 | Carlos Cespedes | Done |
+| Sprint 3 | TS-005 | Autenticación basada en JWT | S3-T19 | Implementar Profiles Management | Desarrollar el agregado `Profile`, la entidad `Organization`, la ACL hacia IAM y sus endpoints. | 6 | Carlos Cespedes | Done |
+| Sprint 3 | TS-005 | Autenticación basada en JWT | S3-T20 | Conectar la autenticación de la aplicación web | Reemplazar el inicio de sesión simulado por la RESTful API y enviar el JWT como bearer token. | 5 | Carlos Cespedes | Done |
+| Sprint 3 | US-002 | Consultar disponibilidad | S3-T21 | Exponer la consulta de disponibilidad | Publicar la consulta de disponibilidad de una maquinaria para un periodo. | 4 | Carlos Cespedes | Done |
+| Sprint 3 | US-002 | Consultar disponibilidad | S3-T22 | Publicar los eventos de alquiler | Actualizar el estado de la maquinaria cuando un alquiler se confirma, inicia o termina, mediante eventos de integración. | 5 | Mathias Castillo | Done |
+| Sprint 3 | US-002 | Consultar disponibilidad | S3-T23 | Implementar Maintenance Management | Desarrollar el agregado `Maintenance`, los reportes de avería y la programación preventiva por horas acumuladas. | 7 | Carlos Cespedes | Done |
+| Sprint 3 | US-002 | Consultar disponibilidad | S3-T24 | Actualizar la disponibilidad por mantenimiento | Cambiar el estado de la maquinaria al iniciar, completar o cancelar un mantenimiento. | 4 | Carlos Cespedes | Done |
+| Sprint 3 | US-005 | Evitar reservas duplicadas | S3-T25 | Verificar la disponibilidad al confirmar | Comprobar al confirmar una reserva pendiente que no exista otra confirmada en el mismo periodo. | 4 | Carlos Cespedes | Done |
+| Sprint 3 | US-005 | Evitar reservas duplicadas | S3-T26 | Mostrar los conflictos en la aplicación web | Mostrar en la aplicación web los mensajes de error que devuelve la API ante una reserva duplicada. | 4 | Carlos Cespedes | Done |
+| Sprint 3 | US-022 | Emitir comprobante de pago | S3-T27 | Implementar Operations Management | Desarrollar el agregado `ServiceOperation` y el registro de horas trabajadas. | 6 | Mathias Castillo | Done |
+| Sprint 3 | US-022 | Emitir comprobante de pago | S3-T28 | Validar las horas para la facturación | Implementar la validación de horas y los eventos hacia Rental y Billing que originan el comprobante. | 5 | Mathias Castillo | Done |
+| Sprint 3 | US-023 | Aplicar penalizaciones por mora | S3-T29 | Implementar las penalidades por mora | Desarrollar el agregado `LatePenalty` y sus endpoints. | 5 | Mathias Castillo | Done |
+| Sprint 3 | US-023 | Aplicar penalizaciones por mora | S3-T30 | Aplicar la política de mora | Calcular la penalidad cuando un alquiler termina después de la fecha acordada y cubrirla con pruebas de dominio. | 4 | Mathias Castillo | Done |
+| Sprint 3 | TS-007 | Endpoint para facturación fiscal | S3-T31 | Implementar el agregado Invoice | Desarrollar el agregado `Invoice`, su persistencia y sus endpoints. | 6 | Mathias Castillo | Done |
+| Sprint 3 | TS-007 | Endpoint para facturación fiscal | S3-T32 | Integrar la emisión con SUNAT | Implementar la ACL hacia SUNAT y las políticas de emisión de comprobantes. | 5 | Mathias Castillo | Done |
+| Sprint 3 | US-044 | Consultar estado de la suscripción | S3-T33 | Implementar Subscription Management | Desarrollar los planes, la suscripción y sus endpoints. | 6 | Mathias Castillo | Done |
+| Sprint 3 | US-044 | Consultar estado de la suscripción | S3-T34 | Integrar Mercado Pago | Implementar la ACL de Mercado Pago y la confirmación del pago de la suscripción. | 6 | Mathias Castillo | Done |
+| Sprint 3 | US-044 | Consultar estado de la suscripción | S3-T35 | Validar el pago de la suscripción | Validar el monto y el pagador al confirmar el pago y restringir la consulta de la suscripción a su dueño. | 4 | Carlos Cespedes | Done |
 
-- [Repositorio de la RESTful API](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend)
+- [Repositorio de la RESTful API](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform)
 - [Repositorio de la Frontend Web Application](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp)
 
 #### 5.2.3.4. Development Evidence for Sprint Review
@@ -2774,25 +2839,25 @@ La tabla presenta los commits principales del Sprint. Los identificadores y mens
 
 | Repository | Branch | Commit ID | Commit Message | Commit Message Body | Committed on |
 |---|---|---|---|---|---|
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `fad5928` | `chore: initial commit.` | No se registró body adicional. | 05/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `4d5fd58` | `feat(shared): add transactional outbox for domain events.` | No se registró body adicional. | 05/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `4447220` | `feat(shared): add problem detail error handling, health endpoint, and message bundles.` | No se registró body adicional. | 05/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `ac367cc` | `test(fleet-rental): cover location and rental period rules.` | No se registró body adicional. | 05/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `c698298` | `feat(iam): add JWT sign-in and stateless security.` | No se registró body adicional. | 06/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `3a652bf` | `feat(iam): add sign up, sign in, roles, and signed-in account endpoints.` | No se registró body adicional. | 07/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `091e02f` | `feat(profiles): add profile and organization endpoints and profiles context facade.` | No se registró body adicional. | 07/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `195a3d6` | `feat(fleet): add persistence adapters, machinery and category endpoints, and fleet context facade.` | No se registró body adicional. | 07/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `1ea7973` | `feat(rental): add persistence adapter, integration events, and rental endpoints.` | No se registró body adicional. | 07/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `8b4670f` | `feat(operations): implement REST resources, assemblers and service operations controller` | No se registró body adicional. | 07/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `fb630e4` | `feat(subscription): implement persistence adapters, REST controllers and unit tests` | No se registró body adicional. | 07/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `9234c85` | `feat(billing): implement persistence adapters, REST controllers and domain unit tests` | No se registró body adicional. | 07/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `e420ad3` | `feat(maintenance): add maintenance endpoints.` | No se registró body adicional. | 08/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `904a2c2` | `fix(subscription): validate payer and amount on checkout and restrict subscription reads to its owner` | No se registró body adicional. | 10/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `b07db37` | `refactor(rental): rename reservation commands and queries as in the design catalog and show a rental only to its participants` | No se registró body adicional. | 10/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `55427c0` | `feat(maintenance): split start and cancel commands, add breakdown reports resource and schedule preventive maintenance by accumulated hours` | No se registró body adicional. | 10/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `0fecf9b` | `chore(build): target Java 21 LTS to match the report and ease cloud deployment` | No se registró body adicional. | 11/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `1539699` | `ci(deploy): add GitHub Actions workflow to deploy the backend to Azure App Service` | No se registró body adicional. | 11/11/2026 |
-| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend | `main` | `bbe4aa1` | `feat(rental): let fleet owners view every rental of their machinery` | No se registró body adicional. | 13/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `fad5928` | `chore: initial commit.` | No se registró body adicional. | 05/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `4d5fd58` | `feat(shared): add transactional outbox for domain events.` | No se registró body adicional. | 05/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `4447220` | `feat(shared): add problem detail error handling, health endpoint, and message bundles.` | No se registró body adicional. | 05/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `ac367cc` | `test(fleet-rental): cover location and rental period rules.` | No se registró body adicional. | 05/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `c698298` | `feat(iam): add JWT sign-in and stateless security.` | No se registró body adicional. | 06/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `3a652bf` | `feat(iam): add sign up, sign in, roles, and signed-in account endpoints.` | No se registró body adicional. | 07/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `091e02f` | `feat(profiles): add profile and organization endpoints and profiles context facade.` | No se registró body adicional. | 07/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `195a3d6` | `feat(fleet): add persistence adapters, machinery and category endpoints, and fleet context facade.` | No se registró body adicional. | 07/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `1ea7973` | `feat(rental): add persistence adapter, integration events, and rental endpoints.` | No se registró body adicional. | 07/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `8b4670f` | `feat(operations): implement REST resources, assemblers and service operations controller` | No se registró body adicional. | 07/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `fb630e4` | `feat(subscription): implement persistence adapters, REST controllers and unit tests` | No se registró body adicional. | 07/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `9234c85` | `feat(billing): implement persistence adapters, REST controllers and domain unit tests` | No se registró body adicional. | 07/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `e420ad3` | `feat(maintenance): add maintenance endpoints.` | No se registró body adicional. | 08/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `904a2c2` | `fix(subscription): validate payer and amount on checkout and restrict subscription reads to its owner` | No se registró body adicional. | 10/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `b07db37` | `refactor(rental): rename reservation commands and queries as in the design catalog and show a rental only to its participants` | No se registró body adicional. | 10/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `55427c0` | `feat(maintenance): split start and cancel commands, add breakdown reports resource and schedule preventive maintenance by accumulated hours` | No se registró body adicional. | 10/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `0fecf9b` | `chore(build): target Java 21 LTS to match the report and ease cloud deployment` | No se registró body adicional. | 11/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `1539699` | `ci(deploy): add GitHub Actions workflow to deploy the backend to Azure App Service` | No se registró body adicional. | 11/11/2026 |
+| upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform | `main` | `bbe4aa1` | `feat(rental): let fleet owners view every rental of their machinery` | No se registró body adicional. | 13/11/2026 |
 | upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `546e2e0` | `fix(rental-management): validate rental period dates` | No se registró body adicional. | 13/10/2026 |
 | upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `develop` | `8a4a7ea` | `fix(rental-management): validate reservation status transitions` | No se registró body adicional. | 13/10/2026 |
 | upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp | `main` | `4f57791` | `chore: remove the json-server mock now that the app uses the real backend` | No se registró body adicional. | 13/11/2026 |
@@ -2889,10 +2954,10 @@ La RESTful API se desplegó en Azure App Service con su base de datos en Azure D
 
 | Producto desplegado | Plataforma | Repositorio | URL pública | Versión |
 |---|---|---|---|---|
-| RESTful API | Azure App Service (Java 21, Central US) | [maquicontrol-backend](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend) | [Swagger UI](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html) | `0.1.0` |
+| RESTful API | Azure App Service (contenedor Docker, JDK 27, Central US) | [maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform) | [Swagger UI](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html) | `v1.0.0` |
 | Base de datos | Azure Database for MySQL - Servidor flexible (B1ms, Chile Central) | — | No pública | MySQL 8 |
 | Frontend Web Application | Azure Static Web Apps (Free) | [maquicontrol-webapp](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp) | [Web Application](https://lemon-pebble-0a946d810.4.azurestaticapps.net) | `1.0.1` |
-| Servicio de pagos | Azure App Service (F1, Central US) | [maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform) | [Health](https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/api/v1/health) | — |
+| Servicio de pagos | Azure App Service (F1, Central US) | [maquicontrol-platform-mock](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform-mock) | [Health](https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/api/v1/health) | — |
 | Landing Page | GitHub Pages | [maquicontrol-website](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website) | [Landing Page](https://upc-pre-202620-1asi0729-7750-heavytech.github.io/maquicontrol-website/) | `v2.0.0` |
 
 Durante el despliegue se resolvieron las siguientes incidencias:
@@ -2920,6 +2985,198 @@ Para el conteo se consideraron los commits desde el corte de TB1 (commit `dc3a8e
 Las cantidades representan la actividad registrada en los repositorios y no miden por sí solas la calidad o complejidad de cada aporte.
 
 ![Sprint 3 Backend Commits](assets/sprint-3-backend-commits.png)
+
+### 5.2.4. Sprint 4
+
+El incremento de catálogo del Sprint 4 facilita que los contratistas encuentren maquinaria por categoría y ubicación, revisen el historial mecánico de cada equipo antes de alquilarlo, y permite que los propietarios consulten el mismo catálogo con esos criterios. Comprende US-020, US-021 y US-033, implementadas en la aplicación web y verificadas con las cuentas de ambos segmentos conectadas a la RESTful API existente. El Sprint incluye además las correcciones del informe derivadas de la retroalimentación del AV2 y la alineación de los repositorios y de la versión de Java declarada por la plataforma.
+
+#### 5.2.4.1. Sprint Planning 4
+
+| Campo | Detalle |
+|---|---|
+| **Sprint #** | Sprint 4 |
+| **Sprint Planning Background** | |
+| Date | 2026-11-24, inicio del cronograma estimado. |
+| Fecha de registro del incremento | 2026-11-26 |
+| Fecha límite de entrega | 2026-11-27, 07:00, hora de Lima. |
+| Prepared By | Salazar Marquina, Kevin Junior |
+| Product Owner | — |
+| Scrum Master | — |
+| Sprint 3 Review Summary | El incremento anterior incorporó la RESTful API y su integración con la aplicación web. El catálogo permite consultar maquinaria con su categoría, ubicación, tarifa y estado. |
+| Sprint 3 Retrospective Summary | La retroalimentación del AV2 solicitó expresar los objetivos en términos de negocio, descomponer las historias en varias tareas y proporcionar cuentas de prueba por segmento. Estas correcciones orientan el registro del nuevo incremento. |
+| **Sprint Goal & User Stories** | |
+| Sprint 4 Goal | *Nuestro enfoque está en* que los contratistas encuentren equipos de la categoría y ubicación que necesitan, consulten su historial mecánico previo al alquiler, y que los propietarios puedan consultar el catálogo con los mismos criterios.<br>*Creemos que esto brinda* una búsqueda más directa, mayor confianza sobre el estado técnico de cada maquinaria y una mejor comprensión de las opciones disponibles *a* los contratistas y a los propietarios de maquinaria.<br>*Esto se confirmará cuando* ambos roles puedan combinar una categoría con un distrito o departamento, reconocer cuántos equipos coinciden, recuperar el catálogo completo al limpiar los filtros y abrir desde cada tarjeta el historial de mantenimientos registrados del equipo. |
+| User Stories del incremento | US-020: Filtrar maquinaria por categoría.<br>US-021: Buscar maquinaria por ubicación.<br>US-033: Consultar historial mecánico. |
+| Sum of Story Points | 5, según las estimaciones del Product Backlog: US-020 = 1, US-021 = 2 y US-033 = 2. |
+
+Para este incremento, la búsqueda de US-021 corresponde al texto del distrito o departamento registrado en cada maquinaria; la categoría y la ubicación se combinan, y el cambio de un criterio actualiza los resultados inmediatamente. Por su parte, US-033 incorpora un botón por tarjeta del catálogo que abre un diálogo modal con el historial de mantenimientos consultado bajo demanda a `GET /api/v1/maintenances/history?machineryId={id}`, mostrando tipo, estado, fecha y descripción de cada mantenimiento o los estados de carga, error con reintento y ausencia de registros.
+
+Las tareas del incremento web en `maquicontrol-webapp` suman **35 horas estimadas** (**16 horas** para los filtros de US-020/US-021 y **19 horas** para el historial mecánico de US-033), distribuidas entre el martes 24 y el jueves 26 de noviembre antes del cierre previo a la entrega del viernes a las 07:00. Este cronograma representa una distribución de las estimaciones; las fechas y horas reales de ejecución e integración se sustentan en los commits del 26/11/2026 (`18:38` en `bed98fa` y `19:45`–`20:31` en `2578ddd`).
+
+| Fecha | Bloque estimado (hora de Lima) | Tarea | Horas estimadas |
+|---|---|---|---:|
+| 24/11/2026 | 09:00–13:00 | S4-T01: selector de categorías. | 4 |
+| 25/11/2026 | 09:00–13:00 | S4-T02: verificación de categoría y combinación de criterios. | 4 |
+| 26/11/2026 | 09:00–13:00 | S4-T03: búsqueda por distrito o departamento. | 4 |
+| 26/11/2026 | 14:00–18:00 | S4-T04: contador, limpieza, mensajes, traducciones y verificación de filtros. | 4 |
+| 26/11/2026 | 09:00–14:00 | S4-T05: consumo de `GET /maintenances/history` en `MaintenanceApiEndpoint` y `MaintenanceManagementApi`. | 5 |
+| 26/11/2026 | 14:00–18:00 | S4-T06: gestión de señales y estado del historial en `MaintenanceManagementStore`. | 4 |
+| 26/11/2026 | 18:00–20:00 (2 bloques) | S4-T07 y S4-T08: botón y diálogo modal en `MachineryList`, estilos, traducciones (`es-419` / `en`) y prueba unitaria. | 10 |
+| **Total** | | | **35** |
+
+#### 5.2.4.2. Aspect Leaders and Collaborators
+
+El equipo acordó separar el trabajo en ramas de funcionalidad, revisarlo antes de su integración a `develop` y mantener la integración final a `main` a cargo del líder. La siguiente matriz corresponde al incremento documentado en esta sección. Se utiliza `L` para responsable del aspecto y `C` para colaborador.
+
+| Team Member | GitHub Username / Git Author | Catalog Filters | Mechanical History | Verification | Report Corrections | SCM & Release | Sprint Report |
+|---|---|:---:|:---:|:---:|:---:|:---:|:---:|
+| Salazar Marquina, Kevin Junior | `AresSalamar` / `kevin` | L |  | L |  |  | L |
+| Castillo Guevara, Mathias Alejandro | `mathias9939` |  | L | C | C |  | C |
+| Cespedes Lezcano, Carlos Gabriel | `Leikop` / `leikop` |  |  | C | L | L | C |
+
+#### 5.2.4.3. Sprint Backlog 4
+
+Cada historia se descompone en tareas de implementación y verificación. Las estimaciones se documentan para el cierre del incremento; son estimaciones de esfuerzo y no un registro de horas efectivamente trabajadas. El estado `Done` corresponde a la implementación verificada e integrada en `develop` del frontend.
+
+| Sprint | Story ID | Story Title | Task ID | Task Title | Task Description | Estimation (Hours) | Assigned To | Status |
+|---|---|---|---|---|---|---:|---|---|
+| Sprint 4 | US-020 | Filtrar maquinaria por categoría | S4-T01 | Incorporar el selector de categorías | Cargar las categorías existentes en el selector y actualizar el listado al elegir una categoría o la opción de todas las categorías. | 4 | Kevin Salazar | Done |
+| Sprint 4 | US-020 | Filtrar maquinaria por categoría | S4-T02 | Verificar la selección y la combinación de criterios | Cubrir la selección por identificador de categoría, su combinación con ubicación y la conservación de las acciones de cada rol mediante pruebas del componente y revisión con ambas cuentas. | 4 | Kevin Salazar | Done |
+| Sprint 4 | US-021 | Buscar maquinaria por ubicación | S4-T03 | Implementar la búsqueda por distrito o departamento | Filtrar por coincidencias parciales en la ubicación, ignorando mayúsculas, tildes y espacios al inicio o al final del texto. | 4 | Kevin Salazar | Done |
+| Sprint 4 | US-021 | Buscar maquinaria por ubicación | S4-T04 | Incorporar y verificar la respuesta de la búsqueda | Agregar el contador de resultados, la acción de limpiar y el mensaje sin coincidencias; traducir los controles a español e inglés y verificar la actualización del catálogo, el teclado y la adaptación de los filtros a pantallas pequeñas. | 4 | Kevin Salazar | Done |
+| Sprint 4 | US-033 | Consultar historial mecánico | S4-T05 | Consumir el historial de mantenimientos | Incorporar `getHistory(machineryId)` en `MaintenanceApiEndpoint` y exponer `getMaintenanceHistory(machineryId)` en `MaintenanceManagementApi` para consultar `GET /maintenances/history`, con manejo de errores. | 5 | Mathias Castillo | Done |
+| Sprint 4 | US-033 | Consultar historial mecánico | S4-T06 | Gestionar el estado del historial | Desarrollar en `MaintenanceManagementStore` las señales `history`, `historyMachineryId`, `historyLoading` y `historyError`, los métodos `loadMaintenanceHistory` y `clearMaintenanceHistory` (con validación de petición vigente) y la limpieza al cerrar sesión. | 4 | Mathias Castillo | Done |
+| Sprint 4 | US-033 | Consultar historial mecánico | S4-T07 | Presentar el historial en el catálogo | Incorporar en `MachineryList` (`machinery-list.ts`, `.html` y `.scss`) los manejadores `openHistory`, `retryHistory`, `closeHistory` y `maintenanceStatusClass`, el botón por tarjeta y el diálogo modal con tipo, estado, fecha y descripción, junto con sus traducciones en `es-419.json` y `en.json`. | 6 | Mathias Castillo | Done |
+| Sprint 4 | US-033 | Consultar historial mecánico | S4-T08 | Verificar el historial | Cubrir con pruebas unitarias en `machinery-list.spec.ts` la presencia del botón en todas las tarjetas, la apertura del diálogo con los datos del mantenimiento y el cierre con limpieza de estado, además de verificar los estados de carga, error y sin mantenimientos registrados. | 4 | Mathias Castillo | Done |
+| Sprint 4 | — | Corrección del informe según la retroalimentación del AV2 | S4-T09 | Corregir la carátula y los artefactos de Lean UX | Alinear la relación de integrantes en una tabla y reescribir el Problem Statement y los Hypothesis Statements en español con la plantilla del curso. | 5 | Carlos Cespedes | Done |
+| Sprint 4 | — | Corrección del informe según la retroalimentación del AV2 | S4-T10 | Corregir los Sprint Goals y los Sprint Backlogs | Reescribir los Sprint Goals en español orientados al negocio y descomponer cada User Story de los Sprints 1 a 3 en engineering tasks de 4 a 8 horas. | 7 | Carlos Cespedes | Done |
+| Sprint 4 | — | Corrección del informe según la retroalimentación del AV2 | S4-T11 | Completar anexos y entrevistas de validación | Incorporar el anexo de usuarios de prueba por segmento y registrar los hallazgos de las entrevistas con su heurística, severidad y alternativa de solución. | 5 | Carlos Cespedes | Done |
+| Sprint 4 | — | Corrección del informe según la retroalimentación del AV2 | S4-T12 | Corregir la estructura y la redacción | Normalizar los niveles de títulos, reconstruir la tabla de contenidos, completar las conclusiones y recomendaciones y revisar la ortografía. | 6 | Carlos Cespedes | Done |
+| Sprint 4 | — | Corrección del informe según la retroalimentación del AV2 | S4-T13 | Unificar la terminología y las versiones | Reemplazar *requerimientos* por *requisitos* según el Anexo E, corregir la versión de Spring Boot del Capítulo V y alinear la versión del despliegue de la RESTful API. | 4 | Mathias Castillo | Done |
+| Sprint 4 | — | Alineación de los repositorios y de la plataforma | S4-T14 | Renombrar los repositorios de GitHub | Renombrar el repositorio de la Fake API a `maquicontrol-platform-mock` y el de la RESTful API a `maquicontrol-platform`, y actualizar las referencias del informe. | 4 | Carlos Cespedes | Done |
+| Sprint 4 | — | Alineación de los repositorios y de la plataforma | S4-T15 | Declarar JDK 27 en la plataforma | Unificar el nombre del proyecto y la versión de Java en el `pom.xml`, el `Dockerfile` y la documentación de la RESTful API y del curso de Java. | 4 | Carlos Cespedes | Done |
+
+La trazabilidad de estas tareas en `maquicontrol-webapp` se apoya en los [commits de `feature/sprint-4-catalog-filters`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/compare/7a7cbbc093684b8905dd85c0831d7a8164f5e3d9...1a0338a174b66ef4e98001bee810a638f8837c84) y el [pull request #3](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/pull/3) (integrado en `develop` mediante [`bed98fa`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/bed98fa)), junto con los [commits de `feature/sprint-4-mechanical-history`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/compare/bed98fa...2578ddd) integrados en `develop` mediante [`2578ddd`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/2578ddd) el 26/11/2026.
+
+#### 5.2.4.4. Development Evidence for Sprint Review
+
+Los cambios del incremento web se desarrollaron en dos ramas creadas desde `develop`:
+
+- **`feature/sprint-4-catalog-filters` (US-020 y US-021):** modifica el componente de catálogo (`machinery-list.ts`), su plantilla, sus estilos y los diccionarios `en.json` y `es-419.json`, e incorpora las pruebas de filtros en `machinery-list.spec.ts`. Las tarjetas conservan su estructura y sus acciones por rol.
+- **`feature/sprint-4-mechanical-history` (US-033):** modifica 9 archivos (`maintenance-api-endpoint.ts`, `maintenance-management-api.ts`, `maintenance-management-store.ts`, `machinery-list.ts`, `machinery-list.html`, `machinery-list.scss`, `es-419.json`, `en.json` y `machinery-list.spec.ts`), incorporando 375 líneas nuevas para consultar `GET /api/v1/maintenances/history?machineryId={id}`, gestionar las señales reactivas del historial en el store, renderizar el botón **Ver historial mecánico** y el diálogo modal accesible (`role="dialog" aria-modal="true"`) con estados de carga, error/reintento, vacío y listado de mantenimientos, traducir los textos y cubrir el flujo con prueba unitaria.
+
+| Repository | Branch | Commit ID | Commit Message | Committed on |
+|---|---|---|---|---|
+| `maquicontrol-webapp` | `feature/sprint-4-catalog-filters` | [`d6f88eb`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/d6f88eb) | `feat(fleet): I filter the machinery catalog by category and location` | 26/11/2026 |
+| `maquicontrol-webapp` | `feature/sprint-4-catalog-filters` | [`1a0338a`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/1a0338a) | `test(fleet): I verify catalog filters and preserve existing catalog states` | 26/11/2026 |
+| `maquicontrol-webapp` | `develop` | [`bed98fa`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/bed98fa) | `Merge pull request #3 from upc-pre-202620-1asi0729-7750-heavytech/feature/sprint-4-catalog-filters` | 26/11/2026 |
+| `maquicontrol-webapp` | `feature/sprint-4-mechanical-history` | [`d84f109`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/d84f109) | `feat(maintenance): add history endpoint call in MaintenanceApiEndpoint` | 26/11/2026 |
+| `maquicontrol-webapp` | `feature/sprint-4-mechanical-history` | [`c2e3930`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/c2e3930) | `feat(maintenance): expose getMaintenanceHistory in MaintenanceManagementApi` | 26/11/2026 |
+| `maquicontrol-webapp` | `feature/sprint-4-mechanical-history` | [`1f3b765`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/1f3b765) | `feat(maintenance): manage mechanical history state in MaintenanceManagementStore` | 26/11/2026 |
+| `maquicontrol-webapp` | `feature/sprint-4-mechanical-history` | [`00a6d9b`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/00a6d9b) | `feat(fleet): add mechanical history handlers to MachineryList` | 26/11/2026 |
+| `maquicontrol-webapp` | `feature/sprint-4-mechanical-history` | [`3def319`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/3def319) | `feat(fleet): add mechanical history button and modal to machinery cards` | 26/11/2026 |
+| `maquicontrol-webapp` | `feature/sprint-4-mechanical-history` | [`e96b2a0`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/e96b2a0) | `style(fleet): style mechanical history button and modal dialog` | 26/11/2026 |
+| `maquicontrol-webapp` | `feature/sprint-4-mechanical-history` | [`e9203d0`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/e9203d0) | `feat(i18n): add Spanish translations for mechanical history` | 26/11/2026 |
+| `maquicontrol-webapp` | `feature/sprint-4-mechanical-history` | [`109e1a9`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/109e1a9) | `feat(i18n): add English translations for mechanical history` | 26/11/2026 |
+| `maquicontrol-webapp` | `feature/sprint-4-mechanical-history` | [`e6d58fe`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/e6d58fe) | `test(fleet): add unit tests for machinery mechanical history` | 26/11/2026 |
+| `maquicontrol-webapp` | `develop` | [`2578ddd`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/2578ddd) | `Merge remote-tracking branch 'origin/feature/sprint-4-mechanical-history' into develop` | 26/11/2026 |
+| `maquicontrol-platform` | `develop` | [`2c06684`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform/commit/2c06684) | `chore: rename the project to maquicontrol-platform` | 24/11/2026 |
+| `maquicontrol-report` | `develop` | `b69e2eb` … `ac4cedc` | Trece commits de las correcciones del AV2, integrados desde `feature/av2-feedback-corrections`. | 24/11/2026 |
+| `maquicontrol-report` | `develop` | `d63e9c5` … `b909111` | Cuatro commits de unificación de terminología y de versiones. | 25/11/2026 |
+
+La verificación se ejecutó localmente sobre las ramas de funcionalidad y tras su integración en `develop`:
+
+| Comprobación | Resultado |
+|---|---|
+| `npm test -- --watch=false` | 23 pruebas aprobadas en 4 archivos (`app.spec.ts`: 2, `rental-management-store.spec.ts`: 3, `rental-period.value-object.spec.ts`: 6 y `machinery-list.spec.ts`: 12); las 12 pruebas nuevas en `machinery-list.spec.ts` corresponden 11 a los filtros del catálogo y 1 al historial mecánico. |
+| `npm run build` | Compilación de producción completada. Se registraron avisos de tamaño del bundle inicial y de estilos de componentes. |
+| Diferencia entre los incrementos verificados y `develop` después del merge | Sin diferencias en el contenido de los archivos de ambos incrementos (`bed98fa` y `2578ddd`). |
+
+Las pruebas de `machinery-list.spec.ts` cubren categoría, coincidencias parciales de distrito, normalización del departamento, combinación de criterios, limpieza, ausencia de coincidencias, actualización del catálogo, conservación de los estados de carga, error y catálogo vacío y restricción de alquiler para equipos reservados. Adicionalmente, la prueba del historial mecánico verifica la presencia del botón `.history-action` en las cuatro tarjetas, la invocación a `loadMaintenanceHistory(101)` al abrirlo, el renderizado del diálogo modal `.history-dialog` con el nombre de la maquinaria, el tipo, el estado, la fecha formateada (`dd/MM/yyyy`) y la descripción del mantenimiento, y el llamado a `clearMaintenanceHistory()` al cerrar el diálogo.
+
+#### 5.2.4.5. Execution Evidence for Sprint Review
+
+La revisión funcional del incremento se realizó con el frontend ejecutado localmente y conectado a la RESTful API publicada en Azure. Se utilizaron las cuentas de propietario y contratista incluidas en el Anexo de usuarios de prueba. El catálogo consultado contenía la maquinaria **Camion Rex**, de la categoría **camiones**, ubicada en **SJL, Lima**.
+
+**Catálogo anterior al incremento:** listado de maquinaria en la aplicación pública consultada el 26/11/2026.
+
+![Catálogo de maquinaria antes de incorporar los filtros del Sprint 4](assets/sprint-4-catalog-before.jpg)
+
+**Catálogo con los filtros del Sprint 4:** ejecución local de la rama integrada en `develop`, conectada al mismo backend y revisada con la misma cuenta de contratista.
+
+![Catálogo de maquinaria con filtros por categoría y ubicación del Sprint 4](assets/sprint-4-catalog-after.jpg)
+
+| Caso | Resultado observado |
+|---|---|
+| Categoría `camiones` y departamento `Lima` | Se muestra Camion Rex y el contador indica una coincidencia. |
+| Departamento escrito como `  lIMA  ` | Se obtiene la misma coincidencia al ignorar mayúsculas y espacios exteriores. |
+| Distrito escrito como `sjl` | Se muestra el equipo ubicado en SJL. |
+| Categoría `Excavadoras` o ubicación `Cusco` | Se muestran cero coincidencias, el mensaje correspondiente y los controles para cambiar o limpiar los criterios. |
+| Limpiar filtros | Se vacían ambos controles y se recupera el catálogo completo. |
+| Cambiar entre español e inglés | Los controles, el contador, las etiquetas del diálogo modal y los textos del historial mecánico (`es-419` / `en`) se muestran en el idioma seleccionado. |
+| Ingresar como contratista o propietario | Ambos pueden filtrar y consultar el historial mecánico. Se conservan las opciones de alquilar para el contratista y de publicar maquinaria, editar/eliminar y gestionar categorías para el propietario. |
+| Navegar con teclado y revisar los filtros a 390 px de ancho | Los controles mantienen etiquetas, foco visible y una distribución adaptable. |
+| Abrir el historial mecánico de Camion Rex como contratista | Se muestra el diálogo modal con los mantenimientos del equipo, cada uno con su tipo, estado, fecha (`completedAt` o `scheduledDate`) y descripción. |
+| Abrir el historial de una maquinaria sin mantenimientos | Se informa explícitamente que la maquinaria aún no tiene mantenimientos completados registrados, en lugar de un diálogo vacío. |
+| Cerrar el diálogo de historial mecánico o reintentar ante error | El diálogo se cierra con el botón **Cerrar**, clic en el fondo o tecla `Escape` limpiando el estado del store; ante error de red se muestra el mensaje y el botón de reintento. |
+
+**Historial mecánico (US-033):** ejecución local de `develop` con el merge `2578ddd`, conectada a la RESTful API publicada en Azure e iniciando sesión con la cuenta de contratista del Anexo de usuarios de prueba. Al pulsar **Ver historial mecánico** en la tarjeta de Camion Rex se abre el diálogo modal con sus mantenimientos preventivos completados, cada uno con su tipo, estado, descripción y fecha.
+
+![Diálogo de historial mecánico de Camion Rex en el catálogo de maquinaria](assets/sprint-4-mechanical-history.jpg)
+
+La revisión con datos reales se complementó con las pruebas del componente, que utilizan un catálogo de prueba con varias categorías, ubicaciones y registros de mantenimiento para comprobar combinaciones, cambios en la fuente de datos y apertura/cierre del diálogo de historial.
+
+#### 5.2.4.6. Services Documentation Evidence for Sprint Review
+
+Los filtros utilizan los recursos que ya consume el catálogo, mientras que el historial mecánico consulta bajo demanda el endpoint de historial de mantenimientos al abrir el diálogo de cada maquinaria. El frontend obtiene las maquinarias y las categorías para aplicar los filtros localmente mediante señales y valores calculados de Angular, y solicita el historial mediante `MaintenanceApiEndpoint.getHistory(machineryId)` y `MaintenanceManagementApi.getMaintenanceHistory(machineryId)`.
+
+| Request | Uso en el incremento |
+|---|---|
+| `GET /api/v1/machinery` | Obtiene la maquinaria con `categoryId`, estado y ubicación. La búsqueda utiliza `location.district` y `location.department`. |
+| `GET /api/v1/categories` | Obtiene los identificadores y nombres que se muestran en el selector de categorías. |
+| `GET /api/v1/maintenances/history?machineryId={id}` | Obtiene el historial de mantenimientos de una maquinaria para el diálogo de historial mecánico (`MaintenanceApiEndpoint.getHistory`). A diferencia del resto de Maintenance Management, está disponible para cualquier usuario autenticado. |
+
+**URL base:** `https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/api/v1`.
+
+**Documentación de los servicios existentes:** [Swagger UI](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html).
+
+Seleccionar una categoría, escribir una ubicación o limpiar los criterios actualiza la vista sin efectuar nuevas solicitudes al servidor por cada cambio; por su parte, pulsar **Ver historial mecánico** ejecuta una consulta `GET` puntual por `machineryId`, controlando la respuesta vigente en `MaintenanceManagementStore` para evitar condiciones de carrera si el usuario cambia de maquinaria o cierra sesión. Este incremento conserva los contratos de la API y la estructura de la información almacenada.
+
+#### 5.2.4.7. Software Deployment Evidence for Sprint Review
+
+Los dos incrementos del Sprint 4 quedaron integrados en `develop` del frontend mediante los merges [`bed98fa`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/bed98fa) (filtros) y [`2578ddd`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/2578ddd) (historial mecánico). Para revisar el código con el backend publicado se ejecutó el siguiente comando:
+
+```bash
+npm start -- --configuration production --host 127.0.0.1 --port 4200
+```
+
+Esta configuración ejecuta el frontend en el equipo local y utiliza las URLs de Azure definidas en el entorno de producción. La configuración del entorno permanece igual que en el repositorio del equipo.
+
+| Producto | Referencia del incremento | Estado al corte del 26/11/2026 |
+|---|---|---|
+| Frontend con filtros | [`develop`, commit `bed98fa`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/tree/bed98fa) | Integrado en `develop`; ejecución local en `http://127.0.0.1:4200/fleet/machinery` conectada al backend publicado. |
+| Frontend con historial mecánico | [`develop`, commit `2578ddd`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/tree/2578ddd) (`feature/sprint-4-mechanical-history`, [`d84f109`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/d84f109)…[`e6d58fe`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/e6d58fe)) | Integrado en `develop` el 26/11/2026 tras verificar la compilación y las 23 pruebas unitarias. |
+| RESTful API renombrada | [`maquicontrol-platform`, commit `2c06684`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform/commit/2c06684) | Repositorio renombrado y JDK 27 declarado en el `pom.xml`, el `Dockerfile` y la documentación. El App Service en Azure mantiene la imagen publicada. |
+| RESTful API | [Swagger UI en Azure](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html) | Servicio existente utilizado para la revisión con ambos roles. |
+| Frontend público | [Azure Static Web Apps](https://lemon-pebble-0a946d810.4.azurestaticapps.net) | La publicación del incremento seguirá la integración de `develop` a `main` a cargo del líder. |
+
+#### 5.2.4.8. Team Collaboration Insights during Sprint
+
+El equipo distribuyó las mejoras del catálogo y acordó el flujo `feature` → `develop` → `main`. Kevin Salazar implementó los filtros de categoría y ubicación en `feature/sprint-4-catalog-filters`, registró el código y las pruebas en commits separados y abrió el pull request hacia `develop` ([PR #3](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/pull/3), integrado el 26/11/2026 a las 18:38, hora de Lima). Mathias Castillo implementó la consulta del historial mecánico en `feature/sprint-4-mechanical-history` mediante nueve commits atómicos siguiendo Conventional Commits (`19:45`), integrados en `develop` mediante el merge [`2578ddd`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/2578ddd) el 26/11/2026 a las 20:31, hora de Lima.
+
+| Integrante / Identidad Git | Aporte documentado | Evidencia |
+|---|---|---|
+| Salazar Marquina, Kevin Junior (`AresSalamar` / `kevin`) | Implementación y traducción de los filtros del catálogo; pruebas del componente; revisión con las cuentas de ambos segmentos; documentación del incremento. | Commits [`d6f88eb`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/d6f88eb) y [`1a0338a`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/1a0338a), [PR #3 integrado](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/pull/3) y sección 5.2.4 del informe. |
+| Castillo Guevara, Mathias Alejandro (`mathias9939`) | Consumo de `GET /maintenances/history`, gestión del estado en `MaintenanceManagementStore`, botón y diálogo modal en `MachineryList`, estilos, traducciones `es-419` / `en` y prueba unitaria del historial mecánico; unificación de terminología y de versiones en el informe. | Nueve commits de `feature/sprint-4-mechanical-history` ([`d84f109`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/d84f109)…[`e6d58fe`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/e6d58fe)), merge [`2578ddd`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/2578ddd) en `develop` y cuatro commits del informe del 25/11/2026. |
+| Cespedes Lezcano, Carlos Gabriel (`Leikop` / `leikop`) | Correcciones del informe según la retroalimentación del AV2, renombrado de los repositorios de la organización, unificación de JDK 27 en la plataforma, integración de `feature/sprint-4-mechanical-history` en `develop` y registro de las cuentas de prueba en la aplicación desplegada. | Trece commits del informe del 24/11/2026, commit `2c06684` de la RESTful API y merge [`2578ddd`](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp/commit/2578ddd) en `maquicontrol-webapp`. |
+
+El incremento conserva las acciones existentes en las tarjetas del catálogo y concentra los cambios en los controles de búsqueda, su respuesta y la acción de historial mecánico por equipo. La separación atómica de capas, estilos, traducciones y pruebas permite trazar cada cambio hacia las historias US-020, US-021 y US-033.
+
+| Aspecto de revisión del incremento | Resultado |
+|---|---|
+| Objetivo de negocio | Ambos segmentos pueden acotar el catálogo por categoría y ubicación, reconocer la cantidad de coincidencias, recuperar la lista completa y consultar el historial mecánico de cada maquinaria. |
+| Verificación técnica | Las 23 pruebas unitarias (12 en `machinery-list.spec.ts`) y la revisión con el backend publicado cubren los criterios de búsqueda, las opciones de cada rol y el diálogo de historial mecánico. |
+| Continuidad de la integración | Ambos incrementos permanecen integrados en `develop` (`bed98fa` y `2578ddd`) hasta la integración final a `main` a cargo del líder. |
 
 ## 5.3. Validation Interviews
 
@@ -2957,39 +3214,59 @@ Tareas: registrarse como contratista, completar el perfil, buscar una maquinaria
 
 | Segmento | Entrevistado | Entrevistador | Fecha | Video | Timing |
 |---|---|---|---|---|---|
-| Empresas de alquiler de maquinaria | Andrea Lopez | Carlos Gabriel Cespedes Lezcano | 10/11/2026 | [Ver video](https://youtu.be/TXv-QAAzDJs?t=940) | 15:40 - 16:57 |
-| Empresas de alquiler de maquinaria | Alejandro Guerra | Mathias Castillo | 10/11/2026 | [Ver video](https://youtu.be/TXv-QAAzDJs?t=420) | 07:00 - 13:00 |
-| Contratistas y responsables de obra | Daniel Contreras | Wilmer Sebastian Gutierrez Lizarbe | 10/11/2026 | [Ver video](https://youtu.be/TXv-QAAzDJs?t=60) | 01:00 - 06:50 |
+| Empresas de alquiler de maquinaria | Andrea López | Carlos Gabriel Cespedes Lezcano | 10/11/2026 | [Ver video](https://youtu.be/TXv-QAAzDJs?t=940) | 15:40 - 16:57 |
+| Empresas de alquiler de maquinaria | Alejandro Guerra | Mathias Alejandro Castillo Guevara | 10/11/2026 | [Ver video](https://youtu.be/TXv-QAAzDJs?t=420) | 07:00 - 13:00 |
+| Contratistas y responsables de obra | Daniel Contreras | Wilmer Sebastián Gutiérrez Lizarbe | 10/11/2026 | [Ver video](https://youtu.be/TXv-QAAzDJs?t=60) | 01:00 - 06:50 |
 
 ### 5.3.3. Evaluaciones según heurísticas
 
-- **Visibilidad del estado del sistema:** Alejandro Guerra y Andrea López valoraron poder ver en tiempo real las horas acumuladas y el estado operativo de cada máquina, lo que les permite anticipar vencimientos de mantenimiento y evitar sobrecostos.
+Las observaciones de las sesiones se clasificaron según las heurísticas de usabilidad de Nielsen. La severidad usa la escala de 0 a 4 (0: no es un problema; 1: cosmético; 2: menor; 3: mayor; 4: catastrófico). Las observaciones positivas se registran con severidad 0.
 
-- **Coincidencia entre el sistema y el mundo real:** los tres entrevistados reconocieron sin dificultad términos propios del rubro como horómetro, mantenimiento preventivo y disponibilidad, lo que indica que el lenguaje de la plataforma coincide con el vocabulario que usan en su operación diaria.
+| # | Sesión (entrevistado) | Observación | Heurística | Severidad | Alternativa de solución |
+|:---:|---|---|---|:---:|---|
+| 1 | Alejandro Guerra y Andrea López | Valoraron ver en tiempo real las horas acumuladas y el estado operativo de cada máquina, lo que les permite anticipar mantenimientos y evitar sobrecostos. | Visibilidad del estado del sistema | 0 | Mantener el estado y las horas acumuladas visibles en la lista de maquinaria. |
+| 2 | Los tres entrevistados | Reconocieron sin dificultad términos del rubro como horómetro, mantenimiento preventivo y disponibilidad. | Coincidencia entre el sistema y el mundo real | 0 | Conservar el vocabulario del rubro en las etiquetas y mensajes. |
+| 3 | Alejandro Guerra y Andrea López | Tardaron en encontrar cómo modificar una reserva ya confirmada, porque no hay un botón de edición directo y deben entrar primero al detalle de la máquina. | Control y libertad del usuario | 3 | Agregar la acción de modificar o cancelar en cada fila de la lista de reservas. |
+| 4 | Alejandro Guerra | Actualizar el estado operativo de una máquina y gestionar su calendario de reservas le parecieron dos flujos separados. | Consistencia y estándares | 2 | Mostrar el estado de la máquina y su calendario de reservas en una misma vista de detalle. |
+| 5 | Alejandro Guerra | El formulario de registro de maquinaria no pide el horómetro inicial ni la fecha de vencimiento de pólizas y certificados de operatividad. | Prevención de errores | 3 | Agregar esos campos al formulario y alertar antes del vencimiento de cada documento. |
+| 6 | Daniel Contreras | Buscó el historial de mantenimientos dentro de la ficha técnica del equipo y no en el módulo general de mantenimiento, lo que le tomó más tiempo. | Reconocimiento antes que recuerdo | 2 | Enlazar el historial de mantenimientos desde la ficha de cada maquinaria. |
+| 7 | Alejandro Guerra | El registro como empresa y el alta de una máquina fueron rápidos y sin información innecesaria. | Flexibilidad y eficiencia de uso | 0 | Mantener el registro en pocos pasos. |
+| 8 | Daniel Contreras | Calificó el diseño de la Landing Page como limpio, moderno y profesional. | Diseño estético y minimalista | 0 | Mantener la línea gráfica en la aplicación web. |
+| 9 | Daniel Contreras | Al explorar el catálogo sin cuenta, el sistema lo bloqueó con un mensaje de error y no le ofreció continuar como invitado. | Ayuda a reconocer, diagnosticar y recuperarse de errores | 3 | Permitir ver el catálogo sin iniciar sesión y pedir la cuenta solo al solicitar un alquiler. |
+| 10 | Daniel Contreras y Alejandro Guerra | Antes de confirmar una reserva quieren ver las condiciones de garantía, el tiempo mínimo de alquiler y las penalidades por incumplimiento. | Ayuda y documentación | 2 | Mostrar las condiciones del alquiler en el resumen previo a la confirmación. |
 
-- **Control y libertad del usuario:** Alejandro Guerra tardó en encontrar cómo modificar una reserva ya confirmada, pues no identificó un botón de edición directo y tuvo que entrar primero al detalle de la máquina; Andrea López reportó la misma dificultad.
-
-- **Consistencia y estándares:** Alejandro Guerra señaló que actualizar el estado operativo de una máquina y gestionar el calendario de reservas le parecieron dos flujos separados, cuando esperaba que estuvieran integrados en un mismo lugar.
-
-- **Prevención de errores:** Alejandro Guerra notó que, al registrar una máquina nueva, el formulario no pide el horómetro inicial ni la fecha de vencimiento de pólizas y certificados de operatividad, datos que las empresas grandes exigen antes de aceptar el equipo en obra.
-
-- **Reconocimiento antes que recuerdo:** Daniel Contreras (entrevistado por Wilmer) buscó el historial de mantenimientos pasados dentro de la ficha técnica del equipo en vez de encontrarlo en un módulo general de mantenimiento, lo que le tomó más tiempo del esperado.
-
-- **Flexibilidad y eficiencia de uso:** Alejandro Guerra destacó que el registro como empresa y el alta de una máquina fueron rápidos y directos, sin pedir información innecesaria en el primer uso.
-
-- **Diseño estético y minimalista:** Daniel Contreras calificó el diseño de la Landing Page como limpio, moderno y profesional desde los primeros segundos.
-
-- **Ayuda a reconocer, diagnosticar y recuperarse de errores:** Daniel Contreras intentó explorar el catálogo sin crear una cuenta y el sistema lo bloqueó con un mensaje de error, sin ofrecerle una alternativa para seguir mirando como invitado.
-
-- **Ayuda y documentación:** Daniel Contreras y Alejandro Guerra coincidieron en que, antes de confirmar una reserva, les gustaría ver explícitamente las condiciones de garantía, el tiempo mínimo de alquiler y las penalidades por incumplimiento, información que hoy deben inferir o preguntar aparte.
-
-En general, los tres entrevistados calificaron entre 7 y 9 sobre 10 la probabilidad de usar MaquiControl en lugar de sus métodos actuales (llamadas telefónicas, WhatsApp o Excel); las observaciones anteriores se consideran insumos para las siguientes iteraciones del producto.
+En general, los tres entrevistados calificaron entre 7 y 9 sobre 10 la probabilidad de usar MaquiControl en lugar de sus métodos actuales (llamadas telefónicas, WhatsApp o Excel). Las observaciones con severidad 2 o mayor se registran como insumos para el Product Backlog de las siguientes iteraciones.
 
 ## 5.4. Video About-the-Product
 
-Video de presentación del producto MaquiControl, publicado en YouTube: [https://youtu.be/OBhNOHt9zh0](https://youtu.be/OBhNOHt9zh0). El enlace también se incluyó en la Landing Page junto con el Video About-the-Team.
+El Video About-the-Product presenta MaquiControl a los visitantes de la Landing Page y a los usuarios de la aplicación web. Con un tono promocional, resume el problema que enfrentan las pequeñas empresas de alquiler de maquinaria y los contratistas independientes, la propuesta de valor de la plataforma y sus principales funcionalidades, mostradas sobre la aplicación desplegada con las cuentas de prueba de cada segmento. Cierra con la opinión de un representante de cada segmento objetivo: Andrea López, del segmento de empresas de alquiler de maquinaria y participante de las entrevistas de validación, y Renzo Huamán, contratista independiente.
 
-## Conclusiones
+[![Video About-the-Product](assets/about-the-product-tb2.png)](https://youtu.be/ivCzd64wIjQ)
+
+| Dato | Valor |
+| :--- | :--- |
+| Duración | 00:02:02 |
+| Microsoft Stream | [Ver video en Microsoft Stream](https://upcedupe-my.sharepoint.com/personal/u202416147_upc_edu_pe/_layouts/15/stream.aspx?uniqueId=fd0aebf2-1556-4a42-a341-c713b4f1dda2) |
+| YouTube | [https://youtu.be/ivCzd64wIjQ](https://youtu.be/ivCzd64wIjQ) |
+
+**Pauta de secuencias**
+
+| Inicio | Sección |
+| :--- | :--- |
+| 00:00:00 | Problema del alquiler de maquinaria y presentación de la Landing Page |
+| 00:00:13 | Propuesta de valor de MaquiControl |
+| 00:00:26 | Funcionalidades para el propietario de flota: catálogo, reservas y mantenimiento |
+| 00:00:41 | Funcionalidades para el contratista: catálogo y solicitudes de alquiler |
+| 00:00:55 | Planes de suscripción y pago con Mercado Pago |
+| 00:01:04 | Cierre |
+| 00:01:11 | Testimonio de Andrea López (Segmento 1: empresas de alquiler de maquinaria) |
+| 00:01:41 | Testimonio de Renzo Huamán (Segmento 2: contratistas independientes) |
+
+El video de YouTube se incluyó en la Landing Page junto con el Video About-the-Team.
+
+# Conclusiones
+
+## Conclusiones y recomendaciones
 
 - El análisis realizado permitió identificar que la gestión y alquiler de maquinaria pesada presenta dificultades relacionadas con la disponibilidad de equipos, coordinación de reservas, seguimiento de mantenimientos y procesos administrativos, debido principalmente al uso de herramientas manuales y a la falta de información centralizada.
 
@@ -2997,9 +3274,9 @@ Video de presentación del producto MaquiControl, publicado en YouTube: [https:/
 
 - La identificación de los principales actores involucrados, como proveedores, gestores de flota, contratistas, jefes de obra, técnicos de mantenimiento y personal administrativo, permitió establecer las necesidades de los diferentes usuarios que interactúan con el proceso de alquiler y gestión de maquinaria.
 
-- La aplicación del enfoque Lean UX permitió estructurar la problemática mediante las preguntas What, Who, Where, When, Why, How y How Much, facilitando la identificación del problema, sus causas, los usuarios involucrados y el contexto en el que se presenta.
+- El análisis de la problemática mediante las preguntas What, Who, Where, When, Why, How y How Much, junto con el proceso Lean UX, facilitó la identificación del problema, sus causas, los usuarios involucrados y el contexto en el que se presenta.
 
-- La propuesta de valor de AndesHeavyTech busca mejorar la trazabilidad y eficiencia de las operaciones mediante una plataforma accesible desde entornos web y móviles, incorporando funcionalidades como catálogo de maquinaria, consulta de disponibilidad, reservas, alertas de mantenimiento y facturación electrónica.
+- La propuesta de valor de AndesHeavyTech busca mejorar la trazabilidad y eficiencia de las operaciones mediante una plataforma web adaptable a computadoras y dispositivos móviles, incorporando funcionalidades como catálogo de maquinaria, consulta de disponibilidad, reservas, alertas de mantenimiento y facturación electrónica.
 
 - Durante el Sprint 2 el equipo implementó y desplegó la primera versión de la aplicación web en Angular, junto con una Fake API en json-server. Esto permitió validar los flujos principales de flota, alquileres, mantenimiento, operaciones y suscripciones antes de construir el backend definitivo.
 
@@ -3013,13 +3290,51 @@ Video de presentación del producto MaquiControl, publicado en YouTube: [https:/
 
 - El despliegue de la API en Azure exigió adaptarse a las restricciones de la suscripción de estudiante (regiones permitidas y costo de la base de datos) y a separar las credenciales del código mediante variables de entorno y secretos de GitHub.
 
+- En el Sprint 4 el equipo completó el catálogo con los criterios de búsqueda por categoría y ubicación y con la consulta del historial mecánico de cada maquinaria. Al estar ya disponibles los endpoints en la RESTful API, el incremento se resolvió en la aplicación web, lo que confirma que separar el backend por Bounded Contexts permite agregar funcionalidad al producto sin modificar el servidor ni la base de datos.
+
+- Atender la retroalimentación del AV2 mostró que el informe debe escribirse pensando en quién lo lee: los Sprint Goals y los Hypothesis Statements se reescribieron en términos de negocio, mientras que las engineering tasks, los commits y los endpoints se mantuvieron como la evidencia técnica de cada incremento.
+
+- La reducción del equipo durante el ciclo obligó a redistribuir el trabajo del Sprint 4 entre tres integrantes. Mantener el flujo GitFlow con ramas `feature` y pull requests revisados permitió que la integración siguiera siendo ordenada y trazable a pesar del cambio.
+
 - Finalmente, MaquiControl busca contribuir a la transformación digital del sector de alquiler de maquinaria pesada, proporcionando una herramienta que permita mejorar la coordinación entre proveedores y contratistas, reducir problemas derivados de la falta de información y facilitar una gestión más organizada de las operaciones.
 
-- **Sobre el equipo:** AndesHeavyTech está conformado por Nicolas Tantalean Granda, Wilmer Sebastián Gutiérrez Lizarbe, Mathias Alejandro Castillo Guevara y Carlos Gabriel Cespedes Lezcano. A lo largo de los Sprints el equipo mantuvo una distribución de Bounded Contexts por integrante, lo que permitió avanzar en paralelo en la RESTful API, la aplicación web y el informe sin perder coherencia entre los módulos. La comunicación constante sobre nombres de comandos, queries y eventos de integración facilitó que cada integrante entendiera cómo su Bounded Context se conectaba con los demás. El Video About-the-Team presenta al equipo y su forma de trabajo durante este Sprint.
+- **Sobre el equipo:** AndesHeavyTech está conformado por Mathias Alejandro Castillo Guevara, Carlos Gabriel Cespedes Lezcano y Kevin Junior Salazar Marquina. A lo largo de los Sprints el equipo mantuvo una distribución de Bounded Contexts por integrante, lo que permitió avanzar en paralelo en la RESTful API, la aplicación web y el informe sin perder coherencia entre los módulos. La comunicación constante sobre nombres de comandos, queries y eventos de integración facilitó que cada integrante entendiera cómo su Bounded Context se conectaba con los demás. El Video About-the-Team presenta al equipo y su forma de trabajo durante los cuatro Sprints.
 
-# Video About-the-Team
+**Recomendaciones**
 
-Video de presentación del equipo AndesHeavyTech, publicado en YouTube: [https://youtu.be/tptPPrhuSH4](https://youtu.be/tptPPrhuSH4). El enlace también se incluyó en la Landing Page junto con el Video About-the-Product.
+- Registrar las engineering tasks y sus estimaciones en el tablero de GitHub Projects desde el Sprint Planning, para que el Sprint Backlog no tenga que reconstruirse al final del Sprint.
+- Repartir el trabajo de cada Sprint de modo que todos los integrantes realicen commits en los repositorios de código y en el informe, usando ramas `feature` y pull requests revisados por otro integrante.
+- Validar con usuarios reales de ambos segmentos cada incremento desplegado usando las cuentas del Anexo de usuarios de prueba, y registrar sus observaciones como nuevas User Stories o ajustes del Product Backlog.
+- Revisar la ortografía, la gramática y la coherencia entre capítulos antes de cada entrega, contrastando el informe con la retroalimentación recibida en las entregas anteriores.
+
+## Video About-the-Team
+
+El video About-the-Team resume el proceso de trabajo de AndesHeavyTech durante los cuatro Sprints del proyecto. La primera parte es una retrospectiva grupal narrada en voz en off sobre imágenes de sesiones de trabajo reales del equipo y capturas del producto: presenta a los integrantes, el problema del sector de alquiler de maquinaria pesada que dio origen a MaquiControl, el trabajo con Scrum y GitFlow a lo largo de los Sprints y las dificultades superadas. La segunda parte reúne el testimonio ante cámara de cada integrante, quien describe las actividades que realizó, el logro del outcome y las competencias que desarrolló.
+
+[![Video About-the-Team](assets/about-the-team-tb2.png)](https://youtu.be/UaqWhwljreY)
+
+| Dato | Valor |
+| :--- | :--- |
+| Duración | 00:06:51 |
+| Microsoft Stream | [Ver video en Microsoft Stream](https://upcedupe-my.sharepoint.com/personal/u202416147_upc_edu_pe/_layouts/15/stream.aspx?id=%2Fpersonal%2Fu202416147%5Fupc%5Fedu%5Fpe%2FDocuments%2Fupc%2Dpre%2D202620%2D1asi0729%2D7750%2Dandesheavytech%2Dabout%2Dthe%2Dteam%2Dsprint%2D4%2Emp4) |
+| YouTube | [https://youtu.be/UaqWhwljreY](https://youtu.be/UaqWhwljreY) |
+
+**Pauta de secuencias**
+
+| Inicio | Sección |
+| :--- | :--- |
+| 00:00:00 | Presentación del equipo AndesHeavyTech |
+| 00:00:09 | Integrantes del equipo |
+| 00:00:28 | Problema del sector y origen de MaquiControl |
+| 00:00:45 | Proceso de trabajo: Scrum en cuatro Sprints y GitFlow |
+| 00:01:18 | Retrospectiva: dificultades superadas como equipo |
+| 00:01:33 | Cierre de la retrospectiva |
+| 00:01:41 | Testimonio de Cespedes Lezcano, Carlos Gabriel |
+| 00:03:11 | Testimonio de Castillo Guevara, Mathias Alejandro |
+| 00:04:56 | Testimonio de Salazar Marquina, Kevin Junior |
+| 00:06:46 | Cierre |
+
+El video de YouTube se incluyó en la Landing Page junto con el Video About-the-Product.
 
 # Bibliografía
 - Angular Team. (2024). *Angular coding style guide*. https://angular.dev/style-guide
@@ -3054,13 +3369,24 @@ Video de presentación del equipo AndesHeavyTech, publicado en YouTube: [https:/
 | Informe del proyecto | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-report](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-report) | No aplica |
 | Landing Page v3.0.0 | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-website) | [GitHub Pages](https://upc-pre-202620-1asi0729-7750-heavytech.github.io/maquicontrol-website/) |
 | Frontend Web Application v2.0.0 | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-webapp) | [Azure Static Web Apps](https://lemon-pebble-0a946d810.4.azurestaticapps.net) |
-| RESTful API (Web Services) v1.0.0 | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-backend) | [Azure App Service - Swagger UI](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html) |
-| Fake API (servicio de pagos) | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform) | [Azure App Service](https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/api/v1/health) |
+| RESTful API (Web Services) v1.0.0 | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform) | [Azure App Service - Swagger UI](https://maquicontrol-backend-cxhsd2a4apa8bjdy.centralus-01.azurewebsites.net/swagger-ui/index.html) |
+| Fake API (servicio de pagos) | [upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform-mock](https://github.com/upc-pre-202620-1asi0729-7750-heavytech/maquicontrol-platform-mock) | [Azure App Service](https://maquicontrol-mockapi-beaxb2dta0grcpcd.centralus-01.azurewebsites.net/api/v1/health) |
+
+## Anexo: Usuarios de prueba
+
+Para que el docente y los usuarios entrevistados puedan recorrer la [aplicación web desplegada](https://lemon-pebble-0a946d810.4.azurestaticapps.net) sin registrarse, se crearon las siguientes cuentas de prueba, una por cada segmento objetivo. Ambas usan la misma contraseña: `Prueba2026!`.
+
+| Segmento | User Persona | Rol en MaquiControl | Correo | Qué puede probar |
+| :--- | :--- | :--- | :--- | :--- |
+| Segmento 1: Propietarios y administradores de pequeñas empresas de alquiler de maquinaria | Luis Herrera | Propietario de flota (`FLEET_OWNER`) | `propietario.prueba@maquicontrol.com` | Registrar y editar maquinaria y categorías, confirmar o rechazar solicitudes de alquiler, validar horas trabajadas, programar mantenimientos y contratar un plan de suscripción. |
+| Segmento 2: Contratistas independientes y responsables de pequeñas obras de construcción | Renzo Huamán | Contratista (`CONTRACTOR`) | `contratista.prueba@maquicontrol.com` | Consultar el catálogo, solicitar y cancelar alquileres, consultar sus reservas y reportar averías. |
+
+Los roles `FLEET_ADMINISTRATOR` y `OPERATOR` no se ofrecen en el registro público porque son roles internos que el propietario de la flota asigna al personal de su organización. Las cuentas solo contienen datos ficticios y no deben usarse para pagos reales; el pago de suscripciones funciona en el modo sandbox de Mercado Pago.
 
 ## Anexo: Videos del Producto y del Equipo
 
 | Video | Enlace |
 | :--- | :--- |
-| About-the-Product | [https://youtu.be/OBhNOHt9zh0](https://youtu.be/OBhNOHt9zh0) |
-| About-the-Team | [https://youtu.be/tptPPrhuSH4](https://youtu.be/tptPPrhuSH4) |
+| About-the-Product | [YouTube](https://youtu.be/ivCzd64wIjQ) · [Microsoft Stream](https://upcedupe-my.sharepoint.com/personal/u202416147_upc_edu_pe/_layouts/15/stream.aspx?uniqueId=fd0aebf2-1556-4a42-a341-c713b4f1dda2) |
+| About-the-Team | [YouTube](https://youtu.be/UaqWhwljreY) · [Microsoft Stream](https://upcedupe-my.sharepoint.com/personal/u202416147_upc_edu_pe/_layouts/15/stream.aspx?id=%2Fpersonal%2Fu202416147%5Fupc%5Fedu%5Fpe%2FDocuments%2Fupc%2Dpre%2D202620%2D1asi0729%2D7750%2Dandesheavytech%2Dabout%2Dthe%2Dteam%2Dsprint%2D4%2Emp4) |
 | Entrevistas de validación | [https://youtu.be/TXv-QAAzDJs](https://youtu.be/TXv-QAAzDJs) |
